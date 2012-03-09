@@ -1098,7 +1098,7 @@ y P
           </dtb:level1>
         </stub>
       </utfx:source>
-      <utfx:expected>y LEVEL1b&#13;.xNOPAGENUM&#13;&#13;y H1&#13;TITY#A&#13;&#13;y P&#13; BLA&#13;y LEVEL1e&#13;&#13;y EndVol&#13;p&#13;&#13;j 165&#13;y BrlVol&#13;&#13;y LEVEL1b&#13;.xNOPAGENUM&#13;y H1&#13; TITY#B&#13;&#13;y P&#13; BLO&#13;y LEVEL1e</utfx:expected>
+      <utfx:expected>y LEVEL1b&#13;.xNOPAGENUM&#13;&#13;y H1&#13;TITY'#A&#13;&#13;y P&#13; BLA&#13;y LEVEL1e&#13;&#13;y EndVol&#13;p&#13;&#13;j 165&#13;y BrlVol&#13;&#13;y LEVEL1b&#13;.xNOPAGENUM&#13;y H1&#13; TITY'#B&#13;&#13;y P&#13; BLO&#13;y LEVEL1e</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
   
