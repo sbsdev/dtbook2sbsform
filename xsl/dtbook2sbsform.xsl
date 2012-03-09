@@ -1742,8 +1742,9 @@ i f=1 l=1
         <!-- render the emphasis using quotes -->
         <xsl:value-of select="louis:translate(string($braille_tables), '&#x00BB;')"/>
         <xsl:apply-templates/>
+	<xsl:variable name="last_text_node" select="string((.//text())[position()=last()])"/>
         <xsl:choose>
-          <xsl:when test="my:isNumberLike(replace((.//text())[position()=last()], '.*(.$)', '\\1'))">
+          <xsl:when test="my:isNumberLike(substring($last_text_node, string-length($last_text_node), 1))">
             <xsl:value-of select="louis:translate(string($braille_tables), '&#x2039;')"/>
           </xsl:when>
           <xsl:otherwise>
