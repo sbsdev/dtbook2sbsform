@@ -1820,20 +1820,16 @@ i f=1 l=1
         <xsl:with-param name="context" select="$context"/>
       </xsl:call-template>
     </xsl:variable>
-    <xsl:choose>
-      <xsl:when test="my:containsDot($content)">
-        <xsl:variable name="temp">
+    <xsl:variable name="temp">
+      <xsl:choose>
+        <xsl:when test="my:containsDot($content)">
           <!-- drop all whitespace -->
           <xsl:for-each select="tokenize(string($content), '\s+')">
             <xsl:value-of select="."/>
           </xsl:for-each>
-        </xsl:variable>
-        <xsl:value-of select="louis:translate(string($braille_tables), string($temp))"/>
-      </xsl:when>
-      <xsl:otherwise>
-
-        <xsl:variable name="outerTokens" select="my:tokenizeForAbbr(normalize-space($content))"/>
-        <xsl:variable name="temp">
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:variable name="outerTokens" select="my:tokenizeForAbbr(normalize-space($content))"/>
           <xsl:for-each select="$outerTokens">
             <xsl:choose>
               <xsl:when test="not(my:isLetter(substring(.,1,1)))">
@@ -1866,10 +1862,16 @@ i f=1 l=1
               </xsl:otherwise>
             </xsl:choose>
           </xsl:for-each>
-        </xsl:variable>
-        <xsl:value-of select="louis:translate(string($braille_tables), string($temp))"/>
-      </xsl:otherwise>
-    </xsl:choose>
+        </xsl:otherwise>
+      </xsl:choose>
+      <!-- If the last 2 letters where capitals and the following letter is small, insert a KLEINBUCHSTABE -->
+      <xsl:if test="matches(string(.), '.*\p{Lu}\p{Lu}$') and 
+                    following-sibling::node()[1][self::text()] and
+                    matches(string(following-sibling::node()[1]), '^\p{Ll}.*')">
+        <xsl:value-of select="$KLEINBUCHSTABE"/>
+      </xsl:if>
+    </xsl:variable>
+    <xsl:value-of select="louis:translate(string($braille_tables), string($temp))"/>
   </xsl:template>
   
   <xsl:template match="dtb:abbr[lang('de')]">
