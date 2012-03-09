@@ -1190,8 +1190,10 @@ i f=1 l=1
     <xsl:value-of
       select="louis:translate(string($braille_tables), 'Lesebehinderte, Zürich')"/>
     <xsl:text>&#10;a&#10; </xsl:text>
-    <xsl:value-of
-      select="louis:translate(string($braille_tables), 'www.sbs.ch')"/>
+    <xsl:variable name="boilerplate">
+      <dtb:a xml:lang="de">www.sbs.ch</dtb:a>
+    </xsl:variable>
+    <xsl:apply-templates select="$boilerplate"/>
     <xsl:text>&#10;l&#10; </xsl:text>
     <xsl:call-template name="handle_abbr">
       <xsl:with-param name="context" select="'abbr'"/>
@@ -1230,8 +1232,8 @@ i f=1 l=1
     <xsl:text>&#10;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx Buchinhalt xxxxxxxxxxxxxxxxxxxxxxxxxxxx&#10;</xsl:text>
   </xsl:template>
 
-  <xsl:template match="/">
-    <xsl:text>x </xsl:text>
+  <xsl:template match="dtb:dtbook">
+     <xsl:text>x </xsl:text>
     <xsl:value-of select="//dtb:docauthor"/>
     <xsl:text>: </xsl:text>
     <xsl:value-of select="//dtb:doctitle"/>
@@ -1258,11 +1260,7 @@ i f=1 l=1
     <xsl:text>x use_local_dictionary:</xsl:text><xsl:value-of select="$use_local_dictionary"/><xsl:text>&#10;</xsl:text>
     <xsl:text>x document_identifier:</xsl:text><xsl:value-of select="$document_identifier"/><xsl:text>&#10;</xsl:text>
     <xsl:text>x ---------------------------------------------------------------------------&#10;</xsl:text>
-    <xsl:apply-templates/>
-  </xsl:template>
-
-  <xsl:template match="dtb:dtbook">
-    <xsl:choose>
+   <xsl:choose>
       <xsl:when test="$include_macros = true()">
         <xsl:call-template name="sbsform-macro-definitions"/>
       </xsl:when>
