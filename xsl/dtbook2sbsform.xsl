@@ -1190,8 +1190,10 @@ i f=1 l=1
     <xsl:value-of
       select="louis:translate(string($braille_tables), 'Lesebehinderte, Zürich')"/>
     <xsl:text>&#10;a&#10; </xsl:text>
-    <xsl:value-of
-      select="louis:translate(string($braille_tables), 'www.sbs.ch')"/>
+    <xsl:variable name="boilerplate">
+      <dtb:a xml:lang="de">www.sbs.ch</dtb:a>
+    </xsl:variable>
+    <xsl:apply-templates select="$boilerplate"/>
     <xsl:text>&#10;l&#10; </xsl:text>
     <xsl:call-template name="handle_abbr">
       <xsl:with-param name="context" select="'abbr'"/>
@@ -1230,8 +1232,8 @@ i f=1 l=1
     <xsl:text>&#10;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx Buchinhalt xxxxxxxxxxxxxxxxxxxxxxxxxxxx&#10;</xsl:text>
   </xsl:template>
 
-  <xsl:template match="/">
-    <xsl:text>x </xsl:text>
+  <xsl:template match="dtb:dtbook">
+     <xsl:text>x </xsl:text>
     <xsl:value-of select="//dtb:docauthor"/>
     <xsl:text>: </xsl:text>
     <xsl:value-of select="//dtb:doctitle"/>
@@ -1258,11 +1260,7 @@ i f=1 l=1
     <xsl:text>x use_local_dictionary:</xsl:text><xsl:value-of select="$use_local_dictionary"/><xsl:text>&#10;</xsl:text>
     <xsl:text>x document_identifier:</xsl:text><xsl:value-of select="$document_identifier"/><xsl:text>&#10;</xsl:text>
     <xsl:text>x ---------------------------------------------------------------------------&#10;</xsl:text>
-    <xsl:apply-templates/>
-  </xsl:template>
-
-  <xsl:template match="dtb:dtbook">
-    <xsl:choose>
+   <xsl:choose>
       <xsl:when test="$include_macros = true()">
         <xsl:call-template name="sbsform-macro-definitions"/>
       </xsl:when>
@@ -1742,8 +1740,9 @@ i f=1 l=1
         <!-- render the emphasis using quotes -->
         <xsl:value-of select="louis:translate(string($braille_tables), '&#x00BB;')"/>
         <xsl:apply-templates/>
+	<xsl:variable name="last_text_node" select="string((.//text())[position()=last()])"/>
         <xsl:choose>
-          <xsl:when test="my:isNumberLike(replace((.//text())[position()=last()], '.*(.$)', '\\1'))">
+          <xsl:when test="my:isNumberLike(substring($last_text_node, string-length($last_text_node), 1))">
             <xsl:value-of select="louis:translate(string($braille_tables), '&#x2039;')"/>
           </xsl:when>
           <xsl:otherwise>
@@ -1821,20 +1820,16 @@ i f=1 l=1
         <xsl:with-param name="context" select="$context"/>
       </xsl:call-template>
     </xsl:variable>
-    <xsl:choose>
-      <xsl:when test="my:containsDot($content)">
-        <xsl:variable name="temp">
+    <xsl:variable name="temp">
+      <xsl:choose>
+        <xsl:when test="my:containsDot($content)">
           <!-- drop all whitespace -->
           <xsl:for-each select="tokenize(string($content), '\s+')">
             <xsl:value-of select="."/>
           </xsl:for-each>
-        </xsl:variable>
-        <xsl:value-of select="louis:translate(string($braille_tables), string($temp))"/>
-      </xsl:when>
-      <xsl:otherwise>
-
-        <xsl:variable name="outerTokens" select="my:tokenizeForAbbr(normalize-space($content))"/>
-        <xsl:variable name="temp">
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:variable name="outerTokens" select="my:tokenizeForAbbr(normalize-space($content))"/>
           <xsl:for-each select="$outerTokens">
             <xsl:choose>
               <xsl:when test="not(my:isLetter(substring(.,1,1)))">
@@ -1867,10 +1862,16 @@ i f=1 l=1
               </xsl:otherwise>
             </xsl:choose>
           </xsl:for-each>
-        </xsl:variable>
-        <xsl:value-of select="louis:translate(string($braille_tables), string($temp))"/>
-      </xsl:otherwise>
-    </xsl:choose>
+        </xsl:otherwise>
+      </xsl:choose>
+      <!-- If the last 2 letters where capitals and the following letter is small, insert a KLEINBUCHSTABE -->
+      <xsl:if test="matches(string(.), '.*\p{Lu}\p{Lu}$') and 
+                    following-sibling::node()[1][self::text()] and
+                    matches(string(following-sibling::node()[1]), '^\p{Ll}.*')">
+        <xsl:value-of select="$KLEINBUCHSTABE"/>
+      </xsl:if>
+    </xsl:variable>
+    <xsl:value-of select="louis:translate(string($braille_tables), string($temp))"/>
   </xsl:template>
   
   <xsl:template match="dtb:abbr[lang('de')]">
