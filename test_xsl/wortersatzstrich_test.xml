@@ -24,18 +24,21 @@
   xmlns:brl="http://www.daisy.org/z3986/2009/braille/">
   <utfx:stylesheet src="xsl/dtbook2sbsform.xsl"/>
 
-  <utfx:test>
-    <utfx:name>Wortersatzstrich</utfx:name>
-    <utfx:stylesheet-params>
-      <utfx:with-param name="contraction" select="2"/>
-    </utfx:stylesheet-params>
-    <utfx:assert-equal>
-      <utfx:source>
-        <dtb:p xml:lang="de">-tragen</dtb:p>
-      </utfx:source>
-      <utfx:expected>y P&#13; '-TGC</utfx:expected>
-    </utfx:assert-equal>
-  </utfx:test>
+  <!-- We handle this case manually for now using a brl:select, so
+       most of these test cases are commented out. -->
+
+  <!-- <utfx:test> -->
+  <!--   <utfx:name>Wortersatzstrich</utfx:name> -->
+  <!--   <utfx:stylesheet-params> -->
+  <!--     <utfx:with-param name="contraction" select="2"/> -->
+  <!--   </utfx:stylesheet-params> -->
+  <!--   <utfx:assert-equal> -->
+  <!--     <utfx:source> -->
+  <!--       <dtb:p xml:lang="de">-tragen</dtb:p> -->
+  <!--     </utfx:source> -->
+  <!--     <utfx:expected>y P&#13; '-TGC</utfx:expected> -->
+  <!--   </utfx:assert-equal> -->
+  <!-- </utfx:test> -->
   
   <utfx:test>
     <utfx:name>Wortersatzstrich (http://redmine.sbszh.ch/issues/1505)</utfx:name>
@@ -44,11 +47,77 @@
     </utfx:stylesheet-params>
     <utfx:assert-equal>
       <utfx:source>
-        <dtb:p xml:lang="de">-losenheim</dtb:p>
+        <dtb:p xml:lang="de">Arbeits und blah, -losenheim</dtb:p>
       </utfx:source>
-      <utfx:expected>y P&#13; '-mLOSCH3M</utfx:expected>
+      <utfx:expected>y P&#13; )BS U BLAH, '-LOSCH3M</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
   
+  <!-- <utfx:test> -->
+  <!--   <utfx:name>Wortersatzstrich I(http://redmine.sbszh.ch/issues/1505)</utfx:name> -->
+  <!--   <utfx:stylesheet-params> -->
+  <!--     <utfx:with-param name="contraction" select="2"/> -->
+  <!--   </utfx:stylesheet-params> -->
+  <!--   <utfx:assert-equal> -->
+  <!--     <utfx:source> -->
+  <!--       <dtb:p xml:lang="de">Arbeits</dtb:p> -->
+  <!--       <dtb:p xml:lang="de">-losenheim</dtb:p> -->
+  <!--     </utfx:source> -->
+  <!--     <utfx:expected>y P&#13; )BS&#13;y P&#13; '-LOSCH3M</utfx:expected> -->
+  <!--   </utfx:assert-equal> -->
+  <!-- </utfx:test> -->
+  
+  <utfx:test>
+    <utfx:name>Wortersatzstrich II(http://redmine.sbszh.ch/issues/1505)</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+        <dtb:p xml:lang="de">Arbeits</dtb:p>
+        <dtb:p xml:lang="de"> -losenheim</dtb:p>
+      </utfx:source>
+      <utfx:expected>y P&#13; )BS&#13;y P&#13;  '-LOSCH3M</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+  
+  <!-- <utfx:test> -->
+  <!--   <utfx:name>Wortersatzstrich III</utfx:name> -->
+  <!--   <utfx:stylesheet-params> -->
+  <!--     <utfx:with-param name="contraction" select="2"/> -->
+  <!--   </utfx:stylesheet-params> -->
+  <!--   <utfx:assert-equal> -->
+  <!--     <utfx:source> -->
+  <!-- 	<stub xml:lang="de">Arbeits<dtb:span>-losenheim</dtb:span></stub> -->
+  <!--     </utfx:source> -->
+  <!--     <utfx:expected>)BS-LOSCH3M</utfx:expected> -->
+  <!--   </utfx:assert-equal> -->
+  <!-- </utfx:test> -->
+  
+  <!-- <utfx:test> -->
+  <!--   <utfx:name>Wortersatzstrich IV</utfx:name> -->
+  <!--   <utfx:stylesheet-params> -->
+  <!--     <utfx:with-param name="contraction" select="2"/> -->
+  <!--   </utfx:stylesheet-params> -->
+  <!--   <utfx:assert-equal> -->
+  <!--     <utfx:source> -->
+  <!-- 	<stub xml:lang="de">Arbeits <dtb:span>-losenheim</dtb:span></stub> -->
+  <!--     </utfx:source> -->
+  <!--     <utfx:expected>)BS '-LOSCH3M</utfx:expected> -->
+  <!--   </utfx:assert-equal> -->
+  <!-- </utfx:test> -->
 
+  <!-- <utfx:test> -->
+  <!--   <utfx:name>Wortersatzstrich V</utfx:name> -->
+  <!--   <utfx:stylesheet-params> -->
+  <!--     <utfx:with-param name="contraction" select="2"/> -->
+  <!--   </utfx:stylesheet-params> -->
+  <!--   <utfx:assert-equal> -->
+  <!--     <utfx:source> -->
+  <!-- 	<stub xml:lang="de">Arbeits <dtb:span>"-losenheim"</dtb:span></stub> -->
+  <!--     </utfx:source> -->
+  <!--     <utfx:expected>)BS '-LOSCH3M</utfx:expected> -->
+  <!--   </utfx:assert-equal> -->
+  <!-- </utfx:test> -->
+  
 </utfx:tests>
