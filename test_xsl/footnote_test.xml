@@ -128,4 +128,46 @@ y BrlVol
     </utfx:assert-equal>
   </utfx:test>
 
+  <utfx:test>
+    <utfx:name>footnote followed by '!' http://redmine.sbszh.ch/issues/1264</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+      <utfx:with-param name="footnote_placement" select="'standard'"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+	<dtb:p xml:lang="de">Hier die Fussnote<dtb:noteref idref="#fn1">1</dtb:noteref>! vor einem</dtb:p>
+      </utfx:source>
+      <utfx:expected>y P&#13; HR 0 FU^NO('*#A'+&#13;* &#13; ? 6[</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>footnote followed by '?' http://redmine.sbszh.ch/issues/1264</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+      <utfx:with-param name="footnote_placement" select="'standard'"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+	<dtb:p xml:lang="de">Hier die Fussnote<dtb:noteref idref="#fn1">1</dtb:noteref>? vor einem</dtb:p>
+      </utfx:source>
+      <utfx:expected>y P&#13; HR 0 FU^NO('*#A'?&#13;* &#13; ? 6[</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>footnote followed by '(' http://redmine.sbszh.ch/issues/1264</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+      <utfx:with-param name="footnote_placement" select="'standard'"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+	<dtb:p xml:lang="de">Hier die Fussnote<dtb:noteref idref="#fn1">1</dtb:noteref>( vor einem</dtb:p>
+      </utfx:source>
+      <utfx:expected>y P&#13; HR 0 FU^NO('*#A'=&#13;* &#13; ? 6[</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
 </utfx:tests>

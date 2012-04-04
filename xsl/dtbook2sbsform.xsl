@@ -1662,7 +1662,7 @@ i f=1 l=1
     </xsl:variable>
     <xsl:variable name="note_number" select="count(preceding::dtb:noteref)+1"/>
     <xsl:value-of select="louis:translate(string($braille_tables), concat('*',string($note_number)))"/>
-    <xsl:value-of select="substring-before(my:following-text-within-block(.), ' ')"/>
+    <xsl:value-of select="louis:translate(string($braille_tables), concat('&#x250B;', substring-before(my:following-text-within-block(.), ' ')))"/>
     <xsl:text>&#10;* &#10; </xsl:text>
   </xsl:template>
   
