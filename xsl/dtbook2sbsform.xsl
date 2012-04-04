@@ -1319,21 +1319,21 @@ i f=1 l=1
   <xsl:template name="handle_level_endnotes">
     <xsl:variable name="level">
       <xsl:choose>
-	<xsl:when test="local-name() = 'level1'">1</xsl:when>
-	<xsl:when test="local-name() = 'level2'">2</xsl:when>
-	<xsl:when test="local-name() = 'level3'">3</xsl:when>
-	<xsl:when test="local-name() = 'level4'">4</xsl:when>
-	<xsl:otherwise>NoMatch</xsl:otherwise>
+        <xsl:when test="local-name() = 'level1'">1</xsl:when>
+        <xsl:when test="local-name() = 'level2'">2</xsl:when>
+        <xsl:when test="local-name() = 'level3'">3</xsl:when>
+        <xsl:when test="local-name() = 'level4'">4</xsl:when>
+        <xsl:otherwise>NoMatch</xsl:otherwise>
       </xsl:choose>
     </xsl:variable>
     <xsl:if test="$footnote_placement = concat('level', $level)">
       <xsl:variable name="noterefs" select="current()//dtb:noteref"/>
       <xsl:variable name="notes" select="for $noteref in $noterefs return //dtb:note[@id=translate($noteref/@idref,'#','')]"/>
       <xsl:if test="exists($notes)">
-	<xsl:text>&#10;y Notes&#10;</xsl:text>
-	<xsl:for-each select="$notes">
-	  <xsl:apply-templates/>
-	</xsl:for-each>
+	    <xsl:text>&#10;y Notes&#10;</xsl:text>
+	    <xsl:for-each select="$notes">
+	      <xsl:apply-templates/>
+        </xsl:for-each>
       </xsl:if>
     </xsl:if>
   </xsl:template>
@@ -1431,21 +1431,21 @@ i f=1 l=1
     <xsl:text>&#10;</xsl:text>
     <xsl:choose>
       <xsl:when test="position()=1">
-	<xsl:choose>
-	  <xsl:when test="$footnote_placement = 'standard'">
-	    <xsl:text>p </xsl:text>
-	  </xsl:when>
-	  <xsl:otherwise>
-	    <xsl:text>a </xsl:text>
-	  </xsl:otherwise>
-	</xsl:choose>
-	<xsl:text>&#10; </xsl:text>
-	<!-- Place the foot note number in the first para of the foot note -->
-	<xsl:variable name="idref" select="concat('#',../@id)"/>
-	<xsl:variable name="corresponding_noteref" select="//dtb:noteref[@idref=$idref][1]"/>
-	<xsl:variable name="note_number" select="count($corresponding_noteref/preceding::dtb:noteref)+1"/>
-	<xsl:variable name="prefix" select="if ($footnote_placement = 'standard') then '*' else ''"/>
-	<xsl:value-of select="concat(louis:translate(string($braille_tables), concat($prefix, $note_number)), ' ')"/>
+        <xsl:choose>
+          <xsl:when test="$footnote_placement = 'standard'">
+            <xsl:text>p </xsl:text>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:text>a </xsl:text>
+          </xsl:otherwise>
+        </xsl:choose>
+        <xsl:text>&#10; </xsl:text>
+        <!-- Place the foot note number in the first para of the foot note -->
+        <xsl:variable name="idref" select="concat('#',../@id)"/>
+        <xsl:variable name="corresponding_noteref" select="//dtb:noteref[@idref=$idref][1]"/>
+        <xsl:variable name="note_number" select="count($corresponding_noteref/preceding::dtb:noteref)+1"/>
+        <xsl:variable name="prefix" select="if ($footnote_placement = 'standard') then '*' else ''"/>
+        <xsl:value-of select="concat(louis:translate(string($braille_tables), concat($prefix, $note_number)), ' ')"/>
       </xsl:when>
       <xsl:otherwise>
         <xsl:text>w </xsl:text>
