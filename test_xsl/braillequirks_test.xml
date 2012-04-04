@@ -117,7 +117,7 @@ y LINEe
       <utfx:source>
         <stub xml:lang="de"><dtb:abbr>AM</dtb:abbr>- und der <dtb:abbr>FM</dtb:abbr>-Skala,</stub>
       </utfx:source>
-      <utfx:expected>>AM- U R >FM-mSK:A,</utfx:expected>
+      <utfx:expected>>AM- U R >FM-SK:A,</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
 
@@ -132,7 +132,7 @@ y LINEe
           <dtb:em><dtb:abbr>US</dtb:abbr>-Justizministerium</dtb:em>
         </stub>
       </utfx:source>
-      <utfx:expected>__>US-mJUSTIZMINISTERIUM'.</utfx:expected>
+      <utfx:expected>__>US-JUSTIZMINISTERIUM'.</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
 
@@ -356,7 +356,7 @@ mm</brl:num>
       <utfx:source>
         <stub xml:lang="de">»<dtb:em brl:render="ignore">Test</dtb:em>«-Beispiel</stub>
       </utfx:source>
-      <utfx:expected>(TE])-m,B,0</utfx:expected>
+      <utfx:expected>(TE])-,B,0</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
 
@@ -369,7 +369,7 @@ mm</brl:num>
       <utfx:source>
         <stub xml:lang="de"><dtb:em brl:render="ignore">»Test«</dtb:em>-Beispiel</stub>
       </utfx:source>
-      <utfx:expected>(TE])-m,B,0</utfx:expected>
+      <utfx:expected>(TE])-,B,0</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
 
@@ -382,7 +382,7 @@ mm</brl:num>
       <utfx:source>
         <stub xml:lang="de">›<dtb:em brl:render="ignore">Test</dtb:em>‹-Beispiel</stub>
       </utfx:source>
-      <utfx:expected>'(TE]')-m,B,0</utfx:expected>
+      <utfx:expected>'(TE]')-,B,0</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
 
@@ -395,7 +395,7 @@ mm</brl:num>
       <utfx:source>
         <stub xml:lang="de"><dtb:em brl:render="ignore">›Test‹</dtb:em>-Beispiel</stub>
       </utfx:source>
-      <utfx:expected>'(TE]')-m,B,0</utfx:expected>
+      <utfx:expected>'(TE]')-,B,0</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
 

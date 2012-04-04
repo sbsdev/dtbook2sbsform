@@ -753,7 +753,7 @@ y P
       <utfx:source>
         <dtb:p xml:lang="de"><dtb:abbr>ISBN</dtb:abbr> <brl:num role="isbn">978-3-86971-001-3</brl:num> <dtb:abbr>ISBN</dtb:abbr> <brl:num role="isbn">978-3-86971-001-X</brl:num> <dtb:abbr>ISBN</dtb:abbr> <brl:num role="isbn">978 3 86971 001 3</brl:num></dtb:p>
       </utfx:source>
-      <utfx:expected>y P&#13; &gt;ISBN #IGH.C.HFIGA.JJA.C &gt;ISBN #IGH.C.HFIGA.JJA-m&gt;X &gt;ISBN #IGH.C.HFIGA.JJA.C</utfx:expected>
+      <utfx:expected>y P&#13; &gt;ISBN #IGH.C.HFIGA.JJA.C &gt;ISBN #IGH.C.HFIGA.JJA-&gt;X &gt;ISBN #IGH.C.HFIGA.JJA.C</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
   
