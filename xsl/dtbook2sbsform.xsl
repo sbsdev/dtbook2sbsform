@@ -351,7 +351,14 @@
     <xsl:text>&#10;</xsl:text>
     <xsl:if test="$footer_level &gt; 0">
       <xsl:text>I ~=j&#10;</xsl:text>
-      <xsl:text>i k=0&#10;</xsl:text>
+      <xsl:choose>
+        <xsl:when test="$show_original_page_numbers = true()">
+          <xsl:text>i k=0&#10;</xsl:text>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:text>i k=-1&#10;</xsl:text>
+        </xsl:otherwise>
+      </xsl:choose>
     </xsl:if>
     <xsl:text>y e BOOKb&#10;</xsl:text>
 
@@ -1265,6 +1272,12 @@ i f=1 l=1
   <xsl:template match="dtb:frontmatter"> </xsl:template>
 
   <xsl:template match="dtb:bodymatter">
+    <xsl:if test="$footer_level = 0 and $show_original_page_numbers = false()">
+      <xsl:text>I S=j&#10;</xsl:text> 
+      <xsl:text>i S=</xsl:text>
+      <xsl:value-of select="$cells_per_line - 6"/>
+      <xsl:text>&#10;</xsl:text>
+    </xsl:if>
     <xsl:text>&#10;y BODYb&#10;</xsl:text>
     <xsl:text>i j=</xsl:text>
     <!-- value of first pagenum within body -->
@@ -1552,6 +1565,9 @@ i f=1 l=1
           </xsl:otherwise>
         </xsl:choose>
       </xsl:variable>
+      <xsl:if test="$show_original_page_numbers = false() and $footer_level &gt; 0">
+        <xsl:text>:::s</xsl:text>
+      </xsl:if>
       <!-- Replace spaces by 's' and remove hypenation marks ('t','k', 'p' and 'w') -->
       <xsl:value-of select="translate(normalize-space(string($running-line)),' tkpw','s')"/>
     </xsl:if>
