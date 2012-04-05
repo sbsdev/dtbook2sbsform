@@ -68,14 +68,14 @@
     <xsl:sequence select="local-name($context)=('h1','h2','h3','h4','h5','h6','p','li','author','byline','line')"/>
   </xsl:function>
 
-  <xsl:function name="my:following-text-within-block" as="xs:string">
+  <xsl:function name="my:following-textnode-within-block" as="text()?">
     <xsl:param name="context"/>
-    <xsl:value-of select="string(($context/following::text() intersect $context/ancestor-or-self::*[my:is-block-element(.)][1]//text())[1])"/>
+    <xsl:sequence select="$context/following::text()[1] intersect $context/ancestor-or-self::*[my:is-block-element(.)][1]//text()"/>
   </xsl:function>
   
-  <xsl:function name="my:preceding-text-within-block" as="xs:string">
+  <xsl:function name="my:preceding-textnode-within-block" as="text()?">
     <xsl:param name="context"/>
-    <xsl:value-of select="string(($context/preceding::text() intersect $context/ancestor-or-self::*[my:is-block-element(.)][1]//text())[1])"/>
+    <xsl:sequence select="$context/preceding::text()[1] intersect $context/ancestor-or-self::*[my:is-block-element(.)][1]//text()"/>
   </xsl:function>
   
   <xsl:function name="my:isLower" as="xs:boolean">
@@ -1656,13 +1656,13 @@ i f=1 l=1
 
   <!-- If a noteref is followed by punctuation, the punctuation needs
        to come after the note_number and before the &#10;* &#10; -->
-  <xsl:template match="dtb:noteref[my:starts-with-punctuation(my:following-text-within-block(.))]">
+  <xsl:template match="dtb:noteref[my:starts-with-punctuation(string(my:following-textnode-within-block(.)))]">
     <xsl:variable name="braille_tables">
       <xsl:call-template name="getTable"/>
     </xsl:variable>
     <xsl:variable name="note_number" select="count(preceding::dtb:noteref)+1"/>
     <xsl:value-of select="louis:translate(string($braille_tables), concat('*',string($note_number)))"/>
-    <xsl:value-of select="louis:translate(string($braille_tables), concat('&#x250B;', substring-before(my:following-text-within-block(.), ' ')))"/>
+    <xsl:value-of select="louis:translate(string($braille_tables), concat('&#x250B;', substring-before(string(my:following-textnode-within-block(.)), ' ')))"/>
     <xsl:text>&#10;* &#10; </xsl:text>
   </xsl:template>
   
@@ -2290,7 +2290,7 @@ i f=1 l=1
   <!-- Handle single word mixed emphasis -->
   <!-- mixed emphasis before-->
   <xsl:template
-    match="text()[lang('de') and my:starts-with-word(string()) and my:ends-with-word(my:preceding-text-within-block(.)) and preceding::*[position()=1 and local-name()='em']]">
+    match="text()[lang('de') and my:starts-with-word(string()) and my:ends-with-word(string(my:preceding-textnode-within-block(.)[ancestor::dtb:em]))]">
     <xsl:variable name="braille_tables">
       <xsl:call-template name="getTable"/>
     </xsl:variable>
@@ -2299,7 +2299,7 @@ i f=1 l=1
 
   <!-- mixed emphasis after-->
   <xsl:template
-    match="text()[lang('de') and my:ends-with-word(string()) and my:starts-with-word(my:following-text-within-block(.)) and following::*[ position()=1 and local-name()='em']]">
+    match="text()[lang('de') and my:ends-with-word(string()) and my:starts-with-word(string(my:following-textnode-within-block(.)[ancestor::dtb:em]))]">
     <xsl:variable name="braille_tables">
       <xsl:call-template name="getTable"/>
     </xsl:variable>

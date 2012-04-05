@@ -126,4 +126,17 @@
     </utfx:assert-equal>
   </utfx:test>
   
+  <utfx:test>
+    <utfx:name>Another weird context problem</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+        <dtb:p xml:lang="de"><dtb:em>Mist</dtb:em>, dachte er, <dtb:em>wie komme ich hier raus?</dtb:em></dtb:p>
+      </utfx:source>
+      <utfx:expected>y P&#13; _MI], D&lt;( 7, __2 KXE # HR R1S?'.</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+  
 </utfx:tests>
