@@ -821,6 +821,7 @@ E
 P1
 ~~
 I ~=j
+i k=0
 L
 t~
  </xsl:text>
@@ -2119,8 +2120,8 @@ i f=1 l=1
   </xsl:template>
 
   <xsl:template match="brl:homograph">
-    <!-- Join all text elements with a special marker (U+x00A6) and
-	   send the whole string to liblouis -->
+    <!-- Join all text elements with a special marker and send the
+         whole string to liblouis -->
     <xsl:variable name="braille_tables">
       <xsl:call-template name="getTable"/>
     </xsl:variable>
