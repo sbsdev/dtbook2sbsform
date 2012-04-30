@@ -2306,6 +2306,15 @@ i f=1 l=1
     </xsl:variable>
     <xsl:value-of select="louis:translate(string($braille_tables), concat(string(),'&#x250A;'))"/>
   </xsl:template>
+  
+  <!-- Handle single word mixed abbr -->
+  <xsl:template
+    match="text()[lang('de') and my:starts-with-word(string()) and my:ends-with-word(string(my:preceding-textnode-within-block(.)[ancestor::dtb:abbr]))]">
+    <xsl:variable name="braille_tables">
+      <xsl:call-template name="getTable"/>
+    </xsl:variable>
+    <xsl:value-of select="louis:translate(string($braille_tables), concat('&#x250A;',string()))"/>
+  </xsl:template>
 
   <!-- handle 'ich' inside text node followed by chars that could be interpreted as numbers -->
   <xsl:template
