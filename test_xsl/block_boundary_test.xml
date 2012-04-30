@@ -31,7 +31,7 @@
     </utfx:stylesheet-params>
     <utfx:assert-equal>
       <utfx:source>
-        <stub xml:lang="de"><dtb:byline><dtb:em>Tages-Anzeiger</dtb:em></dtb:byline>
+        <stub xml:lang="de"><dtb:byline><dtb:em>Tages-­Anzeiger</dtb:em></dtb:byline>
           <dtb:p>Zum Autor</dtb:p></stub>
       </utfx:source>
       <utfx:expected>y BYLINE&#13; __TAG%-m+Z3G7'.&#13;y P&#13; ZM 1TOR</utfx:expected>
@@ -66,7 +66,7 @@
     </utfx:stylesheet-params>
     <utfx:assert-equal>
       <utfx:source>
-        <stub xml:lang="de"><dtb:byline>Tages-Anzeiger</dtb:byline><dtb:p><dtb:em>Zum Autor</dtb:em></dtb:p></stub>
+        <stub xml:lang="de"><dtb:byline>Tages-­Anzeiger</dtb:byline><dtb:p><dtb:em>Zum Autor</dtb:em></dtb:p></stub>
       </utfx:source>
       <utfx:expected>y BYLINE&#13; TAG%-m+Z3G7&#13;y P&#13; __ZM 1TOR'.</utfx:expected>
     </utfx:assert-equal>
@@ -79,7 +79,7 @@
     </utfx:stylesheet-params>
     <utfx:assert-equal>
       <utfx:source>
-        <stub xml:lang="de"><dtb:byline><dtb:em>Tages-Anzeiger</dtb:em></dtb:byline>
+        <stub xml:lang="de"><dtb:byline><dtb:em>Tages-­Anzeiger</dtb:em></dtb:byline>
           <dtb:p><dtb:em>Zum Autor</dtb:em></dtb:p></stub>
       </utfx:source>
       <utfx:expected>y BYLINE&#13; __TAG%-m+Z3G7'.&#13;y P&#13; __ZM 1TOR'.</utfx:expected>
@@ -93,7 +93,7 @@
     </utfx:stylesheet-params>
     <utfx:assert-equal>
       <utfx:source>
-        <stub xml:lang="de"><dtb:byline>Tages-Anzeiger</dtb:byline>
+        <stub xml:lang="de"><dtb:byline>Tages-­Anzeiger</dtb:byline>
           <dtb:p>Zum Autor</dtb:p></stub>
       </utfx:source>
       <utfx:expected>y BYLINE&#13; TAG%-m+Z3G7&#13;y P&#13; ZM 1TOR</utfx:expected>
@@ -107,7 +107,7 @@
     </utfx:stylesheet-params>
     <utfx:assert-equal>
       <utfx:source>
-        <stub xml:lang="de">»<dtb:span>Tages-Anzeiger.</dtb:span>« Zum Autor</stub>
+        <stub xml:lang="de">»<dtb:span>Tages-­Anzeiger.</dtb:span>« Zum Autor</stub>
       </utfx:source>
       <utfx:expected> (TAG%-m+Z3G7.) ZM 1TOR</utfx:expected>
     </utfx:assert-equal>
@@ -120,7 +120,7 @@
     </utfx:stylesheet-params>
     <utfx:assert-equal>
       <utfx:source>
-        <stub xml:lang="de">»Tages-Anzeiger.<dtb:p>« Zum Autor</dtb:p></stub>
+        <stub xml:lang="de">»Tages-­Anzeiger.<dtb:p>« Zum Autor</dtb:p></stub>
       </utfx:source>
       <utfx:expected> (TAG%-m+Z3G7.&#13;y P&#13; ) ZM 1TOR</utfx:expected>
     </utfx:assert-equal>

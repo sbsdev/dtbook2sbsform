@@ -599,8 +599,8 @@ y P
           <dtb:p>Kurzschrift schrift schrift <dtb:span brl:grade="0">Basisschrift schrift schrift</dtb:span> kurz kurz kurz</dtb:p>
           <dtb:p>Kurzschrift schrift schrift <dtb:span brl:grade="1">Vollschrift/Vollschrift</dtb:span> kurz kurz kurz</dtb:p>
           <dtb:p>Kurzschrift schrift schrift <dtb:span brl:grade="0">Basisschrift/Basisschrift</dtb:span> kurz kurz kurz</dtb:p>
-          <dtb:p>Kurzschrift schrift schrift <dtb:span brl:grade="1">Vollschrift-Vollschrift</dtb:span> kurz kurz kurz</dtb:p>
-          <dtb:p>Kurzschrift schrift schrift <dtb:span brl:grade="0">Basisschrift-Basisschrift</dtb:span> kurz kurz kurz</dtb:p>
+          <dtb:p>Kurzschrift schrift schrift <dtb:span brl:grade="1">Vollschrift-­Vollschrift</dtb:span> kurz kurz kurz</dtb:p>
+          <dtb:p>Kurzschrift schrift schrift <dtb:span brl:grade="0">Basisschrift-­Basisschrift</dtb:span> kurz kurz kurz</dtb:p>
         </stub>
       </utfx:source>
       <utfx:expected>y P
@@ -642,7 +642,7 @@ y P
     </utfx:stylesheet-params>
     <utfx:assert-equal>
       <utfx:source>
-        <stub xml:lang="de"><dtb:em>Wort</dtb:em>, <dtb:strong>Wort</dtb:strong>, <brl:emph>Wort</brl:emph>. <dtb:em>Zwei Wörter</dtb:em>, <dtb:strong>eins/zwei</dtb:strong>, <brl:emph>eins-zwei</brl:emph>.</stub>
+        <stub xml:lang="de"><dtb:em>Wort</dtb:em>, <dtb:strong>Wort</dtb:strong>, <brl:emph>Wort</brl:emph>. <dtb:em>Zwei Wörter</dtb:em>, <dtb:strong>eins/zwei</dtb:strong>, <brl:emph>eins-­zwei</brl:emph>.</stub>
       </utfx:source>
       <utfx:expected>_W?T, _W?T, _W?T. __ZW3 W9RT7'., __6S!,mZW3'., __6S-mZW3'..</utfx:expected>
     </utfx:assert-equal>
