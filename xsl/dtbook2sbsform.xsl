@@ -244,19 +244,21 @@
           test="$actual_contraction = '2' and $context != 'num_roman' and not($context = 'abbr' and not(my:containsDot(.))) and $context != 'date_month' and $context != 'date_day' and $context !='name_capitalized'">
           <xsl:text>sbs-de-letsign.mod,</xsl:text>
         </xsl:if>
-        <xsl:if test="$context != 'date_month' and $context != 'denominator'">
+        <xsl:if test="$context != 'date_month' and $context != 'denominator' and $context != 'a'">
           <xsl:text>sbs-numsign.mod,</xsl:text>
         </xsl:if>
-        <xsl:choose>
-          <xsl:when
-            test="$context = 'num_ordinal' or $context = 'date_day' or $context = 'denominator'">
-            <xsl:text>sbs-litdigit-lower.mod,</xsl:text>
-          </xsl:when>
-          <xsl:otherwise>
-            <xsl:text>sbs-litdigit-upper.mod,</xsl:text>
-          </xsl:otherwise>
-        </xsl:choose>
-        <xsl:if test="$context != 'date_month' and $context != 'date_day'">
+	<xsl:if test="$context != 'a'">
+	  <xsl:choose>
+	    <xsl:when
+		test="$context = 'num_ordinal' or $context = 'date_day' or $context = 'denominator'">
+	      <xsl:text>sbs-litdigit-lower.mod,</xsl:text>
+	    </xsl:when>
+	    <xsl:otherwise>
+	      <xsl:text>sbs-litdigit-upper.mod,</xsl:text>
+	    </xsl:otherwise>
+	  </xsl:choose>
+	</xsl:if>
+        <xsl:if test="$context != 'date_month' and $context != 'date_day' and $context != 'a'">
           <xsl:text>sbs-de-core.mod,</xsl:text>
         </xsl:if>
         <xsl:if
