@@ -112,7 +112,7 @@
   
   <xsl:function name="my:isFraction" as="xs:boolean">
     <xsl:param name="number"/>
-    <xsl:value-of select="matches($number, '([¼½¾\\u2153\\u2154\\u2155\\u2156\\u2157\\u2158\\u2159\\u215a\\u215b\\u215c\\u215d\\u215e])')"/>
+    <xsl:value-of select="matches($number, '([¼½¾⅓⅔⅕⅖⅗⅘⅙⅚⅛⅜⅝⅞])')"/>
   </xsl:function>
   
   <xsl:function name="my:isNumberLike" as="xs:boolean">
