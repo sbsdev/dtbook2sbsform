@@ -142,7 +142,12 @@
     <xsl:param name="string"/>
     <xsl:value-of select="contains($string,'.')"/>
   </xsl:function>
-
+  
+  <xsl:function name="my:starts-with-number" as="xs:boolean">
+    <xsl:param name="string"/>
+    <xsl:value-of select="matches($string, '^\d')"/>
+  </xsl:function>
+  
   <xsl:function name="my:ends-with-number" as="xs:boolean">
     <xsl:param name="string"/>
     <xsl:value-of select="matches($string, '\d$')"/>
@@ -2311,7 +2316,7 @@ i f=1 l=1
   
   <!-- Handle single word mixed abbr -->
   <xsl:template
-    match="text()[lang('de') and my:starts-with-word(string()) and my:ends-with-word(string(my:preceding-textnode-within-block(.)[ancestor::dtb:abbr]))]">
+    match="text()[lang('de') and my:starts-with-word(string()) and not(my:starts-with-number(string())) and my:ends-with-word(string(my:preceding-textnode-within-block(.)[ancestor::dtb:abbr]))]">
     <xsl:variable name="braille_tables">
       <xsl:call-template name="getTable"/>
     </xsl:variable>
