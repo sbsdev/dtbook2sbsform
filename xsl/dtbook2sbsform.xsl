@@ -200,138 +200,111 @@
 
   <xsl:template name="getTable">
     <xsl:param name="context" select="local-name()"/>
-    <xsl:choose>
-      <xsl:when test="lang('fr')">
-        <xsl:choose>
-          <xsl:when test="$contraction = 2">
-            <xsl:text>Fr-Fr-g2.ctb</xsl:text>
-          </xsl:when>
-          <xsl:otherwise>
-            <xsl:text>fr-fr-g1.utb</xsl:text>
-          </xsl:otherwise>
-        </xsl:choose>
-      </xsl:when>
-      <xsl:when test="lang('it')">
-        <xsl:text>it-it-g1.utb</xsl:text>
-      </xsl:when>
-      <xsl:when test="lang('en')">
-        <xsl:choose>
-          <xsl:when test="$contraction = 2">
-            <xsl:text>en-us-g2.ctb</xsl:text>
-          </xsl:when>
-          <xsl:otherwise>
-            <xsl:text>en-us-g1.ctb</xsl:text>
-          </xsl:otherwise>
-        </xsl:choose>
-      </xsl:when>
-      <xsl:when test="lang('de')">
-        <!-- handle explicit setting of the contraction -->
-        <xsl:variable name="actual_contraction">
+    <!-- handle explicit setting of the contraction -->
+    <xsl:variable name="actual_contraction">
+      <xsl:choose>
+        <xsl:when test="ancestor-or-self::dtb:span[@brl:grade and @brl:grade &lt; $contraction]">
+          <xsl:value-of select="ancestor-or-self::dtb:span/@brl:grade"/>
+        </xsl:when>
+        <xsl:when test="lang('de')">
+          <xsl:value-of select="$contraction"/>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:value-of select="'1'"/>
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+    <xsl:text>sbs.dis,</xsl:text>
+    <xsl:text>sbs-de-core6.cti,</xsl:text>
+    <xsl:text>sbs-de-accents.cti,</xsl:text>
+    <xsl:text>sbs-special.cti,</xsl:text>
+    <xsl:text>sbs-whitespace.mod,</xsl:text>
+    <xsl:if
+      test="$context = 'v-form' or $context = 'name_capitalized' or ($actual_contraction != '2' and $enable_capitalization = true())">
+      <xsl:text>sbs-de-capsign.mod,</xsl:text>
+    </xsl:if>
+    <xsl:if
+      test="$actual_contraction = '2' and $context != 'num_roman' and not($context = 'abbr' and not(my:containsDot(.))) and $context != 'date_month' and $context != 'date_day' and $context !='name_capitalized'">
+      <xsl:text>sbs-de-letsign.mod,</xsl:text>
+    </xsl:if>
+    <xsl:if test="$context != 'date_month' and $context != 'denominator' and $context != 'a'">
+      <xsl:text>sbs-numsign.mod,</xsl:text>
+    </xsl:if>
+    <xsl:if test="$context != 'a'">
+      <xsl:choose>
+        <xsl:when
+          test="$context = 'num_ordinal' or $context = 'date_day' or $context = 'denominator'">
+          <xsl:text>sbs-litdigit-lower.mod,</xsl:text>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:text>sbs-litdigit-upper.mod,</xsl:text>
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:if>
+    <xsl:if test="$context != 'date_month' and $context != 'date_day' and $context != 'a'">
+      <xsl:text>sbs-de-core.mod,</xsl:text>
+    </xsl:if>
+    <xsl:if
+      test="$context = 'name_capitalized' or $context = 'num_roman' or ($context = 'abbr' and not(my:containsDot(.))) or ($actual_contraction &lt;= '1' and $context != 'date_day' and $context != 'date_month')">
+      <xsl:text>sbs-de-g0-core.mod,</xsl:text>
+    </xsl:if>
+    <xsl:if
+      test="$actual_contraction = '1' and $context != 'a' and $context != 'num_roman' and ($context != 'name_capitalized' and ($context != 'abbr' or my:containsDot(.)) and $context != 'date_month' and $context != 'date_day')">
+      <xsl:if test="$use_local_dictionary = true()">
+        <xsl:value-of select="concat('sbs-de-g1-white-',$document_identifier,'.mod,')"/>
+      </xsl:if>
+      <xsl:text>sbs-de-g1-white.mod,</xsl:text>
+      <xsl:text>sbs-de-g1-core.mod,</xsl:text>
+    </xsl:if>
+    <xsl:if test="$actual_contraction = '2' and $context != 'a' and $context != 'num_roman'">
+      <xsl:if test="$context = 'place'">
+        <xsl:if test="$use_local_dictionary = true()">
+          <xsl:value-of select="concat('sbs-de-g2-place-white-',$document_identifier,'.mod,')"/>
+        </xsl:if>
+        <xsl:text>sbs-de-g2-place-white.mod,</xsl:text>
+        <xsl:text>sbs-de-g2-place.mod,</xsl:text>
+      </xsl:if>
+      <xsl:if test="$context = 'place' or $context = 'name'">
+        <xsl:if test="$use_local_dictionary = true()">
+          <xsl:value-of select="concat('sbs-de-g2-name-white-',$document_identifier,'.mod,')"/>
+        </xsl:if>
+        <xsl:text>sbs-de-g2-name-white.mod,</xsl:text>
+        <xsl:text>sbs-de-g2-name.mod,</xsl:text>
+      </xsl:if>
+      <xsl:if
+        test="$context != 'name' and $context != 'name_capitalized' and $context != 'place' and ($context != 'abbr' or  my:containsDot(.)) and $context != 'date_day' and $context != 'date_month'">
+        <xsl:if test="$use_local_dictionary = true()">
+          <xsl:value-of select="concat('sbs-de-g2-white-',$document_identifier,'.mod,')"/>
+        </xsl:if>
+        <xsl:text>sbs-de-g2-white.mod,</xsl:text>
+        <xsl:text>sbs-de-g2-core.mod,</xsl:text>
+      </xsl:if>
+    </xsl:if>
+    <xsl:if test="$context != 'date_month' and $context != 'date_day'">
+      <xsl:choose>
+        <xsl:when test="ancestor-or-self::dtb:span[@brl:accents = 'reduced']">
+          <xsl:text>sbs-de-accents-reduced.mod,</xsl:text>
+        </xsl:when>
+        <xsl:when test="ancestor-or-self::dtb:span[@brl:accents = 'detailed']">
+          <xsl:text>sbs-de-accents.mod,</xsl:text>
+        </xsl:when>
+        <xsl:otherwise>
+          <!-- no local accents are defined -->
           <xsl:choose>
-            <xsl:when test="ancestor-or-self::dtb:span[@brl:grade and @brl:grade &lt; $contraction]">
-              <xsl:value-of select="ancestor-or-self::dtb:span/@brl:grade"/>
+            <xsl:when test="$detailed_accented_characters = 'de-accents-ch'">
+              <xsl:text>sbs-de-accents-ch.mod,</xsl:text>
             </xsl:when>
-            <xsl:otherwise>
-              <xsl:value-of select="$contraction"/>
-            </xsl:otherwise>
-          </xsl:choose>
-        </xsl:variable>
-        <xsl:text>sbs.dis,</xsl:text>
-        <xsl:text>sbs-de-core6.cti,</xsl:text>
-        <xsl:text>sbs-de-accents.cti,</xsl:text>
-        <xsl:text>sbs-special.cti,</xsl:text>
-        <xsl:text>sbs-whitespace.mod,</xsl:text>
-        <xsl:if
-          test="$context = 'v-form' or $context = 'name_capitalized' or ($actual_contraction != '2' and $enable_capitalization = true())">
-          <xsl:text>sbs-de-capsign.mod,</xsl:text>
-        </xsl:if>
-        <xsl:if
-          test="$actual_contraction = '2' and $context != 'num_roman' and not($context = 'abbr' and not(my:containsDot(.))) and $context != 'date_month' and $context != 'date_day' and $context !='name_capitalized'">
-          <xsl:text>sbs-de-letsign.mod,</xsl:text>
-        </xsl:if>
-        <xsl:if test="$context != 'date_month' and $context != 'denominator' and $context != 'a'">
-          <xsl:text>sbs-numsign.mod,</xsl:text>
-        </xsl:if>
-	<xsl:if test="$context != 'a'">
-	  <xsl:choose>
-	    <xsl:when
-		test="$context = 'num_ordinal' or $context = 'date_day' or $context = 'denominator'">
-	      <xsl:text>sbs-litdigit-lower.mod,</xsl:text>
-	    </xsl:when>
-	    <xsl:otherwise>
-	      <xsl:text>sbs-litdigit-upper.mod,</xsl:text>
-	    </xsl:otherwise>
-	  </xsl:choose>
-	</xsl:if>
-        <xsl:if test="$context != 'date_month' and $context != 'date_day' and $context != 'a'">
-          <xsl:text>sbs-de-core.mod,</xsl:text>
-        </xsl:if>
-        <xsl:if
-          test="$context = 'name_capitalized' or $context = 'num_roman' or ($context = 'abbr' and not(my:containsDot(.))) or ($actual_contraction &lt;= '1' and $context != 'date_day' and $context != 'date_month')">
-          <xsl:text>sbs-de-g0-core.mod,</xsl:text>
-        </xsl:if>
-        <xsl:if
-          test="$actual_contraction = '1' and $context != 'a' and $context != 'num_roman' and ($context != 'name_capitalized' and ($context != 'abbr' or my:containsDot(.)) and $context != 'date_month' and $context != 'date_day')">
-	  <xsl:if test="$use_local_dictionary = true()">
-	    <xsl:value-of select="concat('sbs-de-g1-white-',$document_identifier,'.mod,')"/>
-	  </xsl:if>
-	  <xsl:text>sbs-de-g1-white.mod,</xsl:text>
-          <xsl:text>sbs-de-g1-core.mod,</xsl:text>
-        </xsl:if>
-        <xsl:if test="$actual_contraction = '2' and $context != 'a' and $context != 'num_roman'">
-          <xsl:if test="$context = 'place'">
-	    <xsl:if test="$use_local_dictionary = true()">
-	      <xsl:value-of select="concat('sbs-de-g2-place-white-',$document_identifier,'.mod,')"/>
-	    </xsl:if>
-	    <xsl:text>sbs-de-g2-place-white.mod,</xsl:text>
-            <xsl:text>sbs-de-g2-place.mod,</xsl:text>
-          </xsl:if>
-          <xsl:if test="$context = 'place' or $context = 'name'">
-	    <xsl:if test="$use_local_dictionary = true()">
-	      <xsl:value-of select="concat('sbs-de-g2-name-white-',$document_identifier,'.mod,')"/>
-	    </xsl:if>
-	    <xsl:text>sbs-de-g2-name-white.mod,</xsl:text>
-	    <xsl:text>sbs-de-g2-name.mod,</xsl:text>
-	  </xsl:if>
-          <xsl:if
-            test="$context != 'name' and $context != 'name_capitalized' and $context != 'place' and ($context != 'abbr' or  my:containsDot(.)) and $context != 'date_day' and $context != 'date_month'">
-	    <xsl:if test="$use_local_dictionary = true()">
-	      <xsl:value-of select="concat('sbs-de-g2-white-',$document_identifier,'.mod,')"/>
-	    </xsl:if>
-	    <xsl:text>sbs-de-g2-white.mod,</xsl:text>
-            <xsl:text>sbs-de-g2-core.mod,</xsl:text>
-          </xsl:if>
-        </xsl:if>
-        <xsl:if test="$context != 'date_month' and $context != 'date_day'">
-          <xsl:choose>
-            <xsl:when test="ancestor-or-self::dtb:span[@brl:accents = 'reduced']">
+            <xsl:when test="$detailed_accented_characters = 'de-accents-reduced'">
               <xsl:text>sbs-de-accents-reduced.mod,</xsl:text>
             </xsl:when>
-            <xsl:when test="ancestor-or-self::dtb:span[@brl:accents = 'detailed']">
-              <xsl:text>sbs-de-accents.mod,</xsl:text>
-            </xsl:when>
             <xsl:otherwise>
-              <!-- no local accents are defined -->
-              <xsl:choose>
-                <xsl:when test="$detailed_accented_characters = 'de-accents-ch'">
-                  <xsl:text>sbs-de-accents-ch.mod,</xsl:text>
-                </xsl:when>
-                <xsl:when test="$detailed_accented_characters = 'de-accents-reduced'">
-                  <xsl:text>sbs-de-accents-reduced.mod,</xsl:text>
-                </xsl:when>
-                <xsl:otherwise>
-                  <xsl:text>sbs-de-accents.mod,</xsl:text>
-                </xsl:otherwise>
-              </xsl:choose>
+              <xsl:text>sbs-de-accents.mod,</xsl:text>
             </xsl:otherwise>
           </xsl:choose>
-        </xsl:if>
-        <xsl:text>sbs-special.mod</xsl:text>
-      </xsl:when>
-      <xsl:otherwise>
-        <xsl:text>en-us-g2.ctb</xsl:text>
-      </xsl:otherwise>
-    </xsl:choose>
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:if>
+    <xsl:text>sbs-special.mod</xsl:text>
   </xsl:template>
 
   <xsl:template name="sbsform-macro-definitions">
@@ -1675,7 +1648,7 @@ i f=1 l=1
   </xsl:template>
   
   <!-- Remove the punctuation in a text node if it follows a noteref, since the punctuation was handled by the noteref matcher -->
-  <xsl:template match="text()[lang('de') and my:starts-with-punctuation(.) and exists((preceding::*[position() = 1 and local-name() = 'noteref'] intersect ancestor-or-self::*[my:is-block-element(.)][1]//dtb:noteref))]" priority="100">
+  <xsl:template match="text()[my:starts-with-punctuation(.) and exists((preceding::*[position() = 1 and local-name() = 'noteref'] intersect ancestor-or-self::*[my:is-block-element(.)][1]//dtb:noteref))]" priority="100">
     <xsl:variable name="braille_tables">
       <xsl:call-template name="getTable"/>
     </xsl:variable>
@@ -1726,7 +1699,7 @@ i f=1 l=1
     <xsl:text>&#10;y REARe&#10;</xsl:text>
   </xsl:template>
 
-  <xsl:template match="dtb:strong[lang('de')]|dtb:em[lang('de')]|brl:emph[lang('de')]">
+  <xsl:template match="dtb:strong|dtb:em|brl:emph">
     <xsl:variable name="braille_tables">
       <xsl:call-template name="getTable"/>
     </xsl:variable>
@@ -1803,14 +1776,6 @@ i f=1 l=1
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
-
-  <xsl:template match="dtb:em">
-    <xsl:apply-templates mode="italic"/>
-  </xsl:template>
-
-  <xsl:template match="dtb:strong">
-    <xsl:apply-templates mode="bold"/>
-  </xsl:template>
   
   <!-- don't call handle_abbr from a for-each! As it will redefine the context and getTable will fail when calling local-name() -->
   <xsl:template name="handle_abbr">
@@ -1875,12 +1840,8 @@ i f=1 l=1
     <xsl:value-of select="louis:translate(string($braille_tables), string($temp))"/>
   </xsl:template>
   
-  <xsl:template match="dtb:abbr[lang('de')]">
-    <xsl:call-template name="handle_abbr"/>
-  </xsl:template>
-
   <xsl:template match="dtb:abbr">
-    <xsl:apply-templates/>
+    <xsl:call-template name="handle_abbr"/>
   </xsl:template>
 
   <xsl:template match="dtb:a">
@@ -1905,45 +1866,14 @@ i f=1 l=1
     <xsl:apply-templates/>
     <xsl:value-of select="concat('&#10;y DIVe_', @brl:class, '&#10;')"/>
   </xsl:template>
-
-  <xsl:template match="dtb:span[lang('de')]">
-    <xsl:variable name="braille_tables">
-      <xsl:call-template name="getTable"/>
-    </xsl:variable>
-    <xsl:choose>
-      <xsl:when test="@brl:grade">
-        <!-- announce explicit setting of the contraction -->
-        <xsl:choose>
-          <xsl:when test="$contraction = 2 and @brl:grade &lt; $contraction">
-            <xsl:choose>
-              <xsl:when test="count(tokenize(string(.), '(\s|/|-)+')[string(.) ne '']) > 1">
-                <!-- There are multiple words. Insert an announcement for a multiple word grade change -->
-                <xsl:value-of select="louis:translate(string($braille_tables), '&#x255A;')"/>
-                <xsl:apply-templates/>
-                <!-- Announce the end of grade change -->
-                <xsl:value-of select="louis:translate(string($braille_tables), '&#x255D;')"/>
-              </xsl:when>
-              <xsl:otherwise>
-                <!-- Its a single word. Insert an announcement for a single word grade change -->
-                <xsl:value-of select="louis:translate(string($braille_tables), '&#x2559;')"/>
-                <xsl:apply-templates/>
-              </xsl:otherwise>
-            </xsl:choose>
-          </xsl:when>
-          <xsl:otherwise>
-            <xsl:apply-templates/>
-          </xsl:otherwise>
-        </xsl:choose>
-      </xsl:when>
-      <xsl:otherwise>
-        <xsl:apply-templates/>
-      </xsl:otherwise>
-    </xsl:choose>
+  
+  <xsl:template match="dtb:span">
+    <xsl:apply-templates/>
   </xsl:template>
 
   <!-- Contraction hints -->
 
-  <xsl:template match="brl:num[@role='ordinal' and lang('de')]">
+  <xsl:template match="brl:num[@role='ordinal']">
     <xsl:variable name="braille_tables">
       <xsl:call-template name="getTable">
         <xsl:with-param name="context" select="'num_ordinal'"/>
@@ -1960,7 +1890,7 @@ i f=1 l=1
     </xsl:choose>
   </xsl:template>
 
-  <xsl:template match="brl:num[@role='roman' and lang('de')]">
+  <xsl:template match="brl:num[@role='roman']">
     <xsl:variable name="braille_tables">
       <xsl:call-template name="getTable">
         <xsl:with-param name="context" select="'num_roman'"/>
@@ -1980,7 +1910,7 @@ i f=1 l=1
     </xsl:choose>
   </xsl:template>
 
-  <xsl:template match="brl:num[@role='phone' and lang('de')]">
+  <xsl:template match="brl:num[@role='phone']">
     <xsl:variable name="braille_tables">
       <xsl:call-template name="getTable"/>
     </xsl:variable>
@@ -1994,7 +1924,7 @@ i f=1 l=1
     <xsl:value-of select="louis:translate(string($braille_tables),string($clean_number))"/>
   </xsl:template>
 
-  <xsl:template match="brl:num[@role='fraction' and lang('de')]">
+  <xsl:template match="brl:num[@role='fraction']">
     <xsl:variable name="braille_tables">
       <xsl:call-template name="getTable"/>
     </xsl:variable>
@@ -2010,7 +1940,7 @@ i f=1 l=1
     />
   </xsl:template>
 
-  <xsl:template match="brl:num[@role='mixed' and lang('de')]">
+  <xsl:template match="brl:num[@role='mixed']">
     <xsl:variable name="braille_tables">
       <xsl:call-template name="getTable"/>
     </xsl:variable>
@@ -2028,7 +1958,7 @@ i f=1 l=1
     />
   </xsl:template>
 
-  <xsl:template match="brl:num[@role='measure' and lang('de')]">
+  <xsl:template match="brl:num[@role='measure']">
     <xsl:variable name="braille_tables">
       <xsl:call-template name="getTable"/>
     </xsl:variable>
@@ -2045,7 +1975,7 @@ i f=1 l=1
     </xsl:call-template>
   </xsl:template>
   
-  <xsl:template match="brl:num[@role='isbn' and lang('de')]">
+  <xsl:template match="brl:num[@role='isbn']">
     <xsl:variable name="braille_tables">
       <xsl:call-template name="getTable"/>
     </xsl:variable>
@@ -2085,7 +2015,7 @@ i f=1 l=1
     </xsl:choose>
   </xsl:template>
 
-  <xsl:template match="brl:name[lang('de')]">
+  <xsl:template match="brl:name">
     <xsl:variable name="braille_tables">
       <xsl:choose>
         <xsl:when test="matches(., '\p{Ll}\p{Lu}')">
@@ -2101,14 +2031,14 @@ i f=1 l=1
     <xsl:value-of select="louis:translate(string($braille_tables), string())"/>
   </xsl:template>
   
-  <xsl:template match="brl:place[lang('de')]">
+  <xsl:template match="brl:place">
     <xsl:variable name="braille_tables">
       <xsl:call-template name="getTable"/>
     </xsl:variable>
     <xsl:value-of select="louis:translate(string($braille_tables),string())"/>
   </xsl:template>
 
-  <xsl:template match="brl:v-form[lang('de')]">
+  <xsl:template match="brl:v-form">
     <xsl:variable name="braille_tables">
       <xsl:call-template name="getTable"/>
     </xsl:variable>
@@ -2142,7 +2072,7 @@ i f=1 l=1
     <xsl:value-of select="louis:translate(string($braille_tables), string($text))"/>
   </xsl:template>
 
-  <xsl:template match="brl:date[lang('de')]">
+  <xsl:template match="brl:date">
     <xsl:variable name="braille_tables">
       <xsl:call-template name="getTable"/>
     </xsl:variable>
@@ -2180,7 +2110,7 @@ i f=1 l=1
     </xsl:for-each>
   </xsl:template>
 
-  <xsl:template match="brl:time[lang('de')]">
+  <xsl:template match="brl:time">
     <xsl:variable name="braille_tables">
       <xsl:call-template name="getTable"/>
     </xsl:variable>
@@ -2201,7 +2131,7 @@ i f=1 l=1
     <xsl:value-of select="louis:translate(string($braille_tables), string($time))"/>
   </xsl:template>
 
-  <xsl:template match="brl:volume[lang('de')]">
+  <xsl:template match="brl:volume">
     <xsl:if test="@brl:grade = $contraction">
       <!-- Apply end notes -->
       <xsl:if test="$footnote_placement = 'end_vol'">
@@ -2232,17 +2162,17 @@ i f=1 l=1
   </xsl:template>
 
   <!-- Content selection -->
-  <xsl:template match="brl:select[lang('de')]">
+  <xsl:template match="brl:select">
     <xsl:apply-templates select="brl:when-braille"/>
     <!-- Ignore the brl:otherwise element -->
   </xsl:template>
 
-  <xsl:template match="brl:when-braille[lang('de')]">
+  <xsl:template match="brl:when-braille">
     <xsl:apply-templates />
     <!-- Ignore the brl:otherwise element -->
   </xsl:template>
 
-  <xsl:template match="brl:literal[lang('de')]">
+  <xsl:template match="brl:literal">
     <xsl:if test="not(exists(@brl:grade)) or (exists(@brl:grade) and @brl:grade  = $contraction)">
       <xsl:value-of select="."/>
     </xsl:if>
@@ -2252,7 +2182,7 @@ i f=1 l=1
 
   <!-- Handle comma after ordinals and after fraction-->
   <xsl:template
-    match="text()[lang('de') and preceding::*[position()=1 and local-name()='num' and (@role='ordinal' or @role='fraction' or @ role='mixed')] and matches(string(), '^,')]" priority="100">
+    match="text()[preceding::*[position()=1 and local-name()='num' and (@role='ordinal' or @role='fraction' or @ role='mixed')] and matches(string(), '^,')]" priority="100">
     <xsl:variable name="braille_tables">
       <xsl:call-template name="getTable"/>
     </xsl:variable>
@@ -2261,7 +2191,7 @@ i f=1 l=1
 
   <!-- Handle punctuation after a number and after ordinals -->
   <xsl:template
-    match="text()[lang('de') and (my:ends-with-number(string(preceding::text()[1])) or preceding::*[position()=1 and local-name()='num' and @role='ordinal']) and my:starts-with-punctuation(string())]">
+    match="text()[(my:ends-with-number(string(preceding::text()[1])) or preceding::*[position()=1 and local-name()='num' and @role='ordinal']) and my:starts-with-punctuation(string())]">
     <xsl:variable name="braille_tables">
       <xsl:call-template name="getTable"/>
     </xsl:variable>
@@ -2270,7 +2200,7 @@ i f=1 l=1
 
   <!-- Handle text nodes ending with punctuation -->
   <xsl:template
-    match="text()[lang('de') and my:ends-with-punctuation-word(string()) and my:starts-with-non-whitespace(string(following::text()[1]))]">
+    match="text()[my:ends-with-punctuation-word(string()) and my:starts-with-non-whitespace(string(following::text()[1]))]">
     <xsl:variable name="braille_tables">
       <xsl:call-template name="getTable"/>
     </xsl:variable>
@@ -2279,7 +2209,7 @@ i f=1 l=1
 
   <!-- Handle text nodes starting with punctuation -->
   <xsl:template
-    match="text()[lang('de') and my:starts-with-punctuation-word(string()) and my:ends-with-non-whitespace(string(preceding::text()[1])) and not (my:ends-with-number(string(preceding::text()[1])) or preceding::*[position()=1 and local-name()='num' and @role='ordinal'])]">
+    match="text()[my:starts-with-punctuation-word(string()) and my:ends-with-non-whitespace(string(preceding::text()[1])) and not (my:ends-with-number(string(preceding::text()[1])) or preceding::*[position()=1 and local-name()='num' and @role='ordinal'])]">
     <xsl:variable name="braille_tables">
       <xsl:call-template name="getTable"/>
     </xsl:variable>
@@ -2288,7 +2218,7 @@ i f=1 l=1
 
   <!-- Handle text nodes starting and ending with punctuation -->
   <xsl:template
-    match="text()[lang('de') and my:ends-with-punctuation-word(string()) and my:starts-with-punctuation-word(string()) and my:starts-with-non-whitespace(string(following::text()[1])) and my:ends-with-non-whitespace(string(preceding::text()[1])) and not (my:ends-with-number(string(preceding::text()[1])) or preceding::*[position()=1 and local-name()='num' and @role='ordinal'])]" priority="100">
+    match="text()[my:ends-with-punctuation-word(string()) and my:starts-with-punctuation-word(string()) and my:starts-with-non-whitespace(string(following::text()[1])) and my:ends-with-non-whitespace(string(preceding::text()[1])) and not (my:ends-with-number(string(preceding::text()[1])) or preceding::*[position()=1 and local-name()='num' and @role='ordinal'])]" priority="100">
     <xsl:variable name="braille_tables">
       <xsl:call-template name="getTable"/>
     </xsl:variable>
@@ -2298,7 +2228,7 @@ i f=1 l=1
   <!-- Handle single word mixed emphasis -->
   <!-- mixed emphasis before-->
   <xsl:template
-    match="text()[lang('de') and my:starts-with-word(string()) and my:ends-with-word(string(my:preceding-textnode-within-block(.)[ancestor::dtb:em]))]">
+    match="text()[my:starts-with-word(string()) and my:ends-with-word(string(my:preceding-textnode-within-block(.)[ancestor::dtb:em]))]">
     <xsl:variable name="braille_tables">
       <xsl:call-template name="getTable"/>
     </xsl:variable>
@@ -2307,7 +2237,7 @@ i f=1 l=1
 
   <!-- mixed emphasis after-->
   <xsl:template
-    match="text()[lang('de') and my:ends-with-word(string()) and my:starts-with-word(string(my:following-textnode-within-block(.)[ancestor::dtb:em]))]">
+    match="text()[my:ends-with-word(string()) and my:starts-with-word(string(my:following-textnode-within-block(.)[ancestor::dtb:em]))]">
     <xsl:variable name="braille_tables">
       <xsl:call-template name="getTable"/>
     </xsl:variable>
@@ -2316,7 +2246,7 @@ i f=1 l=1
   
   <!-- Handle single word mixed abbr -->
   <xsl:template
-    match="text()[lang('de') and my:starts-with-word(string()) and not(my:starts-with-number(string())) and my:ends-with-word(string(my:preceding-textnode-within-block(.)[ancestor::dtb:abbr]))]">
+    match="text()[my:starts-with-word(string()) and not(my:starts-with-number(string())) and my:ends-with-word(string(my:preceding-textnode-within-block(.)[ancestor::dtb:abbr]))]">
     <xsl:variable name="braille_tables">
       <xsl:call-template name="getTable"/>
     </xsl:variable>
@@ -2325,7 +2255,7 @@ i f=1 l=1
 
   <!-- handle 'ich' inside text node followed by chars that could be interpreted as numbers -->
   <xsl:template
-    match="text()[lang('de') and (matches(string(), '^ich$', 'i') or matches(string(), '\Wich$', 'i')) and matches(string(following::text()[1]), '^[,;:?!)&#x00bb;&#x00ab;]')]" priority="100">
+    match="text()[(matches(string(), '^ich$', 'i') or matches(string(), '\Wich$', 'i')) and matches(string(following::text()[1]), '^[,;:?!)&#x00bb;&#x00ab;]')]" priority="100">
     <xsl:variable name="braille_tables">
       <xsl:call-template name="getTable"/>
     </xsl:variable>

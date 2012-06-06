@@ -28,5 +28,7 @@ fi
 DIR=`dirname $0`
 
 $DIR/saxon.sh \
+    -xsl:$DIR/xsl/handle-downgrading.xsl "$@"| \
+$DIR/saxon.sh \
     -xsl:$DIR/xsl/dtbook2sbsform.xsl "$@"| \
-    $DIR/linebreak.sh
+$DIR/linebreak.sh

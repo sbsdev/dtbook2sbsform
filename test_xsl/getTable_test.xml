@@ -37,7 +37,7 @@
       <utfx:source>
         <p xml:lang="fr"/>
       </utfx:source>
-      <utfx:expected>Fr-Fr-g2.ctb</utfx:expected>
+      <utfx:expected>sbs.dis,sbs-de-core6.cti,sbs-de-accents.cti,sbs-special.cti,sbs-whitespace.mod,sbs-numsign.mod,sbs-litdigit-upper.mod,sbs-de-core.mod,sbs-de-g0-core.mod,sbs-de-g1-white.mod,sbs-de-g1-core.mod,sbs-de-accents-ch.mod,sbs-special.mod</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
 
@@ -51,7 +51,7 @@
       <utfx:source>
         <p xml:lang="fr"/>
       </utfx:source>
-      <utfx:expected>fr-fr-g1.utb</utfx:expected>
+      <utfx:expected>sbs.dis,sbs-de-core6.cti,sbs-de-accents.cti,sbs-special.cti,sbs-whitespace.mod,sbs-numsign.mod,sbs-litdigit-upper.mod,sbs-de-core.mod,sbs-de-g0-core.mod,sbs-de-g1-white.mod,sbs-de-g1-core.mod,sbs-de-accents-ch.mod,sbs-special.mod</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
 

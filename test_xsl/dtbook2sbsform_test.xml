@@ -556,12 +556,12 @@ y DIVe_foo
     <utfx:name>Span inside span 2</utfx:name>
     <utfx:assert-equal>
       <utfx:source>
-	<stub xml:lang="de">
-	  <dtb:p><dtb:span brl:accents="reduced">René</dtb:span></dtb:p>
-	  <dtb:p><dtb:span brl:accents="reduced">René René</dtb:span></dtb:p>
-          <dtb:p>Kurz <dtb:span brl:grade="1" brl:accents="reduced">René René</dtb:span> René</dtb:p>
-	  <dtb:p><dtb:span brl:grade="1">René <dtb:span brl:accents="reduced">René</dtb:span> René</dtb:span></dtb:p>
-	</stub>
+        <stub xml:lang="de">
+          <dtb:p><dtb:span brl:accents="reduced">René</dtb:span></dtb:p>
+          <dtb:p><dtb:span brl:accents="reduced">René René</dtb:span></dtb:p>
+          <dtb:p>Kurz <dtb:span>╚</dtb:span><dtb:span brl:grade="1" brl:accents="reduced">René René</dtb:span><dtb:span>╝</dtb:span> René</dtb:p>
+          <dtb:p><dtb:span>╚</dtb:span><dtb:span brl:grade="1">René <dtb:span brl:accents="reduced">René</dtb:span> René</dtb:span><dtb:span>╝</dtb:span></dtb:p>
+        </stub>
       </utfx:source>
       <utfx:expected>y P
  RC"E
@@ -593,14 +593,14 @@ y P
     <utfx:assert-equal>
       <utfx:source>
         <stub xml:lang="de">
-          <dtb:p>Kurzschrift schrift schrift <dtb:span brl:grade="1">Vollschrift</dtb:span> kurz kurz kurz</dtb:p>
-          <dtb:p>Kurzschrift schrift schrift <dtb:span brl:grade="0">Basisschrift</dtb:span> kurz kurz kurz</dtb:p>
-          <dtb:p>Kurzschrift schrift schrift <dtb:span brl:grade="1">Vollschrift schrift schrift</dtb:span> kurz kurz kurz</dtb:p>
-          <dtb:p>Kurzschrift schrift schrift <dtb:span brl:grade="0">Basisschrift schrift schrift</dtb:span> kurz kurz kurz</dtb:p>
-          <dtb:p>Kurzschrift schrift schrift <dtb:span brl:grade="1">Vollschrift/Vollschrift</dtb:span> kurz kurz kurz</dtb:p>
-          <dtb:p>Kurzschrift schrift schrift <dtb:span brl:grade="0">Basisschrift/Basisschrift</dtb:span> kurz kurz kurz</dtb:p>
-          <dtb:p>Kurzschrift schrift schrift <dtb:span brl:grade="1">Vollschrift-­Vollschrift</dtb:span> kurz kurz kurz</dtb:p>
-          <dtb:p>Kurzschrift schrift schrift <dtb:span brl:grade="0">Basisschrift-­Basisschrift</dtb:span> kurz kurz kurz</dtb:p>
+          <dtb:p>Kurzschrift schrift schrift <dtb:span>╙</dtb:span><dtb:span brl:grade="1">Vollschrift</dtb:span> kurz kurz kurz</dtb:p>
+          <dtb:p>Kurzschrift schrift schrift <dtb:span>╙</dtb:span><dtb:span brl:grade="0">Basisschrift</dtb:span> kurz kurz kurz</dtb:p>
+          <dtb:p>Kurzschrift schrift schrift <dtb:span>╚</dtb:span><dtb:span brl:grade="1">Vollschrift schrift schrift</dtb:span><dtb:span>╝</dtb:span> kurz kurz kurz</dtb:p>
+          <dtb:p>Kurzschrift schrift schrift <dtb:span>╚</dtb:span><dtb:span brl:grade="0">Basisschrift schrift schrift</dtb:span><dtb:span>╝</dtb:span> kurz kurz kurz</dtb:p>
+          <dtb:p>Kurzschrift schrift schrift <dtb:span>╚</dtb:span><dtb:span brl:grade="1">Vollschrift/Vollschrift</dtb:span><dtb:span>╝</dtb:span> kurz kurz kurz</dtb:p>
+          <dtb:p>Kurzschrift schrift schrift <dtb:span>╚</dtb:span><dtb:span brl:grade="0">Basisschrift/Basisschrift</dtb:span><dtb:span>╝</dtb:span> kurz kurz kurz</dtb:p>
+          <dtb:p>Kurzschrift schrift schrift <dtb:span>╚</dtb:span><dtb:span brl:grade="1">Vollschrift-­Vollschrift</dtb:span><dtb:span>╝</dtb:span> kurz kurz kurz</dtb:p>
+          <dtb:p>Kurzschrift schrift schrift <dtb:span>╚</dtb:span><dtb:span brl:grade="0">Basisschrift-­Basisschrift</dtb:span><dtb:span>╝</dtb:span> kurz kurz kurz</dtb:p>
         </stub>
       </utfx:source>
       <utfx:expected>y P
@@ -619,6 +619,73 @@ y P
  KZ5T 5T 5T -.VOLL5RIFT-mVOLL5RIFT'. KZ KZ KZ
 y P
  KZ5T 5T 5T -.BASISSCHRIFT-mBASISSCHRIFT'. KZ KZ KZ</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+  
+  <utfx:test>
+    <utfx:name>Language change (feature #1604)</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+        <stub xml:lang="de">
+          <dtb:p>Jetzt folgt ein Gedicht:</dtb:p>
+          <dtb:poem xml:lang="en">
+            <dtb:linegroup>
+              <dtb:line><dtb:span>╚</dtb:span>If you want to get a favour done</dtb:line>
+              <dtb:line>By some obliging friend,</dtb:line>
+              <dtb:line>And want a promise, safe and sure,</dtb:line>
+              <dtb:line>On which you may depend,</dtb:line>
+              <dtb:line>Don't go to him who always has</dtb:line>
+              <dtb:line>Much leisure time to plan,</dtb:line>
+              <dtb:line>If you want your favour done,</dtb:line>
+              <dtb:line>Just ask the busy man.<dtb:span>╝</dtb:span></dtb:line>
+            </dtb:linegroup>
+          </dtb:poem>
+        </stub>
+      </utfx:source>
+      <utfx:expected>y P
+ J FGT 6 &amp;D#T:
+y POEMb
+
+y LINEGRb
+ 
+y LINEb
+ -.IF YOU WANT TO GET A FAVOUR DONE
+y LINEe
+ 
+y LINEb
+ BY SOME OBLIGING FRIEND,
+y LINEe
+ 
+y LINEb
+ AND WANT A PROMISE, SAFE AND SURE,
+y LINEe
+ 
+y LINEb
+ ON WHI4 YOU MAY DEPEND,
+y LINEe
+ 
+y LINEb
+ DON'T GO TO HIM WHO ALWAYS HAS
+y LINEe
+ 
+y LINEb
+ MU4 L3SURE TIME TO PLAN,
+y LINEe
+ 
+y LINEb
+ IF YOU WANT YOUR FAVOUR DONE,
+y LINEe
+ 
+y LINEb
+ JU] ASK THE BUSY MAN.'.
+y LINEe
+ 
+y LINEGRe
+ 
+y POEMe</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
  
