@@ -152,7 +152,7 @@
 	      <exclude name="utfx.sh"/>
 	    </zipfileset>
 	    <zipfileset dir="xsl" prefix="${app.name}/xsl">
-	      <include name="dtbook2sbsform.xsl"/>
+	      <include name="*.xsl"/>
 	    </zipfileset>
 	  </zip>
 	</target>
