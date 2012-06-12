@@ -19,24 +19,17 @@
     <!-- <http://www.gnu.org/licenses/>. -->
 
 <xsl:stylesheet version="2.0"
+    xmlns="http://www.daisy.org/z3986/2005/dtbook/"
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:dtb="http://www.daisy.org/z3986/2005/dtbook/"
     xmlns:brl="http://www.daisy.org/z3986/2009/braille/"
     xmlns:my="http://my-functions"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     exclude-result-prefixes="my brl xs">
-    
-    <!-- ======================================================== -->
-    <!--  Assumptions                                             -->
-    <!-- ~~~~~~~~~~~~~                                            -->
-    <!--   1.  /dtbook/@lang = true()                             -->
-    <!--   2.  /dtbook/ancestor::*[@lang or @brl:grade]           -->
-    <!--              /ancestor::*[@lang or @brl:grade] = false() -->
-    <!-- ======================================================== -->
-    
+
     <xsl:param name="contraction" select="2"/>
     
-    <xsl:output method="xml" encoding="utf-8" indent="yes"/>
+    <xsl:output method="xml" encoding="utf-8" indent="no"/>
     
     <xsl:template match="@*|comment()|processing-instruction()" mode="#all">
         <xsl:sequence select="."/>
