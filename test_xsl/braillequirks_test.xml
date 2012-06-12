@@ -690,4 +690,20 @@ y P
     </utfx:assert-equal>
   </utfx:test>
 
+  <utfx:test>
+    <utfx:name>Gross, schliess, etc</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+	<stub xml:lang="de">
+	  <dtb:p>Groß schließ Großmutter</dtb:p>
+	</stub>
+      </utfx:source>
+      <utfx:expected>y P&#13; G^ 5^ G^MUTT7
+      </utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
 </utfx:tests>
