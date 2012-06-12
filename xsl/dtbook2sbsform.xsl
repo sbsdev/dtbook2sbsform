@@ -1703,26 +1703,51 @@ i f=1 l=1
     <xsl:variable name="braille_tables">
       <xsl:call-template name="getTable"/>
     </xsl:variable>
+    <xsl:variable name="isFirst" as="xs:boolean" 
+      select="not(some $id in @id satisfies preceding::*[@brl:continuation and index-of(tokenize(@brl:continuation, '\s+'), $id)])"/>
+    <xsl:variable name="isLast" as="xs:boolean">
+      <xsl:choose>
+        <xsl:when test="not($isFirst)">
+          <xsl:variable name="id" select="@id"/>
+          <xsl:variable name="continuation" select="preceding::*[@brl:continuation and index-of(tokenize(@brl:continuation, '\s+'), $id)]/@brl:continuation"/>
+          <xsl:sequence select="not(following::*[@id and index-of(tokenize($continuation, '\s+'), @id)])"/>
+        </xsl:when>
+        <xsl:when test="some $id in tokenize(@brl:continuation, '\s+') satisfies following::*[@id eq $id]">
+          <xsl:sequence select="false()"/>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:sequence select="true()"/>
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
     <xsl:choose>
       <xsl:when test="@brl:render = 'singlequote'">
         <!-- render the emphasis using singlequotes -->
-        <xsl:value-of select="louis:translate(string($braille_tables), '&#8250;')"/>
+        <xsl:if test="$isFirst">
+          <xsl:value-of select="louis:translate(string($braille_tables), '&#8250;')"/>
+        </xsl:if>
         <xsl:apply-templates/>
-        <xsl:value-of select="louis:translate(string($braille_tables), '&#8249;')"/>
+        <xsl:if test="$isLast">
+          <xsl:value-of select="louis:translate(string($braille_tables), '&#8249;')"/>
+        </xsl:if>
       </xsl:when>
       <xsl:when test="@brl:render = 'quote'">
         <!-- render the emphasis using quotes -->
-        <xsl:value-of select="louis:translate(string($braille_tables), '&#x00BB;')"/>
+        <xsl:if test="$isFirst">
+          <xsl:value-of select="louis:translate(string($braille_tables), '&#x00BB;')"/>
+        </xsl:if>
         <xsl:apply-templates/>
-	<xsl:variable name="last_text_node" select="string((.//text())[position()=last()])"/>
-        <xsl:choose>
-          <xsl:when test="my:isNumberLike(substring($last_text_node, string-length($last_text_node), 1))">
-            <xsl:value-of select="louis:translate(string($braille_tables), '&#x2039;')"/>
-          </xsl:when>
-          <xsl:otherwise>
-            <xsl:value-of select="louis:translate(string($braille_tables), '&#x00AB;')"/>
-          </xsl:otherwise>
-        </xsl:choose>
+        <xsl:if test="$isLast">
+          <xsl:variable name="last_text_node" select="string((.//text())[position()=last()])"/>
+          <xsl:choose>
+            <xsl:when test="my:isNumberLike(substring($last_text_node, string-length($last_text_node), 1))">
+              <xsl:value-of select="louis:translate(string($braille_tables), '&#x2039;')"/>
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:value-of select="louis:translate(string($braille_tables), '&#x00AB;')"/>
+            </xsl:otherwise>
+          </xsl:choose>
+        </xsl:if>
       </xsl:when>
       <xsl:when test="@brl:render = 'ignore'">
         <!-- ignore the emphasis for braille -->
@@ -1736,12 +1761,17 @@ i f=1 l=1
 	   neatly works around a bug where liblouis doesn't correctly
 	   announce multi-word emphasis -->
         <xsl:choose>
-          <xsl:when test="count(tokenize(string(.), '(\s|/|-)+')[string(.) ne '']) > 1">
-            <!-- There are multiple words. Insert a multiple word announcement -->
-            <xsl:value-of select="louis:translate(string($braille_tables), '&#x2560;')"/>
+          <xsl:when test="not($isFirst) or not($isLast) or (count(tokenize(string(.), '(\s|/|-)+')[string(.) ne '']) > 1)">
+            <!-- There are multiple words. -->
+            <xsl:if test="$isFirst">
+              <!-- Insert a multiple word announcement -->
+              <xsl:value-of select="louis:translate(string($braille_tables), '&#x2560;')"/>
+            </xsl:if>
             <xsl:apply-templates/>
-            <!-- Announce the end of emphasis -->
-            <xsl:value-of select="louis:translate(string($braille_tables), '&#x2563;')"/>
+            <xsl:if test="$isLast">
+              <!-- Announce the end of emphasis -->
+              <xsl:value-of select="louis:translate(string($braille_tables), '&#x2563;')"/>
+            </xsl:if>
           </xsl:when>
           <xsl:otherwise>
             <!-- Its a single word. Insert a single word announcement unless it is within a word -->
@@ -1749,7 +1779,7 @@ i f=1 l=1
               <!-- emph is at the beginning of the word -->
               <xsl:when
                 test="my:ends-with-non-word(preceding-sibling::text()[1]) and my:starts-with-word(following-sibling::text()[1])">
-		<xsl:value-of select="louis:translate(string($braille_tables), '&#x255F;')"/>
+                <xsl:value-of select="louis:translate(string($braille_tables), '&#x255F;')"/>
                 <xsl:apply-templates/>
                 <xsl:value-of select="louis:translate(string($braille_tables), '&#x2561;')"/>
               </xsl:when>
@@ -1762,7 +1792,7 @@ i f=1 l=1
               <!-- emph is inside the word -->
               <xsl:when
                 test="my:ends-with-word(preceding-sibling::text()[1]) and my:starts-with-word(following-sibling::text()[1])">
-		<xsl:value-of select="louis:translate(string($braille_tables), '&#x255E;')"/>
+                <xsl:value-of select="louis:translate(string($braille_tables), '&#x255E;')"/>
                 <xsl:apply-templates/>
                 <xsl:value-of select="louis:translate(string($braille_tables), '&#x2561;')"/>
               </xsl:when>
