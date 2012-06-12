@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Copyright (C) 2010 Swiss Library for the Blind, Visually Impaired and Print Disabled
 #
@@ -19,7 +19,7 @@
 # <http://www.gnu.org/licenses/>.
 
 if [ $# -lt 1 ] ; then
-	PRG=`basename $0` 
+	PRG=`basename $0`
 	echo "Usage: $PRG -s:dtbook.xml PARAMS"
 	echo "       one dtbook xml source file expected."
 	exit 1
@@ -30,5 +30,5 @@ DIR=`dirname $0`
 $DIR/saxon.sh \
     -xsl:$DIR/xsl/handle-downgrading.xsl "$@"| \
 $DIR/saxon.sh \
-    -xsl:$DIR/xsl/dtbook2sbsform.xsl "$@"| \
+    -xsl:$DIR/xsl/dtbook2sbsform.xsl -s:- "${@:2}" | \
 $DIR/linebreak.sh
