@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Copyright (C) 2010 Swiss Library for the Blind, Visually Impaired and Print Disabled
 #
@@ -26,9 +26,11 @@ if [ $# -lt 1 ] ; then
 fi
 
 DIR=`dirname $0`
+SRCFILE=$1
+shift
 
 $DIR/saxon.sh \
-    -xsl:$DIR/xsl/handle-downgrading.xsl "$@"| \
+    -xsl:$DIR/xsl/handle-downgrading.xsl $SRCFILE "$@"| \
 $DIR/saxon.sh \
-    -xsl:$DIR/xsl/dtbook2sbsform.xsl -s:- "${@:2}" | \
+    -xsl:$DIR/xsl/dtbook2sbsform.xsl -s:- "$@" | \
 $DIR/linebreak.sh
