@@ -96,7 +96,7 @@
         <xsl:param name="element"/>
         <xsl:variable name="brl-grade" select="my:get-brl-grade($element)"/>
         <xsl:sequence select="if ($brl-grade) then number($brl-grade) else
-            (if ($element[lang('de')]) then $contraction else 1)"/>
+            (if ($element[lang('de')]) then $contraction else 0)"/>
     </xsl:function>
     
     <xsl:function name="my:get-brl-grade">
