@@ -725,7 +725,9 @@ y e EPIGRe
 
     <xsl:if test="//dtb:list[not(@brl:class)]|//dtb:li[not(@brl:class)]">
       <xsl:text>&#10;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx Listen xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&#10;&#10;</xsl:text>
+    </xsl:if>
 
+    <xsl:if test="//dtb:list[not(@brl:class) and @type='pl']|//dtb:li[not(@brl:class)]">
       <xsl:text>y b PLISTb ; Vorformatierte Liste&#10;</xsl:text>
       <xsl:text>lm1&#10;</xsl:text>
       <xsl:text>i f=1 l=3&#10;</xsl:text>
@@ -740,6 +742,41 @@ y e EPIGRe
       <xsl:text>y b LI&#10;</xsl:text>
       <xsl:text>a&#10;</xsl:text>
       <xsl:text>y e LI&#10;</xsl:text>
+    </xsl:if>
+
+    <xsl:if test="//dtb:list[not(@brl:class) and @type='ul']|//dtb:li[not(@brl:class)]">
+      <xsl:text>y b ULISTb ; 'ul' Liste&#10;</xsl:text>
+      <xsl:text>?l:l+1&#10;</xsl:text>
+      <xsl:text>?l=1&#10;</xsl:text>
+      <xsl:text>+lm1&#10;</xsl:text>
+      <xsl:text>+i f=1 l=4&#10;</xsl:text>
+      <xsl:text>+R=Bd'-&#10;</xsl:text>
+      <xsl:text>?l=2&#10;</xsl:text>
+      <xsl:text>+i f=4 l=7&#10;</xsl:text>
+      <xsl:text>+R=Bd!-&#10;</xsl:text>
+      <xsl:text>y e ULISTb&#10;</xsl:text>
+
+      <xsl:text>y b ULISTe&#10;</xsl:text>
+      <xsl:text>R=Bd'-&#10;</xsl:text>
+      <xsl:text>?l:l-1&#10;</xsl:text>
+      <xsl:text>?l=1&#10;</xsl:text>
+      <xsl:text>+i f=1 l=4&#10;</xsl:text>
+      <xsl:text>+R=Bd'-&#10;</xsl:text>
+      <xsl:text>?l=0&#10;</xsl:text>
+      <xsl:text>+lm1&#10;</xsl:text>
+      <xsl:text>+i f=3 l=1&#10;</xsl:text>
+      <xsl:text>y e ULISTe&#10;</xsl:text>
+
+      <xsl:text>y b LI&#10;</xsl:text>
+      <xsl:text>n2&#10;</xsl:text>
+      <xsl:text>a&#10;</xsl:text>
+      <xsl:text>RB&#10;</xsl:text>
+      <xsl:text>y e LI&#10;</xsl:text>
+    </xsl:if>
+
+    <xsl:if test="//dtb:list[not(@brl:class) and @type='ol']|//dtb:li[not(@brl:class)]">
+      <xsl:text>y b OLISTb ; 'ol' Liste&#10;</xsl:text>
+      <xsl:text>X TODO: Fix this macro&#10;</xsl:text>
     </xsl:if>
 
     <xsl:text>&#10;xxxxxxxxxxxxxxxxxxxxxxxxxxx Bandeinteilung xxxxxxxxxxxxxxxxxxxxxxxxxxx&#10;</xsl:text>
@@ -1448,20 +1485,66 @@ i f=1 l=1
     <xsl:apply-templates/>
   </xsl:template>
 
-  <xsl:template match="dtb:list">
-    <xsl:text>&#10;y PLISTb</xsl:text>
-    <xsl:if test="@brl:class"><xsl:text>_</xsl:text><xsl:value-of select="@brl:class"/></xsl:if>
+  <xsl:template match="dtb:list[@brl:class]">
+    <xsl:text>&#10;y PLISTb_</xsl:text>
+    <xsl:value-of select="@brl:class"/>
     <xsl:text>&#10;</xsl:text>
     <xsl:apply-templates/>
-    <xsl:text>&#10;y PLISTe</xsl:text>
-    <xsl:if test="@brl:class"><xsl:text>_</xsl:text><xsl:value-of select="@brl:class"/></xsl:if>
+    <xsl:text>&#10;y PLISTe_</xsl:text>
+    <xsl:value-of select="@brl:class"/>
     <xsl:text>&#10;</xsl:text>
+  </xsl:template>
+
+  <xsl:template match="dtb:list[not(@brl:class) and @type='pl']">
+    <xsl:text>&#10;y PLISTb&#10;</xsl:text>
+    <xsl:apply-templates/>
+    <xsl:text>&#10;y PLISTe&#10;</xsl:text>
+  </xsl:template>
+
+  <xsl:template match="dtb:list[not(@brl:class) and @type='ul']">
+    <xsl:text>&#10;y ULISTb&#10;</xsl:text>
+    <xsl:apply-templates/>
+    <xsl:text>&#10;y ULISTe&#10;</xsl:text>
+  </xsl:template>
+
+  <xsl:template match="dtb:list[not(@brl:class) and @type='ol']">
+    <xsl:text>&#10;y OLISTb&#10;</xsl:text>
+    <xsl:apply-templates/>
+    <xsl:text>&#10;y OLISTe&#10;</xsl:text>
   </xsl:template>
 
   <xsl:template match="dtb:li">
     <xsl:text>&#10;y LI</xsl:text>
     <xsl:if test="@brl:class"><xsl:text>_</xsl:text><xsl:value-of select="@brl:class"/></xsl:if>
     <xsl:text>&#10; </xsl:text>
+    <xsl:variable name="list" select="ancestor::dtb:list[1]"/>
+    <xsl:if test="$list/@type='ol'">
+      <xsl:variable name="start" select="if ($list/@start) then number($list/@start) else 1"/>
+      <xsl:variable name="number" select="$start + count(preceding-sibling::dtb:li)"/>
+      <xsl:variable name="formatted-number">
+        <xsl:element name="dtb:span">
+          <xsl:attribute name="lang" select="string(ancestor::*[@lang][1]/@lang)"/>
+          <xsl:choose>
+            <xsl:when test="$list/@enum='a'">
+              <xsl:number value="$number" format="a. "/>
+            </xsl:when>
+            <xsl:when test="$list/@enum='A'">
+              <xsl:number value="$number" format="A. "/>
+            </xsl:when>
+            <xsl:when test="$list/@enum='i'">
+              <xsl:number value="$number" format="i. "/>
+            </xsl:when>
+            <xsl:when test="$list/@enum='I'">
+              <xsl:number value="$number" format="I. "/>
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:number value="$number" format="1. "/>
+            </xsl:otherwise>
+          </xsl:choose>
+        </xsl:element>
+      </xsl:variable>
+      <xsl:apply-templates select="$formatted-number" />
+    </xsl:if>
     <xsl:apply-templates/>
     <xsl:text>&#10;</xsl:text>
   </xsl:template>
