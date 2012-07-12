@@ -210,7 +210,7 @@
           <xsl:value-of select="$contraction"/>
         </xsl:when>
         <xsl:otherwise>
-          <xsl:value-of select="'1'"/>
+          <xsl:value-of select="'0'"/>
         </xsl:otherwise>
       </xsl:choose>
     </xsl:variable>
