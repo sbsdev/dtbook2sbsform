@@ -1519,28 +1519,14 @@ i f=1 l=1
     <xsl:text>&#10; </xsl:text>
     <xsl:variable name="list" select="ancestor::dtb:list[1]"/>
     <xsl:if test="$list/@type='ol'">
-      <xsl:variable name="start" select="if ($list/@start) then number($list/@start) else 1"/>
-      <xsl:variable name="number" select="$start + count(preceding-sibling::dtb:li)"/>
       <xsl:variable name="formatted-number">
-        <xsl:element name="dtb:span">
+        <xsl:element name="{if (lower-case(string($list/@enum))='a') then 'dtb:span' else 'brl:num'}">
+          <xsl:if test="not(lower-case(string($list/@enum))='a')">
+            <xsl:attribute name="role" select="if (lower-case(string($list/@enum))='i') then 'roman' else 'ordinal'"/>
+          </xsl:if>
           <xsl:attribute name="lang" select="string(ancestor::*[@lang][1]/@lang)"/>
-          <xsl:choose>
-            <xsl:when test="$list/@enum='a'">
-              <xsl:number value="$number" format="a. "/>
-            </xsl:when>
-            <xsl:when test="$list/@enum='A'">
-              <xsl:number value="$number" format="A. "/>
-            </xsl:when>
-            <xsl:when test="$list/@enum='i'">
-              <xsl:number value="$number" format="i. "/>
-            </xsl:when>
-            <xsl:when test="$list/@enum='I'">
-              <xsl:number value="$number" format="I. "/>
-            </xsl:when>
-            <xsl:otherwise>
-              <xsl:number value="$number" format="1. "/>
-            </xsl:otherwise>
-          </xsl:choose>
+          <xsl:number value="(if ($list/@start) then number($list/@start) else 1) + count(preceding-sibling::dtb:li)"
+            format="{concat(string($list/@enum), '. ')}"/>
         </xsl:element>
       </xsl:variable>
       <xsl:apply-templates select="$formatted-number" />
