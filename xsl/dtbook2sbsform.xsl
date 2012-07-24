@@ -728,7 +728,6 @@ y e EPIGRe
       
       <xsl:text>y b LI&#10;</xsl:text>
       <xsl:text>a&#10;</xsl:text>
-      <xsl:text>RB&#10;</xsl:text>
       <xsl:text>y e LI&#10;</xsl:text>
     </xsl:if>
 
@@ -759,31 +758,26 @@ y e EPIGRe
 
     <xsl:if test="//dtb:list[not(@brl:class) and @type='ul']|//dtb:li[not(@brl:class)]">
       <xsl:text>y b ULISTb ; 'ul' Liste&#10;</xsl:text>
+      <xsl:text>R=Bd&#10;</xsl:text>
       <xsl:text>?nl:nl+1&#10;</xsl:text>
       <xsl:text>?nl=1&#10;</xsl:text>
       <xsl:text>+lm1&#10;</xsl:text>
       <xsl:text>+i f=1 l=3&#10;</xsl:text>
-      <xsl:text>+R=Bd'-&#10;</xsl:text>
       <xsl:text>?nl=2&#10;</xsl:text>
       <xsl:text>+i f=3 l=5&#10;</xsl:text>
-      <xsl:text>+R=Bd!-&#10;</xsl:text>
       <xsl:text>?nl=3&#10;</xsl:text>
       <xsl:text>+i f=5 l=7&#10;</xsl:text>
-      <xsl:text>+R=Bd'-&#10;</xsl:text>
       <xsl:text>y e ULISTb&#10;</xsl:text>
       <xsl:text>y b ULISTe&#10;</xsl:text>
-      <xsl:text>R=Bd'-&#10;</xsl:text>
+      <xsl:text>R=Bd&#10;</xsl:text>
       <xsl:text>?nl:nl-1&#10;</xsl:text>
       <xsl:text>?nl=2&#10;</xsl:text>
       <xsl:text>+i f=3 l=5&#10;</xsl:text>
-      <xsl:text>+R=Bd!-&#10;</xsl:text>
       <xsl:text>?nl=1&#10;</xsl:text>
       <xsl:text>+i f=1 l=3&#10;</xsl:text>
-      <xsl:text>+R=Bd'-&#10;</xsl:text>
       <xsl:text>?nl=0&#10;</xsl:text>
       <xsl:text>+lm1&#10;</xsl:text>
       <xsl:text>+i f=3 l=1&#10;</xsl:text>
-      <xsl:text>+R=Bd&#10;</xsl:text>
       <xsl:text>y e ULISTe&#10;</xsl:text>
     </xsl:if>
 
@@ -1567,6 +1561,9 @@ i f=1 l=1
         </xsl:element>
       </xsl:variable>
       <xsl:apply-templates select="$formatted-number" />
+    </xsl:if>
+    <xsl:if test="$list/@type='ul'">
+      <xsl:value-of select="if (count(ancestor::dtb:list) mod 2 = 1) then '''- ' else '!- '"/>
     </xsl:if>
     <xsl:apply-templates/>
     <xsl:text>&#10;</xsl:text>
