@@ -1142,7 +1142,7 @@ i f=1 l=1
           <xsl:with-param name="content" select="'SJW'"/>
         </xsl:call-template>
         <xsl:value-of
-          select="louis:translate(string($braille_tables), ' Schweizerischen Jugenschriftenwerks, Zürich.')"/>
+          select="louis:translate(string($braille_tables), ' Schweizerischen Jugendschriftenwerks, Zürich.')"/>
         <xsl:value-of
           select="louis:translate(string($braille_tables), ' Wir danken dem ')"/>
         <xsl:call-template name="handle_abbr">
