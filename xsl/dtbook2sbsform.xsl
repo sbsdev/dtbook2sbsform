@@ -790,7 +790,6 @@ y e EPIGRe
     <xsl:if test="//dtb:list[not(@brl:class) and @type='ol']|//dtb:li[not(@brl:class)]">
       <xsl:text>y b OLISTb ; 'ol' Liste&#10;</xsl:text>
       <xsl:text>R=Bd&#10;</xsl:text>
-      <xsl:text>?ol:ol+1&#10;</xsl:text>
       <xsl:text>?nl:nl+1&#10;</xsl:text>
       <xsl:text>?nl=1&#10;</xsl:text>
       <xsl:text>+lm1&#10;</xsl:text>
@@ -802,13 +801,6 @@ y e EPIGRe
       <xsl:text>y e OLISTb&#10;</xsl:text>
       <xsl:text>y b OLISTe&#10;</xsl:text>
       <xsl:text>R=Bd&#10;</xsl:text>
-      <xsl:text>?ol:ol-1&#10;</xsl:text>
-      <xsl:text>?ol=0&#10;</xsl:text>
-      <xsl:text>+?nra:0&#10;</xsl:text>
-      <xsl:text>?ol=1&#10;</xsl:text>
-      <xsl:text>+?nrb:0&#10;</xsl:text>
-      <xsl:text>?ol=2&#10;</xsl:text>
-      <xsl:text>+?nrc:0&#10;</xsl:text>
       <xsl:text>?nl:nl-1&#10;</xsl:text>
       <xsl:text>?nl=2&#10;</xsl:text>
       <xsl:text>+i f=3 l=5&#10;</xsl:text>
@@ -1562,7 +1554,10 @@ i f=1 l=1
     <xsl:variable name="enum" select="if ($list/@enum) then string($list/@enum) else '1'"/>
     <xsl:if test="$list/@type='ol'">
       <xsl:variable name="formatted-number">
-        <xsl:element name="{if (lower-case(string($enum))='a') then 'dtb:span' else 'brl:num'}">
+        <xsl:element name="{if (lower-case(string($enum))='a') then 'abbr' else 'num'}"
+                     namespace="{if (lower-case(string($enum))='a')
+                     then 'http://www.daisy.org/z3986/2005/dtbook/'
+                     else 'http://www.daisy.org/z3986/2009/braille/'}">
           <xsl:if test="not(lower-case(string($enum))='a')">
             <xsl:attribute name="role" select="if (lower-case(string($enum))='i') then 'roman' else 'ordinal'"/>
           </xsl:if>
