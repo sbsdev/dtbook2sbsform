@@ -1545,22 +1545,29 @@ i f=1 l=1
     <xsl:if test="@brl:class"><xsl:text>_</xsl:text><xsl:value-of select="@brl:class"/></xsl:if>
     <xsl:text>&#10; </xsl:text>
     <xsl:variable name="list" select="ancestor::dtb:list[1]"/>
-    <xsl:variable name="enum" select="if ($list/@enum) then string($list/@enum) else '1'"/>
     <xsl:if test="$list/@type='ol'">
+      <xsl:variable name="enum" select="if ($list/@enum) then string($list/@enum) else '1'"/>
+      <xsl:variable name="number" select="(if ($list/@start) then number($list/@start) else 1) + count(preceding-sibling::dtb:li)"/>
       <xsl:variable name="formatted-number">
-        <xsl:element name="{if (lower-case(string($enum))='a') then 'abbr' else 'num'}"
-                     namespace="{if (lower-case(string($enum))='a')
-                     then 'http://www.daisy.org/z3986/2005/dtbook/'
-                     else 'http://www.daisy.org/z3986/2009/braille/'}">
-          <xsl:if test="not(lower-case(string($enum))='a')">
-            <xsl:attribute name="role" select="if (lower-case(string($enum))='i') then 'roman' else 'ordinal'"/>
-          </xsl:if>
-          <xsl:attribute name="lang" select="string(ancestor::*[@lang][1]/@lang)"/>
-          <xsl:number value="(if ($list/@start) then number($list/@start) else 1) + count(preceding-sibling::dtb:li)"
-            format="{concat(string($enum), '. ')}"/>
-        </xsl:element>
+        <xsl:choose>
+          <xsl:when test="lower-case(string($enum))='a'">
+            <xsl:element name="abbr" namespace="http://www.daisy.org/z3986/2005/dtbook/">
+              <xsl:attribute name="lang" select="string(ancestor::*[@lang][1]/@lang)"/>
+              <xsl:number value="$number" format="{string($enum)}"/>
+            </xsl:element>
+            <xsl:text>.</xsl:text>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:element name="num" namespace="http://www.daisy.org/z3986/2009/braille/">
+              <xsl:attribute name="role" select="if (lower-case(string($enum))='i') then 'roman' else 'ordinal'"/>
+              <xsl:attribute name="lang" select="string(ancestor::*[@lang][1]/@lang)"/>
+              <xsl:number value="$number" format="{concat(string($enum), '.')}"/>
+            </xsl:element>
+          </xsl:otherwise>
+        </xsl:choose>
       </xsl:variable>
       <xsl:apply-templates select="$formatted-number" />
+      <xsl:text> </xsl:text>
     </xsl:if>
     <xsl:if test="$list/@type='ul'">
       <xsl:value-of select="if (count(ancestor::dtb:list) mod 2 = 1) then '''- ' else '!- '"/>
