@@ -733,7 +733,6 @@ y e EPIGRe
 
     <xsl:if test="//dtb:list[not(@brl:class) and @type='pl']|//dtb:li[not(@brl:class)]">
       <xsl:text>y b PLISTb ; 'pl' Liste&#10;</xsl:text>
-      <xsl:text>R=Bd&#10;</xsl:text>
       <xsl:text>?nl:nl+1&#10;</xsl:text>
       <xsl:text>?nl=1&#10;</xsl:text>
       <xsl:text>+lm1&#10;</xsl:text>
@@ -744,7 +743,6 @@ y e EPIGRe
       <xsl:text>+i f=5 l=7&#10;</xsl:text>
       <xsl:text>y e PLISTb&#10;</xsl:text>
       <xsl:text>y b PLISTe&#10;</xsl:text>
-      <xsl:text>R=Bd&#10;</xsl:text>
       <xsl:text>?nl:nl-1&#10;</xsl:text>
       <xsl:text>?nl=2&#10;</xsl:text>
       <xsl:text>+i f=3 l=5&#10;</xsl:text>
@@ -758,7 +756,6 @@ y e EPIGRe
 
     <xsl:if test="//dtb:list[not(@brl:class) and @type='ul']|//dtb:li[not(@brl:class)]">
       <xsl:text>y b ULISTb ; 'ul' Liste&#10;</xsl:text>
-      <xsl:text>R=Bd&#10;</xsl:text>
       <xsl:text>?nl:nl+1&#10;</xsl:text>
       <xsl:text>?nl=1&#10;</xsl:text>
       <xsl:text>+lm1&#10;</xsl:text>
@@ -769,7 +766,6 @@ y e EPIGRe
       <xsl:text>+i f=5 l=7&#10;</xsl:text>
       <xsl:text>y e ULISTb&#10;</xsl:text>
       <xsl:text>y b ULISTe&#10;</xsl:text>
-      <xsl:text>R=Bd&#10;</xsl:text>
       <xsl:text>?nl:nl-1&#10;</xsl:text>
       <xsl:text>?nl=2&#10;</xsl:text>
       <xsl:text>+i f=3 l=5&#10;</xsl:text>
@@ -783,7 +779,6 @@ y e EPIGRe
 
     <xsl:if test="//dtb:list[not(@brl:class) and @type='ol']|//dtb:li[not(@brl:class)]">
       <xsl:text>y b OLISTb ; 'ol' Liste&#10;</xsl:text>
-      <xsl:text>R=Bd&#10;</xsl:text>
       <xsl:text>?nl:nl+1&#10;</xsl:text>
       <xsl:text>?nl=1&#10;</xsl:text>
       <xsl:text>+lm1&#10;</xsl:text>
@@ -794,7 +789,6 @@ y e EPIGRe
       <xsl:text>+i f=5 l=7&#10;</xsl:text>
       <xsl:text>y e OLISTb&#10;</xsl:text>
       <xsl:text>y b OLISTe&#10;</xsl:text>
-      <xsl:text>R=Bd&#10;</xsl:text>
       <xsl:text>?nl:nl-1&#10;</xsl:text>
       <xsl:text>?nl=2&#10;</xsl:text>
       <xsl:text>+i f=3 l=5&#10;</xsl:text>
