@@ -1314,7 +1314,7 @@ i f=1 l=1
     <xsl:if test="$footer_level = 0 and $show_original_page_numbers = false()">
       <xsl:text>I S=j&#10;</xsl:text> 
       <xsl:text>i S=</xsl:text>
-      <xsl:value-of select="$cells_per_line - 6"/>
+      <xsl:value-of select="$cells_per_line - 8"/>
       <xsl:text>&#10;</xsl:text>
     </xsl:if>
     <xsl:text>&#10;y BODYb&#10;</xsl:text>
