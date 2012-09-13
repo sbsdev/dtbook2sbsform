@@ -2325,7 +2325,8 @@ i f=1 l=1
 
   <!-- Handle punctuation after a number and after ordinals -->
   <xsl:template
-    match="text()[(my:ends-with-number(string(preceding::text()[1])) or preceding::*[position()=1 and local-name()='num' and @role='ordinal']) and my:starts-with-punctuation(string())]">
+    match="text()[my:starts-with-punctuation(string()) and not(preceding::* intersect preceding::text()/ancestor::*[@brl:render=('quote','singlequote')])
+    and (my:ends-with-number(string(preceding::text()[1])) or (preceding::* intersect preceding::text()/ancestor::brl:num[@role='ordinal']))]">
     <xsl:variable name="braille_tables">
       <xsl:call-template name="getTable"/>
     </xsl:variable>
