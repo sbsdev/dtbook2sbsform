@@ -219,60 +219,6 @@ y BYLINE_foo
   </utfx:test>
 
   <utfx:test>
-    <utfx:name>Translation of list</utfx:name>
-    <utfx:assert-equal>
-      <utfx:source>
-	<dtb:list xml:lang="de"></dtb:list>
-      </utfx:source>
-      <utfx:expected>
-y PLISTb
-
-y PLISTe
-
-      </utfx:expected>
-    </utfx:assert-equal>
-  </utfx:test>
-
-  <utfx:test>
-    <utfx:name>Translation of list with brl:class attr</utfx:name>
-    <utfx:assert-equal>
-      <utfx:source>
-	<dtb:list xml:lang="de" brl:class="foo"></dtb:list>
-      </utfx:source>
-      <utfx:expected>
-y PLISTb_foo
-
-y PLISTe_foo
-      </utfx:expected>
-    </utfx:assert-equal>
-  </utfx:test>
-
-  <utfx:test>
-    <utfx:name>Translation of li</utfx:name>
-    <utfx:assert-equal>
-      <utfx:source>
-	<dtb:li xml:lang="de"></dtb:li>
-      </utfx:source>
-      <utfx:expected>
-y LI
-      </utfx:expected>
-    </utfx:assert-equal>
-  </utfx:test>
-
-  <utfx:test>
-    <utfx:name>Translation of li with brl:class attr</utfx:name>
-    <utfx:assert-equal>
-      <utfx:source>
-	<dtb:li xml:lang="de" brl:class="foo"></dtb:li>
-      </utfx:source>
-      <utfx:expected>
-y LI_foo
-
-      </utfx:expected>
-    </utfx:assert-equal>
-  </utfx:test>
-
-  <utfx:test>
     <utfx:name>Translation of poem</utfx:name>
     <utfx:assert-equal>
       <utfx:source>
@@ -400,6 +346,19 @@ y LINEe_foo
 	</brl:select>
       </utfx:source>
       <utfx:expected>FOO Bar</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>Selection feature inside &lt;em&gt;</utfx:name>
+    <utfx:assert-equal>
+      <utfx:source>
+	<stub xml:lang="de">
+          <dtb:p><dtb:em brl:render="quote"><brl:select><brl:when-braille><brl:literal>'.DD'.</brl:literal></brl:when-braille><brl:otherwise>♫</brl:otherwise></brl:select> Hörst du das Pfeifen vom Murmeltier droben ...</dtb:em></dtb:p>
+	</stub>
+      </utfx:source>
+      <utfx:expected>y P
+ ('.DD'. H9R] DU D PF3FC VM MURMYT0R DROBC ...)</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
 
@@ -664,7 +623,7 @@ y LINEb
 y LINEe
  
 y LINEb
- ON WHI4 YOU MAY DEPEND,
+ ON WHICH YOU MAY DEPEND,
 y LINEe
  
 y LINEb
@@ -672,7 +631,7 @@ y LINEb
 y LINEe
  
 y LINEb
- MU4 L3SURE TIME TO PLAN,
+ MUCH LEISURE TIME TO PLAN,
 y LINEe
  
 y LINEb
@@ -680,7 +639,7 @@ y LINEb
 y LINEe
  
 y LINEb
- JU] ASK THE BUSY MAN.'.
+ JUST ASK THE BUSY MAN.'.
 y LINEe
  
 y LINEGRe
