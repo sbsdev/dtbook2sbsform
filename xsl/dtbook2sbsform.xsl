@@ -585,7 +585,9 @@ u,
 	  <xsl:choose>
 	    <xsl:when test="$element-name = 'blockquote'">BLQUO</xsl:when>
 	    <xsl:when test="$element-name = 'epigraph'">EPIGR</xsl:when>
-	    <xsl:when test="$element-name = 'list'">PLIST</xsl:when>
+            <xsl:when test="$element-name = 'list' and @type='pl'">PLIST</xsl:when>
+            <xsl:when test="$element-name = 'list' and @type='ul'">ULIST</xsl:when>
+            <xsl:when test="$element-name = 'list' and @type='ol'">OLIST</xsl:when>
 	    <xsl:otherwise>
 	      <xsl:value-of select="upper-case($element-name)"/>
 	    </xsl:otherwise>
