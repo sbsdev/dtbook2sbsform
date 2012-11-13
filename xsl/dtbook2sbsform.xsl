@@ -2174,7 +2174,7 @@ i f=1 l=1
   <xsl:template match="brl:name">
     <xsl:variable name="braille_tables">
       <xsl:choose>
-        <xsl:when test="matches(., '\p{Ll}\p{Lu}')">
+        <xsl:when test="matches(., '\p{Ll}&#x00AD;?\p{Lu}')">
           <xsl:call-template name="getTable">
             <xsl:with-param name="context" select="'name_capitalized'"/>
           </xsl:call-template> 
