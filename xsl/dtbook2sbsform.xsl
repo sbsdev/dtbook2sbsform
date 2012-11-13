@@ -1506,12 +1506,32 @@ i f=1 l=1
     <xsl:apply-templates/>
   </xsl:template>
 
-  <xsl:template match="dtb:list[@brl:class]">
+  <xsl:template match="dtb:list[@brl:class and @type='pl']">
     <xsl:text>&#10;y PLISTb_</xsl:text>
     <xsl:value-of select="@brl:class"/>
     <xsl:text>&#10;</xsl:text>
     <xsl:apply-templates/>
     <xsl:text>&#10;y PLISTe_</xsl:text>
+    <xsl:value-of select="@brl:class"/>
+    <xsl:text>&#10;</xsl:text>
+  </xsl:template>
+
+  <xsl:template match="dtb:list[@brl:class and @type='ul']">
+    <xsl:text>&#10;y ULISTb_</xsl:text>
+    <xsl:value-of select="@brl:class"/>
+    <xsl:text>&#10;</xsl:text>
+    <xsl:apply-templates/>
+    <xsl:text>&#10;y ULISTe_</xsl:text>
+    <xsl:value-of select="@brl:class"/>
+    <xsl:text>&#10;</xsl:text>
+  </xsl:template>
+
+  <xsl:template match="dtb:list[@brl:class and @type='ol']">
+    <xsl:text>&#10;y OLISTb_</xsl:text>
+    <xsl:value-of select="@brl:class"/>
+    <xsl:text>&#10;</xsl:text>
+    <xsl:apply-templates/>
+    <xsl:text>&#10;y OLISTe_</xsl:text>
     <xsl:value-of select="@brl:class"/>
     <xsl:text>&#10;</xsl:text>
   </xsl:template>
