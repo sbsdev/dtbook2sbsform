@@ -579,36 +579,45 @@ u,
 	</xsl:for-each>
       </xsl:for-each-group>
       <!-- Elements that have both a start and an end macro -->
-      <xsl:for-each-group select="//dtb:blockquote[@brl:class]|//dtb:epigraph[@brl:class]|//dtb:list[@brl:class]|//dtb:poem[@brl:class]|//dtb:linegroup[@brl:class]|//dtb:line[@brl:class]|//dtb:div[@brl:class]" group-by="local-name()">
-	<xsl:variable name="element-name" select="current-grouping-key()"/>
-	<xsl:variable name="makro-name" >
+      <xsl:for-each-group
+          select="//dtb:blockquote[@brl:class]|
+                  //dtb:epigraph[@brl:class]|
+                  //dtb:list[@brl:class]|
+                  //dtb:poem[@brl:class]|
+                  //dtb:linegroup[@brl:class]|
+                  //dtb:line[@brl:class]|
+                  //dtb:div[@brl:class]"
+          group-by="if (self::dtb:list) then concat('list@type=', @type) else local-name()">
+	<xsl:variable name="element-name" select="local-name()"/>
+        <xsl:variable name="makro-name">
 	  <xsl:choose>
-	    <xsl:when test="$element-name = 'blockquote'">BLQUO</xsl:when>
-	    <xsl:when test="$element-name = 'epigraph'">EPIGR</xsl:when>
-            <xsl:when test="$element-name = 'list' and @type='pl'">PLIST</xsl:when>
-            <xsl:when test="$element-name = 'list' and @type='ul'">ULIST</xsl:when>
-            <xsl:when test="$element-name = 'list' and @type='ol'">OLIST</xsl:when>
+	    <xsl:when test="$element-name='blockquote'">BLQUO</xsl:when>
+	    <xsl:when test="$element-name='epigraph'">EPIGR</xsl:when>
+            <xsl:when test="$element-name='list' and @type='pl'">PLIST</xsl:when>
+            <xsl:when test="$element-name='list' and @type='ul'">ULIST</xsl:when>
+            <xsl:when test="$element-name='list' and @type='ol'">OLIST</xsl:when>
 	    <xsl:otherwise>
 	      <xsl:value-of select="upper-case($element-name)"/>
 	    </xsl:otherwise>
 	  </xsl:choose>
 	</xsl:variable>
-	<xsl:for-each select="distinct-values(//dtb:*[local-name() = $element-name]/@brl:class)">
-	  <xsl:text>&#10;y b </xsl:text>
+        <xsl:for-each-group select="current-group()" group-by="string(@brl:class)">
+          <xsl:variable name="class-name" select="current-grouping-key()"/>
+          <xsl:text>&#10;y b </xsl:text>
 	  <xsl:value-of select="$makro-name"/><xsl:text>b_</xsl:text>
-	  <xsl:value-of select="."/><xsl:text>&#10;</xsl:text>
+	  <xsl:value-of select="$class-name"/><xsl:text>&#10;</xsl:text>
 	  <xsl:text>X TODO: Fix this macro&#10;</xsl:text>
 	  <xsl:text>y e </xsl:text>
 	  <xsl:value-of select="$makro-name"/><xsl:text>b_</xsl:text>
-	  <xsl:value-of select="."/><xsl:text>&#10;&#10;</xsl:text>
+	  <xsl:value-of select="$class-name"/><xsl:text>&#10;&#10;</xsl:text>
 	  <xsl:text>&#10;y b </xsl:text>
 	  <xsl:value-of select="$makro-name"/><xsl:text>e_</xsl:text>
-	  <xsl:value-of select="."/><xsl:text>&#10;</xsl:text>
+	  <xsl:value-of select="$class-name"/><xsl:text>&#10;</xsl:text>
 	  <xsl:text>X TODO: Fix this macro&#10;</xsl:text>
 	  <xsl:text>y e </xsl:text>
 	  <xsl:value-of select="$makro-name"/><xsl:text>e_</xsl:text>
-	  <xsl:value-of select="."/><xsl:text>&#10;&#10;</xsl:text>
-	</xsl:for-each>
+	  <xsl:value-of select="$class-name"/><xsl:text>&#10;&#10;</xsl:text>
+        </xsl:for-each-group>
       </xsl:for-each-group>
     </xsl:if>
 
