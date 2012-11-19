@@ -644,8 +644,10 @@ u,
 
     <xsl:if test="//dtb:p[not(@brl:class) and contains(@class, 'precedingseparator')]">
       <xsl:text>y b SEPARATOR&#10;</xsl:text>
-      <xsl:text>lm1&#10;</xsl:text>
-      <xsl:text>t::::::&#10;</xsl:text>
+      <xsl:text>B+&#10;</xsl:text>
+      <xsl:text>L&#10;</xsl:text>
+      <xsl:text>t*?*?*?&#10;</xsl:text>
+      <xsl:text>B-&#10;</xsl:text>
       <xsl:text>lm1&#10;</xsl:text>
       <xsl:text>n2&#10;</xsl:text>
       <xsl:text>y e SEPARATOR&#10;</xsl:text>
