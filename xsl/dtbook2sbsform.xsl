@@ -1997,8 +1997,8 @@ i f=1 l=1
           </xsl:for-each>
         </xsl:otherwise>
       </xsl:choose>
-      <!-- If the last 2 letters where capitals and the following letter is small, insert a KLEINBUCHSTABE -->
-      <xsl:if test="matches(string(.), '.*\p{Lu}\p{Lu}$') and 
+      <!-- If the last letter was a capital and the following letter is small, insert a KLEINBUCHSTABE -->
+      <xsl:if test="matches(string(.), '.*\p{Lu}$') and
                     following-sibling::node()[1][self::text()] and
                     matches(string(following-sibling::node()[1]), '^\p{Ll}.*')">
         <xsl:value-of select="$KLEINBUCHSTABE"/>
