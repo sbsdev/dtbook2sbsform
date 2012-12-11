@@ -1143,44 +1143,44 @@ i f=1 l=1
     <xsl:choose>
       <xsl:when test="$book_type = 'sjw'">
         <xsl:value-of
-          select="louis:translate(string($braille_tables), 'Brailleausgabe mit freundlicher Genehmigung des ')"/>
+          select="louis:translate(string($braille_tables), 'Braille­aus­ga­be mit freund­licher Ge­neh­mi­gung des ')"/>
         <xsl:call-template name="handle_abbr">
           <xsl:with-param name="context" select="'abbr'"/>
           <xsl:with-param name="content" select="'SJW'"/>
         </xsl:call-template>
         <xsl:value-of
-          select="louis:translate(string($braille_tables), ' Schweizerischen Jugendschriftenwerks, Zürich.')"/>
+          select="louis:translate(string($braille_tables), ' Schwei­ze­ri­schen Ju­gend­schrif­ten­werks, Zürich.')"/>
         <xsl:value-of
-          select="louis:translate(string($braille_tables), ' Wir danken dem ')"/>
+          select="louis:translate(string($braille_tables), ' Wir dan­ken dem ')"/>
         <xsl:call-template name="handle_abbr">
           <xsl:with-param name="context" select="'abbr'"/>
           <xsl:with-param name="content" select="'SJW'"/>
         </xsl:call-template>
         <xsl:text>-</xsl:text>
         <xsl:value-of
-          select="louis:translate(string($braille_tables), '&#x250A;Verlag für die Bereitstellung der Daten.')"/>
+          select="louis:translate(string($braille_tables), '&#x250A;Ver­lag für die Be­reit­stel­lung der Da­ten.')"/>
       </xsl:when>
       <xsl:otherwise>
         <xsl:value-of
-          select="louis:translate(string($braille_tables), 'Dieses Braillebuch ist die ausschließlich ')"/>
+          select="louis:translate(string($braille_tables), 'Dieses Braille­buch ist die aus­schließ­lich ')"/>
         <xsl:value-of
-          select="louis:translate(string($braille_tables), 'für die Nutzung durch Seh- und Lesebehinderte Menschen ')"/>
+          select="louis:translate(string($braille_tables), 'für die Nut­zung durch Seh- und Le­se­be­hin­der­te Men­schen ')"/>
         <xsl:value-of
-          select="louis:translate(string($braille_tables), 'bestimmte zugängliche Version eines urheberrechtlich ')"/>
+          select="louis:translate(string($braille_tables), 'be­stimm­te zu­gäng­li­che Ver­sion eines ur­he­ber­recht­lich ')"/>
         <xsl:value-of
-          select="louis:translate(string($braille_tables), 'geschützten Werks. ')"/>
+          select="louis:translate(string($braille_tables), 'ge­schütz­ten Werks. ')"/>
         <xsl:value-of
           select="louis:translate(string($vform_braille_tables), 'Sie ')"/>
-        <xsl:value-of select="louis:translate(string($braille_tables), 'können ')"/>
+        <xsl:value-of select="louis:translate(string($braille_tables), 'kön­nen ')"/>
         <xsl:value-of
-          select="louis:translate(string($braille_tables), 'es im Rahmen des Urheberrechts persönlich nutzen, ')"/>
+          select="louis:translate(string($braille_tables), 'es im Rah­men des Ur­he­ber­rechts per­sön­lich nut­zen, ')"/>
         <xsl:value-of
-          select="louis:translate(string($braille_tables), 'dürfen es aber nicht weiter verbreiten oder öffentlich ')"/>
+          select="louis:translate(string($braille_tables), 'dür­fen es aber nicht wei­ter ver­brei­ten oder öf­fent­lich ')"/>
         <xsl:value-of
-          select="louis:translate(string($braille_tables), 'zugänglich machen.')"/>
+          select="louis:translate(string($braille_tables), 'zu­gäng­lich ma­chen.')"/>
 	<xsl:if test="//dtb:meta[lower-case(@name)='prod:source']/@content = 'electronicData'">
 	  <xsl:text>&#10;l&#10; </xsl:text>
-	  <xsl:value-of select="louis:translate(string($braille_tables), 'Wir danken dem Verlag für die freundliche Bereitstellung der elektronischen Textdaten. ')"/>
+	  <xsl:value-of select="louis:translate(string($braille_tables), 'Wir dan­ken dem Ver­lag für die freund­liche Be­reit­stel­lung der elek­troni­schen Text­da­ten. ')"/>
 	</xsl:if>
       </xsl:otherwise>
     </xsl:choose>
