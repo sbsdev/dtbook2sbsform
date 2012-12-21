@@ -198,6 +198,11 @@
     <xsl:value-of select="matches($string, '\W([-/]|\p{P})+$')"/>
   </xsl:function>
 
+  <xsl:function name="my:filter-hyphenation" as="xs:string">
+    <xsl:param name="string"/>
+    <xsl:value-of select="if ($hyphenation) then $string else translate($string, '­', '')"/>
+  </xsl:function>
+
   <xsl:template name="getTable">
     <xsl:param name="context" select="local-name()"/>
     <!-- handle explicit setting of the contraction -->
@@ -1143,44 +1148,44 @@ i f=1 l=1
     <xsl:choose>
       <xsl:when test="$book_type = 'sjw'">
         <xsl:value-of
-          select="louis:translate(string($braille_tables), 'Braille­aus­ga­be mit freund­licher Ge­neh­mi­gung des ')"/>
+          select="louis:translate(string($braille_tables), my:filter-hyphenation('Braille­aus­ga­be mit freund­licher Ge­neh­mi­gung des '))"/>
         <xsl:call-template name="handle_abbr">
           <xsl:with-param name="context" select="'abbr'"/>
           <xsl:with-param name="content" select="'SJW'"/>
         </xsl:call-template>
         <xsl:value-of
-          select="louis:translate(string($braille_tables), ' Schwei­ze­ri­schen Ju­gend­schrif­ten­werks, Zürich.')"/>
+          select="louis:translate(string($braille_tables), my:filter-hyphenation(' Schwei­ze­ri­schen Ju­gend­schrif­ten­werks, Zürich.'))"/>
         <xsl:value-of
-          select="louis:translate(string($braille_tables), ' Wir dan­ken dem ')"/>
+          select="louis:translate(string($braille_tables), my:filter-hyphenation(' Wir dan­ken dem '))"/>
         <xsl:call-template name="handle_abbr">
           <xsl:with-param name="context" select="'abbr'"/>
           <xsl:with-param name="content" select="'SJW'"/>
         </xsl:call-template>
         <xsl:text>-</xsl:text>
         <xsl:value-of
-          select="louis:translate(string($braille_tables), '&#x250A;Ver­lag für die Be­reit­stel­lung der Da­ten.')"/>
+          select="louis:translate(string($braille_tables), my:filter-hyphenation('&#x250A;Ver­lag für die Be­reit­stel­lung der Da­ten.'))"/>
       </xsl:when>
       <xsl:otherwise>
         <xsl:value-of
-          select="louis:translate(string($braille_tables), 'Dieses Braille­buch ist die aus­schließ­lich ')"/>
+          select="louis:translate(string($braille_tables), my:filter-hyphenation('Dieses Braille­buch ist die aus­schließ­lich '))"/>
         <xsl:value-of
-          select="louis:translate(string($braille_tables), 'für die Nut­zung durch Seh- und Le­se­be­hin­der­te Men­schen ')"/>
+          select="louis:translate(string($braille_tables), my:filter-hyphenation('für die Nut­zung durch Seh- und Le­se­be­hin­der­te Men­schen '))"/>
         <xsl:value-of
-          select="louis:translate(string($braille_tables), 'be­stimm­te zu­gäng­li­che Ver­sion eines ur­he­ber­recht­lich ')"/>
+          select="louis:translate(string($braille_tables), my:filter-hyphenation('be­stimm­te zu­gäng­li­che Ver­sion eines ur­he­ber­recht­lich '))"/>
         <xsl:value-of
-          select="louis:translate(string($braille_tables), 'ge­schütz­ten Werks. ')"/>
+          select="louis:translate(string($braille_tables), my:filter-hyphenation('ge­schütz­ten Werks. '))"/>
         <xsl:value-of
           select="louis:translate(string($vform_braille_tables), 'Sie ')"/>
-        <xsl:value-of select="louis:translate(string($braille_tables), 'kön­nen ')"/>
+        <xsl:value-of select="louis:translate(string($braille_tables), my:filter-hyphenation('kön­nen '))"/>
         <xsl:value-of
-          select="louis:translate(string($braille_tables), 'es im Rah­men des Ur­he­ber­rechts per­sön­lich nut­zen, ')"/>
+          select="louis:translate(string($braille_tables), my:filter-hyphenation('es im Rah­men des Ur­he­ber­rechts per­sön­lich nut­zen, '))"/>
         <xsl:value-of
-          select="louis:translate(string($braille_tables), 'dür­fen es aber nicht wei­ter ver­brei­ten oder öf­fent­lich ')"/>
+          select="louis:translate(string($braille_tables), my:filter-hyphenation('dür­fen es aber nicht wei­ter ver­brei­ten oder öf­fent­lich '))"/>
         <xsl:value-of
-          select="louis:translate(string($braille_tables), 'zu­gäng­lich ma­chen.')"/>
+          select="louis:translate(string($braille_tables), my:filter-hyphenation('zu­gäng­lich ma­chen.'))"/>
 	<xsl:if test="//dtb:meta[lower-case(@name)='prod:source']/@content = 'electronicData'">
 	  <xsl:text>&#10;l&#10; </xsl:text>
-	  <xsl:value-of select="louis:translate(string($braille_tables), 'Wir dan­ken dem Ver­lag für die freund­liche Be­reit­stel­lung der elek­troni­schen Text­da­ten. ')"/>
+	  <xsl:value-of select="louis:translate(string($braille_tables), my:filter-hyphenation('Wir dan­ken dem Ver­lag für die freund­liche Be­reit­stel­lung der elek­troni­schen Text­da­ten. '))"/>
 	</xsl:if>
       </xsl:otherwise>
     </xsl:choose>
