@@ -783,6 +783,7 @@ y e EPIGRe
       <xsl:text>+i f=1 l=3&#10;</xsl:text>
       <xsl:text>?nl=0&#10;</xsl:text>
       <xsl:text>+lm1&#10;</xsl:text>
+      <xsl:text>+n2&#10;</xsl:text>
       <xsl:text>+i f=3 l=1&#10;</xsl:text>
       <xsl:text>y e PLISTe&#10;</xsl:text>
     </xsl:if>
@@ -806,6 +807,7 @@ y e EPIGRe
       <xsl:text>+i f=1 l=3&#10;</xsl:text>
       <xsl:text>?nl=0&#10;</xsl:text>
       <xsl:text>+lm1&#10;</xsl:text>
+      <xsl:text>+n2&#10;</xsl:text>
       <xsl:text>+i f=3 l=1&#10;</xsl:text>
       <xsl:text>y e ULISTe&#10;</xsl:text>
     </xsl:if>
@@ -829,6 +831,7 @@ y e EPIGRe
       <xsl:text>+i f=1 l=3&#10;</xsl:text>
       <xsl:text>?nl=0&#10;</xsl:text>
       <xsl:text>+lm1&#10;</xsl:text>
+      <xsl:text>+n2&#10;</xsl:text>
       <xsl:text>+i f=3 l=1&#10;</xsl:text>
       <xsl:text>y e OLISTe&#10;</xsl:text>
     </xsl:if>
