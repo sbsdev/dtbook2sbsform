@@ -34,7 +34,7 @@
       <utfx:source>
         <a xml:lang="de"/>
       </utfx:source>
-      <utfx:expected>sbs.dis,sbs-de-core6.cti,sbs-de-accents.cti,sbs-special.cti,sbs-whitespace.mod,sbs-de-letsign.mod,sbs-de-accents-ch.mod,sbs-special.mod</utfx:expected>
+      <utfx:expected>sbs.dis,sbs-de-core6.cti,sbs-de-accents.cti,sbs-special.cti,sbs-whitespace.mod,sbs-de-letsign.mod,sbs-de-hyph-none.mod,sbs-de-accents-ch.mod,sbs-special.mod</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
 
