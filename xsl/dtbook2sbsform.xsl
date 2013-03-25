@@ -229,7 +229,7 @@
       <xsl:text>sbs-de-capsign.mod,</xsl:text>
     </xsl:if>
     <xsl:if
-      test="$actual_contraction = '2' and not($context=('num_roman','abbr','date_month','date_day','name_capitalized'))">
+      test="$actual_contraction = '2' and not($context=('num_roman','abbr','date_month','date_day','name_capitalized','a'))">
       <xsl:text>sbs-de-letsign.mod,</xsl:text>
     </xsl:if>
     <xsl:if test="$context != 'date_month' and $context != 'denominator' and $context != 'a'">
