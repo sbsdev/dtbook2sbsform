@@ -60,9 +60,9 @@
     <utfx:name>Translation of h1 with leading and trailing spaces</utfx:name>
     <utfx:assert-equal>
       <utfx:source>
-	<dtb:h1 xml:lang="de"> foo <brl:v-form>bar</brl:v-form> </dtb:h1>
+	<dtb:h1 xml:lang="de"> foo <brl:v-form>Bar</brl:v-form> </dtb:h1>
       </utfx:source>
-      <utfx:expected>y H1&#13;  FOO BAR </utfx:expected>
+      <utfx:expected>y H1&#13;  FOO $BAR </utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
 

@@ -2232,7 +2232,7 @@ i f=1 l=1
     </xsl:variable>
     <xsl:choose>
       <xsl:when test="$show_v_forms = true()">
-        <xsl:value-of select="louis:translate(string($braille_tables), string())"/>
+        <xsl:value-of select="louis:translate(string($braille_tables), concat(upper-case(substring(string(),1,1)),lower-case(substring(string(),2))))"/>
       </xsl:when>
       <xsl:otherwise>
         <xsl:apply-templates/>
