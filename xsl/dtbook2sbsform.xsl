@@ -860,7 +860,7 @@ y e EPIGRe
 
     <xsl:if test="//brl:volume">
       <xsl:text>y b EndVol
-B+
+n3
 L
 tCCCCCCCCCCCC
 t
@@ -883,7 +883,6 @@ t
       </xsl:choose>
       <xsl:value-of select="louis:translate(string($braille_tables),'Bandes')"/>
       <xsl:text>
-B-
 y e EndVol
 </xsl:text>
     </xsl:if>
@@ -909,7 +908,7 @@ y e Inhaltsv
 
     <xsl:text>y b EndBook
 lm1
-B+
+n3
 L
 tCCCCCCCCCCCC
 t
@@ -917,7 +916,6 @@ t
     <xsl:value-of select="louis:translate(string($braille_tables),'Ende des Buches')"/>
     <xsl:text>
 t======
-B-
 y e EndBook
 </xsl:text>
 
