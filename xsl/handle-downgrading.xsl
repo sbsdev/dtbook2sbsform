@@ -43,7 +43,7 @@
     
     <xsl:template match="*[@xml:lang or @brl:grade]">
         <xsl:choose>
-            <xsl:when test="my:get-grade(parent::*[1]) &gt; my:get-grade(.)">
+            <xsl:when test="my:get-grade(parent::*[1]) = 2 and (my:get-grade(.) &lt; 2)">
                 <xsl:apply-templates mode="add-announcements" select=".">
                     <xsl:with-param name="top-element-id" select="generate-id(.)"/>
                     <xsl:with-param name="single-word"

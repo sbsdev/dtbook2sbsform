@@ -56,6 +56,25 @@
       </utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
+
+  <utfx:test>
+    <utfx:name>Downgrading from grade 1 to grade 0</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="1"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+        <stub xml:lang="de">
+          <dtb:p>Vollschrift schrift schrift <dtb:span brl:grade="1">Basisschrift/Basisschrift</dtb:span> voll voll voll</dtb:p>
+        </stub>
+      </utfx:source>
+      <utfx:expected>
+        <stub xml:lang="de">
+          <dtb:p>Vollschrift schrift schrift <dtb:span brl:grade="1">Basisschrift/Basisschrift</dtb:span> voll voll voll</dtb:p>
+        </stub>
+      </utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
   
   <utfx:test>
     <utfx:name>Span inside span 2</utfx:name>
