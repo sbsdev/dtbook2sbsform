@@ -708,10 +708,10 @@ y POEMe</utfx:expected>
     </utfx:stylesheet-params>
     <utfx:assert-equal>
       <utfx:source>
-        <stub xml:lang="de">Henry <brl:num role="roman">IV</brl:num>.
-          Auf Seite <brl:num role="roman">iii</brl:num> beginnt das Vorwort.</stub>
+        <dtb:p xml:lang="de">Henry <brl:num role="roman">IV</brl:num>.
+          Auf Seite <brl:num role="roman">iii</brl:num> beginnt das Vorwort.</dtb:p>
       </utfx:source>
-      <utfx:expected>HCR'Y >IV. 1 S3( 'III ;G*NT D ,?W?T.</utfx:expected>
+      <utfx:expected>y P&#13; HCR'Y >IV. 1 S3( 'III ;G*NT D ,?W?T.</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
   
@@ -723,10 +723,10 @@ y POEMe</utfx:expected>
     </utfx:stylesheet-params>
     <utfx:assert-equal>
       <utfx:source>
-        <stub xml:lang="de">Am <brl:num role="ordinal">5.</brl:num> Tag geschah es zum <brl:num role="ordinal">1004.</brl:num>
-          (oder <brl:num role="ordinal">1005.</brl:num>) Mal.</stub>
+        <dtb:p xml:lang="de">Am <brl:num role="ordinal">5.</brl:num> Tag geschah es zum <brl:num role="ordinal">1004.</brl:num>
+          (oder <brl:num role="ordinal">1005.</brl:num>) Mal.</dtb:p>
       </utfx:source>
-      <utfx:expected>AM #? TAG &amp;5AH % ZM #,))/ =O #,))?'= MAL.</utfx:expected>
+      <utfx:expected>y P&#13; AM #? TAG &amp;5AH % ZM #,))/ =O #,))?'= MAL.</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
   
@@ -751,9 +751,9 @@ y POEMe</utfx:expected>
     </utfx:stylesheet-params>
     <utfx:assert-equal>
       <utfx:source>
-        <stub xml:lang="de">Telefon <brl:num role="phone">041 / 123 45 67</brl:num>? Telefon <brl:num role="phone">041/123'45'67</brl:num>!</stub>
+        <dtb:p xml:lang="de">Telefon <brl:num role="phone">041 / 123 45 67</brl:num>? Telefon <brl:num role="phone">041/123'45'67</brl:num>!</dtb:p>
       </utfx:source>
-      <utfx:expected>TYEFON #JDA.ABC.DE.FG'? TYEFON #JDA.ABC.DE.FG'+</utfx:expected>
+      <utfx:expected>y P&#13; TYEFON #JDA.ABC.DE.FG'? TYEFON #JDA.ABC.DE.FG'+</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
   
@@ -764,9 +764,9 @@ y POEMe</utfx:expected>
     </utfx:stylesheet-params>
     <utfx:assert-equal>
       <utfx:source>
-        <stub xml:lang="de"><brl:num role="fraction">1/3</brl:num>? <brl:num role="fraction">2/5</brl:num>, (<brl:num role="fraction">13/15</brl:num>) <brl:num role="mixed">3 2/5</brl:num>? <brl:num role="mixed">1 12/19</brl:num>, (<brl:num role="mixed">3 24/25</brl:num>)</stub>
+        <dtb:p xml:lang="de"><brl:num role="fraction">1/3</brl:num>? <brl:num role="fraction">2/5</brl:num>, (<brl:num role="fraction">13/15</brl:num>) <brl:num role="mixed">3 2/5</brl:num>? <brl:num role="mixed">1 12/19</brl:num>, (<brl:num role="mixed">3 24/25</brl:num>)</dtb:p>
       </utfx:source>
-      <utfx:expected>#A:'? #B?', =#AC,?'= #C#B?'? #A#AB,*', =#C#BD;?'=</utfx:expected>
+      <utfx:expected>y P&#13; #A:'? #B?', =#AC,?'= #C#B?'? #A#AB,*', =#C#BD;?'=</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
   

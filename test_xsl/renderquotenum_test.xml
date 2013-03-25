@@ -31,9 +31,9 @@
     </utfx:stylesheet-params>
     <utfx:assert-equal>
       <utfx:source>
-        <stub xml:lang="de">bla <dtb:em brl:render="quote">ble ble 8</dtb:em>: blo</stub>
+        <dtb:p xml:lang="de">bla <dtb:em brl:render="quote">ble ble 8</dtb:em>: blo</dtb:p>
       </utfx:source>
-      <utfx:expected>BLA (BLE BLE #H'): BLO</utfx:expected>
+      <utfx:expected>y P&#13; BLA (BLE BLE #H'): BLO</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
   
@@ -44,9 +44,9 @@
     </utfx:stylesheet-params>
     <utfx:assert-equal>
       <utfx:source>
-        <stub xml:lang="de">bla <dtb:em brl:render="quote">ble ble 8</dtb:em>! blo</stub>
+        <dtb:p xml:lang="de">bla <dtb:em brl:render="quote">ble ble 8</dtb:em>! blo</dtb:p>
       </utfx:source>
-      <utfx:expected>BLA (BLE BLE #H')+ BLO</utfx:expected>
+      <utfx:expected>y P&#13; BLA (BLE BLE #H')+ BLO</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
   
@@ -57,9 +57,9 @@
     </utfx:stylesheet-params>
     <utfx:assert-equal>
       <utfx:source>
-        <stub xml:lang="de">bla <dtb:em brl:render="quote">ble ble 8</dtb:em>? blo</stub>
+        <dtb:p xml:lang="de">bla <dtb:em brl:render="quote">ble ble 8</dtb:em>? blo</dtb:p>
       </utfx:source>
-      <utfx:expected>BLA (BLE BLE #H')? BLO</utfx:expected>
+      <utfx:expected>y P&#13; BLA (BLE BLE #H')? BLO</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
   
@@ -70,9 +70,9 @@
     </utfx:stylesheet-params>
     <utfx:assert-equal>
       <utfx:source>
-        <stub xml:lang="de">bla <dtb:em brl:render="quote">ble ble 8</dtb:em>; blo</stub>
+        <dtb:p xml:lang="de">bla <dtb:em brl:render="quote">ble ble 8</dtb:em>; blo</dtb:p>
       </utfx:source>
-      <utfx:expected>BLA (BLE BLE #H'); BLO</utfx:expected>
+      <utfx:expected>y P&#13; BLA (BLE BLE #H'); BLO</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
   
@@ -83,9 +83,9 @@
     </utfx:stylesheet-params>
     <utfx:assert-equal>
       <utfx:source>
-        <stub xml:lang="de">bla <dtb:em brl:render="quote">ble ble 8</dtb:em>) blo</stub>
+        <dtb:p xml:lang="de">bla <dtb:em brl:render="quote">ble ble 8</dtb:em>) blo</dtb:p>
       </utfx:source>
-      <utfx:expected>BLA (BLE BLE #H')= BLO</utfx:expected>
+      <utfx:expected>y P&#13; BLA (BLE BLE #H')= BLO</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
   
@@ -96,9 +96,9 @@
     </utfx:stylesheet-params>
     <utfx:assert-equal>
       <utfx:source>
-        <stub xml:lang="de">bla <dtb:em brl:render="quote">ble ble 8</dtb:em>. blo</stub>
+        <dtb:p xml:lang="de">bla <dtb:em brl:render="quote">ble ble 8</dtb:em>. blo</dtb:p>
       </utfx:source>
-      <utfx:expected>BLA (BLE BLE #H'). BLO</utfx:expected>
+      <utfx:expected>y P&#13; BLA (BLE BLE #H'). BLO</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
   
@@ -109,9 +109,9 @@
     </utfx:stylesheet-params>
     <utfx:assert-equal>
       <utfx:source>
-        <stub xml:lang="de">bla <dtb:em brl:render="quote">ble ble 8</dtb:em>, blo</stub>
+        <dtb:p xml:lang="de">bla <dtb:em brl:render="quote">ble ble 8</dtb:em>, blo</dtb:p>
       </utfx:source>
-      <utfx:expected>BLA (BLE BLE #H'), BLO</utfx:expected>
+      <utfx:expected>y P&#13; BLA (BLE BLE #H'), BLO</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
   
@@ -122,9 +122,9 @@
     </utfx:stylesheet-params>
     <utfx:assert-equal>
       <utfx:source>
-        <stub xml:lang="de">bla <dtb:em brl:render="singlequote">ble ble 8</dtb:em>: blo</stub>
+        <dtb:p xml:lang="de">bla <dtb:em brl:render="singlequote">ble ble 8</dtb:em>: blo</dtb:p>
       </utfx:source>
-      <utfx:expected>BLA '(BLE BLE #H'): BLO</utfx:expected>
+      <utfx:expected>y P&#13; BLA '(BLE BLE #H'): BLO</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
   
@@ -135,9 +135,9 @@
     </utfx:stylesheet-params>
     <utfx:assert-equal>
       <utfx:source>
-        <stub xml:lang="de">bla <dtb:em brl:render="singlequote">ble ble 8</dtb:em>! blo</stub>
+        <dtb:p xml:lang="de">bla <dtb:em brl:render="singlequote">ble ble 8</dtb:em>! blo</dtb:p>
       </utfx:source>
-      <utfx:expected>BLA '(BLE BLE #H')+ BLO</utfx:expected>
+      <utfx:expected>y P&#13; BLA '(BLE BLE #H')+ BLO</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
   
@@ -148,9 +148,9 @@
     </utfx:stylesheet-params>
     <utfx:assert-equal>
       <utfx:source>
-        <stub xml:lang="de">bla <dtb:em brl:render="singlequote">ble ble 8</dtb:em>? blo</stub>
+        <dtb:p xml:lang="de">bla <dtb:em brl:render="singlequote">ble ble 8</dtb:em>? blo</dtb:p>
       </utfx:source>
-      <utfx:expected>BLA '(BLE BLE #H')? BLO</utfx:expected>
+      <utfx:expected>y P&#13; BLA '(BLE BLE #H')? BLO</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
   
@@ -161,9 +161,9 @@
     </utfx:stylesheet-params>
     <utfx:assert-equal>
       <utfx:source>
-        <stub xml:lang="de">bla <dtb:em brl:render="singlequote">ble ble 8</dtb:em>; blo</stub>
+        <dtb:p xml:lang="de">bla <dtb:em brl:render="singlequote">ble ble 8</dtb:em>; blo</dtb:p>
       </utfx:source>
-      <utfx:expected>BLA '(BLE BLE #H'); BLO</utfx:expected>
+      <utfx:expected>y P&#13; BLA '(BLE BLE #H'); BLO</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
   
@@ -174,9 +174,9 @@
     </utfx:stylesheet-params>
     <utfx:assert-equal>
       <utfx:source>
-        <stub xml:lang="de">bla <dtb:em brl:render="singlequote">ble ble 8</dtb:em>) blo</stub>
+        <dtb:p xml:lang="de">bla <dtb:em brl:render="singlequote">ble ble 8</dtb:em>) blo</dtb:p>
       </utfx:source>
-      <utfx:expected>BLA '(BLE BLE #H')= BLO</utfx:expected>
+      <utfx:expected>y P&#13; BLA '(BLE BLE #H')= BLO</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
   
@@ -187,9 +187,9 @@
     </utfx:stylesheet-params>
     <utfx:assert-equal>
       <utfx:source>
-        <stub xml:lang="de">bla <dtb:em brl:render="singlequote">ble ble 8</dtb:em>. blo</stub>
+        <dtb:p xml:lang="de">bla <dtb:em brl:render="singlequote">ble ble 8</dtb:em>. blo</dtb:p>
       </utfx:source>
-      <utfx:expected>BLA '(BLE BLE #H'). BLO</utfx:expected>
+      <utfx:expected>y P&#13; BLA '(BLE BLE #H'). BLO</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
   
@@ -200,9 +200,9 @@
     </utfx:stylesheet-params>
     <utfx:assert-equal>
       <utfx:source>
-        <stub xml:lang="de">bla <dtb:em brl:render="singlequote">ble ble 8</dtb:em>, blo</stub>
+        <dtb:p xml:lang="de">bla <dtb:em brl:render="singlequote">ble ble 8</dtb:em>, blo</dtb:p>
       </utfx:source>
-      <utfx:expected>BLA '(BLE BLE #H'), BLO</utfx:expected>
+      <utfx:expected>y P&#13; BLA '(BLE BLE #H'), BLO</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
   
