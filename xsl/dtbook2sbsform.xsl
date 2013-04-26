@@ -2370,7 +2370,7 @@ i f=1 l=1
 
   <!-- Handle comma after ordinals and after fraction-->
   <xsl:template
-    match="text()[preceding::*[position()=1 and local-name()='num' and (@role='ordinal' or @role='fraction' or @ role='mixed')] and matches(string(), '^,')]" priority="100">
+    match="text()[(preceding::* intersect my:preceding-textnode-within-block(.)/ancestor::brl:num[@role=('ordinal','fraction','mixed')]) and matches(string(), '^,')]" priority="100">
     <xsl:variable name="braille_tables">
       <xsl:call-template name="getTable"/>
     </xsl:variable>
