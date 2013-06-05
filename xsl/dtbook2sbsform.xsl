@@ -717,14 +717,42 @@
     <xsl:text>&#10;</xsl:text>
   </xsl:template>
 
-  <xsl:template match="dtb:blockquote">
-    <xsl:text>&#10;y BLQUOb</xsl:text>
-    <xsl:if test="@brl:class"><xsl:text>_</xsl:text><xsl:value-of select="@brl:class"/></xsl:if>
-    <xsl:text>&#10;</xsl:text>
+  <!-- ====== -->
+  <!-- IMAGES -->
+  <!-- ====== -->
+  
+  <xsl:template match="dtb:imggroup">
     <xsl:apply-templates/>
-    <xsl:text>&#10;y BLQUOe</xsl:text>
-    <xsl:if test="@brl:class"><xsl:text>_</xsl:text><xsl:value-of select="@brl:class"/></xsl:if>
-    <xsl:text>&#10;</xsl:text>
+  </xsl:template>
+  
+  <xsl:template match="dtb:img">
+  </xsl:template>
+  
+  <xsl:template match="dtb:imggroup/dtb:caption">
+  </xsl:template>
+
+  <!-- ======== -->
+  <!-- PRODNOTE -->
+  <!-- ======== -->
+  
+  <xsl:template match="dtb:prodnote">
+  </xsl:template>
+
+  <!-- ======= -->
+  <!-- SUB/SUP -->
+  <!-- ======= -->
+  
+  <xsl:template match="dtb:sub|dtb:sup">
+  </xsl:template>
+
+  <!-- =========== -->
+  <!-- BLOCKQUOTES -->
+  <!-- =========== -->
+  
+  <xsl:template match="dtb:blockquote">
+    <xsl:call-template name="block_macro">
+      <xsl:with-param name="macro" select="'BLQUO'"/>
+    </xsl:call-template>
   </xsl:template>
 
   <xsl:template match="dtb:epigraph">
@@ -816,10 +844,16 @@
   </xsl:template>
 
   <xsl:template match="dtb:byline">
-    <xsl:text>&#10;y BYLINE</xsl:text>
-    <xsl:if test="@brl:class"><xsl:text>_</xsl:text><xsl:value-of select="@brl:class"/></xsl:if>
-    <xsl:text>&#10; </xsl:text>
-    <xsl:apply-templates/>
+    <xsl:call-template name="inline_macro">
+      <xsl:with-param name="macro" select="'BYLINE'"/>
+    </xsl:call-template>
+  </xsl:template>
+
+  <!-- ====== -->
+  <!-- LINES  -->
+  <!-- ====== -->
+  
+  <xsl:template match="dtb:linenum">
   </xsl:template>
 
   <xsl:template match="dtb:linegroup">
