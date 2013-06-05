@@ -474,68 +474,20 @@
     <xsl:apply-templates/>
   </xsl:template>
 
-  <xsl:template match="dtb:level1">
-    <xsl:text>&#10;y LEVEL1b&#10;</xsl:text>
+  <xsl:template name="level_macro">
+    <xsl:param name="macro" as="xs:string"/>
+    <xsl:value-of select="concat('&#10;y ', $macro, 'b&#10;')"/>
     <!-- add a comment if the first child is not a pagenum -->
-    <xsl:if test="not(name(child::*[1])='pagenum')">
-      <xsl:text>.xNOPAGENUM&#10;</xsl:text>
-    </xsl:if>
+    <xsl:value-of select="if (not(name(child::*[1])='pagenum')) then '.xNOPAGENUM&#10;' else ''"/>
     <xsl:apply-templates/>
     <xsl:call-template name="handle_level_endnotes"/>
-    <xsl:text>&#10;y LEVEL1e&#10;</xsl:text>
+    <xsl:value-of select="concat('&#10;y ', $macro, 'e&#10;')"/>
   </xsl:template>
 
-  <xsl:template match="dtb:level2">
-    <xsl:text>&#10;y LEVEL2b&#10;</xsl:text>
-    <!-- add a comment if the first child is not a pagenum -->
-    <xsl:if test="not(name(child::*[1])='pagenum')">
-      <xsl:text>.xNOPAGENUM&#10;</xsl:text>
-    </xsl:if>
-    <xsl:apply-templates/>
-    <xsl:call-template name="handle_level_endnotes"/>
-    <xsl:text>&#10;y LEVEL2e&#10;</xsl:text>
-  </xsl:template>
-
-  <xsl:template match="dtb:level3">
-    <xsl:text>&#10;y LEVEL3b&#10;</xsl:text>
-    <!-- add a comment if the first child is not a pagenum -->
-    <xsl:if test="not(name(child::*[1])='pagenum')">
-      <xsl:text>.xNOPAGENUM&#10;</xsl:text>
-    </xsl:if>
-    <xsl:apply-templates/>
-    <xsl:call-template name="handle_level_endnotes"/>
-    <xsl:text>&#10;y LEVEL3e&#10;</xsl:text>
-  </xsl:template>
-
-  <xsl:template match="dtb:level4">
-    <xsl:text>&#10;y LEVEL4b&#10;</xsl:text>
-    <!-- add a comment if the first child is not a pagenum -->
-    <xsl:if test="not(name(child::*[1])='pagenum')">
-      <xsl:text>.xNOPAGENUM&#10;</xsl:text>
-    </xsl:if>
-    <xsl:apply-templates/>
-    <xsl:call-template name="handle_level_endnotes"/>
-    <xsl:text>&#10;y LEVEL4e&#10;</xsl:text>
-  </xsl:template>
-
-  <xsl:template match="dtb:level5">
-    <xsl:text>&#10;y LEVEL5b&#10;</xsl:text>
-    <!-- add a comment if the first child is not a pagenum -->
-    <xsl:if test="not(name(child::*[1])='pagenum')">
-      <xsl:text>.xNOPAGENUM&#10;</xsl:text>
-    </xsl:if>
-    <xsl:apply-templates/>
-    <xsl:text>&#10;y LEVEL5e&#10;</xsl:text>
-  </xsl:template>
-
-  <xsl:template match="dtb:level6">
-    <xsl:text>&#10;y LEVEL6b&#10;</xsl:text>
-    <!-- add a comment if the first child is not a pagenum -->
-    <xsl:if test="not(name(child::*[1])='pagenum')">
-      <xsl:text>.xNOPAGENUM&#10;</xsl:text>
-    </xsl:if>
-    <xsl:apply-templates/>
-    <xsl:text>&#10;y LEVEL6e&#10;</xsl:text>
+  <xsl:template match="dtb:level1|dtb:level2|dtb:level3|dtb:level4|dtb:level5|dtb:level6">
+    <xsl:call-template name="level_macro">
+      <xsl:with-param name="macro" select="upper-case(local-name())"/>
+    </xsl:call-template>
   </xsl:template>
 
   <xsl:template match="dtb:p" mode="titlepage">
