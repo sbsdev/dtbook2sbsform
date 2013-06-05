@@ -345,6 +345,32 @@
     <xsl:text>&#10;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx Buchinhalt xxxxxxxxxxxxxxxxxxxxxxxxxxxx&#10;</xsl:text>
   </xsl:template>
 
+  <!-- ====== -->
+  <!-- MACROS -->
+  <!-- ====== -->
+  
+  <xsl:template name="block_macro">
+    <xsl:param name="macro" as="xs:string"/>
+    <xsl:param name="indent" as="xs:string" select="''"/>
+    <xsl:param name="enable_class" as="xs:boolean" select="true()"/>
+    <xsl:value-of select="concat('&#10;y ', $macro, 'b')"/>
+    <xsl:value-of select="if ($enable_class and @brl:class) then concat('_', @brl:class) else ''"/>
+    <xsl:value-of select="concat('&#10;', $indent)"/>
+    <xsl:apply-templates/>
+    <xsl:value-of select="concat('&#10;y ', $macro, 'e')"/>
+    <xsl:value-of select="if ($enable_class and @brl:class) then concat('_', @brl:class) else ''"/>
+    <xsl:text>&#10;</xsl:text>
+  </xsl:template>
+
+  <xsl:template name="inline_macro">
+    <xsl:param name="macro" as="xs:string"/>
+    <xsl:param name="indent" as="xs:string" select="' '"/>
+    <xsl:value-of select="concat('&#10;y ', $macro)"/>
+    <xsl:value-of select="if (@brl:class) then concat('_', @brl:class) else ''"/>
+    <xsl:value-of select="concat('&#10;', $indent)"/>
+    <xsl:apply-templates/>
+  </xsl:template>
+
   <xsl:template match="dtb:dtbook">
      <xsl:text>x </xsl:text>
     <xsl:value-of select="//dtb:docauthor"/>
@@ -548,52 +574,22 @@
     <xsl:apply-templates/>
   </xsl:template>
 
-  <xsl:template match="dtb:list[@brl:class and @type='pl']">
-    <xsl:text>&#10;y PLISTb_</xsl:text>
-    <xsl:value-of select="@brl:class"/>
-    <xsl:text>&#10;</xsl:text>
-    <xsl:apply-templates/>
-    <xsl:text>&#10;y PLISTe_</xsl:text>
-    <xsl:value-of select="@brl:class"/>
-    <xsl:text>&#10;</xsl:text>
+  <xsl:template match="dtb:list[@type='pl']">
+    <xsl:call-template name="block_macro">
+      <xsl:with-param name="macro" select="'PLIST'"/>
+    </xsl:call-template>
   </xsl:template>
 
-  <xsl:template match="dtb:list[@brl:class and @type='ul']">
-    <xsl:text>&#10;y ULISTb_</xsl:text>
-    <xsl:value-of select="@brl:class"/>
-    <xsl:text>&#10;</xsl:text>
-    <xsl:apply-templates/>
-    <xsl:text>&#10;y ULISTe_</xsl:text>
-    <xsl:value-of select="@brl:class"/>
-    <xsl:text>&#10;</xsl:text>
+  <xsl:template match="dtb:list[@type='ul']">
+    <xsl:call-template name="block_macro">
+      <xsl:with-param name="macro" select="'ULIST'"/>
+    </xsl:call-template>
   </xsl:template>
 
-  <xsl:template match="dtb:list[@brl:class and @type='ol']">
-    <xsl:text>&#10;y OLISTb_</xsl:text>
-    <xsl:value-of select="@brl:class"/>
-    <xsl:text>&#10;</xsl:text>
-    <xsl:apply-templates/>
-    <xsl:text>&#10;y OLISTe_</xsl:text>
-    <xsl:value-of select="@brl:class"/>
-    <xsl:text>&#10;</xsl:text>
-  </xsl:template>
-
-  <xsl:template match="dtb:list[not(@brl:class) and @type='pl']">
-    <xsl:text>&#10;y PLISTb&#10;</xsl:text>
-    <xsl:apply-templates/>
-    <xsl:text>&#10;y PLISTe&#10;</xsl:text>
-  </xsl:template>
-
-  <xsl:template match="dtb:list[not(@brl:class) and @type='ul']">
-    <xsl:text>&#10;y ULISTb&#10;</xsl:text>
-    <xsl:apply-templates/>
-    <xsl:text>&#10;y ULISTe&#10;</xsl:text>
-  </xsl:template>
-
-  <xsl:template match="dtb:list[not(@brl:class) and @type='ol']">
-    <xsl:text>&#10;y OLISTb&#10;</xsl:text>
-    <xsl:apply-templates/>
-    <xsl:text>&#10;y OLISTe&#10;</xsl:text>
+  <xsl:template match="dtb:list[@type='ol']">
+    <xsl:call-template name="block_macro">
+      <xsl:with-param name="macro" select="'OLIST'"/>
+    </xsl:call-template>
   </xsl:template>
 
   <xsl:template match="dtb:li">
@@ -732,23 +728,15 @@
   </xsl:template>
 
   <xsl:template match="dtb:epigraph">
-    <xsl:text>&#10;y EPIGRb</xsl:text>
-    <xsl:if test="@brl:class"><xsl:text>_</xsl:text><xsl:value-of select="@brl:class"/></xsl:if>
-    <xsl:text>&#10;</xsl:text>
-    <xsl:apply-templates/>
-    <xsl:text>&#10;y EPIGRe</xsl:text>
-    <xsl:if test="@brl:class"><xsl:text>_</xsl:text><xsl:value-of select="@brl:class"/></xsl:if>
-    <xsl:text>&#10;</xsl:text>
+    <xsl:call-template name="block_macro">
+      <xsl:with-param name="macro" select="'EPIGR'"/>
+    </xsl:call-template>
   </xsl:template>
 
   <xsl:template match="dtb:poem">
-    <xsl:text>&#10;y POEMb</xsl:text>
-    <xsl:if test="@brl:class"><xsl:text>_</xsl:text><xsl:value-of select="@brl:class"/></xsl:if>
-    <xsl:text>&#10;</xsl:text>
-    <xsl:apply-templates/>
-    <xsl:text>&#10;y POEMe</xsl:text>
-    <xsl:if test="@brl:class"><xsl:text>_</xsl:text><xsl:value-of select="@brl:class"/></xsl:if>
-    <xsl:text>&#10;</xsl:text>
+    <xsl:call-template name="block_macro">
+      <xsl:with-param name="macro" select="'POEM'"/>
+    </xsl:call-template>
   </xsl:template>
 
   <xsl:template name="insert_footnotes">
@@ -822,10 +810,9 @@
   </xsl:template>
 
   <xsl:template match="dtb:author">
-    <xsl:text>&#10;y AUTHOR</xsl:text>
-    <xsl:if test="@brl:class"><xsl:text>_</xsl:text><xsl:value-of select="@brl:class"/></xsl:if>
-    <xsl:text>&#10; </xsl:text>
-    <xsl:apply-templates/>
+    <xsl:call-template name="inline_macro">
+      <xsl:with-param name="macro" select="'AUTHOR'"/>
+    </xsl:call-template>
   </xsl:template>
 
   <xsl:template match="dtb:byline">
@@ -836,23 +823,17 @@
   </xsl:template>
 
   <xsl:template match="dtb:linegroup">
-    <xsl:text>&#10;y LINEGRb</xsl:text>
-    <xsl:if test="@brl:class"><xsl:text>_</xsl:text><xsl:value-of select="@brl:class"/></xsl:if>
-    <xsl:text>&#10; </xsl:text>
-    <xsl:apply-templates/>
-    <xsl:text>&#10;y LINEGRe</xsl:text>
-    <xsl:if test="@brl:class"><xsl:text>_</xsl:text><xsl:value-of select="@brl:class"/></xsl:if>
-    <xsl:text>&#10; </xsl:text>
+    <xsl:call-template name="block_macro">
+      <xsl:with-param name="macro" select="'LINEGR'"/>
+      <xsl:with-param name="indent" select="' '"/>
+    </xsl:call-template>
   </xsl:template>
 
   <xsl:template match="dtb:line">
-    <xsl:text>&#10;y LINEb</xsl:text>
-    <xsl:if test="@brl:class"><xsl:text>_</xsl:text><xsl:value-of select="@brl:class"/></xsl:if>
-    <xsl:text>&#10; </xsl:text>
-    <xsl:apply-templates/>
-    <xsl:text>&#10;y LINEe</xsl:text>
-    <xsl:if test="@brl:class"><xsl:text>_</xsl:text><xsl:value-of select="@brl:class"/></xsl:if>
-    <xsl:text>&#10; </xsl:text>
+    <xsl:call-template name="block_macro">
+      <xsl:with-param name="macro" select="'LINE'"/>
+      <xsl:with-param name="indent" select="' '"/>
+    </xsl:call-template>
   </xsl:template>
 
   <xsl:template match="dtb:br">
@@ -860,9 +841,10 @@
   </xsl:template>
 
   <xsl:template match="dtb:rearmatter">
-    <xsl:text>&#10;y REARb&#10;</xsl:text>
-    <xsl:apply-templates/>
-    <xsl:text>&#10;y REARe&#10;</xsl:text>
+    <xsl:call-template name="block_macro">
+      <xsl:with-param name="macro" select="'REAR'"/>
+      <xsl:with-param name="enable_class" select="false()"/>
+    </xsl:call-template>
   </xsl:template>
 
   <xsl:template match="dtb:strong|dtb:em|brl:emph">
