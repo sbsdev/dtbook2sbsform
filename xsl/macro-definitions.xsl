@@ -434,38 +434,46 @@ y e EPIGRe
     </xsl:if>
 
     <xsl:if test="//dtb:poem[not(@brl:class)]|//dtb:line[not(@brl:class)]">
-      <xsl:text>&#10;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx Poem xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx;&#10;</xsl:text>
-      <xsl:text>y b POEMb&#10;</xsl:text>
-      <xsl:text>lm1&#10;</xsl:text>
-      <xsl:text>i f=1 l=3&#10;</xsl:text>
-      <xsl:text>n4&#10;</xsl:text>
-      <xsl:text>i A=2&#10;</xsl:text>
-      <xsl:text>y e POEMb&#10;</xsl:text>
-      <xsl:text>y b POEMe&#10;</xsl:text>
-      <xsl:text>i A=0&#10;</xsl:text>
-      <xsl:text>i f=3 l=1&#10;</xsl:text>
-      <xsl:text>lm1&#10;</xsl:text>
-      <xsl:text>n2&#10;</xsl:text>
-      <xsl:text>y e POEMe&#10;&#10;</xsl:text>
-      
-      <xsl:text>y b LINEb&#10;</xsl:text>
-      <xsl:text>a&#10;</xsl:text>
-      <xsl:text>B+&#10;</xsl:text>
-      <xsl:text>y e LINEb&#10;</xsl:text>
-      <xsl:text>y b LINEe&#10;</xsl:text>
-      <xsl:text>B-&#10;</xsl:text>
-      <xsl:text>y e LINEe&#10;</xsl:text>
+      <xsl:text>
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx Poem xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx;
+y b POEMb
+lm1
+I T=j
+i f=1 l=3 T=6
+n4
+i A=2
+y e POEMb
+y b POEMe
+I T=n
+i A=0
+i f=3 l=1
+lm1
+n2
+y e POEMe
+
+y b LINEb
+a
+B+
+y e LINEb
+y b LINEe
+B-
+y e LINEe
+</xsl:text>
     </xsl:if>
 
     <xsl:if test="//dtb:linegroup[not(@brl:class)]">
-      <xsl:text>&#10;y b LINEGRb&#10;</xsl:text>
-      <xsl:text>lm1&#10;</xsl:text>
-      <xsl:text>i f=1 l=3&#10;</xsl:text>
-      <xsl:text>n2&#10;</xsl:text>
-      <xsl:text>y e LINEGRb&#10;</xsl:text>
-      <xsl:text>y b LINEGRe&#10;</xsl:text>
-      <xsl:text>i f=3 l=1&#10;</xsl:text>
-      <xsl:text>y e LINEGRe&#10;</xsl:text>
+      <xsl:text>
+y b LINEGRb
+lm1
+I T=j
+i f=1 l=3 T=6
+n2
+y e LINEGRb
+y b LINEGRe
+I T=n
+i f=3 l=1
+y e LINEGRe
+</xsl:text>
     </xsl:if>
 
     <xsl:if test="//dtb:imggroup[not(@brl:class)]">

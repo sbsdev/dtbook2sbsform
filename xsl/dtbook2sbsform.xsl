@@ -865,8 +865,10 @@
   <!-- ====== -->
   <!-- LINES  -->
   <!-- ====== -->
-  
+
   <xsl:template match="dtb:linenum">
+    <xsl:apply-templates/>
+    <xsl:text>| </xsl:text>
   </xsl:template>
 
   <xsl:template match="dtb:linegroup">

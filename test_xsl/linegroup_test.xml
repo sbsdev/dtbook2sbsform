@@ -80,5 +80,50 @@ y LINEe_foo
     </utfx:assert-equal>
   </utfx:test>
 
+  <utfx:test>
+    <utfx:name>linenum</utfx:name>
+    <utfx:assert-equal>
+      <utfx:source>
+	<dtb:linenum xml:lang="de">Foo</dtb:linenum>
+      </utfx:source>
+      <utfx:expected>FOO|
+</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>Line with linenum</utfx:name>
+    <utfx:assert-equal>
+      <utfx:source>
+	<dtb:line xml:lang="de"><dtb:linenum>6</dtb:linenum>DAS HIER IST EIN KLEINER TEST. ES GEHT DARUM.</dtb:line>
+      </utfx:source>
+      <utfx:expected>
+y LINEb
+ #F| D HR ] 6 KL67 TE]. % &amp;HT D)UM.
+y LINEe
+</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>Poem with linenum</utfx:name>
+    <utfx:assert-equal>
+      <utfx:source>
+	<dtb:poem xml:lang="de">
+	  <dtb:line><dtb:linenum>6</dtb:linenum>DAS HIER IST EIN KLEINER TEST. ES GEHT DARUM.</dtb:line>
+	</dtb:poem>
+      </utfx:source>
+      <utfx:expected>
+y POEMb
+
+y LINEb
+ #F| D HR ] 6 KL67 TE]. % &amp;HT D)UM.
+y LINEe
+
+y POEMe
+</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
 
 </utfx:tests>
