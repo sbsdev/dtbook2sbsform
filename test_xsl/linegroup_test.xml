@@ -73,8 +73,8 @@ y LINEe
 	<dtb:line xml:lang="de" brl:class="foo"></dtb:line>
       </utfx:source>
       <utfx:expected>
-y LINEb_foo 
-
+y LINEb_foo
+ 
 y LINEe_foo
       </utfx:expected>
     </utfx:assert-equal>
