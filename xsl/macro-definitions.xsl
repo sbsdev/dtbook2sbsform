@@ -282,7 +282,19 @@ u,
     <xsl:if test="//dtb:*[@brl:class]">
       <xsl:text>&#10;xxxxxxxxxxxxxxxxxxxx Makros mit Class Attributen xxxxxxxxxxxxxxxxxxxx&#10;</xsl:text>
       <!-- Elements that only have a start macro -->
-      <xsl:for-each-group select="(//dtb:author|//dtb:byline|//dtb:li|//dtb:p|//dtb:h1|//dtb:h2|//dtb:h3|//dtb:h4|//dtb:h5|//dtb:h6)[@brl:class]" group-by="local-name()">
+      <xsl:for-each-group
+	  select="(//dtb:author|
+		  //dtb:byline|
+		  //dtb:li|
+		  //dtb:p|
+		  //dtb:img|
+		  //dtb:h1|
+		  //dtb:h2|
+		  //dtb:h3|
+		  //dtb:h4|
+		  //dtb:h5|
+		  //dtb:h6)[@brl:class]"
+	  group-by="local-name()">
 	<xsl:variable name="element-name" select="current-grouping-key()"/>
 	<xsl:variable name="makro-name" select="upper-case($element-name)"/>
 	<xsl:for-each select="distinct-values(//dtb:*[local-name() = $element-name]/@brl:class)">
@@ -451,6 +463,15 @@ y e EPIGRe
       <xsl:text>y b LINEGRe&#10;</xsl:text>
       <xsl:text>i f=3 l=1&#10;</xsl:text>
       <xsl:text>y e LINEGRe&#10;</xsl:text>
+    </xsl:if>
+
+    <xsl:if test="//dtb:img[not(@brl:class)]">
+      <xsl:text>
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxx Images xxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+y b IMG
+a
+y e IMG
+</xsl:text>
     </xsl:if>
 
     <xsl:if test="//dtb:list[not(@brl:class)]|//dtb:li[not(@brl:class)]">

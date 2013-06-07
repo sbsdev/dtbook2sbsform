@@ -726,6 +726,14 @@
   </xsl:template>
   
   <xsl:template match="dtb:img">
+    <xsl:variable name="braille_tables">
+      <xsl:call-template name="getTable"/>
+    </xsl:variable>
+    <xsl:text>&#10;y IMG</xsl:text>
+    <xsl:value-of select="if (@brl:class) then concat('_', @brl:class) else ''"/>
+    <xsl:text>&#10; </xsl:text>
+    <xsl:value-of select="louis:translate(string($braille_tables), string(@alt))"/>
+    <xsl:text>&#10;</xsl:text>
   </xsl:template>
   
   <xsl:template match="dtb:imggroup/dtb:caption">
