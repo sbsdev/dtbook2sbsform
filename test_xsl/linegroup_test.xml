@@ -32,7 +32,7 @@
       </utfx:source>
       <utfx:expected>
 y LINEGRb
-
+ 
 y LINEGRe
       </utfx:expected>
     </utfx:assert-equal>
@@ -46,7 +46,7 @@ y LINEGRe
       </utfx:source>
       <utfx:expected>
 y LINEGRb_foo
-
+ 
 y LINEGRe_foo
       </utfx:expected>
     </utfx:assert-equal>
@@ -60,7 +60,7 @@ y LINEGRe_foo
       </utfx:source>
       <utfx:expected>
 y LINEb
-
+ 
 y LINEe
       </utfx:expected>
     </utfx:assert-equal>
@@ -73,7 +73,7 @@ y LINEe
 	<dtb:line xml:lang="de" brl:class="foo"></dtb:line>
       </utfx:source>
       <utfx:expected>
-y LINEb_foo
+y LINEb_foo 
 
 y LINEe_foo
       </utfx:expected>
