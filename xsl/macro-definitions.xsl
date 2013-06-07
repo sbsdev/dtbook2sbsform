@@ -282,7 +282,7 @@ u,
     <xsl:if test="//dtb:*[@brl:class]">
       <xsl:text>&#10;xxxxxxxxxxxxxxxxxxxx Makros mit Class Attributen xxxxxxxxxxxxxxxxxxxx&#10;</xsl:text>
       <!-- Elements that only have a start macro -->
-      <xsl:for-each-group select="//dtb:author[@brl:class]|//dtb:byline[@brl:class]|//dtb:li[@brl:class]|//dtb:p[@brl:class]|//dtb:h1[@brl:class]|//dtb:h2[@brl:class]|//dtb:h3[@brl:class]|//dtb:h4[@brl:class]|//dtb:h5[@brl:class]|//dtb:h6[@brl:class]" group-by="local-name()">
+      <xsl:for-each-group select="(//dtb:author|//dtb:byline|//dtb:li|//dtb:p|//dtb:h1|//dtb:h2|//dtb:h3|//dtb:h4|//dtb:h5|//dtb:h6)[@brl:class]" group-by="local-name()">
 	<xsl:variable name="element-name" select="current-grouping-key()"/>
 	<xsl:variable name="makro-name" select="upper-case($element-name)"/>
 	<xsl:for-each select="distinct-values(//dtb:*[local-name() = $element-name]/@brl:class)">
@@ -297,13 +297,13 @@ u,
       </xsl:for-each-group>
       <!-- Elements that have both a start and an end macro -->
       <xsl:for-each-group
-          select="//dtb:blockquote[@brl:class]|
-                  //dtb:epigraph[@brl:class]|
-                  //dtb:list[@brl:class]|
-                  //dtb:poem[@brl:class]|
-                  //dtb:linegroup[@brl:class]|
-                  //dtb:line[@brl:class]|
-                  //dtb:div[@brl:class]"
+          select="(//dtb:blockquote|
+                   //dtb:epigraph|
+                   //dtb:list|
+                   //dtb:poem|
+                   //dtb:linegroup|
+                   //dtb:line|
+                   //dtb:div)[@brl:class]"
           group-by="if (self::dtb:list) then concat('list@type=', @type) else local-name()">
 	<xsl:variable name="element-name" select="local-name()"/>
         <xsl:variable name="makro-name">
