@@ -247,62 +247,6 @@ y POEMe_foo
   </utfx:test>
 
   <utfx:test>
-    <utfx:name>Translation of linegroup</utfx:name>
-    <utfx:assert-equal>
-      <utfx:source>
-	<dtb:linegroup xml:lang="de"></dtb:linegroup>
-      </utfx:source>
-      <utfx:expected>
-y LINEGRb
- 
-y LINEGRe
-      </utfx:expected>
-    </utfx:assert-equal>
-  </utfx:test>
-
-  <utfx:test>
-    <utfx:name>Translation of linegroup with brl:class attr</utfx:name>
-    <utfx:assert-equal>
-      <utfx:source>
-	<dtb:linegroup xml:lang="de" brl:class="foo"></dtb:linegroup>
-      </utfx:source>
-      <utfx:expected>
-y LINEGRb_foo
- 
-y LINEGRe_foo
-      </utfx:expected>
-    </utfx:assert-equal>
-  </utfx:test>
-
-  <utfx:test>
-    <utfx:name>Translation of line</utfx:name>
-    <utfx:assert-equal>
-      <utfx:source>
-	<dtb:line xml:lang="de"></dtb:line>
-      </utfx:source>
-      <utfx:expected>
-y LINEb
- 
-y LINEe
-      </utfx:expected>
-    </utfx:assert-equal>
-  </utfx:test>
-
-  <utfx:test>
-    <utfx:name>Translation of line with brl:class attr</utfx:name>
-    <utfx:assert-equal>
-      <utfx:source>
-	<dtb:line xml:lang="de" brl:class="foo"></dtb:line>
-      </utfx:source>
-      <utfx:expected>
-y LINEb_foo
- 
-y LINEe_foo
-      </utfx:expected>
-    </utfx:assert-equal>
-  </utfx:test>
-
-  <utfx:test>
     <utfx:name>Selection feature</utfx:name>
     <utfx:assert-equal>
       <utfx:source>
