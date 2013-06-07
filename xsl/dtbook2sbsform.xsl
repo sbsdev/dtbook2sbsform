@@ -722,7 +722,9 @@
   <!-- ====== -->
   
   <xsl:template match="dtb:imggroup">
-    <xsl:apply-templates/>
+    <xsl:call-template name="block_macro">
+      <xsl:with-param name="macro" select="'IMGGR'"/>
+    </xsl:call-template>
   </xsl:template>
   
   <xsl:template match="dtb:img">

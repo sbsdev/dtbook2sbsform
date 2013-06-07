@@ -315,6 +315,7 @@ u,
                    //dtb:poem|
                    //dtb:linegroup|
                    //dtb:line|
+                   //dtb:imggroup|
                    //dtb:div)[@brl:class]"
           group-by="if (self::dtb:list) then concat('list@type=', @type) else local-name()">
 	<xsl:variable name="element-name" select="local-name()"/>
@@ -322,6 +323,7 @@ u,
 	  <xsl:choose>
 	    <xsl:when test="$element-name='blockquote'">BLQUO</xsl:when>
 	    <xsl:when test="$element-name='epigraph'">EPIGR</xsl:when>
+	    <xsl:when test="$element-name='imggroup'">IMGGR</xsl:when>
             <xsl:when test="$element-name='list' and @type='pl'">PLIST</xsl:when>
             <xsl:when test="$element-name='list' and @type='ul'">ULIST</xsl:when>
             <xsl:when test="$element-name='list' and @type='ol'">OLIST</xsl:when>
@@ -463,6 +465,21 @@ y e EPIGRe
       <xsl:text>y b LINEGRe&#10;</xsl:text>
       <xsl:text>i f=3 l=1&#10;</xsl:text>
       <xsl:text>y e LINEGRe&#10;</xsl:text>
+    </xsl:if>
+
+    <xsl:if test="//dtb:imggroup[not(@brl:class)]">
+      <xsl:text>
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx Imggroup xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx;
+y b IMGGRb
+lm1
+i f=1 l=3
+n2
+y e IMGGRb
+y b IMGGRe
+i f=3 l=1
+lm1
+y e IMGGRe
+</xsl:text>
     </xsl:if>
 
     <xsl:if test="//dtb:img[not(@brl:class)]">
