@@ -288,6 +288,7 @@ u,
 		  //dtb:li|
 		  //dtb:p|
 		  //dtb:img|
+		  //dtb:caption|
 		  //dtb:h1|
 		  //dtb:h2|
 		  //dtb:h3|
@@ -488,6 +489,14 @@ xxxxxxxxxxxxxxxxxxxxxxxxxxxxx Images xxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 y b IMG
 a
 y e IMG
+</xsl:text>
+    </xsl:if>
+
+    <xsl:if test="//dtb:caption[not(@brl:class)]">
+      <xsl:text>
+y b CAPTION
+a
+y e CAPTION
 </xsl:text>
     </xsl:if>
 

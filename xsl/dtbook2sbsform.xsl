@@ -738,7 +738,10 @@
     <xsl:text>&#10;</xsl:text>
   </xsl:template>
   
-  <xsl:template match="dtb:imggroup/dtb:caption">
+  <xsl:template match="dtb:caption">
+    <xsl:call-template name="inline_macro">
+      <xsl:with-param name="macro" select="'CAPTION'"/>
+    </xsl:call-template>
   </xsl:template>
 
   <!-- ======== -->
