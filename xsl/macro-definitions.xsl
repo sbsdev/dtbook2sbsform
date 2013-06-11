@@ -837,7 +837,9 @@ t
       <xsl:text>l2&#10;t&#10; </xsl:text>
       <xsl:call-template name="handle_abbr">
         <xsl:with-param name="context" select="'abbr'"/>
-        <xsl:with-param name="content" select="'SJW'"/>
+        <xsl:with-param name="content" as="text()">
+	  <xsl:text>SJW</xsl:text>
+	</xsl:with-param>
       </xsl:call-template>
       <xsl:text>-</xsl:text>
       <xsl:value-of
@@ -894,7 +896,9 @@ t
     <xsl:text>t&#10; </xsl:text>
     <xsl:call-template name="handle_abbr">
       <xsl:with-param name="context" select="'abbr'"/>
-      <xsl:with-param name="content" select="'SBS'"/>
+      <xsl:with-param name="content" as="text()">
+	<xsl:text>SBS</xsl:text>
+      </xsl:with-param>
     </xsl:call-template>
     <xsl:text> </xsl:text>
     <xsl:value-of
@@ -919,7 +923,9 @@ i f=1 l=1
           select="louis:translate(string($braille_tables), my:filter-hyphenation('Braille­aus­ga­be mit freund­licher Ge­neh­mi­gung des '))"/>
         <xsl:call-template name="handle_abbr">
           <xsl:with-param name="context" select="'abbr'"/>
-          <xsl:with-param name="content" select="'SJW'"/>
+          <xsl:with-param name="content" as="text()">
+	    <xsl:text>SJW</xsl:text>
+	  </xsl:with-param>
         </xsl:call-template>
         <xsl:value-of
           select="louis:translate(string($braille_tables), my:filter-hyphenation(' Schwei­ze­ri­schen Ju­gend­schrif­ten­werks, Zürich.'))"/>
@@ -927,7 +933,9 @@ i f=1 l=1
           select="louis:translate(string($braille_tables), my:filter-hyphenation(' Wir dan­ken dem '))"/>
         <xsl:call-template name="handle_abbr">
           <xsl:with-param name="context" select="'abbr'"/>
-          <xsl:with-param name="content" select="'SJW'"/>
+          <xsl:with-param name="content" as="text()">
+	    <xsl:text>SJW</xsl:text>
+	  </xsl:with-param>
         </xsl:call-template>
         <xsl:text>-</xsl:text>
         <xsl:value-of
@@ -985,7 +993,9 @@ i f=1 l=1
     <xsl:text>&#10;a&#10; </xsl:text>
     <xsl:call-template name="handle_abbr">
       <xsl:with-param name="context" select="'abbr'"/>
-      <xsl:with-param name="content" select="'SBS'"/>
+      <xsl:with-param name="content" as="text()">
+	<xsl:text>SBS</xsl:text>
+      </xsl:with-param>
     </xsl:call-template>
     <xsl:text> </xsl:text>
     <xsl:value-of
@@ -1006,7 +1016,9 @@ i f=1 l=1
     <xsl:text>&#10;l&#10; </xsl:text>
     <xsl:call-template name="handle_abbr">
       <xsl:with-param name="context" select="'abbr'"/>
-      <xsl:with-param name="content" select="'SBS'"/>
+      <xsl:with-param name="content" as="text()">
+	<xsl:text>SBS</xsl:text>
+      </xsl:with-param>
     </xsl:call-template>
     <xsl:text> </xsl:text>
     <xsl:value-of
