@@ -1085,7 +1085,9 @@ t
       <xsl:text>l2&#10;t&#10; </xsl:text>
       <xsl:call-template name="handle_abbr">
         <xsl:with-param name="context" select="'abbr'"/>
-        <xsl:with-param name="content" select="'SJW'"/>
+        <xsl:with-param name="content" as="text()">
+          <xsl:text>SJW</xsl:text>
+        </xsl:with-param>
       </xsl:call-template>
       <xsl:text>-</xsl:text>
       <xsl:value-of
@@ -1142,7 +1144,9 @@ t
     <xsl:text>t&#10; </xsl:text>
     <xsl:call-template name="handle_abbr">
       <xsl:with-param name="context" select="'abbr'"/>
-      <xsl:with-param name="content" select="'SBS'"/>
+      <xsl:with-param name="content" as="text()">
+        <xsl:text>SBS</xsl:text>
+      </xsl:with-param>
     </xsl:call-template>
     <xsl:text> </xsl:text>
     <xsl:value-of
@@ -1167,7 +1171,9 @@ i f=1 l=1
           select="louis:translate(string($braille_tables), my:filter-hyphenation('Braille­aus­ga­be mit freund­licher Ge­neh­mi­gung des '))"/>
         <xsl:call-template name="handle_abbr">
           <xsl:with-param name="context" select="'abbr'"/>
-          <xsl:with-param name="content" select="'SJW'"/>
+          <xsl:with-param name="content" as="text()">
+            <xsl:text>SJW</xsl:text>
+          </xsl:with-param>
         </xsl:call-template>
         <xsl:value-of
           select="louis:translate(string($braille_tables), my:filter-hyphenation(' Schwei­ze­ri­schen Ju­gend­schrif­ten­werks, Zürich.'))"/>
@@ -1175,7 +1181,9 @@ i f=1 l=1
           select="louis:translate(string($braille_tables), my:filter-hyphenation(' Wir dan­ken dem '))"/>
         <xsl:call-template name="handle_abbr">
           <xsl:with-param name="context" select="'abbr'"/>
-          <xsl:with-param name="content" select="'SJW'"/>
+          <xsl:with-param name="content" as="text()">
+            <xsl:text>SJW</xsl:text>
+          </xsl:with-param>
         </xsl:call-template>
         <xsl:text>-</xsl:text>
         <xsl:value-of
@@ -1233,7 +1241,9 @@ i f=1 l=1
     <xsl:text>&#10;a&#10; </xsl:text>
     <xsl:call-template name="handle_abbr">
       <xsl:with-param name="context" select="'abbr'"/>
-      <xsl:with-param name="content" select="'SBS'"/>
+      <xsl:with-param name="content" as="text()">
+        <xsl:text>SBS</xsl:text>
+      </xsl:with-param>
     </xsl:call-template>
     <xsl:text> </xsl:text>
     <xsl:value-of
@@ -1254,7 +1264,9 @@ i f=1 l=1
     <xsl:text>&#10;l&#10; </xsl:text>
     <xsl:call-template name="handle_abbr">
       <xsl:with-param name="context" select="'abbr'"/>
-      <xsl:with-param name="content" select="'SBS'"/>
+      <xsl:with-param name="content" as="text()">
+        <xsl:text>SBS</xsl:text>
+      </xsl:with-param>
     </xsl:call-template>
     <xsl:text> </xsl:text>
     <xsl:value-of
@@ -2019,9 +2031,9 @@ i f=1 l=1
         </xsl:otherwise>
       </xsl:choose>
       <!-- If the last letter was a capital and the following letter is small, insert a KLEINBUCHSTABE -->
-      <xsl:if test="matches(string(.), '.*\p{Lu}$') and
-                    following-sibling::node()[1][self::text()] and
-                    matches(string(following-sibling::node()[1]), '^\p{Ll}.*')">
+      <xsl:if test="matches(string($content), '.*\p{Lu}$') and
+                    $content/following-sibling::node()[1][self::text()] and
+                    matches(string($content/following-sibling::node()[1]), '^\p{Ll}.*')">
         <xsl:value-of select="$KLEINBUCHSTABE"/>
       </xsl:if>
     </xsl:variable>
@@ -2159,7 +2171,9 @@ i f=1 l=1
     <xsl:value-of select="louis:translate(string($braille_tables), string($number))"/>
     <xsl:call-template name="handle_abbr">
       <xsl:with-param name="context" select="'abbr'"/>
-      <xsl:with-param name="content" select="$measure"/>
+      <xsl:with-param name="content" as="text()">
+        <xsl:value-of select="$measure"/>
+      </xsl:with-param>
     </xsl:call-template>
   </xsl:template>
   
