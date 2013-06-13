@@ -313,6 +313,9 @@ u,
           select="(//dtb:blockquote|
                    //dtb:epigraph|
                    //dtb:list|
+                   //dtb:dl|
+                   //dtb:dt|
+                   //dtb:dd|
                    //dtb:poem|
                    //dtb:sidebar|
                    //dtb:hd|
@@ -531,92 +534,138 @@ y e SIDEBARe
     </xsl:if>
 
     <xsl:if test="//dtb:hd[not(@brl:class)]">
-      <xsl:text>y b HDb&#10;</xsl:text>
-      <xsl:text>i f=1 l=3&#10;</xsl:text>
-      <xsl:text>y e HDb&#10;</xsl:text>
-      <xsl:text>y b HDe&#10;</xsl:text>
-      <xsl:text>i f=3 l=1&#10;</xsl:text>
-      <xsl:text>y e HDe&#10;&#10;</xsl:text>
+      <xsl:text>
+y b HDb
+i f=1 l=3
+y e HDb
+y b HDe
+i f=3 l=1
+y e HDe
+
+</xsl:text>
     </xsl:if>
 
     <xsl:if test="//dtb:list[not(@brl:class)]|//dtb:li[not(@brl:class)]">
-      <xsl:text>&#10;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx Listen xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&#10;&#10;</xsl:text>
+      <xsl:text>
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx Listen xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
       
-      <xsl:text>y b LI&#10;</xsl:text>
-      <xsl:text>a&#10;</xsl:text>
-      <xsl:text>y e LI&#10;</xsl:text>
+y b LI
+a
+y e LI
+</xsl:text>
     </xsl:if>
 
     <xsl:if test="//dtb:list[not(@brl:class) and @type='pl']|//dtb:li[not(@brl:class)]">
-      <xsl:text>y b PLISTb ; 'pl' Liste&#10;</xsl:text>
-      <xsl:text>?nl:nl+1&#10;</xsl:text>
-      <xsl:text>?nl=1&#10;</xsl:text>
-      <xsl:text>+lm1&#10;</xsl:text>
-      <xsl:text>+i f=1 l=3&#10;</xsl:text>
-      <xsl:text>?nl=2&#10;</xsl:text>
-      <xsl:text>+i f=3 l=5&#10;</xsl:text>
-      <xsl:text>?nl=3&#10;</xsl:text>
-      <xsl:text>+i f=5 l=7&#10;</xsl:text>
-      <xsl:text>y e PLISTb&#10;</xsl:text>
-      <xsl:text>y b PLISTe&#10;</xsl:text>
-      <xsl:text>?nl:nl-1&#10;</xsl:text>
-      <xsl:text>?nl=2&#10;</xsl:text>
-      <xsl:text>+i f=3 l=5&#10;</xsl:text>
-      <xsl:text>?nl=1&#10;</xsl:text>
-      <xsl:text>+i f=1 l=3&#10;</xsl:text>
-      <xsl:text>?nl=0&#10;</xsl:text>
-      <xsl:text>+lm1&#10;</xsl:text>
-      <xsl:text>+n2&#10;</xsl:text>
-      <xsl:text>+i f=3 l=1&#10;</xsl:text>
-      <xsl:text>y e PLISTe&#10;</xsl:text>
+      <xsl:text>
+y b PLISTb ; 'pl' Liste
+?nl:nl+1
+?nl=1
++lm1
++i f=1 l=3
+?nl=2
++i f=3 l=5
+?nl=3
++i f=5 l=7
+y e PLISTb
+y b PLISTe
+?nl:nl-1
+?nl=2
++i f=3 l=5
+?nl=1
++i f=1 l=3
+?nl=0
++lm1
++n2
++i f=3 l=1
+y e PLISTe
+</xsl:text>
     </xsl:if>
 
     <xsl:if test="//dtb:list[not(@brl:class) and @type='ul']|//dtb:li[not(@brl:class)]">
-      <xsl:text>y b ULISTb ; 'ul' Liste&#10;</xsl:text>
-      <xsl:text>?nl:nl+1&#10;</xsl:text>
-      <xsl:text>?nl=1&#10;</xsl:text>
-      <xsl:text>+lm1&#10;</xsl:text>
-      <xsl:text>+i f=1 l=3&#10;</xsl:text>
-      <xsl:text>?nl=2&#10;</xsl:text>
-      <xsl:text>+i f=3 l=5&#10;</xsl:text>
-      <xsl:text>?nl=3&#10;</xsl:text>
-      <xsl:text>+i f=5 l=7&#10;</xsl:text>
-      <xsl:text>y e ULISTb&#10;</xsl:text>
-      <xsl:text>y b ULISTe&#10;</xsl:text>
-      <xsl:text>?nl:nl-1&#10;</xsl:text>
-      <xsl:text>?nl=2&#10;</xsl:text>
-      <xsl:text>+i f=3 l=5&#10;</xsl:text>
-      <xsl:text>?nl=1&#10;</xsl:text>
-      <xsl:text>+i f=1 l=3&#10;</xsl:text>
-      <xsl:text>?nl=0&#10;</xsl:text>
-      <xsl:text>+lm1&#10;</xsl:text>
-      <xsl:text>+n2&#10;</xsl:text>
-      <xsl:text>+i f=3 l=1&#10;</xsl:text>
-      <xsl:text>y e ULISTe&#10;</xsl:text>
+      <xsl:text>
+y b ULISTb ; 'ul' Liste
+?nl:nl+1
+?nl=1
++lm1
++i f=1 l=3
+?nl=2
++i f=3 l=5
+?nl=3
++i f=5 l=7
+y e ULISTb
+y b ULISTe
+?nl:nl-1
+?nl=2
++i f=3 l=5
+?nl=1
++i f=1 l=3
+?nl=0
++lm1
++n2
++i f=3 l=1
+y e ULISTe
+</xsl:text>
     </xsl:if>
 
     <xsl:if test="//dtb:list[not(@brl:class) and @type='ol']|//dtb:li[not(@brl:class)]">
-      <xsl:text>y b OLISTb ; 'ol' Liste&#10;</xsl:text>
-      <xsl:text>?nl:nl+1&#10;</xsl:text>
-      <xsl:text>?nl=1&#10;</xsl:text>
-      <xsl:text>+lm1&#10;</xsl:text>
-      <xsl:text>+i f=1 l=3&#10;</xsl:text>
-      <xsl:text>?nl=2&#10;</xsl:text>
-      <xsl:text>+i f=3 l=5&#10;</xsl:text>
-      <xsl:text>?nl=3&#10;</xsl:text>
-      <xsl:text>+i f=5 l=7&#10;</xsl:text>
-      <xsl:text>y e OLISTb&#10;</xsl:text>
-      <xsl:text>y b OLISTe&#10;</xsl:text>
-      <xsl:text>?nl:nl-1&#10;</xsl:text>
-      <xsl:text>?nl=2&#10;</xsl:text>
-      <xsl:text>+i f=3 l=5&#10;</xsl:text>
-      <xsl:text>?nl=1&#10;</xsl:text>
-      <xsl:text>+i f=1 l=3&#10;</xsl:text>
-      <xsl:text>?nl=0&#10;</xsl:text>
-      <xsl:text>+lm1&#10;</xsl:text>
-      <xsl:text>+n2&#10;</xsl:text>
-      <xsl:text>+i f=3 l=1&#10;</xsl:text>
-      <xsl:text>y e OLISTe&#10;</xsl:text>
+      <xsl:text>
+y b OLISTb ; 'ol' Liste
+?nl:nl+1
+?nl=1
++lm1
++i f=1 l=3
+?nl=2
++i f=3 l=5
+?nl=3
++i f=5 l=7
+y e OLISTb
+y b OLISTe
+?nl:nl-1
+?nl=2
++i f=3 l=5
+?nl=1
++i f=1 l=3
+?nl=0
++lm1
++n2
++i f=3 l=1
+y e OLISTe
+</xsl:text>
+    </xsl:if>
+
+    <xsl:if test="//dtb:dl[not(@brl:class)]">
+      <xsl:text>
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxx Definitionslisten xxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+y b DLb
+i f=1 l=3
+lm1
+n2
+y e DLb
+y b DLe
+lm1
+n2
+y e DLe
+</xsl:text>
+    </xsl:if>
+
+    <xsl:if test="//dtb:dt[not(@brl:class)]">
+      <xsl:text>
+y b DTb
+n2
+a
+y e DTb
+y b DTe
+y e DTe
+</xsl:text>
+    </xsl:if>
+
+    <xsl:if test="//dtb:dd[not(@brl:class)]">
+      <xsl:text>
+y b DDb
+y e DDb
+y b DDe
+y e DDe
+</xsl:text>
     </xsl:if>
 
     <xsl:text>&#10;xxxxxxxxxxxxxxxxxxxxxxxxxxx Bandeinteilung xxxxxxxxxxxxxxxxxxxxxxxxxxx&#10;</xsl:text>

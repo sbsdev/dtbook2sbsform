@@ -574,6 +574,10 @@
     <xsl:apply-templates/>
   </xsl:template>
 
+  <!-- ===== -->
+  <!-- LISTS -->
+  <!-- ===== -->
+
   <xsl:template match="dtb:list[@type='pl']">
     <xsl:call-template name="block_macro">
       <xsl:with-param name="macro" select="'PLIST'"/>
@@ -631,6 +635,30 @@
   <xsl:template match="dtb:lic">
     <xsl:apply-templates/>
     <xsl:text> </xsl:text>
+  </xsl:template>
+
+  <!-- ================ -->
+  <!-- DEFINITION LISTS -->
+  <!-- ================ -->
+
+  <xsl:template match="dtb:dl">
+    <xsl:call-template name="block_macro">
+      <xsl:with-param name="macro" select="'DL'"/>
+    </xsl:call-template>
+  </xsl:template>
+
+  <xsl:template match="dtb:dt">
+    <xsl:call-template name="block_macro">
+      <xsl:with-param name="macro" select="'DT'"/>
+      <xsl:with-param name="indent" select="' '"/>
+    </xsl:call-template>
+  </xsl:template>
+
+  <xsl:template match="dtb:dd">
+    <xsl:call-template name="block_macro">
+      <xsl:with-param name="macro" select="'DD'"/>
+      <xsl:with-param name="indent" select="' '"/>
+    </xsl:call-template>
   </xsl:template>
 
   <!-- Handle pagenums after volume boundaries -->
