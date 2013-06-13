@@ -353,10 +353,13 @@
     <xsl:param name="macro" as="xs:string"/>
     <xsl:param name="indent" as="xs:string" select="''"/>
     <xsl:param name="enable_class" as="xs:boolean" select="true()"/>
+    <xsl:param name="body">
+      <xsl:apply-templates/>
+    </xsl:param>
     <xsl:value-of select="concat('&#10;y ', $macro, 'b')"/>
     <xsl:value-of select="if ($enable_class and @brl:class) then concat('_', @brl:class) else ''"/>
     <xsl:value-of select="concat('&#10;', $indent)"/>
-    <xsl:apply-templates/>
+    <xsl:sequence select="$body"/>
     <xsl:value-of select="concat('&#10;y ', $macro, 'e')"/>
     <xsl:value-of select="if ($enable_class and @brl:class) then concat('_', @brl:class) else ''"/>
     <xsl:text>&#10;</xsl:text>
@@ -365,10 +368,13 @@
   <xsl:template name="inline_macro">
     <xsl:param name="macro" as="xs:string"/>
     <xsl:param name="indent" as="xs:string" select="' '"/>
+    <xsl:param name="body">
+      <xsl:apply-templates/>
+    </xsl:param>
     <xsl:value-of select="concat('&#10;y ', $macro)"/>
     <xsl:value-of select="if (@brl:class) then concat('_', @brl:class) else ''"/>
     <xsl:value-of select="concat('&#10;', $indent)"/>
-    <xsl:apply-templates/>
+    <xsl:sequence select="$body"/>
   </xsl:template>
 
   <xsl:template match="dtb:dtbook">
@@ -759,11 +765,14 @@
     <xsl:variable name="braille_tables">
       <xsl:call-template name="getTable"/>
     </xsl:variable>
-    <xsl:text>&#10;y IMG</xsl:text>
-    <xsl:value-of select="if (@brl:class) then concat('_', @brl:class) else ''"/>
-    <xsl:text>&#10; </xsl:text>
-    <xsl:value-of select="louis:translate(string($braille_tables), string(@alt))"/>
-    <xsl:text>&#10;</xsl:text>
+    <xsl:call-template name="inline_macro">
+      <xsl:with-param name="macro" select="'IMG'"/>
+      <xsl:with-param name="indent" select="' '"/>
+      <xsl:with-param name="body">
+	<xsl:value-of select="louis:translate(string($braille_tables), string(@alt))"/>
+	<xsl:text>&#10;</xsl:text>
+      </xsl:with-param>
+    </xsl:call-template>
   </xsl:template>
   
   <xsl:template match="dtb:caption">
