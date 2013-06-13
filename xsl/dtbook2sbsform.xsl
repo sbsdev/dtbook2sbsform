@@ -889,6 +889,28 @@
     <!-- ignore for now -->
   </xsl:template>
 
+  <!-- ======== -->
+  <!-- SIDEBARS -->
+  <!-- ======== -->
+
+  <xsl:template match="dtb:sidebar">
+    <xsl:call-template name="block_macro">
+      <xsl:with-param name="macro" select="'SIDEBAR'"/>
+      <xsl:with-param name="indent" select="''"/>
+    </xsl:call-template>
+  </xsl:template>
+
+  <xsl:template match="dtb:hd">
+    <xsl:call-template name="block_macro">
+      <xsl:with-param name="macro" select="'HD'"/>
+      <xsl:with-param name="indent" select="' '"/>
+    </xsl:call-template>
+  </xsl:template>
+
+  <!-- ========== -->
+  <!-- REARMATTER -->
+  <!-- ========== -->
+
   <xsl:template match="dtb:rearmatter">
     <xsl:call-template name="block_macro">
       <xsl:with-param name="macro" select="'REAR'"/>

@@ -314,6 +314,8 @@ u,
                    //dtb:epigraph|
                    //dtb:list|
                    //dtb:poem|
+                   //dtb:sidebar|
+                   //dtb:hd|
                    //dtb:linegroup|
                    //dtb:line|
                    //dtb:imggroup|
@@ -506,6 +508,35 @@ y b CAPTION
 a
 y e CAPTION
 </xsl:text>
+    </xsl:if>
+
+    <xsl:if test="//dtb:sidebar[not(@brl:class)]">
+      <xsl:text>
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx Sidebars xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+y b SIDEBARb
+lm1
+D:::::
+i f=1 l=3
+n2
+i A=2
+y e SIDEBARb
+y b SIDEBARe
+i A=0
+i f=3 l=1
+D:::::
+lm1
+y e SIDEBARe
+
+</xsl:text>
+    </xsl:if>
+
+    <xsl:if test="//dtb:hd[not(@brl:class)]">
+      <xsl:text>y b HDb&#10;</xsl:text>
+      <xsl:text>i f=1 l=3&#10;</xsl:text>
+      <xsl:text>y e HDb&#10;</xsl:text>
+      <xsl:text>y b HDe&#10;</xsl:text>
+      <xsl:text>i f=3 l=1&#10;</xsl:text>
+      <xsl:text>y e HDe&#10;&#10;</xsl:text>
     </xsl:if>
 
     <xsl:if test="//dtb:list[not(@brl:class)]|//dtb:li[not(@brl:class)]">
