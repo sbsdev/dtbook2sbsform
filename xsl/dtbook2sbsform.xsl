@@ -667,6 +667,136 @@
     </xsl:call-template>
   </xsl:template>
 
+  <!-- ====== -->
+  <!-- TABLES -->
+  <!-- ====== -->
+
+  <xsl:template match="dtb:table">
+    <xsl:call-template name="block_macro">
+      <xsl:with-param name="macro" select="upper-case(local-name())"/>
+      <xsl:with-param name="body">
+	<xsl:apply-templates select="dtb:caption"/>
+	<xsl:text>&#10;xxx Linearisierte Version xxx</xsl:text>
+	<xsl:apply-templates select="dtb:thead, dtb:tbody, dtb:tfoot"/>
+	<xsl:text>&#10;xxx D-Zeilen-Version xxx</xsl:text>
+	<xsl:variable name="table" >
+	  <xsl:apply-templates select="." mode="pre-translate-table"/>
+	</xsl:variable>
+	<xsl:apply-templates select="$table" mode="as-plain-table"/>
+	<xsl:text>&#10;&#10;xxx D-Zeilen-Version (gedreht) xxx</xsl:text>
+	<xsl:variable name="transposed-table" >
+	  <xsl:apply-templates select="$table" mode="transpose-table"/>
+	</xsl:variable>
+	<xsl:apply-templates select="$transposed-table" mode="as-plain-table"/>
+      </xsl:with-param>
+    </xsl:call-template>
+  </xsl:template>
+
+  <xsl:template match="dtb:thead|dtb:tbody|dtb:tfoot|dtb:tr">
+    <xsl:call-template name="block_macro">
+      <xsl:with-param name="macro" select="upper-case(local-name())"/>
+    </xsl:call-template>
+  </xsl:template>
+
+  <xsl:template match="dtb:td|dtb:th">
+    <xsl:call-template name="block_macro">
+      <xsl:with-param name="macro" select="upper-case(local-name())"/>
+      <xsl:with-param name="indent" select="' '"/>
+      <xsl:with-param name="body">
+	<xsl:if test="position() &gt; 1">
+	  <xsl:text>:: </xsl:text>
+	</xsl:if>
+	<xsl:apply-templates/>
+      </xsl:with-param>
+    </xsl:call-template>
+  </xsl:template>
+
+  <xsl:template match="dtb:table" mode="pre-translate-table">
+    <xsl:copy>
+      <xsl:apply-templates select="dtb:thead/dtb:tr,dtb:tbody/dtb:tr,dtb:tfoot/dtb:tr" mode="pre-translate-table"/>
+    </xsl:copy>
+  </xsl:template>
+
+  <xsl:template match="dtb:tr" mode="pre-translate-table">
+    <xsl:copy>
+      <xsl:apply-templates mode="pre-translate-table"/>
+    </xsl:copy>
+  </xsl:template>
+
+  <xsl:template match="dtb:td|dtb:th" mode="pre-translate-table">
+    <xsl:copy>
+      <xsl:apply-templates/>
+    </xsl:copy>
+  </xsl:template>
+
+  <xsl:template match="dtb:table" mode="as-plain-table">
+    <xsl:text>&#10;>skip&#10;</xsl:text>
+    <xsl:variable name="column-sizes" as="xs:integer*">
+      <xsl:for-each select="dtb:tr[1]/(dtb:td|dtb:th)">
+      	<xsl:variable name="column-position" select="position()"/>
+      	<xsl:sequence select="max(for $t in ../../dtb:tr/(dtb:td|dtb:th)[position()=$column-position]/text() return string-length($t))"/>
+      </xsl:for-each>
+    </xsl:variable>
+    <xsl:variable name="padding-chars" 
+		  select="'                                                                                '"/>
+    <xsl:variable name="underline-chars" 
+		  select="'::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::'"/>
+    <xsl:for-each select="dtb:tr">
+      <xsl:text>D</xsl:text>
+      <xsl:for-each select="dtb:th|dtb:td">
+	<xsl:variable name="column-position" select="position()"/>
+	<!-- This padding only works to a max size of 80, but since
+	     that is the usualy way more than the normal page width we
+	     are probably not that concerned with it, i.e. if we have
+	     to padd that much we are not really interested in the
+	     table displayed as a plain table anyway. See also
+	     http://www.dpawson.co.uk/xsl/sect2/padding.html#d8227e19
+	     -->
+	<xsl:value-of
+	    select="substring(concat(.,$padding-chars), 
+		    1,$column-sizes[$column-position])"/>
+	<xsl:if test="position()!=last()" >
+	  <xsl:text> </xsl:text>
+	</xsl:if>
+      </xsl:for-each>
+      <xsl:text>&#10;</xsl:text>
+      <!-- Underline the th's -->
+      <!-- Only underline if all cells are th's -->
+      <xsl:if test="not(dtb:td)">
+	<xsl:text>D</xsl:text>
+      	<xsl:for-each select="dtb:td|dtb:th">
+      	  <xsl:variable name="column-position" select="position()"/>
+      	  <xsl:variable name="column-position" select="position()"/>
+      	  <xsl:variable name="underline" 
+			select="substring($underline-chars,1,string-length(.))"/>
+      	  <xsl:value-of
+      	      select="substring(
+		        concat($underline, $padding-chars),1,$column-sizes[$column-position])"/>
+      	  <xsl:if test="position()!=last()" >
+      	    <xsl:text> </xsl:text>
+      	  </xsl:if>
+      	</xsl:for-each>
+	<xsl:text>&#10;</xsl:text>
+      </xsl:if>
+    </xsl:for-each>
+    <xsl:text>:skip</xsl:text>
+  </xsl:template>
+
+  <xsl:template match="dtb:table" mode="transpose-table">
+    <xsl:variable name="root" select="."/>
+    <xsl:copy>
+      <xsl:for-each select="1 to count(dtb:tr[1]/(dtb:td|dtb:th))">
+	<xsl:variable name="column-pos" select="."/>
+	<dtb:tr>
+	  <!-- see http://stackoverflow.com/questions/4410084/transpose-swap-x-y-axes-in-html-table -->
+	  <xsl:for-each select="$root/dtb:tr">
+            <xsl:copy-of select="(dtb:td|dtb:th)[$column-pos]"/>
+	  </xsl:for-each>
+	</dtb:tr>
+      </xsl:for-each>
+    </xsl:copy>
+  </xsl:template>
+
   <!-- Handle pagenums after volume boundaries -->
   <xsl:template match="dtb:pagenum[preceding-sibling::*[position()=1 and local-name()='volume' and @brl:grade = $contraction]]"/>
 

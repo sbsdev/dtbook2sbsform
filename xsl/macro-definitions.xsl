@@ -312,6 +312,13 @@ u,
       <xsl:for-each-group
           select="(//dtb:blockquote|
                    //dtb:epigraph|
+                   //dtb:table|
+                   //dtb:tbody|
+                   //dtb:thead|
+                   //dtb:tfoot|
+                   //dtb:tr|
+                   //dtb:td|
+                   //dtb:th|
                    //dtb:list|
                    //dtb:dl|
                    //dtb:dt|
@@ -665,6 +672,78 @@ y b DDb
 y e DDb
 y b DDe
 y e DDe
+</xsl:text>
+    </xsl:if>
+
+    <xsl:if test="//dtb:table[not(@brl:class)]">
+      <xsl:text>
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxx Tabellen xxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+y b TABLEb
+i f=1 l=3
+lm1
+n2
+y e TABLEb
+y b TABLEe
+lm1
+n2
+y e TABLEe
+</xsl:text>
+    </xsl:if>
+
+    <xsl:if test="//dtb:tbody[not(@brl:class)]">
+      <xsl:text>
+y b TBODYb
+u:*
+y e TBODYb
+y b TBODYe
+y e TBODYe
+</xsl:text>
+    </xsl:if>
+
+    <xsl:if test="//dtb:thead[not(@brl:class)]">
+      <xsl:text>
+y b THEADb
+u:*
+y e THEADb
+y b THEADe
+y e THEADe
+</xsl:text>
+    </xsl:if>
+
+    <xsl:if test="//dtb:tfoot[not(@brl:class)]">
+      <xsl:text>
+y b TFOOTb
+u:*
+y e TFOOTb
+y b TFOOTe
+y e TFOOTe
+</xsl:text>
+    </xsl:if>
+
+    <xsl:if test="//dtb:tr[not(@brl:class)]">
+      <xsl:text>
+y b TRb
+>y e TRb
+>y b TRe
+y e TRe
+</xsl:text>
+    </xsl:if>
+
+    <xsl:if test="//dtb:td[not(@brl:class)]">
+      <xsl:text>
+y b TDb
+y e TDb
+y b TDe
+y e TDe
+</xsl:text>
+    </xsl:if>
+
+    <xsl:if test="//dtb:th[not(@brl:class)]">
+      <xsl:text>
+y b THb
+y e THb
+y b THe
+y e THe
 </xsl:text>
     </xsl:if>
 
