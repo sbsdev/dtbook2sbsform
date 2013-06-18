@@ -32,5 +32,7 @@ shift
 $DIR/saxon.sh \
     -xsl:$DIR/xsl/handle-downgrading.xsl $SRCFILE "$@"| \
 $DIR/saxon.sh \
+    -xsl:$DIR/xsl/handle-prodnote.xsl -s:- "$@" | \
+$DIR/saxon.sh \
     -xsl:$DIR/xsl/dtbook2sbsform.xsl -s:- "$@" | \
 $DIR/linebreak.sh
