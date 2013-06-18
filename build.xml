@@ -18,6 +18,9 @@
 	<!-- You should have received a copy of the GNU Lesser General Public -->
 	<!-- License along with this program. If not, see -->
 	<!-- <http://www.gnu.org/licenses/>. -->
+	<property name="compile.target" value="1.6" />
+	<property name="compile.source" value="1.6" />
+
 	<property name="build.dir" value="bin" />
 	<property name="app.name" value="${ant.project.name}" />
 	<property name="utility.jar" value="linebreaker.jar" />
@@ -28,10 +31,6 @@
 	
 	<!-- used for utfx -->
 	<property name="testrunner" value="utfx.runner.TestRunner" />
-
-    <presetdef name="my.javac">
-		<javac includeantruntime="false" />
-    </presetdef>
 
 	<path id="classpath.path">
 		<pathelement location="${build.dir}" />
@@ -56,13 +55,17 @@
 	</target>
 
 	<target name="compile" depends="init">
-		<my.javac destdir="${build.dir}" deprecation="on" debug="on" includeAntRuntime="no">
+		<javac destdir="${build.dir}"
+		       target="${compile.target}"
+		       source="${compile.source}"
+		       deprecation="on" debug="on" 
+		       includeAntRuntime="false">
 			<src path="${src.dir}" />
 			<src path="${test_src.dir}" />
 			<classpath>
 				<path refid="classpath.path" />
 			</classpath>
-		</my.javac>
+		</javac>
 	</target>
 
 	<target name="src_test" depends="compile" description="run src test">
