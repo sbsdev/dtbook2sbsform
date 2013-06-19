@@ -1074,6 +1074,19 @@
     </xsl:call-template>
   </xsl:template>
 
+  <!-- ==== -->
+  <!-- CODE -->
+  <!-- ==== -->
+
+  <xsl:template match="dtb:code[matches(.,'\s')]">
+    <!-- Multi-word code -->
+    <xsl:value-of select="louis:translate('sbs.dis,sbs-special.cti,sbs-code.cti', concat('&#x2588;',string(),'&#x2589;'))"/>
+  </xsl:template>
+
+  <xsl:template match="dtb:code">
+    <xsl:value-of select="louis:translate('sbs.dis,sbs-special.cti,sbs-code.cti', concat('&#x257C;',string()))"/>
+  </xsl:template>
+
   <!-- ========== -->
   <!-- REARMATTER -->
   <!-- ========== -->
