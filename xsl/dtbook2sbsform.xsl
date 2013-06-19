@@ -911,24 +911,72 @@
     </xsl:call-template>
   </xsl:template>
 
-  <!-- ======== -->
-  <!-- PRODNOTE -->
-  <!-- ======== -->
-  
-  <xsl:template match="dtb:prodnote">
-  </xsl:template>
-
   <!-- ======= -->
   <!-- SUB/SUP -->
   <!-- ======= -->
-  
-  <xsl:template match="dtb:sub|dtb:sup">
+
+  <xsl:template match="dtb:sup[descendant::brl:select]">
+    <!-- bei brl:select wird kein Zeichen gesetzt -->
+    <xsl:variable name="braille_tables">
+      <xsl:call-template name="getTable"/>
+    </xsl:variable>
+    <xsl:apply-templates/>
+  </xsl:template>
+
+  <xsl:template match="dtb:sup[matches(., '^[-]*\d+$')]">
+      <!-- Ziffern bekommen das Exponentzeichen und werden tiefgestellt -->
+      <xsl:variable name="braille_tables">
+        <xsl:call-template name="getTable">
+          <xsl:with-param name="context" select="'index'"/>
+        </xsl:call-template>
+      </xsl:variable>
+      <xsl:value-of
+	  select="louis:translate(string($braille_tables),concat('&#x257E;',string()))" />
+  </xsl:template>
+
+  <xsl:template match="dtb:sup">
+    <!-- alles andere bekommt das Zeichen für den oberen Index -->
+    <xsl:variable name="braille_tables">
+      <xsl:call-template name="getTable"/>
+    </xsl:variable>
+    <xsl:value-of
+	select="louis:translate(string($braille_tables),'&#x2580;')" />
+    <xsl:apply-templates/>
+  </xsl:template>
+
+  <xsl:template match="dtb:sub[descendant::brl:select]">
+    <!-- bei brl:select wird kein Zeichen gesetzt -->
+    <xsl:variable name="braille_tables">
+      <xsl:call-template name="getTable"/>
+    </xsl:variable>
+    <xsl:apply-templates/>
+  </xsl:template>
+
+  <xsl:template match="dtb:sub[matches(., '^[-]*\d+$')]">
+      <!-- Ziffern bekommen das Zeichen für den unteren Index und werden tiefgestellt -->
+      <xsl:variable name="braille_tables">
+        <xsl:call-template name="getTable">
+          <xsl:with-param name="context" select="'index'"/>
+        </xsl:call-template>
+      </xsl:variable>
+      <xsl:value-of
+	  select="louis:translate(string($braille_tables),concat('&#x2581;',string()))" />
+  </xsl:template>
+
+  <xsl:template match="dtb:sub">
+      <!-- alles andere bekommt das Zeichen für den unteren Index -->
+      <xsl:variable name="braille_tables">
+        <xsl:call-template name="getTable"/>
+      </xsl:variable>
+      <xsl:value-of
+	  select="louis:translate(string($braille_tables),'&#x2581;')" />
+      <xsl:apply-templates/>
   </xsl:template>
 
   <!-- =========== -->
   <!-- BLOCKQUOTES -->
   <!-- =========== -->
-  
+
   <xsl:template match="dtb:blockquote">
     <xsl:call-template name="block_macro">
       <xsl:with-param name="macro" select="'BLQUO'"/>
