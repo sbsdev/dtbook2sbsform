@@ -677,7 +677,7 @@
       <xsl:with-param name="body">
 	<xsl:apply-templates select="dtb:caption"/>
 	<xsl:text>&#10;xxx Linearisierte Version xxx</xsl:text>
-	<xsl:apply-templates select="dtb:thead, dtb:tbody, dtb:tfoot"/>
+	<xsl:apply-templates select="dtb:thead, dtb:tbody, dtb:tfoot, dtb:tr"/>
 	<xsl:text>&#10;xxx D-Zeilen-Version xxx</xsl:text>
 	<xsl:variable name="table" >
 	  <xsl:apply-templates select="." mode="pre-translate-table"/>
@@ -713,7 +713,7 @@
 
   <xsl:template match="dtb:table" mode="pre-translate-table">
     <xsl:copy>
-      <xsl:apply-templates select="dtb:thead/dtb:tr,dtb:tbody/dtb:tr,dtb:tfoot/dtb:tr" mode="pre-translate-table"/>
+      <xsl:apply-templates select="dtb:thead/dtb:tr, dtb:tbody/dtb:tr, dtb:tfoot/dtb:tr, dtb:tr" mode="pre-translate-table"/>
     </xsl:copy>
   </xsl:template>
 
