@@ -41,6 +41,10 @@
       </xsl:if>
     </xsl:template>
 
+    <xsl:template match="dtb:prodnote">
+      <xsl:apply-templates/>
+    </xsl:template>
+
     <xsl:template match="*">
       <xsl:copy>
 	<xsl:apply-templates select="@*|node()"/>

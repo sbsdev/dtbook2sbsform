@@ -51,7 +51,7 @@
         <dtb:prodnote xml:lang="de">In der Blindenschriftausgabe wurden sämtliche Abbildungen weggelassen.</dtb:prodnote>
       </utfx:source>
       <utfx:expected>
-	<dtb:prodnote xml:lang="de"><brl:literal>&lt;=</brl:literal>In der Blindenschriftausgabe wurden sämtliche Abbildungen weggelassen.<brl:literal>&lt;=</brl:literal></dtb:prodnote>
+	<brl:literal>&lt;=</brl:literal>In der Blindenschriftausgabe wurden sämtliche Abbildungen weggelassen.<brl:literal>&lt;=</brl:literal>
       </utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
@@ -69,12 +69,32 @@
       </dtb:prodnote>
       </utfx:source>
       <utfx:expected>
-	<dtb:prodnote xml:lang="de">
-	  <dtb:p brl:class="ind"><brl:literal>&lt;=</brl:literal>Anmerkung für die Blindenschriftausgabe:</dtb:p>
-	  <dtb:p brl:class="ind">Eine Zeichenerklärung befindet sich am Ende des Buches. <brl:literal>&lt;=</brl:literal></dtb:p>
-	</dtb:prodnote>
+	<dtb:p brl:class="ind"><brl:literal>&lt;=</brl:literal>Anmerkung für die Blindenschriftausgabe:</dtb:p>
+	<dtb:p brl:class="ind">Eine Zeichenerklärung befindet sich am Ende des Buches. <brl:literal>&lt;=</brl:literal></dtb:p>
       </utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
+
+  <!-- FIXME: adjacent prodnotes should probably not be merged -->
+  <!-- <utfx:test> -->
+  <!--   <utfx:name>Adjacent Prodnotes</utfx:name> -->
+  <!--   <utfx:stylesheet-params> -->
+  <!--     <utfx:with-param name="contraction" select="2"/> -->
+  <!--   </utfx:stylesheet-params> -->
+  <!--   <utfx:assert-equal> -->
+  <!--     <utfx:source> -->
+  <!-- 	<stub xml:lang="de"> -->
+  <!--         <dtb:prodnote>Mann</dtb:prodnote> -->
+  <!-- 	  <dtb:prodnote>Frau</dtb:prodnote> -->
+  <!-- 	</stub> -->
+  <!--     </utfx:source> -->
+  <!--     <utfx:expected> -->
+  <!-- 	<stub xml:lang="de"> -->
+  <!-- 	  <brl:literal>&lt;=</brl:literal>Mann<brl:literal>&lt;=</brl:literal> -->
+  <!-- 	  <brl:literal>&lt;=</brl:literal>Frau<brl:literal>&lt;=</brl:literal> -->
+  <!-- 	</stub> -->
+  <!--     </utfx:expected> -->
+  <!--   </utfx:assert-equal> -->
+  <!-- </utfx:test> -->
 
 </utfx:tests>
