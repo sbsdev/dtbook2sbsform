@@ -526,13 +526,11 @@ xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx Sidebars xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 y b SIDEBARb
 lm1
 D:::::
-i f=1 l=3
 n2
 i A=2
 y e SIDEBARb
 y b SIDEBARe
 i A=0
-i f=3 l=1
 D:::::
 lm1
 y e SIDEBARe
