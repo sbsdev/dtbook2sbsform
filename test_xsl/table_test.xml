@@ -332,4 +332,66 @@ y TABLEe
     </utfx:assert-equal>
   </utfx:test>
 
+  <utfx:test>
+    <utfx:name>Table with irregular structure</utfx:name>
+    <utfx:assert-equal>
+      <utfx:source>
+        <stub xml:lang="de">
+	  <dtb:table>
+            <dtb:tr>
+	      <dtb:td>1</dtb:td>
+	      <dtb:td>2</dtb:td>
+	      <dtb:td>3</dtb:td>
+            </dtb:tr>
+            <dtb:tr>
+	      <dtb:td>a</dtb:td>
+	      <dtb:td>b</dtb:td>
+            </dtb:tr>
+          </dtb:table>
+        </stub>
+      </utfx:source>
+      <utfx:expected>
+y TABLEb
+
+xxx Linearisierte Version xxx
+y TRb
+
+y TDb
+ #A
+y TDe
+y TDb
+ :: #B
+y TDe
+y TDb
+ :: #C
+y TDe
+y TRe
+
+y TRb
+
+y TDb
+ 'A
+y TDe
+y TDb
+ :: 'B
+y TDe
+y TRe
+
+xxx D-Zeilen-Version xxx
+&gt;skip
+D#A #B #C
+D'A 'B
+:skip
+
+xxx D-Zeilen-Version (gedreht) xxx
+&gt;skip
+D#A 'A
+D#B 'B
+D#C
+:skip
+y TABLEe
+      </utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
 </utfx:tests>

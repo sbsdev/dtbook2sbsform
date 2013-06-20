@@ -735,10 +735,11 @@
 
   <xsl:template match="dtb:table" mode="as-plain-table">
     <xsl:text>&#10;>skip&#10;</xsl:text>
+    <xsl:variable name="root" select="."/>
     <xsl:variable name="column-sizes" as="xs:integer*">
-      <xsl:for-each select="dtb:tr[1]/(dtb:td|dtb:th)">
-      	<xsl:variable name="column-position" select="position()"/>
-      	<xsl:sequence select="max(for $t in ../../dtb:tr/(dtb:td|dtb:th)[position()=$column-position]/text() return string-length($t))"/>
+      <xsl:for-each select="1 to max(for $row in dtb:tr return count($row/(dtb:td|dtb:th)))">
+      	<xsl:variable name="column-position" select="."/>
+      	<xsl:sequence select="max(for $t in $root/dtb:tr/(dtb:td|dtb:th)[position()=$column-position]/text() return string-length($t))"/>
       </xsl:for-each>
     </xsl:variable>
     <xsl:variable name="padding-chars" 
