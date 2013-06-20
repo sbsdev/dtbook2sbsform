@@ -705,6 +705,7 @@
     <xsl:call-template name="block_macro">
       <xsl:with-param name="macro" select="upper-case(local-name())"/>
       <xsl:with-param name="indent" select="' '"/>
+      <xsl:with-param name="newline_after" select="false()"/>
       <xsl:with-param name="body">
 	<xsl:if test="position() &gt; 1">
 	  <xsl:text>:: </xsl:text>
