@@ -352,6 +352,7 @@
   <xsl:template name="block_macro">
     <xsl:param name="macro" as="xs:string"/>
     <xsl:param name="indent" as="xs:string" select="''"/>
+    <xsl:param name="newline_after" as="xs:boolean" select="true()"/>
     <xsl:param name="enable_class" as="xs:boolean" select="true()"/>
     <xsl:param name="body">
       <xsl:apply-templates/>
@@ -362,7 +363,7 @@
     <xsl:sequence select="$body"/>
     <xsl:value-of select="concat('&#10;y ', $macro, 'e')"/>
     <xsl:value-of select="if ($enable_class and @brl:class) then concat('_', @brl:class) else ''"/>
-    <xsl:text>&#10;</xsl:text>
+    <xsl:value-of select="if ($newline_after) then '&#10;' else ''"/>
   </xsl:template>
 
   <xsl:template name="inline_macro">
@@ -657,6 +658,7 @@
     <xsl:call-template name="block_macro">
       <xsl:with-param name="macro" select="'DT'"/>
       <xsl:with-param name="indent" select="' '"/>
+      <xsl:with-param name="newline_after" select="false()"/>
     </xsl:call-template>
   </xsl:template>
 
@@ -664,6 +666,7 @@
     <xsl:call-template name="block_macro">
       <xsl:with-param name="macro" select="'DD'"/>
       <xsl:with-param name="indent" select="' '"/>
+      <xsl:with-param name="newline_after" select="false()"/>
     </xsl:call-template>
   </xsl:template>
 
