@@ -1681,9 +1681,9 @@
 
   <!-- Text nodes are translated with liblouis -->
 
-  <!-- Handle comma after ordinals and after fraction-->
+  <!-- Handle comma after ordinals, fraction and sub/sup -->
   <xsl:template
-    match="text()[(preceding::* intersect my:preceding-textnode-within-block(.)/ancestor::brl:num[@role=('ordinal','fraction','mixed')]) and matches(string(), '^,')]" priority="100">
+    match="text()[(preceding::* intersect my:preceding-textnode-within-block(.)/(ancestor::brl:num[@role=('ordinal','fraction','mixed')]|ancestor::dtb:sub|ancestor::dtb:sup)) and matches(string(), '^,')]" priority="100">
     <xsl:variable name="braille_tables">
       <xsl:call-template name="getTable"/>
     </xsl:variable>
