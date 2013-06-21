@@ -1114,6 +1114,14 @@
     </xsl:call-template>
   </xsl:template>
 
+  <xsl:template match="dtb:line[ancestor::dtb:poem//dtb:linenum and not(.//dtb:linenum)]" 
+		priority="10">
+    <xsl:call-template name="block_macro">
+      <xsl:with-param name="macro" select="'LINE'"/>
+      <xsl:with-param name="indent" select="' | '"/>
+    </xsl:call-template>
+  </xsl:template>
+
   <xsl:template match="dtb:br">
     <!-- ignore for now -->
   </xsl:template>

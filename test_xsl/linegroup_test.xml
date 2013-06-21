@@ -149,5 +149,66 @@ y POEMe
     </utfx:assert-equal>
   </utfx:test>
 
+  <utfx:test>
+    <utfx:name>Poem with mixed linenum</utfx:name>
+    <utfx:assert-equal>
+      <utfx:source>
+	<dtb:poem xml:lang="de">
+	  <dtb:line><dtb:linenum>6</dtb:linenum>DAS HIER IST EIN KLEINER TEST. ES GEHT DARUM.</dtb:line>
+	  <dtb:line>DAS HIER IST EIN KLEINER TEST. ES GEHT DARUM.</dtb:line>
+	</dtb:poem>
+      </utfx:source>
+      <utfx:expected>
+y POEMb
+
+y LINEb
+ #F| D HR ] 6 KL67 TE]. % &amp;HT D)UM.
+y LINEe
+
+y LINEb
+ | D HR ] 6 KL67 TE]. % &amp;HT D)UM.
+y LINEe
+
+y POEMe
+</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>Poem with mixed linenum inside linegroup</utfx:name>
+    <utfx:assert-equal>
+      <utfx:source>
+	<dtb:poem xml:lang="de">
+	  <dtb:linegroup>
+	    <dtb:line><dtb:linenum>6</dtb:linenum>DAS HIER IST EIN KLEINER TEST. ES GEHT DARUM.</dtb:line>
+	  </dtb:linegroup>
+	  <dtb:linegroup>
+	    <dtb:line>DAS HIER IST EIN KLEINER TEST. ES GEHT DARUM.</dtb:line>
+	  </dtb:linegroup>
+	</dtb:poem>
+      </utfx:source>
+      <utfx:expected>
+y POEMb
+
+y LINEGRb
+ 
+y LINEb
+ #F| D HR ] 6 KL67 TE]. % &amp;HT D)UM.
+y LINEe
+
+y LINEGRe
+
+y LINEGRb
+ 
+y LINEb
+ | D HR ] 6 KL67 TE]. % &amp;HT D)UM.
+y LINEe
+
+y LINEGRe
+
+y POEMe
+</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
 
 </utfx:tests>
