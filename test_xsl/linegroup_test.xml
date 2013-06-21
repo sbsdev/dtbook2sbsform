@@ -106,6 +106,25 @@ y LINEe
   </utfx:test>
 
   <utfx:test>
+    <utfx:name>Line with mixed lines</utfx:name>
+    <utfx:assert-equal>
+      <utfx:source>
+	<dtb:line xml:lang="de"><dtb:linenum>6</dtb:linenum>DAS HIER IST EIN KLEINER TEST. ES GEHT DARUM.</dtb:line>
+	<dtb:line xml:lang="de">DAS HIER IST EIN KLEINER TEST. ES GEHT DARUM.</dtb:line>
+      </utfx:source>
+      <utfx:expected>
+y LINEb
+ #F| D HR ] 6 KL67 TE]. % &amp;HT D)UM.
+y LINEe
+
+y LINEb
+ | D HR ] 6 KL67 TE]. % &amp;HT D)UM.
+y LINEe
+</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
     <utfx:name>Poem with linenum</utfx:name>
     <utfx:assert-equal>
       <utfx:source>
