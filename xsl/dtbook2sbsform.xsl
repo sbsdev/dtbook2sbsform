@@ -234,13 +234,13 @@
       test="$actual_contraction = '2' and not($context=('num_roman','abbr','date_month','date_day','name_capitalized','a'))">
       <xsl:text>sbs-de-letsign.mod,</xsl:text>
     </xsl:if>
-    <xsl:if test="$context != 'date_month' and $context != 'denominator' and $context != 'a'">
+    <xsl:if test="not($context = 'date_month' or $context = 'denominator' or $context = 'a' or $context = 'index')">
       <xsl:text>sbs-numsign.mod,</xsl:text>
     </xsl:if>
     <xsl:if test="$context != 'a'">
       <xsl:choose>
         <xsl:when
-          test="$context = 'num_ordinal' or $context = 'date_day' or $context = 'denominator'">
+          test="$context = 'num_ordinal' or $context = 'date_day' or $context = 'denominator' or $context = 'index'">
           <xsl:text>sbs-litdigit-lower.mod,</xsl:text>
         </xsl:when>
         <xsl:otherwise>
