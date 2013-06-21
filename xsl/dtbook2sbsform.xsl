@@ -1105,7 +1105,9 @@
     </xsl:call-template>
   </xsl:template>
 
-  <xsl:template match="dtb:line[following-sibling::dtb:line/dtb:linenum or preceding-sibling::dtb:line/dtb:linenum]">
+  <xsl:template
+      match="dtb:line[(following-sibling::dtb:line/dtb:linenum or
+  	     preceding-sibling::dtb:line/dtb:linenum) and not(.//dtb:linenum)]">
     <xsl:call-template name="block_macro">
       <xsl:with-param name="macro" select="'LINE'"/>
       <xsl:with-param name="indent" select="' | '"/>
