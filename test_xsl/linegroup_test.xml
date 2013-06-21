@@ -99,7 +99,21 @@ y LINEe_foo
       </utfx:source>
       <utfx:expected>
 y LINEb
- #F| D HR ] 6 KL67 TE]. % &amp;HT D)UM.
+ bF| D HR ] 6 KL67 TE]. % &amp;HT D)UM.
+y LINEe
+</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>Line with large linenum</utfx:name>
+    <utfx:assert-equal>
+      <utfx:source>
+	<dtb:line xml:lang="de"><dtb:linenum>36</dtb:linenum>DAS HIER IST EIN KLEINER TEST. ES GEHT DARUM.</dtb:line>
+      </utfx:source>
+      <utfx:expected>
+y LINEb
+ CF| D HR ] 6 KL67 TE]. % &amp;HT D)UM.
 y LINEe
 </utfx:expected>
     </utfx:assert-equal>
@@ -115,7 +129,7 @@ y LINEe
       </utfx:source>
       <utfx:expected>
 y LINEb
- #F| D HR ] 6 KL67 TE]. % &amp;HT D)UM.
+ bF| D HR ] 6 KL67 TE]. % &amp;HT D)UM.
 y LINEe
 
 y LINEb
@@ -123,7 +137,7 @@ y LINEb
 y LINEe
 
 y LINEb
- #F| D HR ] 6 KL67 TE]. % &amp;HT D)UM.
+ bF| D HR ] 6 KL67 TE]. % &amp;HT D)UM.
 y LINEe
 </utfx:expected>
     </utfx:assert-equal>
@@ -141,7 +155,7 @@ y LINEe
 y POEMb
 
 y LINEb
- #F| D HR ] 6 KL67 TE]. % &amp;HT D)UM.
+ bF| D HR ] 6 KL67 TE]. % &amp;HT D)UM.
 y LINEe
 
 y POEMe
@@ -162,7 +176,7 @@ y POEMe
 y POEMb
 
 y LINEb
- #F| D HR ] 6 KL67 TE]. % &amp;HT D)UM.
+ bF| D HR ] 6 KL67 TE]. % &amp;HT D)UM.
 y LINEe
 
 y LINEb
@@ -193,7 +207,7 @@ y POEMb
 y LINEGRb
  
 y LINEb
- #F| D HR ] 6 KL67 TE]. % &amp;HT D)UM.
+ bF| D HR ] 6 KL67 TE]. % &amp;HT D)UM.
 y LINEe
 
 y LINEGRe

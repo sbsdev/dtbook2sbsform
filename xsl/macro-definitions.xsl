@@ -451,7 +451,7 @@ xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx Poem xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx;
 y b POEMb
 lm1
 I T=j
-i f=1 l=3 T=6
+i f=1 l=3 T=5
 n4
 i A=2
 y e POEMb
@@ -478,7 +478,7 @@ y e LINEe
 y b LINEGRb
 lm1
 I T=j
-i f=1 l=3 T=6
+i f=1 l=3 T=5
 n2
 y e LINEGRb
 y b LINEGRe

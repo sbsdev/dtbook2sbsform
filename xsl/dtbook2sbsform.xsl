@@ -234,7 +234,7 @@
       test="$actual_contraction = '2' and not($context=('num_roman','abbr','date_month','date_day','name_capitalized','a'))">
       <xsl:text>sbs-de-letsign.mod,</xsl:text>
     </xsl:if>
-    <xsl:if test="not($context = 'date_month' or $context = 'denominator' or $context = 'a' or $context = 'index')">
+    <xsl:if test="not($context = 'date_month' or $context = 'denominator' or $context = 'a' or $context = 'index' or $context = 'linenum')">
       <xsl:text>sbs-numsign.mod,</xsl:text>
     </xsl:if>
     <xsl:if test="$context != 'a'">
@@ -1087,7 +1087,14 @@
   <!-- ====== -->
 
   <xsl:template match="dtb:linenum">
-    <xsl:apply-templates/>
+    <xsl:variable name="braille_tables">
+      <xsl:call-template name="getTable">
+        <xsl:with-param name="context" select="'linenum'"/>
+      </xsl:call-template>
+    </xsl:variable>
+    <!-- make it "right justified" (assuming we only have two digits max) -->
+    <xsl:if test="string-length(.) = 1">b</xsl:if>
+    <xsl:value-of select="louis:translate($braille_tables, string())" />
     <xsl:text>| </xsl:text>
   </xsl:template>
 
