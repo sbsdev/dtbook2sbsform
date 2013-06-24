@@ -205,6 +205,20 @@
     <xsl:value-of select="if ($hyphenation) then $string else translate($string, '­', '')"/>
   </xsl:function>
 
+  <xsl:function name="my:has-brl-class" as="xs:boolean">
+    <xsl:param name="context"/>
+    <xsl:sequence select="$context/@brl:class or starts-with($context/@class, 'brl:')"/>
+  </xsl:function>
+
+  <xsl:function name="my:get-brl-class" as="xs:string">
+    <xsl:param name="context"/>
+    <xsl:sequence select="if ($context/@brl:class) then
+			  $context/@brl:class else
+			  if (starts-with($context/@class, 'brl:')) then
+			  replace($context/@class, '^brl:', '')
+			  else ''"/>
+  </xsl:function>
+
   <xsl:template name="getTable">
     <xsl:param name="context" select="local-name()"/>
     <!-- handle explicit setting of the contraction -->
@@ -358,11 +372,11 @@
       <xsl:apply-templates/>
     </xsl:param>
     <xsl:value-of select="concat('&#10;y ', $macro, 'b')"/>
-    <xsl:value-of select="if ($enable_class and @brl:class) then concat('_', @brl:class) else ''"/>
+    <xsl:value-of select="if ($enable_class and my:has-brl-class(.)) then concat('_', my:get-brl-class(.)) else ''"/>
     <xsl:value-of select="concat('&#10;', $indent)"/>
     <xsl:sequence select="$body"/>
     <xsl:value-of select="concat('&#10;y ', $macro, 'e')"/>
-    <xsl:value-of select="if ($enable_class and @brl:class) then concat('_', @brl:class) else ''"/>
+    <xsl:value-of select="if ($enable_class and my:has-brl-class(.)) then concat('_', my:get-brl-class(.)) else ''"/>
     <xsl:value-of select="if ($newline_after) then '&#10;' else ''"/>
   </xsl:template>
 
@@ -373,7 +387,7 @@
       <xsl:apply-templates/>
     </xsl:param>
     <xsl:value-of select="concat('&#10;y ', $macro)"/>
-    <xsl:value-of select="if (@brl:class) then concat('_', @brl:class) else ''"/>
+    <xsl:value-of select="if (my:has-brl-class(.)) then concat('_', my:get-brl-class(.)) else ''"/>
     <xsl:value-of select="concat('&#10;', $indent)"/>
     <xsl:sequence select="$body"/>
   </xsl:template>
@@ -571,8 +585,8 @@
       <xsl:when test="contains(@class, 'noindent')">
         <xsl:text>y P_noi&#10; </xsl:text>
       </xsl:when>
-      <xsl:when test="exists(@brl:class)">
-        <xsl:text>y P_</xsl:text><xsl:value-of select="@brl:class"/><xsl:text>&#10; </xsl:text>
+      <xsl:when test="my:has-brl-class(.)">
+        <xsl:text>y P_</xsl:text><xsl:value-of select="my:get-brl-class(.)"/><xsl:text>&#10; </xsl:text>
       </xsl:when>
       <xsl:otherwise>
         <xsl:text>y P&#10; </xsl:text>
@@ -605,7 +619,7 @@
 
   <xsl:template match="dtb:li">
     <xsl:text>&#10;y LI</xsl:text>
-    <xsl:if test="@brl:class"><xsl:text>_</xsl:text><xsl:value-of select="@brl:class"/></xsl:if>
+    <xsl:if test="my:has-brl-class(.)"><xsl:text>_</xsl:text><xsl:value-of select="my:get-brl-class(.)"/></xsl:if>
     <xsl:text>&#10; </xsl:text>
     <xsl:variable name="list" select="ancestor::dtb:list[1]"/>
     <xsl:if test="$list/@type='ol'">
@@ -839,7 +853,7 @@
     <xsl:variable name="level" select="number(substring(local-name(), 2))"/>
     <xsl:text>&#10;y H</xsl:text>
     <xsl:value-of select="$level"/>
-    <xsl:if test="@brl:class"><xsl:text>_</xsl:text><xsl:value-of select="@brl:class"/></xsl:if>
+    <xsl:if test="my:has-brl-class(.)"><xsl:text>_</xsl:text><xsl:value-of select="my:get-brl-class(.)"/></xsl:if>
     <xsl:text>&#10; </xsl:text>
     <xsl:variable name="header">
       <xsl:apply-templates
@@ -1368,9 +1382,9 @@
   </xsl:template>
 
   <xsl:template match="dtb:div">
-    <xsl:value-of select="concat('&#10;y DIVb_', @brl:class, '&#10;')"/>
+    <xsl:value-of select="concat('&#10;y DIVb_', my:get-brl-class(.), '&#10;')"/>
     <xsl:apply-templates/>
-    <xsl:value-of select="concat('&#10;y DIVe_', @brl:class, '&#10;')"/>
+    <xsl:value-of select="concat('&#10;y DIVe_', my:get-brl-class(.), '&#10;')"/>
   </xsl:template>
   
   <xsl:template match="dtb:span">
