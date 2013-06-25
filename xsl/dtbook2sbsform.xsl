@@ -764,6 +764,7 @@
 		  select="'::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::'"/>
     <xsl:variable name="inter-column-spacing" select="'  '"/>
     <xsl:for-each select="dtb:tr">
+      <xsl:variable name="heading-row" select="not(dtb:td)"/>
       <xsl:text>D</xsl:text>
       <xsl:for-each select="dtb:th|dtb:td">
 	<xsl:variable name="column-position" select="position()"/>
@@ -775,7 +776,7 @@
 	     http://www.dpawson.co.uk/xsl/sect2/padding.html#d8227e19
 	     -->
 	<xsl:variable name="actual-padding" 
-		      select="if (($column-sizes[$column-position] - string-length(.)) > 2) then $padding-dots else $padding-space"/>
+		      select="if (not($heading-row) and (($column-sizes[$column-position] - string-length(.)) > 2)) then $padding-dots else $padding-space"/>
 	<xsl:value-of
 	    select="substring(concat(.,$actual-padding),1,$column-sizes[$column-position])"/>
 	<xsl:if test="position()!=last()" >
