@@ -337,6 +337,7 @@ u,
 	    <xsl:when test="$element-name='blockquote'">BLQUO</xsl:when>
 	    <xsl:when test="$element-name='epigraph'">EPIGR</xsl:when>
 	    <xsl:when test="$element-name='imggroup'">IMGGR</xsl:when>
+	    <xsl:when test="$element-name='linegroup'">LINEGR</xsl:when>
             <xsl:when test="$element-name='list' and @type='pl'">PLIST</xsl:when>
             <xsl:when test="$element-name='list' and @type='ul'">ULIST</xsl:when>
             <xsl:when test="$element-name='list' and @type='ol'">OLIST</xsl:when>
@@ -525,13 +526,13 @@ y e CAPTION
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx Sidebars xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 y b SIDEBARb
 lm1
-D:::::
-n2
-i A=2
+n3
+DPCCCC
+i A=1
 y e SIDEBARb
 y b SIDEBARe
 i A=0
-D:::::
+DV----
 lm1
 y e SIDEBARe
 
