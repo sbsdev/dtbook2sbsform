@@ -722,8 +722,8 @@ y e TFOOTe
     <xsl:if test="//dtb:tr[not(@brl:class)]">
       <xsl:text>
 y b TRb
->y e TRb
->y b TRe
+y e TRb
+y b TRe
 y e TRe
 </xsl:text>
     </xsl:if>
