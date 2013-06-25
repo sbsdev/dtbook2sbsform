@@ -756,10 +756,13 @@
       	<xsl:sequence select="max(for $t in $root/dtb:tr/(dtb:td|dtb:th)[position()=$column-position]/text() return string-length($t))"/>
       </xsl:for-each>
     </xsl:variable>
-    <xsl:variable name="padding-chars" 
+    <xsl:variable name="padding-space" 
 		  select="'                                                                                '"/>
+    <xsl:variable name="padding-dots" 
+		  select="' ...............................................................................'"/>
     <xsl:variable name="underline-chars" 
 		  select="'::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::'"/>
+    <xsl:variable name="inter-column-spacing" select="'  '"/>
     <xsl:for-each select="dtb:tr">
       <xsl:text>D</xsl:text>
       <xsl:for-each select="dtb:th|dtb:td">
@@ -771,11 +774,12 @@
 	     table displayed as a plain table anyway. See also
 	     http://www.dpawson.co.uk/xsl/sect2/padding.html#d8227e19
 	     -->
+	<xsl:variable name="actual-padding" 
+		      select="if (($column-sizes[$column-position] - string-length(.)) > 2) then $padding-dots else $padding-space"/>
 	<xsl:value-of
-	    select="substring(concat(.,$padding-chars), 
-		    1,$column-sizes[$column-position])"/>
+	    select="substring(concat(.,$actual-padding),1,$column-sizes[$column-position])"/>
 	<xsl:if test="position()!=last()" >
-	  <xsl:text> </xsl:text>
+	  <xsl:value-of select="$inter-column-spacing"/>
 	</xsl:if>
       </xsl:for-each>
       <xsl:text>&#10;</xsl:text>
@@ -790,9 +794,9 @@
 			select="substring($underline-chars,1,string-length(.))"/>
       	  <xsl:value-of
       	      select="substring(
-		        concat($underline, $padding-chars),1,$column-sizes[$column-position])"/>
+		        concat($underline, $padding-space),1,$column-sizes[$column-position])"/>
       	  <xsl:if test="position()!=last()" >
-      	    <xsl:text> </xsl:text>
+	    <xsl:value-of select="$inter-column-spacing"/>
       	  </xsl:if>
       	</xsl:for-each>
 	<xsl:text>&#10;</xsl:text>

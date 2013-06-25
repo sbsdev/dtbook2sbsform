@@ -242,24 +242,24 @@ y TFOOTe
 
 xxx D-Zeilen-Version xxx
 >skip
-DL+D          &gt;BIP #AIHJ  &gt;BNP #AIHJ  FL@4E    6WOHN7      
-D:::          ::::::::::  ::::::::::  :::::    ::::::      
-D&gt;USA         #ABCD       #CDEF       #BCD.HHI #A.CDE.FFF  
-DJAPAN        #BCDE       #FGHI       #AA.HHI  #CDE.FFF    
-D*DIC         #CDDE       #EFGH       #CD.HHI  #BEJ.CDE.FFF
-DGR9NL+D      #CDDB       #EFBH       #AD.HHI  #BCD        
-DRU^L+D       #CDB        #EBH        #BCD.HHI #BCD.CDF.JJJ
-D=&amp;M@^ &gt;OECD= * MIA. &gt;CHF * MIA. &gt;CHF * 'HA    =OE RCTN7=  
-D:::::::::::: ::::::::::: ::::::::::: :::::    ::::::::::  
+DL+D ........  &gt;BIP #AIHJ   &gt;BNP #AIHJ   FL@4E ..  6WOHN7 .....
+D:::           ::::::::::   ::::::::::   :::::     ::::::      
+D&gt;USA .......  #ABCD .....  #CDEF .....  #BCD.HHI  #A.CDE.FFF  
+DJAPAN ......  #BCDE .....  #FGHI .....  #AA.HHI   #CDE.FFF ...
+D*DIC .......  #CDDE .....  #EFGH .....  #CD.HHI   #BEJ.CDE.FFF
+DGR9NL+D ....  #CDDB .....  #EFBH .....  #AD.HHI   #BCD .......
+DRU^L+D .....  #CDB ......  #EBH ......  #BCD.HHI  #BCD.CDF.JJJ
+D=&amp;M@^ &gt;OECD=  * MIA. &gt;CHF  * MIA. &gt;CHF  * 'HA ..  =OE RCTN7=  
+D::::::::::::  :::::::::::  :::::::::::  :::::     ::::::::::  
 :skip
 
 xxx D-Zeilen-Version (gedreht) xxx
 &gt;skip
-DL+D        &gt;USA       JAPAN    *DIC         GR9NL+D RU^L+D       =&amp;M@^ &gt;OECD=
-D&gt;BIP #AIHJ #ABCD      #BCDE    #CDDE        #CDDB   #CDB         * MIA. &gt;CHF 
-D&gt;BNP #AIHJ #CDEF      #FGHI    #EFGH        #EFBH   #EBH         * MIA. &gt;CHF 
-DFL@4E      #BCD.HHI   #AA.HHI  #CD.HHI      #AD.HHI #BCD.HHI     * 'HA       
-D6WOHN7     #A.CDE.FFF #CDE.FFF #BEJ.CDE.FFF #BCD    #BCD.CDF.JJJ =OE RCTN7=  
+DL+D ......  &gt;USA .....  JAPAN ..  *DIC .......  GR9NL+D  RU^L+D .....  =&amp;M@^ &gt;OECD=
+D&gt;BIP #AIHJ  #ABCD ....  #BCDE ..  #CDDE ......  #CDDB    #CDB .......  * MIA. &gt;CHF 
+D&gt;BNP #AIHJ  #CDEF ....  #FGHI ..  #EFGH ......  #EFBH    #EBH .......  * MIA. &gt;CHF 
+DFL@4E ....  #BCD.HHI    #AA.HHI   #CD.HHI ....  #AD.HHI  #BCD.HHI ...  * 'HA ......
+D6WOHN7 ...  #A.CDE.FFF  #CDE.FFF  #BEJ.CDE.FFF  #BCD ..  #BCD.CDF.JJJ  =OE RCTN7=  
 :skip
 y TABLEe
       </utfx:expected>
@@ -317,15 +317,15 @@ y TRe
 
 xxx D-Zeilen-Version xxx
 &gt;skip
-D#A #B #C
-D'A 'B 'C
+D#A  #B  #C
+D'A  'B  'C
 :skip
 
 xxx D-Zeilen-Version (gedreht) xxx
 &gt;skip
-D#A 'A
-D#B 'B
-D#C 'C
+D#A  'A
+D#B  'B
+D#C  'C
 :skip
 y TABLEe
       </utfx:expected>
@@ -379,14 +379,14 @@ y TRe
 
 xxx D-Zeilen-Version xxx
 &gt;skip
-D#A #B #C
-D'A 'B
+D#A  #B  #C
+D'A  'B
 :skip
 
 xxx D-Zeilen-Version (gedreht) xxx
 &gt;skip
-D#A 'A
-D#B 'B
+D#A  'A
+D#B  'B
 D#C
 :skip
 y TABLEe
