@@ -24,6 +24,21 @@
   xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:data="http://sbsform.ch/data"
   exclude-result-prefixes="dtb louis data my" extension-element-prefixes="my">
 	
+  <xsl:function name="my:padded-comment" as="text()">
+    <xsl:param name="comment"/>
+    <xsl:variable name="padding-chars"
+		  select="'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'"/>
+    <xsl:value-of select="my:padded-comment($comment, $padding-chars)"/>
+  </xsl:function>
+
+  <xsl:function name="my:padded-comment" as="text()">
+    <xsl:param name="comment"/>
+    <xsl:param name="padding-chars"/>
+    <xsl:variable name="max-width" select="78"/>
+    <xsl:variable name="padding" select="($max-width - string-length($comment) - 3) div 2"/>
+    <xsl:value-of select="concat('&#10;x', substring(concat(substring($padding-chars,1,$padding),' ',$comment,' ',$padding-chars),1,$max-width),'&#10;&#10;')"/>
+  </xsl:function>
+
   <xsl:template name="sbsform-macro-definitions">
     <xsl:variable name="braille_tables">
       <xsl:call-template name="getTable"/>
@@ -33,10 +48,10 @@
         <xsl:with-param name="context" select="'v-form'"/>
       </xsl:call-template>
     </xsl:variable>
-    <xsl:text>&#10;x ======================= ANFANG SBSFORM.MAK =========================&#10;</xsl:text>
-    <xsl:text>x Bei Aenderungen den ganzen Block in separate Makrodatei auslagern.&#10;&#10;</xsl:text>
+    <xsl:sequence select="my:padded-comment('ANFANG SBSFORM.MAK', '================================================================================')"/>
+    <xsl:text>x Bei Aenderungen den ganzen Block in separate Makrodatei auslagern.&#10;</xsl:text>
 
-    <xsl:text>xxxxxxxxxxxxxxxxxxxxxxxxxx book, body, rear xxxxxxxxxxxxxxxxxxxxxxxxxx&#10;&#10;</xsl:text>
+    <xsl:sequence select="my:padded-comment('book, body, rear')"/>
 
     <xsl:text>y b BOOKb ; Anfang des Buches: Globale Einstellungen&#10;</xsl:text>
     <xsl:text>z&#10;</xsl:text>
@@ -89,7 +104,7 @@
 
     
     <xsl:if test="//dtb:frontmatter//dtb:level1[not(@class) or (@class!='titlepage' and @class!='toc')]">
-      <xsl:text>&#10;xxxxxxxxxxxxxxxxxxxxxxxx Frontmatter Levels und Headings xxxxxxxxxxxxx&#10;</xsl:text>
+      <xsl:sequence select="my:padded-comment('Frontmatter Levels und Headings')"/>
       <xsl:if test="//dtb:frontmatter//dtb:level1[not(@class) or (@class!='titlepage' and @class!='toc')]/dtb:h1">
 	<xsl:text>y b H1_FRONT&#10;</xsl:text>
 	<xsl:text>n6&#10;</xsl:text>
@@ -122,7 +137,7 @@
       </xsl:if>
     </xsl:if>
 
-    <xsl:text>&#10;xxxxxxxxxxxxxxxxxxxxxxxx Levels und Headings xxxxxxxxxxxxxxxxxxxxxxxxx&#10;</xsl:text>
+    <xsl:sequence select="my:padded-comment('Levels und Headings')"/>
     <xsl:text>y b LEVEL1b&#10;</xsl:text>
     <xsl:text>p&#10;</xsl:text>
     <xsl:text>Y&#10;</xsl:text>
@@ -280,7 +295,7 @@ u,
     </xsl:if>
 
     <xsl:if test="//dtb:*[@brl:class]">
-      <xsl:text>&#10;xxxxxxxxxxxxxxxxxxxx Makros mit Class Attributen xxxxxxxxxxxxxxxxxxxx&#10;</xsl:text>
+      <xsl:sequence select="my:padded-comment('Makros mit Class Attributen')"/>
       <!-- Elements that only have a start macro -->
       <xsl:for-each-group
 	  select="(//dtb:author|
@@ -367,14 +382,14 @@ u,
     </xsl:if>
 
     <xsl:if test="//dtb:note and $footnote_placement != 'standard'">
-      <xsl:text>&#10;xxxxxxxxxxxxxxxxxxxx Notes xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&#10;</xsl:text>
+      <xsl:sequence select="my:padded-comment('Notes')"/>
       <xsl:text>y b Notes&#10;</xsl:text>
       <xsl:text>X TODO: Fix this macro&#10;</xsl:text>
       <xsl:text>y e Notes&#10;</xsl:text>
     </xsl:if>
 
     <xsl:if test="//dtb:p[not(@brl:class)]">
-      <xsl:text>&#10;xxxxxxxxxxxxxxxxxxxx Absatz, Leerzeile, Separator xxxxxxxxxxxxxxxxxxxx&#10;</xsl:text>
+      <xsl:sequence select="my:padded-comment('Absatz, Leerzeile, Separator')"/>
       <xsl:text>y b P&#10;</xsl:text>
       <xsl:text>a&#10;</xsl:text>
       <xsl:text>y e P&#10;</xsl:text>
@@ -417,7 +432,7 @@ u,
     </xsl:if>
 
     <xsl:if test="//dtb:blockquote[not(@brl:class)]">
-      <xsl:text>&#10;xxxxxxxxxxxxxxxxxxxxxxxxxxxxx Blockquote xxxxxxxxxxxxxxxxxxxxxxxxxxxxx&#10;</xsl:text>
+      <xsl:sequence select="my:padded-comment('Blockquote')"/>
       <xsl:text>y b BLQUOb&#10;</xsl:text>
       <xsl:text>lm1&#10;</xsl:text>
       <xsl:text>n2&#10;</xsl:text>
@@ -431,8 +446,8 @@ u,
     </xsl:if>
 
     <xsl:if test="//dtb:epigraph[not(@brl:class)]">
+      <xsl:sequence select="my:padded-comment('Epigraph')"/>
       <xsl:text>
-xxxxxxxxxxxxxxxxxxxxxxxxxxxxx Epigraph xxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 y b EPIGRb
 lm1
 n2
@@ -447,8 +462,8 @@ y e EPIGRe
     </xsl:if>
 
     <xsl:if test="//dtb:poem[not(@brl:class)]|//dtb:line[not(@brl:class)]">
+      <xsl:sequence select="my:padded-comment('Poem')"/>
       <xsl:text>
-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx Poem xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx;
 y b POEMb
 lm1
 I T=j
@@ -475,6 +490,7 @@ y e LINEe
     </xsl:if>
 
     <xsl:if test="//dtb:linegroup[not(@brl:class)]">
+      <xsl:sequence select="my:padded-comment('Linegroup')"/>
       <xsl:text>
 y b LINEGRb
 lm1
@@ -490,8 +506,8 @@ y e LINEGRe
     </xsl:if>
 
     <xsl:if test="//dtb:imggroup[not(@brl:class)]">
+      <xsl:sequence select="my:padded-comment('Imggroup')"/>
       <xsl:text>
-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx Imggroup xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx;
 y b IMGGRb
 lm1
 i f=1 l=3
@@ -505,8 +521,8 @@ y e IMGGRe
     </xsl:if>
 
     <xsl:if test="//dtb:img[not(@brl:class)]">
+      <xsl:sequence select="my:padded-comment('Images')"/>
       <xsl:text>
-xxxxxxxxxxxxxxxxxxxxxxxxxxxxx Images xxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 y b IMG
 a
 y e IMG
@@ -522,8 +538,8 @@ y e CAPTION
     </xsl:if>
 
     <xsl:if test="//dtb:sidebar[not(@brl:class)]">
+      <xsl:sequence select="my:padded-comment('Sidebars')"/>
       <xsl:text>
-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx Sidebars xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 y b SIDEBARb
 lm1
 n3
@@ -552,9 +568,8 @@ y e HDe
     </xsl:if>
 
     <xsl:if test="//dtb:list[not(@brl:class)]|//dtb:li[not(@brl:class)]">
+      <xsl:sequence select="my:padded-comment('Listen')"/>
       <xsl:text>
-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx Listen xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-      
 y b LI
 a
 y e LI
@@ -640,8 +655,8 @@ y e OLISTe
     </xsl:if>
 
     <xsl:if test="//dtb:dl[not(@brl:class)]">
+      <xsl:sequence select="my:padded-comment('Definitionslisten')"/>
       <xsl:text>
-xxxxxxxxxxxxxxxxxxxxxxxxxxxxx Definitionslisten xxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 y b DLb
 i f=1 l=3
 lm1
@@ -675,8 +690,8 @@ y e DDe
     </xsl:if>
 
     <xsl:if test="//dtb:table[not(@brl:class)]">
+      <xsl:sequence select="my:padded-comment('Tabellen')"/>
       <xsl:text>
-xxxxxxxxxxxxxxxxxxxxxxxxxxxxx Tabellen xxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 y b TABLEb
 i f=1 l=3
 lm1
@@ -746,7 +761,7 @@ y e THe
 </xsl:text>
     </xsl:if>
 
-    <xsl:text>&#10;xxxxxxxxxxxxxxxxxxxxxxxxxxx Bandeinteilung xxxxxxxxxxxxxxxxxxxxxxxxxxx&#10;</xsl:text>
+    <xsl:sequence select="my:padded-comment('Bandeinteilung')"/>
     <xsl:text>y b BrlVol&#10;</xsl:text>
     <xsl:text>?vol:vol+1&#10;</xsl:text>
     <xsl:text>y Titlepage&#10;</xsl:text>
@@ -797,7 +812,7 @@ y e EndVol
 </xsl:text>
     </xsl:if>
 
-    <xsl:text>&#10;xxxxxxxxxxxxxxxxxxxxxxxxxxxx Hilfsmakros xxxxxxxxxxxxxxxxxxxxxxxxxxxxx&#10;</xsl:text>
+    <xsl:sequence select="my:padded-comment('Hilfsmakros')"/>
     <xsl:if test="$toc_level &gt; 0">
       <xsl:text>y b Inhaltsv
 E
@@ -976,8 +991,8 @@ y Ziff
       <xsl:value-of select="louis:translate(string($braille_tables), 'Band')"/>
       <xsl:text>&#10;y e Volumes&#10;  </xsl:text>
     </xsl:if>
+    <xsl:sequence select="my:padded-comment('Titelblatt')"/>
     <xsl:text>
-xxxxxxxxxxxxxxxxxxxxxxxxxxxx Titelblatt xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 y b Titlepage
 O
 bb
@@ -1192,7 +1207,7 @@ i f=1 l=1
     <xsl:text>&#10;b&#10;</xsl:text>
     <xsl:text>O&#10;</xsl:text>
     <xsl:text>y e Titlepage&#10;</xsl:text>
-    <xsl:text>xxx ====================== ENDE SBSFORM.MAK ====================== xxx&#10;</xsl:text>
+    <xsl:sequence select="my:padded-comment('ENDE SBSFORM.MAK', '================================================================================')"/>
   </xsl:template>
 
 </xsl:stylesheet>

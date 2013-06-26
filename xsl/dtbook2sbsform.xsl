@@ -350,13 +350,13 @@
     </xsl:if>
     <xsl:text>y BrlVol&#10;</xsl:text>
     <xsl:if test="//dtb:frontmatter/dtb:level1[not(@class) or (@class!='titlepage' and @class!='toc')]">
-      <xsl:text>xxxxxxxxxxxxxxxxxxxxxxxxxx Klappentext etc. xxxxxxxxxxxxxxxxxxxxxxxxxx&#10;</xsl:text>
+      <xsl:sequence select="my:padded-comment('Klappentext etc.')"/>
       <xsl:text>O&#10;</xsl:text>
       <xsl:apply-templates
 	  select="//dtb:frontmatter/dtb:level1[not(@class) or (@class!='titlepage' and @class!='toc')]"/>
       <xsl:text>O&#10;</xsl:text>
     </xsl:if>
-    <xsl:text>&#10;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx Buchinhalt xxxxxxxxxxxxxxxxxxxxxxxxxxxx&#10;</xsl:text>
+    <xsl:sequence select="my:padded-comment('Buchinhalt')"/>
   </xsl:template>
 
   <!-- ====== -->
@@ -1020,7 +1020,7 @@
   </xsl:template>
 
   <xsl:template name="insert_footnotes">
-    <xsl:text>&#10;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx Fussnoten xxxxxxxxxxxxxxxxxxxxxxxxxxxx&#10;&#10;</xsl:text>
+    <xsl:sequence select="my:padded-comment('Fussnoten')"/>
     <xsl:choose>
       <xsl:when test="$contraction = 2">
 	<xsl:text>"N %Y.nfk&#10;</xsl:text>
