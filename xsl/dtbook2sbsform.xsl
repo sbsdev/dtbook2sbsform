@@ -809,12 +809,19 @@
   <xsl:template match="dtb:table" mode="transpose-table">
     <xsl:variable name="root" select="."/>
     <xsl:copy>
-      <xsl:for-each select="1 to count(dtb:tr[1]/(dtb:td|dtb:th))">
+      <xsl:for-each select="1 to max(for $row in dtb:tr return count($row/(dtb:td|dtb:th)))">
 	<xsl:variable name="column-pos" select="."/>
 	<dtb:tr>
 	  <!-- see http://stackoverflow.com/questions/4410084/transpose-swap-x-y-axes-in-html-table -->
 	  <xsl:for-each select="$root/dtb:tr">
-            <xsl:copy-of select="(dtb:td|dtb:th)[$column-pos]"/>
+	    <xsl:choose>
+	      <xsl:when test="(dtb:td|dtb:th)[$column-pos]">
+		<xsl:copy-of select="(dtb:td|dtb:th)[$column-pos]"/>
+	      </xsl:when>
+	      <xsl:otherwise>
+		<dtb:td/> <!-- just add an empty cell -->
+	      </xsl:otherwise>
+	    </xsl:choose>
 	  </xsl:for-each>
 	</dtb:tr>
       </xsl:for-each>

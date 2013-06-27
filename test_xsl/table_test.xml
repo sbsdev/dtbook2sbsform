@@ -387,7 +387,61 @@ xxx D-Zeilen-Version (gedreht) xxx
 &gt;skip
 D#A  'A
 D#B  'B
-D#C
+D#C    
+:skip
+y TABLEe
+      </utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>Another table with irregular structure</utfx:name>
+    <utfx:assert-equal>
+      <utfx:source>
+        <stub xml:lang="de">
+	  <dtb:table>
+            <dtb:tr>
+	      <dtb:th>Foo</dtb:th>
+            </dtb:tr>
+            <dtb:tr>
+	      <dtb:td>a</dtb:td>
+	      <dtb:td>b</dtb:td>
+            </dtb:tr>
+          </dtb:table>
+        </stub>
+      </utfx:source>
+      <utfx:expected>
+y TABLEb
+
+xxx Linearisierte Version xxx
+y TRb
+
+y THb
+ FOO
+y THe
+y TRe
+
+y TRb
+
+y TDb
+ 'A
+y TDe
+y TDb
+ :: 'B
+y TDe
+y TRe
+
+xxx D-Zeilen-Version xxx
+&gt;skip
+DFOO
+D:::
+D'A   'B
+:skip
+
+xxx D-Zeilen-Version (gedreht) xxx
+&gt;skip
+DFOO  'A
+D ..  'B
 :skip
 y TABLEe
       </utfx:expected>
