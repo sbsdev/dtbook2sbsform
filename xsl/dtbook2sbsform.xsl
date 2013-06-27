@@ -753,7 +753,7 @@
     <xsl:variable name="column-sizes" as="xs:integer*">
       <xsl:for-each select="1 to max(for $row in dtb:tr return count($row/(dtb:td|dtb:th)))">
       	<xsl:variable name="column-position" select="."/>
-      	<xsl:sequence select="max(for $t in $root/dtb:tr/(dtb:td|dtb:th)[position()=$column-position]/text() return string-length($t))"/>
+      	<xsl:sequence select="max(for $t in $root/dtb:tr/(dtb:td|dtb:th)[position()=$column-position] return string-length(string($t)))"/>
       </xsl:for-each>
     </xsl:variable>
     <xsl:variable name="padding-space" 
