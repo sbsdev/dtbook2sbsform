@@ -731,7 +731,7 @@ y e TBODYe
     <xsl:if test="//dtb:thead[not(@brl:class)]">
       <xsl:text>
 y b THEADb
-u:*
+lm1
 y e THEADb
 y b THEADe
 y e THEADe
