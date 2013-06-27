@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-	<!-- Copyright (C) 2010 Swiss Library for the Blind, Visually Impaired and Print Disabled -->
+	<!-- Copyright (C) 2010-2013 Swiss Library for the Blind, Visually Impaired and Print Disabled -->
 	
 	<!-- This file is part of dtbook2sbsform. -->
 	
@@ -383,66 +383,82 @@ u,
 
     <xsl:if test="//dtb:note and $footnote_placement != 'standard'">
       <xsl:sequence select="my:padded-comment('Notes')"/>
-      <xsl:text>y b Notes&#10;</xsl:text>
-      <xsl:text>X TODO: Fix this macro&#10;</xsl:text>
-      <xsl:text>y e Notes&#10;</xsl:text>
+      <xsl:text>
+y b Notes
+X TODO: Fix this macro
+y e Notes
+</xsl:text>
     </xsl:if>
 
     <xsl:if test="//dtb:p[not(@brl:class)]">
       <xsl:sequence select="my:padded-comment('Absatz, Leerzeile, Separator')"/>
-      <xsl:text>y b P&#10;</xsl:text>
-      <xsl:text>a&#10;</xsl:text>
-      <xsl:text>y e P&#10;</xsl:text>
+      <xsl:text>
+y b P
+a
+y e P
+</xsl:text>
     </xsl:if>
 
     <xsl:if test="//dtb:p[not(@brl:class) and contains(@class, 'precedingemptyline')]">
-      <xsl:text>y b BLANK&#10;</xsl:text>
-      <xsl:text>lm1&#10;</xsl:text>
-      <xsl:text>n2&#10;</xsl:text>
-      <xsl:text>y e BLANK&#10;</xsl:text>
+      <xsl:text>
+y b BLANK
+lm1
+n2
+y e BLANK
+</xsl:text>
     </xsl:if>
 
     <xsl:if test="//dtb:p[not(@brl:class) and contains(@class, 'precedingseparator')]">
-      <xsl:text>y b SEPARATOR&#10;</xsl:text>
-      <xsl:text>B+&#10;</xsl:text>
-      <xsl:text>L&#10;</xsl:text>
-      <xsl:text>t*?*?*?&#10;</xsl:text>
-      <xsl:text>B-&#10;</xsl:text>
-      <xsl:text>lm1&#10;</xsl:text>
-      <xsl:text>n2&#10;</xsl:text>
-      <xsl:text>y e SEPARATOR&#10;</xsl:text>
+      <xsl:text>
+y b SEPARATOR
+B+
+L
+t*?*?*?
+B-
+lm1
+n2
+y e SEPARATOR
+</xsl:text>
     </xsl:if>
 
     <xsl:if test="//dtb:p[not(@brl:class) and contains(@class, 'noindent')]">
-      <xsl:text>y b P_noi&#10;</xsl:text>
-      <xsl:text>w&#10;</xsl:text>
-      <xsl:text>y e P_noi&#10;</xsl:text>
+      <xsl:text>
+y b P_noi
+w
+y e P_noi
+</xsl:text>
     </xsl:if>
 
     <xsl:if test="//dtb:author[not(@brl:class)]">
-      <xsl:text>y b AUTHOR&#10;</xsl:text>
-      <xsl:text>r&#10;</xsl:text>
-      <xsl:text>y e AUTHOR&#10;</xsl:text>
+      <xsl:text>
+y b AUTHOR
+r
+y e AUTHOR
+</xsl:text>
     </xsl:if>
 
     <xsl:if test="//dtb:byline[not(@brl:class)]">
-      <xsl:text>y b BYLINE&#10;</xsl:text>
-      <xsl:text>r&#10;</xsl:text>
-      <xsl:text>y e BYLINE&#10;</xsl:text>
+      <xsl:text>
+y b BYLINE
+r
+y e BYLINE
+</xsl:text>
     </xsl:if>
 
     <xsl:if test="//dtb:blockquote[not(@brl:class)]">
       <xsl:sequence select="my:padded-comment('Blockquote')"/>
-      <xsl:text>y b BLQUOb&#10;</xsl:text>
-      <xsl:text>lm1&#10;</xsl:text>
-      <xsl:text>n2&#10;</xsl:text>
-      <xsl:text>i A=2&#10;</xsl:text>
-      <xsl:text>y e BLQUOb&#10;</xsl:text>
-      <xsl:text>y b BLQUOe&#10;</xsl:text>
-      <xsl:text>i A=0&#10;</xsl:text>
-      <xsl:text>lm1&#10;</xsl:text>
-      <xsl:text>n2&#10;</xsl:text>
-      <xsl:text>y e BLQUOe&#10;</xsl:text>
+      <xsl:text>
+y b BLQUOb
+lm1
+n2
+i A=2
+y e BLQUOb
+y b BLQUOe
+i A=0
+lm1
+n2
+y e BLQUOe
+</xsl:text>
     </xsl:if>
 
     <xsl:if test="//dtb:epigraph[not(@brl:class)]">
