@@ -1171,9 +1171,8 @@
   </xsl:template>
 
   <xsl:template match="dtb:hd">
-    <xsl:call-template name="block_macro">
+    <xsl:call-template name="inline_macro">
       <xsl:with-param name="macro" select="'HD'"/>
-      <xsl:with-param name="indent" select="' '"/>
     </xsl:call-template>
   </xsl:template>
 

@@ -304,6 +304,7 @@ u,
 		  //dtb:p|
 		  //dtb:img|
 		  //dtb:caption|
+                  //dtb:hd|
 		  //dtb:h1|
 		  //dtb:h2|
 		  //dtb:h3|
@@ -340,7 +341,6 @@ u,
                    //dtb:dd|
                    //dtb:poem|
                    //dtb:sidebar|
-                   //dtb:hd|
                    //dtb:linegroup|
                    //dtb:line|
                    //dtb:imggroup|
@@ -573,12 +573,9 @@ y e SIDEBARe
 
     <xsl:if test="//dtb:hd[not(@brl:class)]">
       <xsl:text>
-y b HDb
-i f=1 l=3
-y e HDb
-y b HDe
-i f=3 l=1
-y e HDe
+y b HD
+w
+y e HD
 
 </xsl:text>
     </xsl:if>
