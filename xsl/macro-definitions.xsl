@@ -540,7 +540,7 @@ y e IMGGRe
       <xsl:sequence select="my:padded-comment('Images')"/>
       <xsl:text>
 y b IMG
-a
+R=C
 y e IMG
 </xsl:text>
     </xsl:if>
@@ -712,6 +712,7 @@ lm1
 n2
 y e TABLEb
 y b TABLEe
+i f=3 l=1
 lm1
 n2
 y e TABLEe
