@@ -31,7 +31,7 @@
     <xsl:param name="covered_cells" as="element()*"/>
     <xsl:param name="current_row" as="element()*"/>
     <xsl:param name="row_count" as="xs:integer" select="0"/>
-    <xsl:param name="insert_empty_cells" as="xs:boolean" select="false()"/>
+    <xsl:param name="insert_empty_cells" as="xs:boolean" select="false()" tunnel="yes"/>
     <xsl:variable name="cell_count" select="count($current_row)"/>
     <xsl:choose>
       <xsl:when test="$covered_cells[@row=($row_count+1) and @col=($cell_count+1)]">
@@ -84,11 +84,11 @@
     <xsl:param name="col"/>
     <xsl:param name="original_cell"/>
     <xsl:param name="insert_empty_cells"/>
-    <xsl:element namespace="{namespace-uri($original_cell)}" name="{local-name($original_cell)}" >
+    <xsl:element namespace="{namespace-uri($original_cell)}" name="{name($original_cell)}" >
       <xsl:attribute name="row" select="$row"/>
       <xsl:attribute name="col" select="$col"/>
       <xsl:attribute name="covered-table-cell" select="'yes'"/>
-      <xsl:sequence select="if ($insert_empty_cells) then () else $original_cell/*"/>
+      <xsl:sequence select="if ($insert_empty_cells) then () else $original_cell/node()"/>
     </xsl:element>
   </xsl:function>
 

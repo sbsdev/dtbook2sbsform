@@ -693,57 +693,105 @@
     <xsl:call-template name="block_macro">
       <xsl:with-param name="macro" select="upper-case(local-name())"/>
       <xsl:with-param name="body">
-	<xsl:apply-templates select="dtb:caption"/>
-	<xsl:variable name="table" >
-	  <xsl:apply-templates select="." mode="pre-translate-table"/>
-	</xsl:variable>
-	<xsl:variable name="normalized-table" >
-	  <xsl:element name="dtb:table" namespace="http://www.daisy.org/z3986/2005/dtbook/">
-	    <xsl:call-template name="dtb:insert-covered-table-cells">
-	      <xsl:with-param name="table_cells" select="$table/dtb:table/dtb:tr/(dtb:td|dtb:th)"/>
-	      <xsl:with-param name="insert_empty_cells" select="true()"/>
-	    </xsl:call-template>
-	  </xsl:element>
-	</xsl:variable>
-	<xsl:message>========================================</xsl:message>
-	<xsl:message><xsl:sequence select="$table"/></xsl:message>
-	<xsl:message>========================================</xsl:message>
-	<xsl:message><xsl:sequence select="$normalized-table"/></xsl:message>
-	<xsl:message>========================================</xsl:message>
-	<xsl:text>&#10;xxx Linearisierte Version xxx</xsl:text>
-	<xsl:apply-templates select="(dtb:thead, $normalized-table/dtb:tr, dtb:tbody, dtb:tfoot)" mode="linearized-table"/>
-	<xsl:text>&#10;xxx D-Zeilen-Version xxx</xsl:text>
-	<xsl:apply-templates select="$normalized-table" mode="as-plain-table"/>
-	<xsl:text>&#10;&#10;xxx D-Zeilen-Version (gedreht) xxx</xsl:text>
-	<xsl:variable name="transposed-table" >
-	  <xsl:apply-templates select="$normalized-table" mode="transpose-table"/>
-	</xsl:variable>
-	<xsl:apply-templates select="$transposed-table" mode="as-plain-table"/>
+        <xsl:apply-templates select="dtb:caption"/>
+        
+        <xsl:variable name="pre-translated-table" >
+          <xsl:apply-templates select="." mode="pre-translate-table"/>
+        </xsl:variable>
+        
+        <!-- Linerarized version -->
+        
+        <xsl:text>&#10;xxx Linearisierte Version xxx</xsl:text>
+        
+        <xsl:variable name="normalized-table">
+          <xsl:apply-templates mode="normalize-table" select="$pre-translated-table">
+            <xsl:with-param name="insert_empty_cells" select="false()" tunnel="yes"/>
+          </xsl:apply-templates>
+        </xsl:variable>
+        <xsl:apply-templates select="$normalized-table" mode="linearized-table"/>
+        
+        <!-- 2D version -->
+        
+        <xsl:variable name="normalized-table">
+          <xsl:apply-templates mode="normalize-table" select="$pre-translated-table">
+            <xsl:with-param name="insert_empty_cells" select="true()" tunnel="yes"/>
+          </xsl:apply-templates>
+        </xsl:variable>
+        
+        <xsl:variable name="flattened-table">
+          <xsl:apply-templates mode="flatten-table" select="$normalized-table"/>
+        </xsl:variable>
+        
+        <xsl:text>&#10;xxx D-Zeilen-Version xxx</xsl:text>
+        
+        <xsl:apply-templates select="$flattened-table" mode="as-plain-table"/>
+        
+        <xsl:text>&#10;&#10;xxx D-Zeilen-Version (gedreht) xxx</xsl:text>
+        
+        <xsl:variable name="transposed-table">
+          <xsl:apply-templates select="$flattened-table" mode="transpose-table"/>
+        </xsl:variable>
+        <xsl:apply-templates select="$transposed-table" mode="as-plain-table"/>
+        
       </xsl:with-param>
     </xsl:call-template>
   </xsl:template>
-
-  <xsl:template match="dtb:thead|dtb:tbody|dtb:tfoot" mode="linearized-table">
-    <xsl:call-template name="block_macro">
-      <xsl:with-param name="macro" select="upper-case(local-name())"/>
-      <xsl:with-param name="body">
-	<xsl:variable name="dtb:tr" as="element()*">
-	  <xsl:call-template name="dtb:insert-covered-table-cells">
-	    <xsl:with-param name="table_cells" select="dtb:tr/(dtb:td|dtb:th)"/>
-	    <xsl:with-param name="insert_empty_cells" select="true()"/>
-	  </xsl:call-template>
-	</xsl:variable>
-	<xsl:apply-templates mode="linearized-table" select="$dtb:tr"/>
-      </xsl:with-param>
+  
+  <xsl:template match="dtb:table" mode="flatten-table">
+    <xsl:copy>
+      <xsl:sequence select="(dtb:thead/dtb:tr, dtb:tr, dtb:tbody/dtb:tr, dtb:tfoot/dtb:tr)"/>
+    </xsl:copy>
+  </xsl:template>
+  
+  <xsl:template match="dtb:table" mode="normalize-table">
+    <xsl:variable name="dtb:tr" as="element()*">
+      <xsl:call-template name="dtb:insert-covered-table-cells">
+        <xsl:with-param name="table_cells" select="dtb:tr/(dtb:td|dtb:th)"/>
       </xsl:call-template>
+    </xsl:variable>
+    <xsl:copy>
+      <xsl:apply-templates mode="#current" select="(dtb:thead, $dtb:tr, dtb:tbody, dtb:tfoot)"/>
+    </xsl:copy>
+  </xsl:template>
+  
+  <xsl:template match="dtb:thead|dtb:tbody|dtb:tfoot" mode="normalize-table">
+    <xsl:variable name="dtb:tr" as="element()*">
+      <xsl:call-template name="dtb:insert-covered-table-cells">
+        <xsl:with-param name="table_cells" select="dtb:tr/(dtb:td|dtb:th)"/>
+      </xsl:call-template>
+    </xsl:variable>
+    <xsl:copy>
+      <xsl:apply-templates mode="#current" select="$dtb:tr"/>
+    </xsl:copy>
+  </xsl:template>
+  
+  <xsl:template match="dtb:tr" mode="normalize-table">
+    <xsl:sequence select="."/>
+  </xsl:template>
+  
+  <xsl:template match="dtb:table|dtb:tbody|dtb:thead|dtb:tfoot|dtb:tr" mode="pre-translate-table">
+    <xsl:copy>
+      <xsl:apply-templates select="@*|node()" mode="#current"/>
+    </xsl:copy>
   </xsl:template>
 
-  <xsl:template match="dtb:tr" mode="linearized-table">
+  <xsl:template match="dtb:td|dtb:th" mode="pre-translate-table">
+    <xsl:copy>
+      <xsl:sequence select="@*"/>
+      <xsl:apply-templates/>
+    </xsl:copy>
+  </xsl:template>
+  
+  <xsl:template match="dtb:table" mode="linearized-table">
+    <xsl:apply-templates mode="#current"/>
+  </xsl:template>
+  
+  <xsl:template match="dtb:thead|dtb:tbody|dtb:tfoot|dtb:tr" mode="linearized-table">
     <xsl:call-template name="block_macro">
       <xsl:with-param name="macro" select="upper-case(local-name())"/>
     </xsl:call-template>
   </xsl:template>
-
+  
   <xsl:template match="dtb:td|dtb:th" mode="linearized-table">
     <xsl:variable name="macro-name" select="upper-case(local-name())"/>
     <xsl:call-template name="block_macro">
@@ -751,32 +799,14 @@
       <xsl:with-param name="indent" select="' '"/>
       <xsl:with-param name="newline_after" select="false()"/>
       <xsl:with-param name="body">
-	<xsl:if test="position() &gt; 1">
-	  <xsl:text>:: </xsl:text>
-	</xsl:if>
-	<xsl:apply-templates/>
+        <xsl:if test="position() &gt; 1">
+          <xsl:text>:: </xsl:text>
+        </xsl:if>
+        <xsl:sequence select="text()"/>
       </xsl:with-param>
     </xsl:call-template>
   </xsl:template>
-
-  <xsl:template match="dtb:table" mode="pre-translate-table">
-    <xsl:copy>
-      <xsl:apply-templates select="dtb:thead/dtb:tr, dtb:tbody/dtb:tr, dtb:tfoot/dtb:tr, dtb:tr" mode="pre-translate-table"/>
-    </xsl:copy>
-  </xsl:template>
-
-  <xsl:template match="dtb:tr" mode="pre-translate-table">
-    <xsl:copy>
-      <xsl:apply-templates mode="pre-translate-table"/>
-    </xsl:copy>
-  </xsl:template>
-
-  <xsl:template match="dtb:td|dtb:th" mode="pre-translate-table">
-    <xsl:copy>
-      <xsl:apply-templates/>
-    </xsl:copy>
-  </xsl:template>
-
+  
   <xsl:template match="dtb:table" mode="as-plain-table">
     <xsl:text>&#10;>skip&#10;</xsl:text>
     <xsl:variable name="root" select="."/>
