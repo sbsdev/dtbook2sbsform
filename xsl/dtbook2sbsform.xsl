@@ -716,8 +716,9 @@
   </xsl:template>
 
   <xsl:template match="dtb:td|dtb:th">
+    <xsl:variable name="macro-name" select="upper-case(local-name())"/>
     <xsl:call-template name="block_macro">
-      <xsl:with-param name="macro" select="upper-case(local-name())"/>
+      <xsl:with-param name="macro" select="$macro-name"/>
       <xsl:with-param name="indent" select="' '"/>
       <xsl:with-param name="newline_after" select="false()"/>
       <xsl:with-param name="body">
@@ -727,6 +728,20 @@
 	<xsl:apply-templates/>
       </xsl:with-param>
     </xsl:call-template>
+    <xsl:if test="@colspan &gt; 1">
+      <xsl:variable name="extra-cell">
+    	<xsl:call-template name="block_macro">
+    	  <xsl:with-param name="macro" select="$macro-name"/>
+    	  <xsl:with-param name="indent" select="' '"/>
+    	  <xsl:with-param name="newline_after" select="false()"/>
+    	  <xsl:with-param name="body">
+    	    <xsl:text>:: </xsl:text>
+    	    <xsl:apply-templates/>
+    	  </xsl:with-param>
+    	</xsl:call-template>
+      </xsl:variable>
+      <xsl:sequence select="for $i in 2 to @colspan return $extra-cell"/>
+    </xsl:if>
   </xsl:template>
 
   <xsl:template match="dtb:table" mode="pre-translate-table">
