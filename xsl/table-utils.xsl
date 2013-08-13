@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+	<!-- Copyright (C) 2013 Swiss Library for the Blind, Visually Impaired and Print Disabled -->
+	
+	<!-- This file is part of dtbook2sbsform. -->
+	
+	<!-- dtbook2sbsform is free software: you can redistribute it -->
+	<!-- and/or modify it under the terms of the GNU Lesser General Public -->
+	<!-- License as published by the Free Software Foundation, either -->
+	<!-- version 3 of the License, or (at your option) any later version. -->
+	
+	<!-- This program is distributed in the hope that it will be useful, -->
+	<!-- but WITHOUT ANY WARRANTY; without even the implied warranty of -->
+	<!-- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU -->
+	<!-- Lesser General Public License for more details. -->
+	
+	<!-- You should have received a copy of the GNU Lesser General Public -->
+	<!-- License along with this program. If not, see -->
+	<!-- <http://www.gnu.org/licenses/>. -->
+	
+<xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+  xmlns:dtb="http://www.daisy.org/z3986/2005/dtbook/" xmlns:louis="http://liblouis.org/liblouis"
+  xmlns:brl="http://www.daisy.org/z3986/2009/braille/" xmlns:my="http://my-functions"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:data="http://sbsform.ch/data"
+  exclude-result-prefixes="dtb louis data my" extension-element-prefixes="my">
+	
+  <!-- Copy a sequence of rows and normalize row- and colspans, i.e.
+       insert empty cells instead for row- and colspans -->
+  <xsl:template name="dtb:insert-covered-table-cells" as="element()*">
+    <xsl:param name="table_cells" as="element()*"/>
+    <xsl:param name="covered_cells" as="element()*"/>
+    <xsl:param name="current_row" as="element()*"/>
+    <xsl:param name="row_count" as="xs:integer" select="0"/>
+    <xsl:param name="insert_empty_cells" as="xs:boolean" select="false()"/>
+    <xsl:variable name="cell_count" select="count($current_row)"/>
+    <xsl:choose>
+      <xsl:when test="$covered_cells[@row=($row_count+1) and @col=($cell_count+1)]">
+	<xsl:call-template name="dtb:insert-covered-table-cells">
+	  <xsl:with-param name="table_cells" select="$table_cells"/>
+	  <xsl:with-param name="current_row" select="($current_row, $covered_cells[@row=($row_count+1) and @col=($cell_count+1)])"/>
+	  <xsl:with-param name="row_count" select="$row_count"/>
+	  <xsl:with-param name="covered_cells" select="$covered_cells[not(@row=($row_count+1) and @col=($cell_count+1))]"/>
+	</xsl:call-template>
+      </xsl:when>
+      <xsl:when test="$table_cells[1][count(parent::*/preceding-sibling::dtb:tr)=$row_count]">
+	<xsl:variable name="new_covered_cells" as="element()*">
+	  <xsl:variable name="colspan" as="xs:integer" select="if ($table_cells[1]/@colspan) then $table_cells[1]/@colspan else 1"/>
+	  <xsl:variable name="rowspan" as="xs:integer" select="if ($table_cells[1]/@rowspan) then $table_cells[1]/@rowspan else 1"/>
+	  <xsl:if test="$colspan + $rowspan &gt; 2">
+	    <xsl:sequence select="for $i in 1 to $rowspan return
+				  for $j in 1 to $colspan return
+				    if (not($i=1 and $j=1)) then
+				      dtb:covered-table-cell($row_count + $i, $cell_count + $j, $table_cells[1], $insert_empty_cells) 
+				      else ()"/>
+	  </xsl:if>
+	</xsl:variable>
+	<xsl:call-template name="dtb:insert-covered-table-cells">
+	  <xsl:with-param name="table_cells" select="$table_cells[position() &gt; 1]"/>
+	  <xsl:with-param name="current_row" select="($current_row, $table_cells[1])"/>
+	  <xsl:with-param name="row_count" select="$row_count"/>
+	  <xsl:with-param name="covered_cells" select="($covered_cells, $new_covered_cells)"/>
+	</xsl:call-template>
+      </xsl:when>
+      <xsl:otherwise>
+	<xsl:if test="exists($current_row)">
+	  <xsl:element name="dtb:tr">
+	    <xsl:sequence select="$current_row"/>
+	  </xsl:element>
+	  <xsl:if test="exists($table_cells)">
+	    <xsl:call-template name="dtb:insert-covered-table-cells">
+	      <xsl:with-param name="table_cells" select="$table_cells"/>
+	      <xsl:with-param name="current_row" select="()"/>
+	      <xsl:with-param name="row_count" select="$row_count + 1"/>
+	      <xsl:with-param name="covered_cells" select="$covered_cells"/>
+	    </xsl:call-template>
+	  </xsl:if>
+	</xsl:if>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
+	
+  <xsl:function name="dtb:covered-table-cell">
+    <xsl:param name="row"/>
+    <xsl:param name="col"/>
+    <xsl:param name="original_cell"/>
+    <xsl:param name="insert_empty_cells"/>
+    <xsl:element namespace="{namespace-uri($original_cell)}" name="{local-name($original_cell)}" >
+      <xsl:attribute name="row" select="$row"/>
+      <xsl:attribute name="col" select="$col"/>
+      <xsl:attribute name="covered-table-cell" select="'yes'"/>
+      <xsl:sequence select="if ($insert_empty_cells) then () else $original_cell/*"/>
+    </xsl:element>
+  </xsl:function>
+
+</xsl:stylesheet>
