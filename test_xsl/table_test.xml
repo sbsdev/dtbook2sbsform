@@ -490,8 +490,8 @@ y TRe
 
 xxx D-Zeilen-Version xxx
 &gt;skip
-DFOO
-D:::
+DFOO    
+D:::    
 D'A   'B
 :skip
 
