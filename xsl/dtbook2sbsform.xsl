@@ -1261,6 +1261,14 @@
     </xsl:call-template>
   </xsl:template>
 
+  <!-- ================ -->
+  <!-- Ignored Elements -->
+  <!-- ================ -->
+
+  <xsl:template match="dtb:w|dtb:sent|dtb:q|dtb:kbd|dtb:bdo">
+    <xsl:apply-templates/>
+  </xsl:template>
+
   <xsl:template match="dtb:strong|dtb:em|brl:emph">
     <xsl:variable name="braille_tables">
       <xsl:call-template name="getTable"/>
