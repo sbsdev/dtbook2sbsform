@@ -26,6 +26,7 @@
 	
   <xsl:include href="macro-definitions.xsl"/>
   <xsl:include href="table-utils.xsl"/>
+  <xsl:include href="nordic-spec.xsl"/>
 
   <xsl:output method="text" encoding="utf-8" indent="no"/>
   <xsl:strip-space elements="*"/>
