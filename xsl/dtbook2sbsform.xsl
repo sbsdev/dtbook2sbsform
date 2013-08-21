@@ -1285,17 +1285,26 @@
     </xsl:call-template>
   </xsl:template>
 
-  <!-- ================ -->
-  <!-- Treated as dtb:p -->
-  <!-- ================ -->
+  <!-- ==================== -->
+  <!-- COVERTITLE, DATELINE -->
+  <!-- ==================== -->
 
+  <!-- We treat covertitles and dateline the same as a p -->
   <xsl:template match="dtb:covertitle|dtb:dateline">
     <xsl:value-of select="my:insert-element-changed-comment(name())"/>
     <xsl:text>y P&#10; </xsl:text>
     <xsl:apply-templates/>
   </xsl:template>
 
-  <xsl:template match="dtb:strong|dtb:em|brl:emph">
+  <!-- ========================= -->
+  <!-- STRONG, EM, BRL:EMPH, DFN -->
+  <!-- ========================= -->
+
+  <xsl:template match="dtb:strong|dtb:em|brl:emph|dtb:dfn">
+    <xsl:if test="self::dtb:dfn">
+      <!-- We treat dfn the same as a em but add a comment about the original markup-->
+      <xsl:value-of select="my:insert-element-changed-comment(name())"/>
+    </xsl:if>
     <xsl:variable name="braille_tables">
       <xsl:call-template name="getTable"/>
     </xsl:variable>
