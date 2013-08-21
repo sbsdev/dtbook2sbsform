@@ -1296,6 +1296,18 @@
     <xsl:apply-templates/>
   </xsl:template>
 
+  <!-- ======= -->
+  <!-- ADDRESS -->
+  <!-- ======= -->
+
+  <xsl:template match="dtb:address">
+    <xsl:value-of select="my:insert-element-changed-comment(name())"/>
+    <xsl:call-template name="block_macro">
+      <xsl:with-param name="macro" select="'LINEGR'"/>
+      <xsl:with-param name="indent" select="' '"/>
+    </xsl:call-template>
+  </xsl:template>
+
   <!-- ========================= -->
   <!-- STRONG, EM, BRL:EMPH, DFN -->
   <!-- ========================= -->
