@@ -706,7 +706,7 @@
         
         <xsl:variable name="normalized-table">
           <xsl:apply-templates mode="normalize-table" select="$pre-translated-table">
-            <xsl:with-param name="insert_empty_cells" select="false()" tunnel="yes"/>
+            <xsl:with-param name="clone_cells" select="true()" tunnel="yes"/>
           </xsl:apply-templates>
         </xsl:variable>
         <xsl:apply-templates select="$normalized-table" mode="linearized-table"/>
@@ -715,7 +715,7 @@
         
         <xsl:variable name="normalized-table">
           <xsl:apply-templates mode="normalize-table" select="$pre-translated-table">
-            <xsl:with-param name="insert_empty_cells" select="true()" tunnel="yes"/>
+            <xsl:with-param name="clone_cells" select="false()" tunnel="yes"/>
           </xsl:apply-templates>
         </xsl:variable>
         

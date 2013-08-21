@@ -31,7 +31,9 @@
     <xsl:param name="covered_cells" as="element()*"/>
     <xsl:param name="current_row" as="element()*"/>
     <xsl:param name="row_count" as="xs:integer" select="0"/>
-    <xsl:param name="insert_empty_cells" as="xs:boolean" select="false()" tunnel="yes"/>
+    <xsl:param name="clone_cells" as="xs:boolean" select="false()" tunnel="yes"/>
+    <xsl:param name="insert_if_colspan" as="xs:boolean" select="true()"/>
+    <xsl:param name="insert_if_rowspan" as="xs:boolean" select="true()"/>
     <xsl:variable name="cell_count" select="count($current_row)"/>
     <xsl:choose>
       <xsl:when test="$covered_cells[@row=($row_count+1) and @col=($cell_count+1)]">
@@ -46,11 +48,11 @@
 	<xsl:variable name="new_covered_cells" as="element()*">
 	  <xsl:variable name="colspan" as="xs:integer" select="if ($table_cells[1]/@colspan) then $table_cells[1]/@colspan else 1"/>
 	  <xsl:variable name="rowspan" as="xs:integer" select="if ($table_cells[1]/@rowspan) then $table_cells[1]/@rowspan else 1"/>
-	  <xsl:if test="$colspan + $rowspan &gt; 2">
+	  <xsl:if test="($insert_if_colspan and $colspan &gt; 1) or ($insert_if_rowspan and $rowspan &gt; 1)">
 	    <xsl:sequence select="for $i in 1 to $rowspan return
 				  for $j in 1 to $colspan return
 				    if (not($i=1 and $j=1)) then
-				      dtb:covered-table-cell($row_count + $i, $cell_count + $j, $table_cells[1], $insert_empty_cells) 
+				      dtb:covered-table-cell($row_count + $i, $cell_count + $j, $table_cells[1], $clone_cells) 
 				      else ()"/>
 	  </xsl:if>
 	</xsl:variable>
@@ -83,12 +85,12 @@
     <xsl:param name="row"/>
     <xsl:param name="col"/>
     <xsl:param name="original_cell"/>
-    <xsl:param name="insert_empty_cells"/>
+    <xsl:param name="clone_cells"/>
     <xsl:element namespace="{namespace-uri($original_cell)}" name="{name($original_cell)}" >
       <xsl:attribute name="row" select="$row"/>
       <xsl:attribute name="col" select="$col"/>
       <xsl:attribute name="covered-table-cell" select="'yes'"/>
-      <xsl:sequence select="if ($insert_empty_cells) then () else $original_cell/node()"/>
+      <xsl:sequence select="if ($clone_cells) then $original_cell/node() else ()"/>
     </xsl:element>
   </xsl:function>
 
