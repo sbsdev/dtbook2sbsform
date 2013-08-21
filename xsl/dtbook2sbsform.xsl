@@ -221,6 +221,11 @@
 			  else ''"/>
   </xsl:function>
 
+  <xsl:function name="my:insert-element-changed-comment" as="xs:string">
+    <xsl:param name="element" as="xs:string"/>
+    <xsl:value-of select="concat('xxx Was originally a ', $element, '&#10;')"/>
+  </xsl:function>
+
   <xsl:template name="getTable">
     <xsl:param name="context" select="local-name()"/>
     <!-- handle explicit setting of the contraction -->
@@ -1265,7 +1270,21 @@
   <!-- Ignored Elements -->
   <!-- ================ -->
 
-  <xsl:template match="dtb:w|dtb:sent|dtb:q|dtb:kbd|dtb:bdo">
+  <xsl:template match="dtb:w|dtb:sent|dtb:q|dtb:kbd|dtb:bdo|dtb:title">
+    <xsl:apply-templates/>
+  </xsl:template>
+
+  <!-- ===== -->
+  <!-- TITLE -->
+  <!-- ===== -->
+
+  <xsl:template match="dtb:poem//dtb:title">
+    <xsl:value-of select="my:insert-element-changed-comment(name())"/>
+    <xsl:call-template name="inline_macro">
+      <xsl:with-param name="macro" select="'HD'"/>
+    </xsl:call-template>
+  </xsl:template>
+
     <xsl:apply-templates/>
   </xsl:template>
 
