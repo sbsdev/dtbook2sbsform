@@ -1285,6 +1285,13 @@
     </xsl:call-template>
   </xsl:template>
 
+  <!-- ================ -->
+  <!-- Treated as dtb:p -->
+  <!-- ================ -->
+
+  <xsl:template match="dtb:covertitle|dtb:dateline">
+    <xsl:value-of select="my:insert-element-changed-comment(name())"/>
+    <xsl:text>y P&#10; </xsl:text>
     <xsl:apply-templates/>
   </xsl:template>
 
