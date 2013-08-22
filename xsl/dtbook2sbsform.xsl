@@ -1308,6 +1308,17 @@
     </xsl:call-template>
   </xsl:template>
 
+  <!-- ======= -->
+  <!-- ACRONYM -->
+  <!-- ======= -->
+
+  <xsl:template match="dtb:acronym">
+    <xsl:value-of select="my:insert-element-changed-comment(name())"/>
+    <xsl:call-template name="handle_abbr">
+      <xsl:with-param name="context" select="'abbr'"/>
+    </xsl:call-template>
+  </xsl:template>
+
   <!-- ========================= -->
   <!-- STRONG, EM, BRL:EMPH, DFN -->
   <!-- ========================= -->
