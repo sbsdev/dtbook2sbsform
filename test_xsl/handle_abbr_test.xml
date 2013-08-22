@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 
-<!-- Copyright (C) 2011 Swiss Library for the Blind, Visually Impaired and Print Disabled -->
+<!-- Copyright (C) 2013 Swiss Library for the Blind, Visually Impaired and Print Disabled -->
 
 <!-- This file is part of dtbook2sbsform. -->
 
@@ -31,12 +31,12 @@
     </utfx:stylesheet-params>
     <utfx:assert-equal>
       <utfx:source>
-        <stub xml:lang="de"><brl:num role="measure">1,8 m</brl:num></stub>
+	<stub xml:lang="de"><brl:num role="measure">1,8 m</brl:num></stub>
       </utfx:source>
       <utfx:expected>#A,H'M</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
-  
+
   <utfx:test>
     <utfx:name>measure m mit Dezimalpunkt</utfx:name>
     <utfx:stylesheet-params>
@@ -44,12 +44,12 @@
     </utfx:stylesheet-params>
     <utfx:assert-equal>
       <utfx:source>
-        <stub xml:lang="de"><brl:num role="measure">1.8 m</brl:num></stub>
+	<stub xml:lang="de"><brl:num role="measure">1.8 m</brl:num></stub>
       </utfx:source>
       <utfx:expected>#A.H'M</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
-  
+
   <utfx:test>
     <utfx:name>measure mm mit Dezimalpunkt</utfx:name>
     <utfx:stylesheet-params>
@@ -57,12 +57,12 @@
     </utfx:stylesheet-params>
     <utfx:assert-equal>
       <utfx:source>
-        <stub xml:lang="de"><brl:num role="measure">1.8 mm</brl:num></stub>
+	<stub xml:lang="de"><brl:num role="measure">1.8 mm</brl:num></stub>
       </utfx:source>
       <utfx:expected>#A.H'MM</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
-  
+
   <utfx:test>
     <utfx:name>measure Hz mit Dezimalpunkt</utfx:name>
     <utfx:stylesheet-params>
@@ -70,12 +70,12 @@
     </utfx:stylesheet-params>
     <utfx:assert-equal>
       <utfx:source>
-        <stub xml:lang="de"><brl:num role="measure">1.8 Hz</brl:num></stub>
+	<stub xml:lang="de"><brl:num role="measure">1.8 Hz</brl:num></stub>
       </utfx:source>
       <utfx:expected>#A.H$HZ</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
-  
+
   <utfx:test>
     <utfx:name>measure MW mit Dezimalpunkt</utfx:name>
     <utfx:stylesheet-params>
@@ -83,12 +83,12 @@
     </utfx:stylesheet-params>
     <utfx:assert-equal>
       <utfx:source>
-        <stub xml:lang="de"><brl:num role="measure">1.8 MW</brl:num></stub>
+	<stub xml:lang="de"><brl:num role="measure">1.8 MW</brl:num></stub>
       </utfx:source>
       <utfx:expected>#A.H&gt;MW</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
-  
+
   <utfx:test>
     <utfx:name>measure kW mit Dezimalpunkt</utfx:name>
     <utfx:stylesheet-params>
@@ -96,12 +96,12 @@
     </utfx:stylesheet-params>
     <utfx:assert-equal>
       <utfx:source>
-        <stub xml:lang="de"><brl:num role="measure">1.8 kW</brl:num></stub>
+	<stub xml:lang="de"><brl:num role="measure">1.8 kW</brl:num></stub>
       </utfx:source>
       <utfx:expected>#A.H'K&gt;W</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
-  
+
   <utfx:test>
     <utfx:name>measure V mit Dezimalpunkt</utfx:name>
     <utfx:stylesheet-params>
@@ -109,12 +109,12 @@
     </utfx:stylesheet-params>
     <utfx:assert-equal>
       <utfx:source>
-        <stub xml:lang="de"><brl:num role="measure">1.8 V</brl:num></stub>
+	<stub xml:lang="de"><brl:num role="measure">1.8 V</brl:num></stub>
       </utfx:source>
       <utfx:expected>#A.H&gt;V</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
-  
+
   <utfx:test>
     <utfx:name>abbr GmbH</utfx:name>
     <utfx:stylesheet-params>
@@ -122,12 +122,12 @@
     </utfx:stylesheet-params>
     <utfx:assert-equal>
       <utfx:source>
-        <stub xml:lang="de"><dtb:abbr>GmbH</dtb:abbr></stub>
+	<stub xml:lang="de"><dtb:abbr>GmbH</dtb:abbr></stub>
       </utfx:source>
       <utfx:expected>$GMB&gt;H</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
-  
+
   <utfx:test>
     <utfx:name>abbr USA</utfx:name>
     <utfx:stylesheet-params>
@@ -135,12 +135,12 @@
     </utfx:stylesheet-params>
     <utfx:assert-equal>
       <utfx:source>
-        <stub xml:lang="de"><dtb:abbr>USA</dtb:abbr></stub>
+	<stub xml:lang="de"><dtb:abbr>USA</dtb:abbr></stub>
       </utfx:source>
       <utfx:expected>&gt;USA</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
-  
+
   <utfx:test>
     <utfx:name>abbr cd</utfx:name>
     <utfx:stylesheet-params>
@@ -148,12 +148,12 @@
     </utfx:stylesheet-params>
     <utfx:assert-equal>
       <utfx:source>
-        <stub xml:lang="de"><dtb:abbr>cd</dtb:abbr></stub>
+	<stub xml:lang="de"><dtb:abbr>cd</dtb:abbr></stub>
       </utfx:source>
       <utfx:expected>'CD</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
-  
+
   <utfx:test>
     <utfx:name>abbr 3a</utfx:name>
     <utfx:stylesheet-params>
@@ -161,12 +161,12 @@
     </utfx:stylesheet-params>
     <utfx:assert-equal>
       <utfx:source>
-        <stub xml:lang="de">3<dtb:abbr>a</dtb:abbr></stub>
+	<stub xml:lang="de">3<dtb:abbr>a</dtb:abbr></stub>
       </utfx:source>
       <utfx:expected>#C'A</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
-  
+
   <utfx:test>
     <utfx:name>abbr Nr. 2</utfx:name>
     <utfx:stylesheet-params>
@@ -174,12 +174,12 @@
     </utfx:stylesheet-params>
     <utfx:assert-equal>
       <utfx:source>
-        <stub xml:lang="de"><dtb:abbr>Nr. </dtb:abbr>2</stub>
+	<stub xml:lang="de"><dtb:abbr>Nr. </dtb:abbr>2</stub>
       </utfx:source>
       <utfx:expected>NR.#B</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
-  
+
   <utfx:test>
     <utfx:name>abbr z. B.</utfx:name>
     <utfx:stylesheet-params>
@@ -187,12 +187,12 @@
     </utfx:stylesheet-params>
     <utfx:assert-equal>
       <utfx:source>
-        <stub xml:lang="de"><dtb:abbr>z. B.</dtb:abbr></stub>
+	<stub xml:lang="de"><dtb:abbr>z. B.</dtb:abbr></stub>
       </utfx:source>
       <utfx:expected>Z.B.</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
-  
+
   <utfx:test>
     <utfx:name>abbr w. z. b. w.</utfx:name>
     <utfx:stylesheet-params>
@@ -200,12 +200,12 @@
     </utfx:stylesheet-params>
     <utfx:assert-equal>
       <utfx:source>
-        <stub xml:lang="de"><dtb:abbr>w. z. b. w.</dtb:abbr></stub>
+	<stub xml:lang="de"><dtb:abbr>w. z. b. w.</dtb:abbr></stub>
       </utfx:source>
       <utfx:expected>W.Z.B.W.</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
-  
+
   <utfx:test>
     <utfx:name>abbr etc.</utfx:name>
     <utfx:stylesheet-params>
@@ -213,12 +213,12 @@
     </utfx:stylesheet-params>
     <utfx:assert-equal>
       <utfx:source>
-        <stub xml:lang="de"><dtb:abbr>etc.</dtb:abbr></stub>
+	<stub xml:lang="de"><dtb:abbr>etc.</dtb:abbr></stub>
       </utfx:source>
       <utfx:expected>ET'C.</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
-  
+
   <utfx:test>
     <utfx:name>abbr a.</utfx:name>
     <utfx:stylesheet-params>
@@ -226,12 +226,12 @@
     </utfx:stylesheet-params>
     <utfx:assert-equal>
       <utfx:source>
-        <stub xml:lang="de"><dtb:abbr>a.</dtb:abbr></stub>
+	<stub xml:lang="de"><dtb:abbr>a.</dtb:abbr></stub>
       </utfx:source>
       <utfx:expected>A.</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
-  
+
   <utfx:test>
     <utfx:name>notag wrt.</utfx:name>
     <utfx:stylesheet-params>
@@ -239,12 +239,12 @@
     </utfx:stylesheet-params>
     <utfx:assert-equal>
       <utfx:source>
-        <stub xml:lang="de">wrt.</stub>
+	<stub xml:lang="de">wrt.</stub>
       </utfx:source>
       <utfx:expected>WRT.</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
-  
+
   <utfx:test>
     <utfx:name>notag h.</utfx:name>
     <utfx:stylesheet-params>
@@ -252,12 +252,12 @@
     </utfx:stylesheet-params>
     <utfx:assert-equal>
       <utfx:source>
-        <stub xml:lang="de">h.</stub>
+	<stub xml:lang="de">h.</stub>
       </utfx:source>
       <utfx:expected>H.</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
-  
+
   <utfx:test>
     <utfx:name>notag p.</utfx:name>
     <utfx:stylesheet-params>
@@ -265,12 +265,10 @@
     </utfx:stylesheet-params>
     <utfx:assert-equal>
       <utfx:source>
-        <stub xml:lang="de">p.</stub>
+	<stub xml:lang="de">p.</stub>
       </utfx:source>
       <utfx:expected>P.</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
-  
-  
-  
+
 </utfx:tests>
