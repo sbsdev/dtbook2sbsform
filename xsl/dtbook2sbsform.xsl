@@ -22,6 +22,7 @@
   xmlns:dtb="http://www.daisy.org/z3986/2005/dtbook/" xmlns:louis="http://liblouis.org/liblouis"
   xmlns:brl="http://www.daisy.org/z3986/2009/braille/" xmlns:my="http://my-functions"
   xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:data="http://sbsform.ch/data"
+  xmlns:math="http://www.w3.org/1998/Math/MathML"
   exclude-result-prefixes="dtb louis data my" extension-element-prefixes="my">
 	
   <xsl:include href="macro-definitions.xsl"/>
@@ -67,10 +68,30 @@
     </xsl:choose>
   </xsl:variable>
   
+  <!-- =========================== -->
+  <!-- Queries for block vs inline -->
+  <!-- =========================== -->
+  
   <xsl:function name="my:is-block-element" as="xs:boolean">
-    <xsl:param name="context"/>
-    <xsl:sequence select="local-name($context)=('h1','h2','h3','h4','h5','h6','p','li','author','byline','line')"/>
+    <xsl:param name="node" as="node()"/>
+    <xsl:apply-templates select="$node" mode="is-block-element"/>
   </xsl:function>
+  
+  <xsl:template match="node()" as="xs:boolean" mode="is-block-element" priority="10">
+    <xsl:sequence select="false()"/>
+  </xsl:template>
+  
+  <xsl:template match="dtb:*|math:*" as="xs:boolean" mode="is-block-element" priority="11">
+    <xsl:sequence select="false()"/>
+  </xsl:template>
+  
+  <xsl:template match="dtb:samp|dtb:cite" as="xs:boolean" mode="is-block-element" priority="12">
+    <xsl:sequence select="if (parent::*[self::dtb:p|self::dtb:li|self::dtb:td|self::dtb:th]) then false() else true()"/>
+  </xsl:template>
+
+  <xsl:template match="dtb:h1|dtb:h2|dtb:h3|dtb:h4|dtb:h5|dtb:h6|dtb:p|dtb:list|dtb:li|dtb:author|dtb:byline|dtb:line|dtb:imggroup|dtb:blockquote" as="xs:boolean" mode="is-block-element" priority="12">
+    <xsl:sequence select="true()"/>
+  </xsl:template>
 
   <xsl:function name="my:following-textnode-within-block" as="text()?">
     <xsl:param name="context"/>
@@ -894,6 +915,11 @@
     </xsl:copy>
   </xsl:template>
 
+  <!-- This matcher is never invoked. It's basically just for testing purposes -->
+  <xsl:template match="dtb:td|dtb:th">
+    <xsl:apply-templates/>
+  </xsl:template>
+
   <!-- Handle pagenums after volume boundaries -->
   <xsl:template match="dtb:pagenum[preceding-sibling::*[position()=1 and local-name()='volume' and @brl:grade = $contraction]]"/>
 
@@ -1332,6 +1358,18 @@
     <xsl:call-template name="handle_abbr">
       <xsl:with-param name="context" select="'abbr'"/>
     </xsl:call-template>
+  </xsl:template>
+
+  <!-- ========== -->
+  <!-- SAMP, CITE -->
+  <!-- ========== -->
+
+  <xsl:template match="dtb:samp|dtb:cite">
+    <xsl:if test="my:is-block-element(.)">    
+      <xsl:value-of select="my:insert-element-changed-comment(name())"/>
+      <xsl:text>y P&#10; </xsl:text>
+    </xsl:if>
+    <xsl:apply-templates/>
   </xsl:template>
 
   <!-- ========================= -->
