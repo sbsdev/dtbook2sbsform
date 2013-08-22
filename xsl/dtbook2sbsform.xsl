@@ -1274,6 +1274,10 @@
     <xsl:apply-templates/>
   </xsl:template>
 
+  <xsl:template match="dtb:colgroup|dtb:col">
+    <!-- ignore completely -->
+  </xsl:template>
+
   <!-- ===== -->
   <!-- TITLE -->
   <!-- ===== -->
