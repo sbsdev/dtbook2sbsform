@@ -460,13 +460,8 @@
     <xsl:apply-templates/>
   </xsl:template>
 
-  <xsl:template match="dtb:head">
-    <!-- ignore -->
-  </xsl:template>
-
-  <xsl:template match="dtb:meta">
-    <!-- ignore -->
-  </xsl:template>
+  <!-- ignore all meta data -->
+  <xsl:template match="dtb:head|dtb:meta|dtb:link"/>
 
   <xsl:template match="dtb:book">
     <xsl:apply-templates/>
