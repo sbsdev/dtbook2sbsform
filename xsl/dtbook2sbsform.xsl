@@ -373,7 +373,7 @@
 
   <xsl:template name="rest-of-frontmatter">
     <xsl:text>&#10;y BOOKb&#10;</xsl:text>
-    <xsl:if test="//dtb:note and $footnote_placement = 'standard'">
+    <xsl:if test="//(dtb:note|dtb:annotation) and $footnote_placement = 'standard'">
       <xsl:call-template name="insert_footnotes"/>
     </xsl:if>
     <xsl:text>y BrlVol&#10;</xsl:text>
@@ -485,14 +485,9 @@
     <xsl:apply-templates/>
     <!-- Apply end notes of last volume -->
     <xsl:if test="$footnote_placement = 'end_vol'">
-      <xsl:variable name="noterefs" select="//dtb:noteref[not(following::brl:volume[@brl:grade = $contraction])]"/>
-      <xsl:variable name="notes" select="for $noteref in $noterefs return //dtb:note[@id=translate($noteref/@idref,'#','')]"/>
-      <xsl:if test="exists($notes)">
-	<xsl:text>&#10;y Notes&#10;</xsl:text>
-	<xsl:for-each select="$notes">
-	  <xsl:apply-templates />
-	</xsl:for-each>
-      </xsl:if>
+      <xsl:call-template name="handle_notes">
+	<xsl:with-param name="noterefs" select="//(dtb:noteref|dtb:annoref)[not(following::brl:volume[@brl:grade = $contraction])]"/>
+      </xsl:call-template>
     </xsl:if>
     <xsl:text>&#10;&#10;y BODYe&#10;</xsl:text>
   </xsl:template>
@@ -503,6 +498,17 @@
 
   <xsl:template match="dtb:docauthor">
     <xsl:apply-templates/>
+  </xsl:template>
+
+  <xsl:template name="handle_notes">
+    <xsl:param name="noterefs" as="element()*"/>
+    <xsl:variable name="notes" select="for $noteref in $noterefs return //(dtb:note|dtb:annotation)[@id=translate($noteref/@idref,'#','')]"/>
+    <xsl:if test="exists($notes)">
+      <xsl:text>&#10;y Notes&#10;</xsl:text>
+      <xsl:for-each select="$notes">
+	<xsl:apply-templates/>
+      </xsl:for-each>
+    </xsl:if>
   </xsl:template>
 
   <xsl:template name="handle_level_endnotes">
@@ -516,14 +522,9 @@
       </xsl:choose>
     </xsl:variable>
     <xsl:if test="$footnote_placement = concat('level', $level)">
-      <xsl:variable name="noterefs" select="current()//dtb:noteref"/>
-      <xsl:variable name="notes" select="for $noteref in $noterefs return //dtb:note[@id=translate($noteref/@idref,'#','')]"/>
-      <xsl:if test="exists($notes)">
-	    <xsl:text>&#10;y Notes&#10;</xsl:text>
-	    <xsl:for-each select="$notes">
-	      <xsl:apply-templates/>
-        </xsl:for-each>
-      </xsl:if>
+      <xsl:call-template name="handle_notes">
+	<xsl:with-param name="noterefs" select="current()//(dtb:noteref|dtb:annoref)"/>
+      </xsl:call-template>
     </xsl:if>
   </xsl:template>
 
@@ -565,7 +566,7 @@
     <xsl:apply-templates/>
   </xsl:template>
 
-  <xsl:template match="dtb:note/dtb:p">
+  <xsl:template match="dtb:note/dtb:p|dtb:annotation/dtb:p">
     <xsl:variable name="braille_tables">
       <xsl:call-template name="getTable"/>
     </xsl:variable>
@@ -583,8 +584,8 @@
         <xsl:text>&#10; </xsl:text>
         <!-- Place the foot note number in the first para of the foot note -->
         <xsl:variable name="idref" select="concat('#',../@id)"/>
-        <xsl:variable name="corresponding_noteref" select="//dtb:noteref[@idref=$idref][1]"/>
-        <xsl:variable name="note_number" select="count($corresponding_noteref/preceding::dtb:noteref)+1"/>
+        <xsl:variable name="corresponding_noteref" select="//(dtb:noteref|dtb:annoref)[@idref=$idref][1]"/>
+        <xsl:variable name="note_number" select="count($corresponding_noteref/(preceding::dtb:noteref|preceding::dtb:annoref))+1"/>
         <xsl:variable name="prefix" select="if ($footnote_placement = 'standard') then '*' else ''"/>
         <xsl:value-of select="concat(louis:translate(string($braille_tables), concat($prefix, $note_number)), ' ')"/>
       </xsl:when>
@@ -1126,7 +1127,7 @@
     <xsl:text>O&#10;</xsl:text>
     <xsl:text>I L=n&#10;</xsl:text>
     <xsl:text>i f=1 l=3 w=5&#10;</xsl:text>
-    <xsl:for-each select="//dtb:note">
+    <xsl:for-each select="//(dtb:note|dtb:annotation)">
       <xsl:apply-templates/>
     </xsl:for-each>
     <xsl:text>&#10;O&#10;</xsl:text>
@@ -1150,33 +1151,50 @@
     </xsl:choose>
   </xsl:template>
 
-  <xsl:template match="dtb:note">
-    <!-- Ignore notes. Place them at the beginning or with each chapter -->
+  <xsl:template match="dtb:note|dtb:annotation">
+    <!-- Ignore notes and annotations. They are handled via the
+	 references that point to them, i.e. noterefs and annorefs. -->
   </xsl:template>
 
-  <xsl:template match="dtb:noteref">
+  <xsl:template match="dtb:noteref|dtb:annoref">
     <xsl:variable name="braille_tables">
       <xsl:call-template name="getTable"/>
     </xsl:variable>
-    <xsl:variable name="note_number" select="count(preceding::dtb:noteref)+1"/>
+    <xsl:if test="self::dtb:annoref">
+      <!-- we want the content of an annoref -->
+      <xsl:apply-templates/>
+    </xsl:if>
+    <xsl:variable name="note_number" select="count(preceding::dtb:noteref|preceding::dtb:annoref)+1"/>
     <xsl:value-of select="louis:translate(string($braille_tables), concat('*',string($note_number)))"/>
     <xsl:text>&#10;* &#10; </xsl:text>
   </xsl:template>
 
   <!-- If a noteref is followed by punctuation, the punctuation needs
        to come after the note_number and before the &#10;* &#10; -->
-  <xsl:template match="dtb:noteref[my:starts-with-punctuation(string(my:following-textnode-within-block(.)))]">
+  <xsl:template match="dtb:noteref[my:starts-with-punctuation(string(my:following-textnode-within-block(.)))]|dtb:annoref[my:starts-with-punctuation(string(my:following-textnode-within-block(.)))]">
     <xsl:variable name="braille_tables">
       <xsl:call-template name="getTable"/>
     </xsl:variable>
-    <xsl:variable name="note_number" select="count(preceding::dtb:noteref)+1"/>
+    <xsl:if test="self::dtb:annoref">
+      <!-- we want the content of an annoref -->
+      <xsl:apply-templates/>
+    </xsl:if>
+    <xsl:variable name="note_number" select="count(preceding::dtb:noteref|preceding::dtb:annoref)+1"/>
     <xsl:value-of select="louis:translate(string($braille_tables), concat('*',string($note_number)))"/>
     <xsl:value-of select="louis:translate(string($braille_tables), concat('&#x250B;', substring-before(string(my:following-textnode-within-block(.)), ' ')))"/>
     <xsl:text>&#10;* &#10; </xsl:text>
   </xsl:template>
   
   <!-- Remove the punctuation in a text node if it follows a noteref, since the punctuation was handled by the noteref matcher -->
-  <xsl:template match="text()[my:starts-with-punctuation(.) and exists((preceding::*[position() = 1 and local-name() = 'noteref'] intersect ancestor-or-self::*[my:is-block-element(.)][1]//dtb:noteref))]" priority="100">
+  <xsl:template match="text()[my:starts-with-punctuation(.) and exists((preceding::*[1][self::dtb:noteref] intersect ancestor-or-self::*[my:is-block-element(.)][1]//dtb:noteref))]" priority="100">
+    <xsl:variable name="braille_tables">
+      <xsl:call-template name="getTable"/>
+    </xsl:variable>
+    <xsl:value-of select="louis:translate(string($braille_tables), substring-after(string(),' '))"/>
+  </xsl:template>
+
+  <!-- Remove the punctuation in a text node if it follows a annoref, since the punctuation was handled by the annoref matcher -->
+  <xsl:template match="text()[my:starts-with-punctuation(.) and exists((preceding::*[1][self::dtb:annoref] intersect ancestor-or-self::*[my:is-block-element(.)][1]//dtb:annoref))]" priority="100">
     <xsl:variable name="braille_tables">
       <xsl:call-template name="getTable"/>
     </xsl:variable>
@@ -1844,14 +1862,9 @@
       <!-- Apply end notes -->
       <xsl:if test="$footnote_placement = 'end_vol'">
 	<xsl:variable name="V" select="current()"/>
-	<xsl:variable name="noterefs" select="$V/preceding::dtb:noteref[following::brl:volume[@brl:grade = $contraction][1] is $V]"/>
-	<xsl:variable name="notes" select="for $noteref in $noterefs return //dtb:note[@id=translate($noteref/@idref,'#','')]"/>
-	<xsl:if test="exists($notes)">
-	  <xsl:text>&#10;y Notes&#10;</xsl:text>
-	  <xsl:for-each select="$notes">
-	    <xsl:apply-templates/>
-	  </xsl:for-each>
-	</xsl:if>
+	<xsl:call-template name="handle_notes">
+	  <xsl:with-param name="noterefs" select="$V/(preceding::dtb:noteref|preceding::dtb:annoref)[following::brl:volume[@brl:grade = $contraction][1] is $V]"/>
+	</xsl:call-template>
       </xsl:if>
       <xsl:text>&#10;y EndVol&#10;</xsl:text>
       <!-- Handle volumes that have a pagenum immediately following -->

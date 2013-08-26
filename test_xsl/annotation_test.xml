@@ -1,0 +1,264 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<!-- Copyright (C) 2013 Swiss Library for the Blind, Visually Impaired and Print Disabled -->
+
+<!-- This file is part of dtbook2sbsform. -->
+
+<!-- dtbook2sbsform is free software: you can redistribute it -->
+<!-- and/or modify it under the terms of the GNU Lesser General Public -->
+<!-- License as published by the Free Software Foundation, either -->
+<!-- version 3 of the License, or (at your option) any later version. -->
+
+<!-- This program is distributed in the hope that it will be useful, -->
+<!-- but WITHOUT ANY WARRANTY; without even the implied warranty of -->
+<!-- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU -->
+<!-- Lesser General Public License for more details. -->
+
+<!-- You should have received a copy of the GNU Lesser General Public -->
+<!-- License along with this program. If not, see -->
+<!-- <http://www.gnu.org/licenses/>. -->
+
+<!DOCTYPE utfx:tests PUBLIC "-//UTF-X//DTD utfx-tests 1.0//EN" "utfx_tests.dtd">
+<utfx:tests xmlns:utfx="http://utfx.org/test-definition"
+  xmlns:dtb="http://www.daisy.org/z3986/2005/dtbook/"
+  xmlns:brl="http://www.daisy.org/z3986/2009/braille/">
+  <utfx:stylesheet src="xsl/dtbook2sbsform.xsl"/>
+
+  <utfx:test>
+    <utfx:name>annotation  with standard placement and automatic numbering</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+      <utfx:with-param name="footnote_placement" select="'standard'"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+	<stub xml:lang="de">Blah <dtb:annoref idref="#annotation1">hihi</dtb:annoref> <dtb:annoref idref="#annotation2">haha</dtb:annoref> blah</stub>
+      </utfx:source>
+      <utfx:expected>
+ BLAH HIHI'*#A
+* 
+ HAHA'*#B
+* 
+  BLAH
+</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>annotation  with standard placement and automatic numbering</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+      <utfx:with-param name="footnote_placement" select="'standard'"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+	<stub xml:lang="de">
+	  <dtb:annoref idref="#annotation1">Foo</dtb:annoref> Bar
+	  <dtb:annoref idref="#annotation2">Baz</dtb:annoref> Baz
+	</stub>
+      </utfx:source>
+      <utfx:expected>
+ FOO'*#A
+* 
+  BAR BAZ'*#B
+* 
+  BAZ
+</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>annotation with end_vol placement</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+      <utfx:with-param name="footnote_placement" select="'end_vol'"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+	<stub xml:lang="de">Hi Ha <dtb:annoref idref="#annotation1">Ho</dtb:annoref>
+	<dtb:annoref idref="#annotation2"></dtb:annoref>
+	<brl:volume brl:grade="2"/>Foo Bar Baz <dtb:annoref idref="#annotation3"></dtb:annoref>
+	<dtb:annoref idref="#annotation4"></dtb:annoref>
+	<brl:volume brl:grade="2"/>
+	<dtb:annotation id="annotation1">
+	  <dtb:p>This is a test</dtb:p>
+	</dtb:annotation>
+	<dtb:annotation id="annotation2">
+	  <dtb:p>This is another test</dtb:p>
+	</dtb:annotation>
+	<dtb:annotation id="annotation3">
+	  <dtb:p>This is a test</dtb:p>
+	</dtb:annotation>
+	<dtb:annotation id="annotation4">
+	  <dtb:p>This is another test</dtb:p>
+	</dtb:annotation></stub>
+      </utfx:source>
+      <utfx:expected>HI HA HO'*#A
+* 
+ '*#B
+* 
+ 
+y Notes
+
+a 
+ #A THIS IS 'A TE]
+a 
+ #B THIS IS +OTH7 TE]
+y EndVol
+y BrlVol
+FOO BAR BAZ '*#C
+* 
+ '*#D
+* 
+ 
+y Notes
+
+a 
+ #C THIS IS 'A TE]
+a 
+ #D THIS IS +OTH7 TE]
+y EndVol
+y BrlVol
+      </utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>annotation in bodymatter with end_vol placement</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+      <utfx:with-param name="footnote_placement" select="'end_vol'"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+	<dtb:bodymatter xml:lang="de">
+	  <dtb:p>Hi <dtb:annoref idref="#annotation1">Ha</dtb:annoref> 
+	  <dtb:annoref idref="#annotation2">Ho</dtb:annoref>
+	  <brl:volume brl:grade="2"/>Foo <dtb:annoref idref="#annotation3">Bar</dtb:annoref>
+	  <dtb:annoref idref="#annotation4">Baz</dtb:annoref>
+	  <brl:volume brl:grade="2"/>
+	  <dtb:annotation id="annotation1">
+	    <dtb:p>This is a test</dtb:p>
+	  </dtb:annotation>
+	  <dtb:annotation id="annotation2">
+	    <dtb:p>This is another test</dtb:p>
+	  </dtb:annotation>
+	  <dtb:annotation id="annotation3">
+	    <dtb:p>This is a test</dtb:p>
+	  </dtb:annotation>
+	  <dtb:annotation id="annotation4">
+	    <dtb:p>This is another test</dtb:p>
+	  </dtb:annotation></dtb:p>
+	  <dtb:pagenum>1</dtb:pagenum>
+	</dtb:bodymatter>
+      </utfx:source>
+      <utfx:expected>y BODYb
+i j=1
+
+y P
+ HI HA'*#A
+* 
+  HO'*#B
+* 
+  
+y Notes
+
+a 
+ #A THIS IS 'A TE]
+a 
+ #B THIS IS +OTH7 TE]
+y EndVol
+y BrlVol
+FOO BAR'*#C
+* 
+  BAZ'*#D
+* 
+  
+y Notes
+
+a 
+ #C THIS IS 'A TE]
+a 
+ #D THIS IS +OTH7 TE]
+y EndVol
+y BrlVol
+    
+j 1
+ 
+
+y BODYe
+      </utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>annotation inside h1 (http://redmine.sbszh.ch/issues/1260)</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+      <utfx:with-param name="footnote_placement" select="'standard'"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+	<dtb:h1 xml:lang="de">Sein und nicht <dtb:annoref idref="#fn1">sein</dtb:annoref></dtb:h1>
+      </utfx:source>
+      <utfx:expected>y H1&#13; 9 U N 9'*#A&#13;*</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>annotation followed by ',' http://redmine.sbszh.ch/issues/1264</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+      <utfx:with-param name="footnote_placement" select="'standard'"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+	<dtb:p xml:lang="de">Hier die <dtb:annoref idref="#fn1">Fussnote</dtb:annoref>, vor einem Komma</dtb:p>
+      </utfx:source>
+      <utfx:expected>y P&#13; HR 0 FU^NO('*#A,&#13;* &#13; ? 6[ KXA</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>annotation followed by '!' http://redmine.sbszh.ch/issues/1264</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+      <utfx:with-param name="footnote_placement" select="'standard'"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+	<dtb:p xml:lang="de">Hier die <dtb:annoref idref="#fn1">Fussnote</dtb:annoref>! vor einem</dtb:p>
+      </utfx:source>
+      <utfx:expected>y P&#13; HR 0 FU^NO('*#A'+&#13;* &#13; ? 6[</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>annotation followed by '?' http://redmine.sbszh.ch/issues/1264</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+      <utfx:with-param name="footnote_placement" select="'standard'"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+	<dtb:p xml:lang="de">Hier die <dtb:annoref idref="#fn1">Fussnote</dtb:annoref>? vor einem</dtb:p>
+      </utfx:source>
+      <utfx:expected>y P&#13; HR 0 FU^NO('*#A'?&#13;* &#13; ? 6[</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>annotation followed by '(' http://redmine.sbszh.ch/issues/1264</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+      <utfx:with-param name="footnote_placement" select="'standard'"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+	<dtb:p xml:lang="de">Hier die <dtb:annoref idref="#fn1">Fussnote</dtb:annoref>( vor einem</dtb:p>
+      </utfx:source>
+      <utfx:expected>y P&#13; HR 0 FU^NO('*#A'=&#13;* &#13; ? 6[</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+</utfx:tests>
