@@ -1368,6 +1368,7 @@
 
   <xsl:template match="dtb:acronym">
     <xsl:value-of select="my:insert-element-changed-comment(name())"/>
+    <xsl:text> </xsl:text>
     <xsl:call-template name="handle_abbr">
       <xsl:with-param name="context" select="'abbr'"/>
     </xsl:call-template>
@@ -1393,6 +1394,7 @@
     <xsl:if test="self::dtb:dfn">
       <!-- We treat dfn the same as a em but add a comment about the original markup-->
       <xsl:value-of select="my:insert-element-changed-comment(name())"/>
+      <xsl:text> </xsl:text>
     </xsl:if>
     <xsl:variable name="braille_tables">
       <xsl:call-template name="getTable"/>

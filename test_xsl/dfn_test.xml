@@ -35,7 +35,7 @@
       </utfx:source>
       <utfx:expected>
 xxx Was originally a dtb:dfn
-_FOO
+ _FOO
 </utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
@@ -51,7 +51,7 @@ _FOO
       </utfx:source>
       <utfx:expected>
 xxx Was originally a dtb:dfn
-__FOO BAR'.
+ __FOO BAR'.
 </utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
@@ -67,7 +67,7 @@ __FOO BAR'.
       </utfx:source>
       <utfx:expected>
 xxx Was originally a dtb:dfn
-__FOO BAR BAZ'.
+ __FOO BAR BAZ'.
 </utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
@@ -84,7 +84,7 @@ __FOO BAR BAZ'.
       <utfx:expected>y P
  HAHA 
 xxx Was originally a dtb:dfn
-__FOO BAR BAZ'.
+ __FOO BAR BAZ'.
 </utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
