@@ -72,4 +72,21 @@ __FOO BAR BAZ'.
     </utfx:assert-equal>
   </utfx:test>
 
+  <utfx:test>
+    <utfx:name>dfn with context</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+	<dtb:p xml:lang="de">Haha <dtb:dfn xml:lang="de">Foo Bar Baz</dtb:dfn></dtb:p>
+      </utfx:source>
+      <utfx:expected>y P
+ HAHA 
+xxx Was originally a dtb:dfn
+__FOO BAR BAZ'.
+</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
 </utfx:tests>

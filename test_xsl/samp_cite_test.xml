@@ -38,6 +38,7 @@
       <utfx:expected>
 y LEVEL1b
 .xNOPAGENUM
+
 xxx Was originally a dtb:samp
 y P
  FOO
@@ -59,6 +60,7 @@ y LEVEL1e
       </utfx:source>
       <utfx:expected>
 y DIVb_foo
+
 xxx Was originally a dtb:samp
 y P
  FOO

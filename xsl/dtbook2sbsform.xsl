@@ -244,7 +244,7 @@
 
   <xsl:function name="my:insert-element-changed-comment" as="xs:string">
     <xsl:param name="element" as="xs:string"/>
-    <xsl:value-of select="concat('xxx Was originally a ', $element, '&#10;')"/>
+    <xsl:value-of select="concat('&#10;', 'xxx Was originally a ', $element, '&#10;')"/>
   </xsl:function>
 
   <xsl:template name="getTable">
