@@ -586,8 +586,8 @@ y e HD
 y b BRIDGE
 lm1
 i f=3 l=1
-w
 n2
+w
 Y
 y e BRIDGE
 
