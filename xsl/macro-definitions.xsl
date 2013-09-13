@@ -354,6 +354,7 @@ u,
 	    <xsl:when test="$element-name='epigraph'">EPIGR</xsl:when>
 	    <xsl:when test="$element-name='imggroup'">IMGGR</xsl:when>
 	    <xsl:when test="$element-name='linegroup'">LINEGR</xsl:when>
+	    <xsl:when test="$element-name='bridgehead'">BRIDGE</xsl:when>
             <xsl:when test="$element-name='list' and @type='pl'">PLIST</xsl:when>
             <xsl:when test="$element-name='list' and @type='ul'">ULIST</xsl:when>
             <xsl:when test="$element-name='list' and @type='ol'">OLIST</xsl:when>
