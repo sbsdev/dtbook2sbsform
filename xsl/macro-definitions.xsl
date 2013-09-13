@@ -314,7 +314,14 @@ u,
 		  //dtb:h6)[@brl:class]"
 	  group-by="local-name()">
 	<xsl:variable name="element-name" select="current-grouping-key()"/>
-	<xsl:variable name="makro-name" select="upper-case($element-name)"/>
+        <xsl:variable name="makro-name">
+	  <xsl:choose>
+	    <xsl:when test="$element-name='bridgehead'">BRIDGE</xsl:when>
+	    <xsl:otherwise>
+	      <xsl:value-of select="upper-case($element-name)"/>
+	    </xsl:otherwise>
+	  </xsl:choose>
+	</xsl:variable>
 	<xsl:for-each select="distinct-values(//dtb:*[local-name() = $element-name]/@brl:class)">
 	  <xsl:text>&#10;y b </xsl:text>
 	  <xsl:value-of select="$makro-name"/><xsl:text>_</xsl:text>
@@ -354,7 +361,6 @@ u,
 	    <xsl:when test="$element-name='epigraph'">EPIGR</xsl:when>
 	    <xsl:when test="$element-name='imggroup'">IMGGR</xsl:when>
 	    <xsl:when test="$element-name='linegroup'">LINEGR</xsl:when>
-	    <xsl:when test="$element-name='bridgehead'">BRIDGE</xsl:when>
             <xsl:when test="$element-name='list' and @type='pl'">PLIST</xsl:when>
             <xsl:when test="$element-name='list' and @type='ul'">ULIST</xsl:when>
             <xsl:when test="$element-name='list' and @type='ol'">OLIST</xsl:when>
