@@ -34,10 +34,9 @@
         <dtb:bridgehead xml:lang="de">A Man of Many Styles</dtb:bridgehead>
       </utfx:source>
       <utfx:expected>
-xxx Was originally a dtb:bridgehead
-
-y BYLINE
+y BRIDGE
  'A M OF M+'Y ]'YL%
+
 </utfx:expected>
     </utfx:assert-equal>
   </utfx:test>

@@ -1344,9 +1344,8 @@
   <!-- ========== -->
 
   <xsl:template match="dtb:bridgehead">
-    <xsl:value-of select="my:insert-element-changed-comment(name())"/>
     <xsl:call-template name="inline_macro">
-      <xsl:with-param name="macro" select="'BYLINE'"/>
+      <xsl:with-param name="macro" select="'BRIDGE'"/>
     </xsl:call-template>
   </xsl:template>
 

@@ -305,6 +305,7 @@ u,
 		  //dtb:img|
 		  //dtb:caption|
                   //dtb:hd|
+                  //dtb:bridgehead|
 		  //dtb:h1|
 		  //dtb:h2|
 		  //dtb:h3|
@@ -576,6 +577,19 @@ y e SIDEBARe
 y b HD
 w
 y e HD
+
+</xsl:text>
+    </xsl:if>
+
+    <xsl:if test="//dtb:bridgehead[not(@brl:class)]">
+      <xsl:text>
+y b BRIDGE
+lm1
+i f=3 l=1
+w
+n2
+Y
+y e BRIDGE
 
 </xsl:text>
     </xsl:if>
