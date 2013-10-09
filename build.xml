@@ -1,163 +1,164 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="dtbook2sbsform" default="default" basedir=".">
 
-	<!-- Copyright (C) 2010 Swiss Library for the Blind, Visually Impaired and Print Disabled -->
+  <!-- Copyright (C) 2010 Swiss Library for the Blind, Visually Impaired and Print Disabled -->
 
-	<!-- This file is part of dtbook2sbsform. -->
+  <!-- This file is part of dtbook2sbsform. -->
 
-	<!-- dtbook2sbsform is free software: you can redistribute it -->
-	<!-- and/or modify it under the terms of the GNU Lesser General Public -->
-	<!-- License as published by the Free Software Foundation, either -->
-	<!-- version 3 of the License, or (at your option) any later version. -->
+  <!-- dtbook2sbsform is free software: you can redistribute it -->
+  <!-- and/or modify it under the terms of the GNU Lesser General Public -->
+  <!-- License as published by the Free Software Foundation, either -->
+  <!-- version 3 of the License, or (at your option) any later version. -->
 
-	<!-- This program is distributed in the hope that it will be useful, -->
-	<!-- but WITHOUT ANY WARRANTY; without even the implied warranty of -->
-	<!-- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU -->
-	<!-- Lesser General Public License for more details. -->
+  <!-- This program is distributed in the hope that it will be useful, -->
+  <!-- but WITHOUT ANY WARRANTY; without even the implied warranty of -->
+  <!-- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU -->
+  <!-- Lesser General Public License for more details. -->
 
-	<!-- You should have received a copy of the GNU Lesser General Public -->
-	<!-- License along with this program. If not, see -->
-	<!-- <http://www.gnu.org/licenses/>. -->
-	<property name="compile.target" value="1.6" />
-	<property name="compile.source" value="1.6" />
+  <!-- You should have received a copy of the GNU Lesser General Public -->
+  <!-- License along with this program. If not, see -->
+  <!-- <http://www.gnu.org/licenses/>. -->
 
-	<property name="build.dir" value="bin" />
-	<property name="app.name" value="${ant.project.name}" />
-	<property name="utility.jar" value="linebreaker.jar" />
-	<property name="src.dir" value="src" />
-	<property name="test_src.dir" value="test_src" />
-	<property name="lib.dir" value="lib" />
-	<property name="zipfile" value="${app.name}.zip" />
-	
-	<!-- used for utfx -->
-	<property name="testrunner" value="utfx.runner.TestRunner" />
+  <property name="compile.target" value="1.6" />
+  <property name="compile.source" value="1.6" />
 
-	<path id="classpath.path">
-		<pathelement location="${build.dir}" />
-		<fileset dir="${lib.dir}">
-			<include name="*.jar" />
-		</fileset>
-	</path>
+  <property name="build.dir" value="bin" />
+  <property name="app.name" value="${ant.project.name}" />
+  <property name="utility.jar" value="linebreaker.jar" />
+  <property name="src.dir" value="src" />
+  <property name="test_src.dir" value="test_src" />
+  <property name="lib.dir" value="lib" />
+  <property name="zipfile" value="${app.name}.zip" />
 
-	<target name="init">
-		<mkdir dir="${build.dir}" />
-	</target>
+  <!-- used for utfx -->
+  <property name="testrunner" value="utfx.runner.TestRunner" />
 
-	<target name="default" depends="jar" />
+  <path id="classpath.path">
+    <pathelement location="${build.dir}" />
+    <fileset dir="${lib.dir}">
+      <include name="*.jar" />
+    </fileset>
+  </path>
 
-	<target name="jar" depends="compile, git.revision" description="build jar">
-		<jar jarfile="${utility.jar}" basedir="${build.dir}" includes="**/*.class" excludes="**/*Test.class">
-			<manifest>
-				<attribute name="Built-By" value="${user.name}" />
-				<attribute name="Implementation-Version" value="${repository.version}" />
-			</manifest>
-		</jar>
-	</target>
+  <target name="init">
+    <mkdir dir="${build.dir}" />
+  </target>
 
-	<target name="compile" depends="init">
-		<javac destdir="${build.dir}"
-		       target="${compile.target}"
-		       source="${compile.source}"
-		       deprecation="on" debug="on" 
-		       includeAntRuntime="false">
-			<src path="${src.dir}" />
-			<src path="${test_src.dir}" />
-			<classpath>
-				<path refid="classpath.path" />
-			</classpath>
-		</javac>
-	</target>
+  <target name="default" depends="jar" />
 
-	<target name="src_test" depends="compile" description="run src test">
-		<junit printsummary="yes" fork="yes" haltonfailure="no" haltonerror="no">
+  <target name="jar" depends="compile, git.revision" description="build jar">
+    <jar jarfile="${utility.jar}" basedir="${build.dir}" includes="**/*.class" excludes="**/*Test.class">
+      <manifest>
+	<attribute name="Built-By" value="${user.name}" />
+	<attribute name="Implementation-Version" value="${repository.version}" />
+      </manifest>
+    </jar>
+  </target>
 
-			<formatter type="plain" usefile="false" />
-			<classpath>
+  <target name="compile" depends="init">
+    <javac destdir="${build.dir}"
+	   target="${compile.target}"
+	   source="${compile.source}"
+	   deprecation="on" debug="on"
+	   includeAntRuntime="false">
+      <src path="${src.dir}" />
+      <src path="${test_src.dir}" />
+      <classpath>
+	<path refid="classpath.path" />
+      </classpath>
+    </javac>
+  </target>
 
-				<!-- classes to test -->
-				<pathelement location="${build.dir}" />
+  <target name="src_test" depends="compile" description="run src test">
+    <junit printsummary="yes" fork="yes" haltonfailure="no" haltonerror="no">
 
-				<!-- 3rd party libs -->
-				<pathelement location="${lib.dir}/jna.jar" />
-				<pathelement location="${lib.dir}/louis.jar" />
-				<pathelement location="${lib.dir}/saxon9he.jar" />
-				<!-- junit -->
-				<pathelement location="${lib.dir}/junit-4.8.2.jar" />
-			</classpath>
-			<batchtest>
-				<formatter type="plain" usefile="false" />
-				<fileset dir="${test_src.dir}">
-					<include name="**/*Test.java" />
-				</fileset>
-			</batchtest>
-		</junit>
-	</target>
-	
-	<path id="runtime.classpath">
-		<pathelement location="lib/saxon9he.jar"/>
-		<pathelement location="lib/louis.jar"/>
-		<pathelement location="lib/jna.jar"/>
-		<pathelement location="lib/liblouissaxonx.jar"/>
-		<pathelement location="lib/utfxFat.jar"/>
-		<pathelement location="."/>
-	</path>
-	
-	<target name="utfx" description="run utfx tests">
-		<java classname="${testrunner}" fork="yes">
-			<jvmarg value="-enableassertions" />
-			<jvmarg value="-Xmx128m" />
-			<jvmarg value="-Djavax.xml.transform.TransformerFactory=org.liblouis.transformerfactory.LouisExtensionTransformerFactoryImpl" />
-			<jvmarg value="-Dutfx.test.dir=test_xsl" />
-			<arg value="utfx.framework.XSLTRegressionTest" />
-			<classpath refid="runtime.classpath" />
-		</java>
-	</target>
-	
-	<target name="test" depends="src_test, utfx" description="run src_test and utfx_tests"/>
+      <formatter type="plain" usefile="false" />
+      <classpath>
 
-	<target name="clean" description="clean">
-		<delete dir="${build.dir}" />
-		<delete file="${utility.jar}" />
-		<delete file="utfx_log.xml" />
-		<delete file="${zipfile}" />
-	</target>
+	<!-- classes to test -->
+	<pathelement location="${build.dir}" />
 
-	<available file=".git" type="dir" property="git.present" />
+	<!-- 3rd party libs -->
+	<pathelement location="${lib.dir}/jna.jar" />
+	<pathelement location="${lib.dir}/louis.jar" />
+	<pathelement location="${lib.dir}/saxon9he.jar" />
+	<!-- junit -->
+	<pathelement location="${lib.dir}/junit-4.8.2.jar" />
+      </classpath>
+      <batchtest>
+	<formatter type="plain" usefile="false" />
+	<fileset dir="${test_src.dir}">
+	  <include name="**/*Test.java" />
+	</fileset>
+      </batchtest>
+    </junit>
+  </target>
 
-	<target name="git.revision" description="Store git revision in ${repository.version}" if="git.present">
-		<exec executable="git" outputproperty="git.revision" failifexecutionfails="false" errorproperty="">
-			<arg value="describe" />
-			<arg value="--tags" />
-			<arg value="--always" />
-			<arg value="--dirty" />
-		</exec>
-		<condition property="repository.version" value="${git.revision}" else="unknown">
-			<and>
-				<isset property="git.revision" />
-				<length string="${git.revision}" trim="yes" length="0" when="greater" />
-			</and>
-		</condition>
-	</target>
+  <path id="runtime.classpath">
+    <pathelement location="lib/saxon9he.jar"/>
+    <pathelement location="lib/louis.jar"/>
+    <pathelement location="lib/jna.jar"/>
+    <pathelement location="lib/liblouissaxonx.jar"/>
+    <pathelement location="lib/utfxFat.jar"/>
+    <pathelement location="."/>
+  </path>
 
-	<target name="dist" depends="jar"
-		description="Builds a zipfile containing everything needed to run the shell scripts">
-	  <zip destfile="${zipfile}">
-	    <zipfileset dir="${lib.dir}" prefix="${app.name}/${lib.dir}">
-	      <include name="*.jar"/>
-	    </zipfileset>
-	    <zipfileset dir="." prefix="${app.name}">
-	      <include name="*.jar"/>
-	      <include name="COPYING.LESSER"/>
-	      <include name="README"/>
-	    </zipfileset>
-	    <zipfileset dir="." prefix="${app.name}" filemode="755">
-	      <include name="*.sh"/>
-	      <exclude name="utfx.sh"/>
-	    </zipfileset>
-	    <zipfileset dir="xsl" prefix="${app.name}/xsl">
-	      <include name="*.xsl"/>
-	    </zipfileset>
-	  </zip>
-	</target>
+  <target name="utfx" description="run utfx tests">
+    <java classname="${testrunner}" fork="yes">
+      <jvmarg value="-enableassertions" />
+      <jvmarg value="-Xmx128m" />
+      <jvmarg value="-Djavax.xml.transform.TransformerFactory=org.liblouis.transformerfactory.LouisExtensionTransformerFactoryImpl" />
+      <jvmarg value="-Dutfx.test.dir=test_xsl" />
+      <arg value="utfx.framework.XSLTRegressionTest" />
+      <classpath refid="runtime.classpath" />
+    </java>
+  </target>
+
+  <target name="test" depends="src_test, utfx" description="run src_test and utfx_tests"/>
+
+  <target name="clean" description="clean">
+    <delete dir="${build.dir}" />
+    <delete file="${utility.jar}" />
+    <delete file="utfx_log.xml" />
+    <delete file="${zipfile}" />
+  </target>
+
+  <available file=".git" type="dir" property="git.present" />
+
+  <target name="git.revision" description="Store git revision in ${repository.version}" if="git.present">
+    <exec executable="git" outputproperty="git.revision" failifexecutionfails="false" errorproperty="">
+      <arg value="describe" />
+      <arg value="--tags" />
+      <arg value="--always" />
+      <arg value="--dirty" />
+    </exec>
+    <condition property="repository.version" value="${git.revision}" else="unknown">
+      <and>
+	<isset property="git.revision" />
+	<length string="${git.revision}" trim="yes" length="0" when="greater" />
+      </and>
+    </condition>
+  </target>
+
+  <target name="dist" depends="jar"
+	  description="Builds a zipfile containing everything needed to run the shell scripts">
+    <zip destfile="${zipfile}">
+      <zipfileset dir="${lib.dir}" prefix="${app.name}/${lib.dir}">
+	<include name="*.jar"/>
+      </zipfileset>
+      <zipfileset dir="." prefix="${app.name}">
+	<include name="*.jar"/>
+	<include name="COPYING.LESSER"/>
+	<include name="README"/>
+      </zipfileset>
+      <zipfileset dir="." prefix="${app.name}" filemode="755">
+	<include name="*.sh"/>
+	<exclude name="utfx.sh"/>
+      </zipfileset>
+      <zipfileset dir="xsl" prefix="${app.name}/xsl">
+	<include name="*.xsl"/>
+      </zipfileset>
+    </zip>
+  </target>
 
 </project>
