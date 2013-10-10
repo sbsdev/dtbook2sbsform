@@ -187,8 +187,11 @@
 	<mapper type="perm" prefix="/opt/dtbook2sbsform"/>
 	<include name="${utility.jar}"/>
 	<include name="COPYING.LESSER"/>
-	<include name="*.sh"/>
-	<exclude name="utfx.sh"/>
+      </data>
+      <data src="." type="directory">
+      	<mapper type="perm" filemode="755" prefix="/opt/dtbook2sbsform"/>
+      	<include name="*.sh"/>
+      	<exclude name="utfx.sh"/>
       </data>
       <data src="lib" type="directory">
 	<mapper type="perm" prefix="/opt/dtbook2sbsform/lib"/>
