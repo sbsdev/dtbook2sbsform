@@ -138,20 +138,21 @@
     </xsl:if>
 
     <xsl:sequence select="my:padded-comment('Levels und Headings')"/>
-    <xsl:text>y b LEVEL1b&#10;</xsl:text>
-    <xsl:text>p&#10;</xsl:text>
-    <xsl:text>Y&#10;</xsl:text>
-    <xsl:text>y e LEVEL1b&#10;</xsl:text>
-    <xsl:text>y b LEVEL1e&#10;</xsl:text>
-    <xsl:text>y e LEVEL1e&#10;</xsl:text>
-    <xsl:text>y b H1&#10;</xsl:text>
-    <xsl:text>L&#10;</xsl:text>
-    <xsl:text>i f=3 l=1&#10;</xsl:text>
-    <xsl:text>i A=4 R=4&#10;</xsl:text>
-    <xsl:text>t&#10;</xsl:text>
-    <xsl:text>Y&#10;</xsl:text>
-    <xsl:text>u-&#10;</xsl:text>
-    <xsl:text>i A=0 R=0&#10;</xsl:text>
+    <xsl:text>y b LEVEL1b
+p
+Y
+y e LEVEL1b
+y b LEVEL1e
+y e LEVEL1e
+y b H1
+L
+i f=3 l=1
+i A=4 R=4
+t
+Y
+u-
+i A=0 R=0
+</xsl:text>
     <xsl:if test="$toc_level &gt; 0">
       <xsl:text>H`B+&#10;</xsl:text>
       <xsl:text>H`i F=1 L=3&#10;</xsl:text>
@@ -166,19 +167,21 @@
     <xsl:text>y e H1&#10;</xsl:text>
 
     <xsl:if test="//dtb:level2">
-      <xsl:text>&#10;y b LEVEL2b&#10;</xsl:text>
-      <xsl:text>lm2&#10;</xsl:text>
-      <xsl:text>n10&#10;</xsl:text>
-      <xsl:text>Y&#10;</xsl:text>
-      <xsl:text>y e LEVEL2b&#10;</xsl:text>
-      <xsl:text>y b LEVEL2e&#10;</xsl:text>
-      <xsl:text>y e LEVEL2e&#10;</xsl:text>
-      <xsl:text>y b H2&#10;</xsl:text>
-      <xsl:text>lm1&#10;</xsl:text>
-      <xsl:text>i f=3 l=1&#10;</xsl:text>
-      <xsl:text>w&#10;</xsl:text>
-      <xsl:text>Y&#10;</xsl:text>
-      <xsl:text>u&#10;</xsl:text>
+      <xsl:text>
+y b LEVEL2b
+lm2
+n10
+Y
+y e LEVEL2b
+y b LEVEL2e
+y e LEVEL2e
+y b H2
+lm1
+i f=3 l=1
+w
+Y
+u
+</xsl:text>
       <xsl:if test="$toc_level &gt; 1">
         <xsl:text>H`B+&#10;</xsl:text>
         <xsl:text>H`i F=3 L=3&#10;</xsl:text>
@@ -220,18 +223,20 @@ u,
     </xsl:if>
 
     <xsl:if test="//dtb:level4">
-      <xsl:text>&#10;y b LEVEL4b&#10;</xsl:text>
-      <xsl:text>lm1&#10;</xsl:text>
-      <xsl:text>n4&#10;</xsl:text>
-      <xsl:text>Y&#10;</xsl:text>
-      <xsl:text>y e LEVEL4b&#10;</xsl:text>
-      <xsl:text>y b LEVEL4e&#10;</xsl:text>
-      <xsl:text>y e LEVEL4e&#10;</xsl:text>
-      <xsl:text>y b H4&#10;</xsl:text>
-      <xsl:text>lm1&#10;</xsl:text>
-      <xsl:text>i f=3 l=1&#10;</xsl:text>
-      <xsl:text>w&#10;</xsl:text>
-      <xsl:text>Y&#10;</xsl:text>
+      <xsl:text>
+y b LEVEL4b
+lm1
+n4
+Y
+y e LEVEL4b
+y b LEVEL4e
+y e LEVEL4e
+y b H4
+lm1
+i f=3 l=1
+w
+Y
+</xsl:text>
       <xsl:if test="$toc_level &gt; 3">
         <xsl:text>H`B+&#10;</xsl:text>
         <xsl:text>H`i F=7 L=3&#10;</xsl:text>
@@ -245,18 +250,20 @@ u,
     </xsl:if>
 
     <xsl:if test="//dtb:level5">
-      <xsl:text>&#10;y b LEVEL5b&#10;</xsl:text>
-      <xsl:text>lm1&#10;</xsl:text>
-      <xsl:text>n4&#10;</xsl:text>
-      <xsl:text>Y&#10;</xsl:text>
-      <xsl:text>y e LEVEL5b&#10;</xsl:text>
-      <xsl:text>y b LEVEL5e&#10;</xsl:text>
-      <xsl:text>y e LEVEL5e&#10;</xsl:text>
-      <xsl:text>y b H5&#10;</xsl:text>
-      <xsl:text>lm1&#10;</xsl:text>
-      <xsl:text>i f=3 l=1&#10;</xsl:text>
-      <xsl:text>w&#10;</xsl:text>
-      <xsl:text>Y&#10;</xsl:text>
+      <xsl:text>
+y b LEVEL5b
+lm1
+n4
+Y
+y e LEVEL5b
+y b LEVEL5e
+y e LEVEL5e
+y b H5
+lm1
+i f=3 l=1
+w
+Y
+</xsl:text>
       <xsl:if test="$toc_level &gt; 4">
         <xsl:text>H`B+&#10;</xsl:text>
         <xsl:text>H`i F=9 L=3&#10;</xsl:text>
@@ -270,18 +277,20 @@ u,
     </xsl:if>
 
     <xsl:if test="//dtb:level6">
-      <xsl:text>&#10;y b LEVEL6b&#10;</xsl:text>
-      <xsl:text>lm1&#10;</xsl:text>
-      <xsl:text>n4&#10;</xsl:text>
-      <xsl:text>Y&#10;</xsl:text>
-      <xsl:text>y e LEVEL6b&#10;</xsl:text>
-      <xsl:text>y b LEVEL6e&#10;</xsl:text>
-      <xsl:text>y e LEVEL6e&#10;</xsl:text>
-      <xsl:text>y b H6&#10;</xsl:text>
-      <xsl:text>lm1&#10;</xsl:text>
-      <xsl:text>i f=3 l=1&#10;</xsl:text>
-      <xsl:text>w&#10;</xsl:text>
-      <xsl:text>Y&#10;</xsl:text>
+      <xsl:text>
+y b LEVEL6b
+lm1
+n4
+Y
+y e LEVEL6b
+y b LEVEL6e
+y e LEVEL6e
+y b H6
+lm1
+i f=3 l=1
+w
+Y
+</xsl:text>
       <xsl:if test="$toc_level &gt; 5">
 	<xsl:text>H`B+&#10;</xsl:text>
 	<xsl:text>H`i F=11 L=3&#10;</xsl:text>
