@@ -538,6 +538,31 @@ y e LINEGRe
 </xsl:text>
     </xsl:if>
 
+    <xsl:if test="//dtb:span[@class='linenum']">
+      <xsl:sequence select="my:padded-comment('span@class=linenum')"/>
+      <xsl:text>
+y b SECT_LNb
+I T=j
+i w=1 W=5
+y e SECT_LNb
+
+y b SECT_LNe
+I T=n
+i w=1 W=1
+y e SECT_LNe
+
+y b P_LN
+i T=7
+w
+y e P_LN
+
+y b P_LN_noi
+i T=5
+w
+y e P_LN_noi
+</xsl:text>
+    </xsl:if>
+
     <xsl:if test="//dtb:imggroup[not(@brl:class)]">
       <xsl:sequence select="my:padded-comment('Imggroup')"/>
       <xsl:text>
