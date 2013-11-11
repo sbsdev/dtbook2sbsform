@@ -551,7 +551,7 @@
     <xsl:value-of select="concat('&#10;y ', $macro, 'b&#10;')"/>
     <!-- add a comment if the first child is not a pagenum -->
     <xsl:value-of select="if (not(name(child::*[1])='pagenum')) then '.xNOPAGENUM&#10;' else ''"/>
-    <xsl:apply-templates/>
+    <xsl:call-template name="insert-markers-for-linenum-span-groups"/>
     <xsl:call-template name="handle_level_endnotes"/>
     <xsl:value-of select="concat('&#10;y ', $macro, 'e&#10;')"/>
   </xsl:template>

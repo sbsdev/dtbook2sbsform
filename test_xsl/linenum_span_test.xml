@@ -127,4 +127,86 @@ y P_LN
     </utfx:assert-equal>
   </utfx:test>
 
+  <utfx:test>
+    <utfx:name>Mixed p some some with span class linenum</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+	<dtb:level6 xml:lang="de">
+	  <dtb:p><dtb:span class='linenum'>5</dtb:span>foo</dtb:p>
+	  <dtb:p>bar</dtb:p>
+	  <dtb:p><dtb:span class='linenum'>10</dtb:span>baz</dtb:p>
+	</dtb:level6>
+      </utfx:source>
+      <utfx:expected>y LEVEL6b
+.xNOPAGENUM
+y SECT_LNb
+
+y P_LN
+ bE| FOO
+y P_LN
+ | BAR
+y P_LN
+ AJ| BAZ
+
+y SECT_LNe
+
+y LEVEL6e
+</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>Mixed p some some with span class linenum</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+	<dtb:level6 xml:lang="de">
+	  <dtb:p><dtb:span class='linenum'>5</dtb:span>foo</dtb:p>
+	  <dtb:blockquote>haha</dtb:blockquote>
+	  <dtb:p>bar</dtb:p>
+	  <dtb:p>baz</dtb:p>
+	  <dtb:blockquote>hehe</dtb:blockquote>
+	  <dtb:p>fuz</dtb:p>
+	  <dtb:p><dtb:span class='linenum'>10</dtb:span>buz</dtb:p>
+	</dtb:level6>
+      </utfx:source>
+      <utfx:expected>y LEVEL6b
+.xNOPAGENUM
+y SECT_LNb
+
+y P_LN
+ bE| FOO
+
+y SECT_LNe
+
+y BLQUOb
+HAHA
+y BLQUOe
+
+y P
+ BAR
+y P
+ BAZ
+y BLQUOb
+HEHE
+y BLQUOe
+y SECT_LNb
+
+y P_LN
+ | FUZ
+y P_LN
+ AJ| BUZ
+
+y SECT_LNe
+
+y LEVEL6e
+</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
 </utfx:tests>

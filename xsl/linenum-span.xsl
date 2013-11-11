@@ -32,7 +32,13 @@
     <xsl:text>| </xsl:text>
   </xsl:template>
 
- <xsl:template match="dtb:p[child::dtb:span[@class='linenum']]">
+  <!-- The following code should never be invoked (except when testing in
+       isolation using utfx -->
+  <xsl:template match="dtb:p[child::dtb:span[@class='linenum']]">
+    <xsl:apply-templates select="." mode="linenum"/>
+  </xsl:template>
+
+  <xsl:template match="dtb:p" mode="linenum">
     <xsl:text>&#10;</xsl:text>
     <xsl:if test="contains(@class, 'precedingseparator')">
       <xsl:text>y SEPARATOR&#10;</xsl:text>
@@ -53,10 +59,32 @@
       </xsl:otherwise>
     </xsl:choose>
     <!-- first child is not a dtb:span@class='linenum' -->
-    <xsl:if test="dtb:span[@class='linenum'][1][preceding-sibling::dtb:* or preceding-sibling::text()[not(normalize-space(string())='')]]">
+    <xsl:if
+	test="dtb:span[@class='linenum'][1][preceding-sibling::dtb:* or preceding-sibling::text()[not(normalize-space(string())='')]]">
+      <xsl:text>| </xsl:text>
+    </xsl:if>
+    <!-- there are no spans with class linenum (but since there are some
+	 siblings that have class linenum we have to act as if there were some -->
+    <xsl:if
+	test="not(child::dtb:span[@class='linenum'])">
       <xsl:text>| </xsl:text>
     </xsl:if>
     <xsl:apply-templates/>
+  </xsl:template>
+
+  <xsl:template name="insert-markers-for-linenum-span-groups">
+    <xsl:for-each-group select="*" group-adjacent="boolean(self::dtb:p)">
+      <xsl:choose>
+	<xsl:when test="some $p in current-group() satisfies ($p[self::dtb:p] and $p//dtb:span[@class='linenum'])">
+	  <xsl:text>y SECT_LNb&#10;</xsl:text>
+	  <xsl:apply-templates select="current-group()" mode="linenum"/>
+	  <xsl:text>&#10;&#10;y SECT_LNe&#10;</xsl:text>
+	</xsl:when>
+	<xsl:otherwise>
+	  <xsl:apply-templates select="current-group()"/>
+	</xsl:otherwise>
+      </xsl:choose>
+    </xsl:for-each-group>
   </xsl:template>
 
 </xsl:stylesheet>
