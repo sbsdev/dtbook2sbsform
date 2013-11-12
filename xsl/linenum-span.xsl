@@ -76,7 +76,7 @@
     <xsl:for-each-group select="*" group-adjacent="boolean(self::dtb:p)">
       <xsl:choose>
 	<xsl:when test="some $p in current-group() satisfies ($p[self::dtb:p] and $p//dtb:span[@class='linenum'])">
-	  <xsl:text>y SECT_LNb&#10;</xsl:text>
+	  <xsl:text>&#10;y SECT_LNb&#10;</xsl:text>
 	  <xsl:apply-templates select="current-group()" mode="linenum"/>
 	  <xsl:text>&#10;&#10;y SECT_LNe&#10;</xsl:text>
 	</xsl:when>

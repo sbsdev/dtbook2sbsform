@@ -142,6 +142,7 @@ y P_LN
       </utfx:source>
       <utfx:expected>y LEVEL6b
 .xNOPAGENUM
+
 y SECT_LNb
 
 y P_LN
@@ -177,6 +178,7 @@ y LEVEL6e
       </utfx:source>
       <utfx:expected>y LEVEL6b
 .xNOPAGENUM
+
 y SECT_LNb
 
 y P_LN
@@ -195,6 +197,7 @@ y P
 y BLQUOb
 HEHE
 y BLQUOe
+
 y SECT_LNb
 
 y P_LN
