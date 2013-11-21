@@ -1115,6 +1115,12 @@
     </xsl:call-template>
   </xsl:template>
 
+  <xsl:template match="dtb:poem[descendant::dtb:linenum]">
+    <xsl:call-template name="block_macro">
+      <xsl:with-param name="macro" select="'POEM_LN'"/>
+    </xsl:call-template>
+  </xsl:template>
+
   <xsl:template name="insert_footnotes">
     <xsl:sequence select="my:padded-comment('Fussnoten')"/>
     <xsl:choose>
@@ -1233,6 +1239,13 @@
   <xsl:template match="dtb:linegroup">
     <xsl:call-template name="block_macro">
       <xsl:with-param name="macro" select="'LINEGR'"/>
+      <xsl:with-param name="indent" select="' '"/>
+    </xsl:call-template>
+  </xsl:template>
+
+  <xsl:template match="dtb:linegroup[descendant::dtb:linenum or ancestor::dtb:poem//dtb:linenum]">
+    <xsl:call-template name="block_macro">
+      <xsl:with-param name="macro" select="'LINEGR_LN'"/>
       <xsl:with-param name="indent" select="' '"/>
     </xsl:call-template>
   </xsl:template>

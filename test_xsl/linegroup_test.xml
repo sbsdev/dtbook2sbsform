@@ -152,13 +152,13 @@ y LINEe
 	</dtb:poem>
       </utfx:source>
       <utfx:expected>
-y POEMb
+y POEM_LNb
 
 y LINEb
  bF| D HR ] 6 KL67 TE]. % &amp;HT D)UM.
 y LINEe
 
-y POEMe
+y POEM_LNe
 </utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
@@ -173,7 +173,7 @@ y POEMe
 	</dtb:poem>
       </utfx:source>
       <utfx:expected>
-y POEMb
+y POEM_LNb
 
 y LINEb
  bF| D HR ] 6 KL67 TE]. % &amp;HT D)UM.
@@ -183,7 +183,7 @@ y LINEb
  | D HR ] 6 KL67 TE]. % &amp;HT D)UM.
 y LINEe
 
-y POEMe
+y POEM_LNe
 </utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
@@ -202,25 +202,25 @@ y POEMe
 	</dtb:poem>
       </utfx:source>
       <utfx:expected>
-y POEMb
+y POEM_LNb
 
-y LINEGRb
+y LINEGR_LNb
  
 y LINEb
  bF| D HR ] 6 KL67 TE]. % &amp;HT D)UM.
 y LINEe
 
-y LINEGRe
+y LINEGR_LNe
 
-y LINEGRb
+y LINEGR_LNb
  
 y LINEb
  | D HR ] 6 KL67 TE]. % &amp;HT D)UM.
 y LINEe
 
-y LINEGRe
+y LINEGR_LNe
 
-y POEMe
+y POEM_LNe
 </utfx:expected>
     </utfx:assert-equal>
   </utfx:test>

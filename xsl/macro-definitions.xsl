@@ -494,24 +494,41 @@ y e EPIGRe
 </xsl:text>
     </xsl:if>
 
-    <xsl:if test="//dtb:poem[not(@brl:class)]|//dtb:line[not(@brl:class)]">
+    <xsl:if test="//dtb:poem[not(@brl:class)]">
       <xsl:sequence select="my:padded-comment('Poem')"/>
       <xsl:text>
 y b POEMb
 lm1
-I T=j
-i f=1 l=3 T=5
+i f=1 l=3 w=1 W=1
 n4
 i A=2
 y e POEMb
 y b POEMe
-I T=n
 i A=0
-i f=3 l=1
+i f=3 l=1 w=1 W=1
 lm1
 n2
 y e POEMe
+</xsl:text>
+    </xsl:if>
 
+    <xsl:if test="//dtb:linegroup[not(@brl:class)]">
+      <xsl:sequence select="my:padded-comment('Linegroup')"/>
+      <xsl:text>
+y b LINEGRb
+lm1
+i f=1 l=3 w=1 W=1
+n2
+y e LINEGRb
+y b LINEGRe
+i f=3 l=1 w=1 W=1
+y e LINEGRe
+</xsl:text>
+    </xsl:if>
+
+    <xsl:if test="//dtb:line[not(@brl:class)]">
+      <xsl:sequence select="my:padded-comment('Line')"/>
+      <xsl:text>
 y b LINEb
 a
 B+
@@ -522,19 +539,37 @@ y e LINEe
 </xsl:text>
     </xsl:if>
 
-    <xsl:if test="//dtb:linegroup[not(@brl:class)]">
-      <xsl:sequence select="my:padded-comment('Linegroup')"/>
+    <xsl:if test="//dtb:poem[not(@brl:class)]//dtb:linenum">
+      <xsl:sequence select="my:padded-comment('Poem mit Linenum')"/>
       <xsl:text>
-y b LINEGRb
+y b POEM_LNb
 lm1
 I T=j
-i f=1 l=3 T=5
-n2
-y e LINEGRb
-y b LINEGRe
+i f=1 l=7 T=5 w=5 W=5
+n4
+y e POEM_LNb
+y b POEM_LNe
 I T=n
-i f=3 l=1
-y e LINEGRe
+i f=3 l=1 w=1 W=1
+lm1
+n2
+y e POEM_LNe
+</xsl:text>
+    </xsl:if>
+
+    <xsl:if test="//dtb:linegroup[not(@brl:class)]//dtb:linenum">
+      <xsl:sequence select="my:padded-comment('Linegroup mit Linenum')"/>
+      <xsl:text>
+y b LINEGR_LNb
+lm1
+I T=j
+i f=1 l=7 T=5 w=5 W=5
+n2
+y e LINEGR_LNb
+y b LINEGR_LNe
+I T=n
+i f=3 l=1 w=1 W=1
+y e LINEGR_LNe
 </xsl:text>
     </xsl:if>
 
