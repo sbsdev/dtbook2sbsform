@@ -1,0 +1,10 @@
+Package: ${project.artifactId}
+Version: ${project.detailedVersion}
+Section: text
+Priority: optional
+Architecture: all
+Depends: daisy-pipeline2
+Maintainer: Christian Egli <christian.egli@sbs.ch>
+Description: Command line tool to convert DTBook XML to a Braille format proprietary to SBS
+ It uses Saxon with a java extension to provide translating text into braille using liblouis.
+Homepage: https://github.com/sbsdev/dtbook2sbsform

@@ -1,0 +1,128 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<!-- Copyright (C) 2011 Swiss Library for the Blind, Visually Impaired and Print Disabled -->
+
+<!-- This file is part of dtbook2sbsform. -->
+
+<!-- dtbook2sbsform is free software: you can redistribute it -->
+<!-- and/or modify it under the terms of the GNU Lesser General Public -->
+<!-- License as published by the Free Software Foundation, either -->
+<!-- version 3 of the License, or (at your option) any later version. -->
+
+<!-- This program is distributed in the hope that it will be useful, -->
+<!-- but WITHOUT ANY WARRANTY; without even the implied warranty of -->
+<!-- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU -->
+<!-- Lesser General Public License for more details. -->
+
+<!-- You should have received a copy of the GNU Lesser General Public -->
+<!-- License along with this program. If not, see -->
+<!-- <http://www.gnu.org/licenses/>. -->
+
+<!DOCTYPE utfx:tests PUBLIC "-//UTF-X//DTD utfx-tests 1.0//EN" "utfx_tests.dtd">
+<utfx:tests xmlns:utfx="http://utfx.org/test-definition"
+  xmlns:dtb="http://www.daisy.org/z3986/2005/dtbook/"
+  xmlns:brl="http://www.daisy.org/z3986/2009/braille/">
+  <utfx:stylesheet src="xsl/dtbook2sbsform.xsl"/>
+
+  <utfx:test>
+    <utfx:name>Image</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+        <dtb:img alt="foo" xml:lang="de"></dtb:img>
+      </utfx:source>
+      <utfx:expected>y IMG
+ FOO</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>Image w/o alt text</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+        <dtb:img xml:lang="de"></dtb:img>
+      </utfx:source>
+      <utfx:expected>y IMG
+ </utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>Image with empty alt text</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+        <dtb:img alt="" xml:lang="de"></dtb:img>
+      </utfx:source>
+      <utfx:expected>y IMG
+ </utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>Imagegroup</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+	<dtb:imggroup xml:lang="de">
+          <dtb:img alt="foo"></dtb:img>
+	</dtb:imggroup>
+      </utfx:source>
+      <utfx:expected>y IMGGRb
+
+y IMG
+ FOO
+
+y IMGGRe
+</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>Caption</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+	<dtb:caption xml:lang="de" imgref="img1_1">Abb. 23: By the way, Sam, as someday you'll be paying for my entitlements, I'd like to thank you in advance.</dtb:caption>
+      </utfx:source>
+      <utfx:expected>y CAPTION
+ ABB. #BC': B'Y THE WA'Y, SAM, AS SOMEDA'Y 'YOU'LL BE PA'Y*G FOR M'Y ^ITL[CTS, I'D LIKE TO TH+K 'YOU * ADV+'CE.</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>Big imagegroup</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+        <dtb:imggroup id="imggrp_2" xml:lang="de">
+          <dtb:img id="img1_1" src="fig1_01.png" alt="someday"/>
+          <dtb:caption imgref="img1_1">Abb. 23: By the way, Sam, as someday you'll be paying for my
+          entitlements, I'd like to thank you in advance.</dtb:caption>
+        </dtb:imggroup>
+      </utfx:source>
+      <utfx:expected>y IMGGRb
+
+y IMG
+ SOMEDA'Y
+
+y CAPTION
+ ABB. #BC': B'Y THE WA'Y, SAM, AS SOMEDA'Y 'YOU'LL BE PA'Y*G FOR M'Y ^ITL[CTS, I'D LIKE TO TH+K 'YOU * ADV+'CE.
+y IMGGRe</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+</utfx:tests>

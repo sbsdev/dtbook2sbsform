@@ -1,5 +1,3 @@
 *~
-/build
-/utfx_log.xml
-/linebreaker.jar
-/dtbook2sbsform.zip
+/target
+/test.log

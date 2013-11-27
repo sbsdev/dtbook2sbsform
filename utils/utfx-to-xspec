@@ -1,0 +1,17 @@
+#!/bin/bash
+
+CURDIR=$( dirname "$0" )
+PROJECT_HOME=$( cd "$CURDIR/.." && pwd )
+SAXON=${HOME}/.m2/repository/net/sf/saxon/Saxon-HE/9.4.0.7/Saxon-HE-9.4.0.7.jar
+
+mkdir -p $PROJECT_HOME/src/test/xspec
+
+for f in $PROJECT_HOME/src/test/utfx/*.xml; do
+	name=$(basename $f)
+	java -jar "$SAXON" \
+	     -s:$f \
+	     -xsl:$CURDIR/utfx-to-xspec.xsl \
+	     project_home=file:$PROJECT_HOME/ \
+	     test_name=${name%.xml} \
+	|| exit
+done
