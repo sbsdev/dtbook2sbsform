@@ -11,7 +11,6 @@
     type="sbs:dtbook-to-sbsform.convert" name="main" version="1.0">
     
     <p:input port="source" primary="true"/>
-    <p:option name="output-dir" required="true"/>
     <p:output port="fileset.out">
         <p:pipe step="fileset" port="result"/>
     </p:output>
@@ -19,6 +18,9 @@
         <p:pipe step="sbsform" port="result"/>
     </p:output>
     
+    <p:option name="output-dir" required="true"/>
+    <p:option name="hyphenation" required="true"/>
+        
     <p:import href="utils/normalize-uri.xpl"/>
     <p:import href="http://www.daisy.org/pipeline/modules/fileset-utils/xproc/fileset-library.xpl"/>
     
@@ -42,6 +44,26 @@
             <p:pipe step="main" port="source"/>
         </p:input>
     </p:identity>
+    
+    <!-- ========= -->
+    <!-- HYPHENATE -->
+    <!-- ========= -->
+    
+    <p:choose>
+        <p:when test="$hyphenation='true'">
+            <p:xslt>
+                <p:input port="stylesheet">
+                    <p:document href="hyphenate.xsl"/>
+                </p:input>
+                <p:input port="parameters">
+                    <p:empty/>
+                </p:input>
+            </p:xslt>
+        </p:when>
+        <p:otherwise>
+            <p:identity/>
+        </p:otherwise>
+    </p:choose>
     
     <!-- ================== -->
     <!-- HANDLE DOWNGRADING -->
@@ -78,21 +100,18 @@
             <p:inline>
                 <xsl:stylesheet version="2.0">
                     <xsl:import href="dtbook2sbsform.xsl"/>
+                    <xsl:param name="_hyphenation"/>
+                    <xsl:variable name="hyphenation" select="$_hyphenation='true'"/>
                     <xsl:template match="/">
                         <xsl:element name="c:data">
                             <xsl:attribute name="content-type" select="'text/x-sbsform-g2'"/>
                             <xsl:apply-imports/>
                         </xsl:element>
                     </xsl:template>
-                    <!-- TODO: getTable: disable hyphenation for certain elements -->
-                    <!--
-                    -->
                 </xsl:stylesheet>
             </p:inline>
         </p:input>
-        <p:input port="parameters">
-            <p:empty/>
-        </p:input>
+        <p:with-param name="_hyphenation" select="$hyphenation"/>
     </p:xslt>
     
     <!-- ========== -->

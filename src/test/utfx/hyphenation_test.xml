@@ -28,6 +28,7 @@
     <utfx:name>Test handling of pre-hyphenated text</utfx:name>
     <utfx:stylesheet-params>
       <utfx:with-param name="contraction" select="2"/>
+      <utfx:with-param name="hyphenation" select="true()"/>
     </utfx:stylesheet-params>
     <utfx:assert-equal>
       <utfx:source>
@@ -35,7 +36,7 @@
       </utfx:source>
       <utfx:expected>
 y P
- BADEtHOtSCtB/D%</utfx:expected>
+ BAtDEtHOtSCtB/tD%</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
   
@@ -43,12 +44,13 @@ y P
     <utfx:name>Test handling of pre-hyphenated text in doctitle</utfx:name>
     <utfx:stylesheet-params>
       <utfx:with-param name="contraction" select="2"/>
+      <utfx:with-param name="hyphenation" select="true()"/>
     </utfx:stylesheet-params>
     <utfx:assert-equal>
       <utfx:source>
         <dtb:doctitle xml:lang="de">Ba­de­ho­sen­bun­des</dtb:doctitle>
       </utfx:source>
-      <utfx:expected>BADEtHOtSCtB/D%</utfx:expected>
+      <utfx:expected>BAtDEtHOtSCtB/tD%</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
   

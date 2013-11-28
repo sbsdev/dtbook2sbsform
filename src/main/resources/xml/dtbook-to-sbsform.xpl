@@ -33,6 +33,13 @@
         </p:documentation>
     </p:option>
     
+    <p:option name="hyphenation" required="false" px:type="boolean" select="false()">
+        <p:documentation>
+            <h2 px:role="name">hyphenation</h2>
+            <p px:role="desc">Whether to perform hyphenation or not.</p>
+        </p:documentation>
+    </p:option>
+    
     <p:import href="dtbook-to-sbsform.convert.xpl"/>
     <p:import href="http://www.daisy.org/pipeline/modules/fileset-utils/xproc/fileset-library.xpl"/>
     
@@ -45,6 +52,9 @@
             <p:pipe step="dtbook-to-sbsform" port="source"/>
         </p:input>
         <p:with-option name="output-dir" select="$output-dir">
+            <p:empty/>
+        </p:with-option>
+        <p:with-option name="hyphenation" select="$hyphenation">
             <p:empty/>
         </p:with-option>
     </sbs:dtbook-to-sbsform.convert>

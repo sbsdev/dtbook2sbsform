@@ -95,9 +95,9 @@ y LINEe
     <utfx:name>test for stick!!!«</utfx:name>
     <utfx:assert-equal>
       <utfx:source>
-        <stub xml:lang="de">»Sun-­block on a stick!!!«</stub>
+        <stub xml:lang="de">»Sun-block on a stick!!!«</stub>
       </utfx:source>
-      <utfx:expected>(S/-mBLO$ ON 'A ]I$+++)</utfx:expected>
+      <utfx:expected>(S/-BLO$ ON 'A ]I$+++)</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
 

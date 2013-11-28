@@ -5,5 +5,7 @@
   <uri name="http://www.sbs.ch/pipeline/dtbook-to-sbsform/dtbook-to-sbsform.xpl" uri="../xml/dtbook-to-sbsform.xpl" px:script="true"/>
   <nextCatalog catalog="org:daisy:pipeline:modules:fileset-utils"/>
   <nextCatalog catalog="org:daisy:pipeline:modules:braille:liblouis-saxon"/>
+  <nextCatalog catalog="org:daisy:pipeline:modules:braille:libhyphen-saxon"/>
   <nextCatalog catalog="ch:sbs:pipeline:sbs-braille-tables"/>
+  <nextCatalog catalog="ch:sbs:pipeline:sbs-hyphenation-tables"/>
 </catalog>

@@ -517,6 +517,7 @@ y P
     <utfx:name>Downgrading</utfx:name>
     <utfx:stylesheet-params>
       <utfx:with-param name="contraction" select="2"/>
+      <utfx:with-param name="hyphenation" select="true()"/>
     </utfx:stylesheet-params>
     <utfx:assert-equal>
       <utfx:source>
@@ -527,8 +528,8 @@ y P
           <dtb:p>Kurzschrift schrift schrift <dtb:span>╚</dtb:span><dtb:span brl:grade="0">Basisschrift schrift schrift</dtb:span><dtb:span>╝</dtb:span> kurz kurz kurz</dtb:p>
           <dtb:p>Kurzschrift schrift schrift <dtb:span>╚</dtb:span><dtb:span brl:grade="1">Vollschrift/Vollschrift</dtb:span><dtb:span>╝</dtb:span> kurz kurz kurz</dtb:p>
           <dtb:p>Kurzschrift schrift schrift <dtb:span>╚</dtb:span><dtb:span brl:grade="0">Basisschrift/Basisschrift</dtb:span><dtb:span>╝</dtb:span> kurz kurz kurz</dtb:p>
-          <dtb:p>Kurzschrift schrift schrift <dtb:span>╚</dtb:span><dtb:span brl:grade="1">Vollschrift-­Vollschrift</dtb:span><dtb:span>╝</dtb:span> kurz kurz kurz</dtb:p>
-          <dtb:p>Kurzschrift schrift schrift <dtb:span>╚</dtb:span><dtb:span brl:grade="0">Basisschrift-­Basisschrift</dtb:span><dtb:span>╝</dtb:span> kurz kurz kurz</dtb:p>
+          <dtb:p>Kurzschrift schrift schrift <dtb:span>╚</dtb:span><dtb:span brl:grade="1">Vollschrift-&#x200B;Vollschrift</dtb:span><dtb:span>╝</dtb:span> kurz kurz kurz</dtb:p>
+          <dtb:p>Kurzschrift schrift schrift <dtb:span>╚</dtb:span><dtb:span brl:grade="0">Basisschrift-&#x200B;Basisschrift</dtb:span><dtb:span>╝</dtb:span> kurz kurz kurz</dtb:p>
         </stub>
       </utfx:source>
       <utfx:expected>
@@ -637,10 +638,11 @@ y POEMe
     <utfx:name>Emphasis: Wortgrenzenerkennung bei "-" und "/"</utfx:name>
     <utfx:stylesheet-params>
       <utfx:with-param name="contraction" select="2"/>
+      <utfx:with-param name="hyphenation" select="true()"/>
     </utfx:stylesheet-params>
     <utfx:assert-equal>
       <utfx:source>
-        <stub xml:lang="de"><dtb:em>Wort</dtb:em>, <dtb:strong>Wort</dtb:strong>, <brl:emph>Wort</brl:emph>. <dtb:em>Zwei Wörter</dtb:em>, <dtb:strong>eins/zwei</dtb:strong>, <brl:emph>eins-­zwei</brl:emph>.</stub>
+        <stub xml:lang="de"><dtb:em>Wort</dtb:em>, <dtb:strong>Wort</dtb:strong>, <brl:emph>Wort</brl:emph>. <dtb:em>Zwei Wörter</dtb:em>, <dtb:strong>eins/zwei</dtb:strong>, <brl:emph>eins-&#x200B;zwei</brl:emph>.</stub>
       </utfx:source>
       <utfx:expected>_W?T, _W?T, _W?T. __ZW3 W9RT7'., __6S!,mZW3'., __6S-mZW3'..</utfx:expected>
     </utfx:assert-equal>
