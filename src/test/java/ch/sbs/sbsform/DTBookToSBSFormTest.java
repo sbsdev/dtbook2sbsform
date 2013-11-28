@@ -59,7 +59,7 @@ public class DTBookToSBSFormTest {
 			mavenBundle().groupId("org.daisy.pipeline.modules.braille").artifactId("liblouis-native").version("1.1.0-SNAPSHOT").classifier("linux"),
 			mavenBundle().groupId("org.daisy.pipeline.modules.braille").artifactId("liblouis-core").version("1.1.0-SNAPSHOT"),
 			mavenBundle().groupId("org.daisy.pipeline.modules.braille").artifactId("liblouis-saxon").version("1.1.0-SNAPSHOT"),
-			mavenBundle().groupId("ch.sbs.pipeline").artifactId("sbs-braille-tables").version("1.0.0-SNAPSHOT"),
+			mavenBundle().groupId("ch.sbs.pipeline").artifactId("sbs-braille-tables").version("1.6-SNAPSHOT"),
 			mavenBundle().groupId("org.apache.servicemix.bundles").artifactId("org.apache.servicemix.bundles.xmlresolver").version("1.2_5"),
 			mavenBundle().groupId("org.daisy.maven").artifactId("xspec-runner").versionAsInProject(),
 			mavenBundle().groupId("commons-io").artifactId("commons-io").versionAsInProject(),
