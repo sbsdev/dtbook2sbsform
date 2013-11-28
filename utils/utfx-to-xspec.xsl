@@ -28,13 +28,19 @@
 		                                    then concat($name, '=', utfx:stylesheet-params/utfx:with-param[@name=$name]/@select)
 		                                    else (),
 		                                ', ')">
+			<xsl:variable name="stylesheet-uri" as="xs:anyURI"
+			              select="resolve-uri(concat('src/main/resources/xml/',
+			                      replace(/utfx:tests/utfx:stylesheet/@src, '^xsl/', '')), $project_home)"/>
 			<xsl:result-document method="xml" encoding="utf-8" indent="no"
 			                     href="{if (last() &gt; 1)
 			                              then resolve-uri(concat('src/test/xspec/', $test_name, '_', position(), '.xspec'), $project_home)
 			                              else resolve-uri(concat('src/test/xspec/', $test_name, '.xspec'), $project_home)}">
 				<xsl:text>&#xA;</xsl:text>
-				<x:description stylesheet="{resolve-uri(concat('src/main/resources/xml/',
-				                            replace(/utfx:tests/utfx:stylesheet/@src, '^xsl/', '')), $project_home)}">
+				<x:description stylesheet="{$stylesheet-uri}">
+					<xsl:if test="doc($stylesheet-uri)/xsl:stylesheet/xsl:preserve-space">
+						<xsl:attribute name="preserve-space"
+						               select="doc($stylesheet-uri)/xsl:stylesheet/xsl:preserve-space/@elements"/>
+					</xsl:if>
 					<xsl:text>&#xA;&#xA;    </xsl:text>
 					<xsl:comment>&#xA;      This XSpec test was automatically generated from a UTF-X test&#xA;    </xsl:comment>
 					<xsl:text>&#xA;&#xA;</xsl:text>
