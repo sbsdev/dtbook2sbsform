@@ -35,7 +35,7 @@
 	  foo
 	</dtb:title>
       </utfx:source>
-      <utfx:expected>FOO</utfx:expected>
+      <utfx:expected> FOO </utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
 

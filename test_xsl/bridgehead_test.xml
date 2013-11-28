@@ -35,9 +35,7 @@
       </utfx:source>
       <utfx:expected>
 y BRIDGE
- 'A M OF M+'Y ]'YL%
-
-</utfx:expected>
+ 'A M OF M+'Y ]'YL%</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
 

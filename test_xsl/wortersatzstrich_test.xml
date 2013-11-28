@@ -49,7 +49,9 @@
       <utfx:source>
         <dtb:p xml:lang="de">Arbeits und blah, -losenheim</dtb:p>
       </utfx:source>
-      <utfx:expected>y P&#13; )BS U BLAH, '-LOSCH3M</utfx:expected>
+      <utfx:expected>
+y P
+ )BS U BLAH, '-LOSCH3M</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
   
@@ -63,7 +65,11 @@
   <!--       <dtb:p xml:lang="de">Arbeits</dtb:p> -->
   <!--       <dtb:p xml:lang="de">-losenheim</dtb:p> -->
   <!--     </utfx:source> -->
-  <!--     <utfx:expected>y P&#13; )BS&#13;y P&#13; '-LOSCH3M</utfx:expected> -->
+  <!--     <utfx:expected>
+y P
+ )BS
+y P
+ '-LOSCH3M</utfx:expected> -->
   <!--   </utfx:assert-equal> -->
   <!-- </utfx:test> -->
   
@@ -77,7 +83,11 @@
         <dtb:p xml:lang="de">Arbeits</dtb:p>
         <dtb:p xml:lang="de"> -losenheim</dtb:p>
       </utfx:source>
-      <utfx:expected>y P&#13; )BS&#13;y P&#13;  '-LOSCH3M</utfx:expected>
+      <utfx:expected>
+y P
+ )BS
+y P
+  '-LOSCH3M</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
   

@@ -36,8 +36,7 @@
       <utfx:expected>
 xxx Was originally a dtb:covertitle
 y P
- FOO
-</utfx:expected>
+ FOO</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
 
@@ -53,8 +52,7 @@ y P
       <utfx:expected>
 xxx Was originally a dtb:dateline
 y P
- FOO
-</utfx:expected>
+ FOO</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
 

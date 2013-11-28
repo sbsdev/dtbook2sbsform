@@ -262,7 +262,7 @@ DFL@4E ....  #BCD.HHI    #AA.HHI   #CD.HHI ....  #AD.HHI  #BCD.HHI ...  * 'HA ..
 D6WOHN7 ...  #A.CDE.FFF  #CDE.FFF  #BEJ.CDE.FFF  #BCD ..  #BCD.CDF.JJJ  =OE RCTN7=  
 :skip
 y TABLEe
-      </utfx:expected>
+</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
 
@@ -328,7 +328,7 @@ D#B  'B
 D#C  'C
 :skip
 y TABLEe
-      </utfx:expected>
+</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
 
@@ -390,7 +390,7 @@ D#B  'B
 D#C    
 :skip
 y TABLEe
-      </utfx:expected>
+</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
 
@@ -444,7 +444,7 @@ DFOO  'A
 D ..  'B
 :skip
 y TABLEe
-      </utfx:expected>
+</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
 
@@ -501,7 +501,7 @@ DFOO  'A
 D ..  'B
 :skip
 y TABLEe
-      </utfx:expected>
+</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
 

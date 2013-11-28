@@ -35,8 +35,7 @@
       </utfx:source>
       <utfx:expected>
 xxx Was originally a dtb:acronym
- $FOO
-</utfx:expected>
+ $FOO</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
 
@@ -51,8 +50,7 @@ xxx Was originally a dtb:acronym
       </utfx:source>
       <utfx:expected>
 xxx Was originally a dtb:acronym
- &gt;NATO
-</utfx:expected>
+ &gt;NATO</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
 
@@ -67,8 +65,7 @@ xxx Was originally a dtb:acronym
       </utfx:source>
       <utfx:expected>
 xxx Was originally a dtb:acronym
- &gt;USA
-</utfx:expected>
+ &gt;USA</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
 
@@ -83,11 +80,11 @@ xxx Was originally a dtb:acronym
           <dtb:acronym>USA</dtb:acronym>
 	</dtb:p>
       </utfx:source>
-      <utfx:expected>y P
+      <utfx:expected>
+y P
  HAHA 
 xxx Was originally a dtb:acronym
- &gt;USA
-</utfx:expected>
+ &gt;USA </utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
 

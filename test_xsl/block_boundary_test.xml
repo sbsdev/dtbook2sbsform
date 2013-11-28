@@ -34,7 +34,11 @@
         <stub xml:lang="de"><dtb:byline><dtb:em>Tages-­Anzeiger</dtb:em></dtb:byline>
           <dtb:p>Zum Autor</dtb:p></stub>
       </utfx:source>
-      <utfx:expected>y BYLINE&#13; __TAG%-m+Z3G7'.&#13;y P&#13; ZM 1TOR</utfx:expected>
+      <utfx:expected>
+y BYLINE
+ __TAG%-m+Z3G7'.
+y P
+ ZM 1TOR</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
   
@@ -68,7 +72,11 @@
       <utfx:source>
         <stub xml:lang="de"><dtb:byline>Tages-­Anzeiger</dtb:byline><dtb:p><dtb:em>Zum Autor</dtb:em></dtb:p></stub>
       </utfx:source>
-      <utfx:expected>y BYLINE&#13; TAG%-m+Z3G7&#13;y P&#13; __ZM 1TOR'.</utfx:expected>
+      <utfx:expected>
+y BYLINE
+ TAG%-m+Z3G7
+y P
+ __ZM 1TOR'.</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
   
@@ -82,7 +90,11 @@
         <stub xml:lang="de"><dtb:byline><dtb:em>Tages-­Anzeiger</dtb:em></dtb:byline>
           <dtb:p><dtb:em>Zum Autor</dtb:em></dtb:p></stub>
       </utfx:source>
-      <utfx:expected>y BYLINE&#13; __TAG%-m+Z3G7'.&#13;y P&#13; __ZM 1TOR'.</utfx:expected>
+      <utfx:expected>
+y BYLINE
+ __TAG%-m+Z3G7'.
+y P
+ __ZM 1TOR'.</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
   
@@ -96,7 +108,11 @@
         <stub xml:lang="de"><dtb:byline>Tages-­Anzeiger</dtb:byline>
           <dtb:p>Zum Autor</dtb:p></stub>
       </utfx:source>
-      <utfx:expected>y BYLINE&#13; TAG%-m+Z3G7&#13;y P&#13; ZM 1TOR</utfx:expected>
+      <utfx:expected>
+y BYLINE
+ TAG%-m+Z3G7
+y P
+ ZM 1TOR</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
   
@@ -109,7 +125,7 @@
       <utfx:source>
         <stub xml:lang="de">»<dtb:span>Tages-­Anzeiger.</dtb:span>« Zum Autor</stub>
       </utfx:source>
-      <utfx:expected> (TAG%-m+Z3G7.) ZM 1TOR</utfx:expected>
+      <utfx:expected>(TAG%-m+Z3G7.) ZM 1TOR</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
   
@@ -122,7 +138,9 @@
       <utfx:source>
         <stub xml:lang="de">»Tages-­Anzeiger.<dtb:p>« Zum Autor</dtb:p></stub>
       </utfx:source>
-      <utfx:expected> (TAG%-m+Z3G7.&#13;y P&#13; ) ZM 1TOR</utfx:expected>
+      <utfx:expected>(TAG%-m+Z3G7.
+y P
+ ) ZM 1TOR</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
   
@@ -135,7 +153,9 @@
       <utfx:source>
         <dtb:p xml:lang="de"><dtb:em>Mist</dtb:em>, dachte er, <dtb:em>wie komme ich hier raus?</dtb:em></dtb:p>
       </utfx:source>
-      <utfx:expected>y P&#13; _MI], D&lt;( 7, __2 KXE # HR R1S?'.</utfx:expected>
+      <utfx:expected>
+y P
+ _MI], D&lt;( 7, __2 KXE # HR R1S?'.</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
   

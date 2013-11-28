@@ -33,8 +33,10 @@
       <utfx:source>
         <dtb:img alt="foo" xml:lang="de"></dtb:img>
       </utfx:source>
-      <utfx:expected>y IMG
- FOO</utfx:expected>
+      <utfx:expected>
+y IMG
+ FOO
+</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
 
@@ -47,8 +49,10 @@
       <utfx:source>
         <dtb:img xml:lang="de"></dtb:img>
       </utfx:source>
-      <utfx:expected>y IMG
- </utfx:expected>
+      <utfx:expected>
+y IMG
+ 
+</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
 
@@ -61,8 +65,10 @@
       <utfx:source>
         <dtb:img alt="" xml:lang="de"></dtb:img>
       </utfx:source>
-      <utfx:expected>y IMG
- </utfx:expected>
+      <utfx:expected>
+y IMG
+ 
+</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
 
@@ -77,7 +83,8 @@
           <dtb:img alt="foo"></dtb:img>
 	</dtb:imggroup>
       </utfx:source>
-      <utfx:expected>y IMGGRb
+      <utfx:expected>
+y IMGGRb
 
 y IMG
  FOO
@@ -96,7 +103,8 @@ y IMGGRe
       <utfx:source>
 	<dtb:caption xml:lang="de" imgref="img1_1">Abb. 23: By the way, Sam, as someday you'll be paying for my entitlements, I'd like to thank you in advance.</dtb:caption>
       </utfx:source>
-      <utfx:expected>y CAPTION
+      <utfx:expected>
+y CAPTION
  ABB. #BC': B'Y THE WA'Y, SAM, AS SOMEDA'Y 'YOU'LL BE PA'Y*G FOR M'Y ^ITL[CTS, I'D LIKE TO TH+K 'YOU * ADV+'CE.</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
@@ -114,14 +122,16 @@ y IMGGRe
           entitlements, I'd like to thank you in advance.</dtb:caption>
         </dtb:imggroup>
       </utfx:source>
-      <utfx:expected>y IMGGRb
+      <utfx:expected>
+y IMGGRb
 
 y IMG
  SOMEDA'Y
 
 y CAPTION
  ABB. #BC': B'Y THE WA'Y, SAM, AS SOMEDA'Y 'YOU'LL BE PA'Y*G FOR M'Y ^ITL[CTS, I'D LIKE TO TH+K 'YOU * ADV+'CE.
-y IMGGRe</utfx:expected>
+y IMGGRe
+</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
 

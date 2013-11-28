@@ -37,8 +37,7 @@
       </utfx:source>
       <utfx:expected>
 y P
- '$"C:/ORDNER/INHALT"_VERSION"_1
-</utfx:expected>
+ '$"C:/ORDNER/INHALT"_VERSION"_1</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
 
@@ -55,8 +54,7 @@ y P
       </utfx:source>
       <utfx:expected>
 y P
- $$FOR(I=0;I&lt;=12; I++ [ BLABLA ]'.
-</utfx:expected>
+ $$FOR(I=0;I&lt;=12; I++ [ BLABLA ]'.</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
 

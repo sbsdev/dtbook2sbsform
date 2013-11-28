@@ -33,7 +33,9 @@
       <utfx:source>
         <dtb:p xml:lang="de"><brl:v-form>Sie</brl:v-form></dtb:p>
       </utfx:source>
-      <utfx:expected>y P&#13; $S</utfx:expected>
+      <utfx:expected>
+y P
+ $S</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
 
@@ -46,7 +48,9 @@
     <utfx:source>
       <dtb:p xml:lang="de"><brl:v-form>SIE</brl:v-form></dtb:p>
     </utfx:source>
-    <utfx:expected>y P&#13; $S</utfx:expected>
+    <utfx:expected>
+y P
+ $S</utfx:expected>
   </utfx:assert-equal>
   </utfx:test>
 
@@ -59,7 +63,9 @@
     <utfx:source>
       <dtb:p xml:lang="de"><brl:v-form>Euerem</brl:v-form></dtb:p>
     </utfx:source>
-    <utfx:expected>y P&#13; $27[</utfx:expected>
+    <utfx:expected>
+y P
+ $27[</utfx:expected>
   </utfx:assert-equal>
   </utfx:test>
 
@@ -72,7 +78,9 @@
     <utfx:source>
       <dtb:p xml:lang="de"><brl:v-form>EUEREM</brl:v-form></dtb:p>
     </utfx:source>
-    <utfx:expected>y P&#13; $27[</utfx:expected>
+    <utfx:expected>
+y P
+ $27[</utfx:expected>
   </utfx:assert-equal>
   </utfx:test>
   
@@ -85,7 +93,9 @@
       <utfx:source>
         <dtb:p xml:lang="de"><brl:v-form>Sie</brl:v-form></dtb:p>
       </utfx:source>
-      <utfx:expected>y P&#13; $S0</utfx:expected>
+      <utfx:expected>
+y P
+ $S0</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
 
@@ -98,7 +108,9 @@
     <utfx:source>
       <dtb:p xml:lang="de"><brl:v-form>SIE</brl:v-form></dtb:p>
     </utfx:source>
-    <utfx:expected>y P&#13; $S0</utfx:expected>
+    <utfx:expected>
+y P
+ $S0</utfx:expected>
   </utfx:assert-equal>
   </utfx:test>
 
@@ -111,7 +123,9 @@
     <utfx:source>
       <dtb:p xml:lang="de"><brl:v-form>Euerem</brl:v-form></dtb:p>
     </utfx:source>
-    <utfx:expected>y P&#13; $2EREM</utfx:expected>
+    <utfx:expected>
+y P
+ $2EREM</utfx:expected>
   </utfx:assert-equal>
   </utfx:test>
  
@@ -124,7 +138,9 @@
     <utfx:source>
       <dtb:p xml:lang="de"><brl:v-form>EUEREM</brl:v-form></dtb:p>
     </utfx:source>
-    <utfx:expected>y P&#13; $2EREM</utfx:expected>
+    <utfx:expected>
+y P
+ $2EREM</utfx:expected>
   </utfx:assert-equal>
   </utfx:test>
 
@@ -137,7 +153,9 @@
       <utfx:source>
         <dtb:p xml:lang="de"><brl:v-form>Sie</brl:v-form></dtb:p>
       </utfx:source>
-      <utfx:expected>y P&#13; $SIE</utfx:expected>
+      <utfx:expected>
+y P
+ $SIE</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
   
@@ -150,7 +168,9 @@
       <utfx:source>
         <dtb:p xml:lang="de"><brl:v-form>SIE</brl:v-form></dtb:p>
       </utfx:source>
-      <utfx:expected>y P&#13; $SIE</utfx:expected>
+      <utfx:expected>
+y P
+ $SIE</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
   
@@ -163,7 +183,9 @@
       <utfx:source>
         <dtb:p xml:lang="de"><brl:v-form>Euerem</brl:v-form></dtb:p>
       </utfx:source>
-      <utfx:expected>y P&#13; $EUEREM</utfx:expected>
+      <utfx:expected>
+y P
+ $EUEREM</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
   
@@ -176,7 +198,9 @@
       <utfx:source>
         <dtb:p xml:lang="de"><brl:v-form>EUEREM</brl:v-form></dtb:p>
       </utfx:source>
-      <utfx:expected>y P&#13; $EUEREM</utfx:expected>
+      <utfx:expected>
+y P
+ $EUEREM</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
 </utfx:tests>
