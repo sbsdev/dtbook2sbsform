@@ -47,7 +47,7 @@
         <stub xml:lang="de">⅝? </stub>
         <stub xml:lang="de">⅞? </stub>
       </utfx:source>
-      <utfx:expected> #A/'? #A;'? #C/'? #A:'? #B:'? #A?'? #B?'? #C?'? #D?'? #A+'? #E+'? #A('? #C('? #E('? #G('? </utfx:expected>
+      <utfx:expected>#A/'? #A;'? #C/'? #A:'? #B:'? #A?'? #B?'? #C?'? #D?'? #A+'? #E+'? #A('? #C('? #E('? #G('? </utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
   
@@ -74,7 +74,7 @@
         <stub xml:lang="de">⅝, </stub>
         <stub xml:lang="de">⅞, </stub>
       </utfx:source>
-      <utfx:expected> #A/', #A;', #C/', #A:', #B:', #A?', #B?', #C?', #D?', #A+', #E+', #A(', #C(', #E(', #G(', </utfx:expected>
+      <utfx:expected>#A/', #A;', #C/', #A:', #B:', #A?', #B?', #C?', #D?', #A+', #E+', #A(', #C(', #E(', #G(', </utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
   

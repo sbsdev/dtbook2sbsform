@@ -36,13 +36,15 @@
           <dtb:p>Kräht der Hahn auf dem Mist, ändert sich das Wetter oder es bleibt, wie es ist.</dtb:p>
 	</dtb:sidebar>
       </utfx:source>
-      <utfx:expected>y SIDEBARb
+      <utfx:expected>
+y SIDEBARb
 
 y HD
  W#T>7 M7KSZ:
 y P
  KR@HT R HAHN 1 [ MI], !7T C D WETT7 O % BBT, 2 % ].
-y SIDEBARe</utfx:expected>
+y SIDEBARe
+</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
 

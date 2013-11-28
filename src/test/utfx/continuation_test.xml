@@ -40,7 +40,8 @@
           <dtb:p><dtb:em>Bla bla bla.</dtb:em></dtb:p>
         </stub>
       </utfx:source>
-      <utfx:expected>y P
+      <utfx:expected>
+y P
  __BLA BLA BLA.
 y P
  BLA BLA BLA.

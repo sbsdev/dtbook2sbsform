@@ -36,8 +36,7 @@
       </utfx:source>
       <utfx:expected>
 y P
- &gt;CO1; &gt;H1;&gt;O =&gt;CO1;'=
-</utfx:expected>
+ &gt;CO1; &gt;H1;&gt;O =&gt;CO1;'= </utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
 
@@ -53,8 +52,7 @@ y P
       </utfx:source>
       <utfx:expected>
 y P
- &gt;V&lt;/
-</utfx:expected>
+ &gt;V&lt;/ </utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
 

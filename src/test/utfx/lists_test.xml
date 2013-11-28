@@ -46,8 +46,7 @@ y ULISTe_foo
 y OLISTb_foo
 
 y OLISTe_foo
-
-      </utfx:expected>
+</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
 
@@ -61,8 +60,8 @@ y OLISTe_foo
       </utfx:source>
       <utfx:expected>
 y LI_foo
-
-      </utfx:expected>
+ 
+</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
 
@@ -100,7 +99,8 @@ y LI_foo
         </dtb:list>
         </stub>
       </utfx:source>
-      <utfx:expected>y PLISTb
+      <utfx:expected>
+y PLISTb
 
 y LI
  #A. BLA BLA
@@ -157,7 +157,8 @@ y PLISTe
 y LI
  #E. BLA BLA
 
-y PLISTe</utfx:expected>
+y PLISTe
+</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
 
@@ -195,7 +196,8 @@ y PLISTe</utfx:expected>
         </dtb:list>
         </stub>
       </utfx:source>
-      <utfx:expected>y ULISTb
+      <utfx:expected>
+y ULISTb
 
 y LI
  '- BLA BLA
@@ -252,7 +254,8 @@ y ULISTe
 y LI
  '- BLA BLA
 
-y ULISTe</utfx:expected>
+y ULISTe
+</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
   

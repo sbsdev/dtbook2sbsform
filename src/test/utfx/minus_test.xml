@@ -33,7 +33,9 @@
       <utfx:source>
         <dtb:p xml:lang="de">−10 Grad</dtb:p>
       </utfx:source>
-      <utfx:expected>y P&#13; "-#AJ GRAD</utfx:expected>
+      <utfx:expected>
+y P
+ "-#AJ GRAD</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
   
@@ -46,7 +48,9 @@
       <utfx:source>
         <dtb:p xml:lang="de"> -10 Grad</dtb:p>
       </utfx:source>
-      <utfx:expected>y P&#13;  "-#AJ GRAD</utfx:expected>
+      <utfx:expected>
+y P
+  "-#AJ GRAD</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
   
@@ -59,7 +63,9 @@
       <utfx:source>
         <dtb:p xml:lang="de">(-10 Grad)</dtb:p>
       </utfx:source>
-      <utfx:expected>y P&#13; ="-#AJ GRAD=</utfx:expected>
+      <utfx:expected>
+y P
+ ="-#AJ GRAD=</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
   
@@ -72,7 +78,9 @@
       <utfx:source>
         <dtb:p xml:lang="de"> <dtb:strong>−10 Grad</dtb:strong></dtb:p>
       </utfx:source>
-      <utfx:expected>y P&#13;  __"-#AJ GRAD'.</utfx:expected>
+      <utfx:expected>
+y P
+  __"-#AJ GRAD'.</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
   
@@ -85,7 +93,9 @@
       <utfx:source>
         <dtb:p xml:lang="de">−10 Grad</dtb:p>
       </utfx:source>
-      <utfx:expected>y P&#13; "-#AJ GRAD</utfx:expected>
+      <utfx:expected>
+y P
+ "-#AJ GRAD</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
   
@@ -98,7 +108,9 @@
       <utfx:source>
         <dtb:p xml:lang="de">5-10 Grad</dtb:p>
       </utfx:source>
-      <utfx:expected>y P&#13; #E-#AJ GRAD</utfx:expected>
+      <utfx:expected>
+y P
+ #E-#AJ GRAD</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
   

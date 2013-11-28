@@ -87,7 +87,7 @@ y LINEe
 y LINEb
  _BAR
 y LINEe
-      </utfx:expected>
+</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
 
@@ -408,7 +408,7 @@ mm</brl:num>
       <utfx:source>
         <stub xml:lang="de"><dtb:em>ich</dtb:em>, </stub>
       </utfx:source>
-      <utfx:expected>_I4,</utfx:expected>
+      <utfx:expected>_I4, </utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
 
@@ -421,7 +421,7 @@ mm</brl:num>
       <utfx:source>
         <stub xml:lang="de"><dtb:em>ich</dtb:em>) </stub>
       </utfx:source>
-      <utfx:expected>_I4=</utfx:expected>
+      <utfx:expected>_I4= </utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
 
@@ -434,7 +434,7 @@ mm</brl:num>
       <utfx:source>
         <stub xml:lang="de"><dtb:em>(ich</dtb:em>) </stub>
       </utfx:source>
-      <utfx:expected>_=I4=</utfx:expected>
+      <utfx:expected>_=I4= </utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
 
@@ -447,7 +447,7 @@ mm</brl:num>
       <utfx:source>
         <stub xml:lang="de"><dtb:em>mich</dtb:em>) </stub>
       </utfx:source>
-      <utfx:expected>_M#=</utfx:expected>
+      <utfx:expected>_M#= </utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
 
@@ -460,7 +460,9 @@ mm</brl:num>
       <utfx:source>
         <dtb:p xml:lang="de"><dtb:em>Menschen</dtb:em>versuch</dtb:p>
       </utfx:source>
-      <utfx:expected>y P&#13; _MC5C'.V7SU4</utfx:expected>
+      <utfx:expected>
+y P
+ _MC5C'.V7SU4</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
 
@@ -481,7 +483,8 @@ mm</brl:num>
   <!--     <utfx:source> -->
   <!--       <dtb:p xml:lang="de"><dtb:span><dtb:em>Menschen</dtb:em></dtb:span>versuch</dtb:p> -->
   <!--     </utfx:source> -->
-  <!--     <utfx:expected>y P&#13; _MC5C'.V7SU4</utfx:expected> -->
+  <!--     <utfx:expected>y P
+ _MC5C'.V7SU4</utfx:expected> -->
   <!--   </utfx:assert-equal> -->
   <!-- </utfx:test> -->
 
@@ -495,7 +498,9 @@ mm</brl:num>
       <utfx:source>
         <dtb:p xml:lang="de">Liebe<dtb:em>gang</dtb:em></dtb:p>
       </utfx:source>
-      <utfx:expected>y P&#13; L0;'_G+G</utfx:expected>
+      <utfx:expected>
+y P
+ L0;'_G+G</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
 
@@ -508,7 +513,9 @@ mm</brl:num>
       <utfx:source>
         <dtb:p xml:lang="de">Liebe<dtb:em>Menschen</dtb:em>versuch</dtb:p>
       </utfx:source>
-      <utfx:expected>y P&#13; L0;'_MC5C'.V7SU4</utfx:expected>
+      <utfx:expected>
+y P
+ L0;'_MC5C'.V7SU4</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
 
@@ -583,7 +590,7 @@ mm</brl:num>
       <utfx:source>
 	<stub xml:lang="de"> (&#x00BB;<dtb:abbr>Bsp.</dtb:abbr>!&#x00AB;</stub>
       </utfx:source>
-      <utfx:expected>=(BSP.+)</utfx:expected>
+      <utfx:expected> =(BSP.+)</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
 
@@ -609,7 +616,9 @@ mm</brl:num>
       <utfx:source>
 	<dtb:p xml:lang="de"><brl:num role="phone">079 160 22 22</brl:num>&#x00AB;</dtb:p>
       </utfx:source>
-      <utfx:expected>y P&#0013; #JGI.AFJ.BB.BB')</utfx:expected>
+      <utfx:expected>
+y P
+ #JGI.AFJ.BB.BB')</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
   
@@ -682,11 +691,11 @@ y P
 	  <dtb:p>Sie hatte von Anfang an den Akzent bemerkt, der den Ausländer verriet, und fragte: »Na, und woher kommst du?«</dtb:p>
 	</stub>
       </utfx:source>
-      <utfx:expected>y P
+      <utfx:expected>
+y P
  (OKA'Y. A # 8E % \ GAR N W^C; B* 7] 6 PAAR JRE * E &gt;USA.)
 y P
- S HE V +F+G + E AKZCT ;M7KT, R E \L@ND7 -R0T, U FR(: (NA, U WOH7 KX] DU?)
-      </utfx:expected>
+ S HE V +F+G + E AKZCT ;M7KT, R E \L@ND7 -R0T, U FR(: (NA, U WOH7 KX] DU?)</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
 
@@ -701,8 +710,9 @@ y P
 	  <dtb:p>Groß schließ Großmutter</dtb:p>
 	</stub>
       </utfx:source>
-      <utfx:expected>y P&#13; G^ 5^ G^MUTT7
-      </utfx:expected>
+      <utfx:expected>
+y P
+ G^ 5^ G^MUTT7</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
 

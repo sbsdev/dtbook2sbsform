@@ -70,7 +70,9 @@
       <utfx:source>
         <dtb:p xml:lang="de"> -steigen</dtb:p>
       </utfx:source>
-      <utfx:expected>y P&#13;  '-STEIGEN</utfx:expected>
+      <utfx:expected>
+y P
+  '-STEIGEN</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
 

@@ -35,7 +35,7 @@
 	  foo
 	</dtb:bdo>
       </utfx:source>
-      <utfx:expected>FOO</utfx:expected>
+      <utfx:expected> FOO </utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
 
@@ -50,7 +50,7 @@
 	  foo
 	</dtb:kbd>
       </utfx:source>
-      <utfx:expected>FOO</utfx:expected>
+      <utfx:expected> FOO </utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
 
@@ -65,7 +65,7 @@
 	  foo
 	</dtb:q>
       </utfx:source>
-      <utfx:expected>FOO</utfx:expected>
+      <utfx:expected> FOO </utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
 
@@ -80,7 +80,7 @@
 	  foo
 	</dtb:sent>
       </utfx:source>
-      <utfx:expected>FOO</utfx:expected>
+      <utfx:expected> FOO </utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
 
@@ -95,7 +95,7 @@
 	  foo
 	</dtb:w>
       </utfx:source>
-      <utfx:expected>FOO</utfx:expected>
+      <utfx:expected> FOO </utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
 

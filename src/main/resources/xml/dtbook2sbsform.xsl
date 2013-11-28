@@ -76,7 +76,8 @@
   <xsl:function name="my:louis-translate" as="xs:string">
     <xsl:param name="table" as="xs:string"/>
     <xsl:param name="text" as="xs:string"/>
-    <xsl:sequence select="translate(louis:translate($table, $text, true()), '&#x00AD;&#x200B;&#x2011;', 'tm-')"/>
+    <xsl:sequence select="translate(louis:translate($table, replace($text, '(\p{Z}|\s)+', ' '), true()),
+                                    '&#x00AD;&#x200B;', 'tm')"/>
   </xsl:function>
   
   <!-- =========================== -->
