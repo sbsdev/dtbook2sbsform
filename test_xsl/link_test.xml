@@ -1,0 +1,201 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<!-- Copyright (C) 2013 Swiss Library for the Blind, Visually Impaired and Print Disabled -->
+
+<!-- This file is part of dtbook2sbsform. -->
+
+<!-- dtbook2sbsform is free software: you can redistribute it -->
+<!-- and/or modify it under the terms of the GNU Lesser General Public -->
+<!-- License as published by the Free Software Foundation, either -->
+<!-- version 3 of the License, or (at your option) any later version. -->
+
+<!-- This program is distributed in the hope that it will be useful, -->
+<!-- but WITHOUT ANY WARRANTY; without even the implied warranty of -->
+<!-- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU -->
+<!-- Lesser General Public License for more details. -->
+
+<!-- You should have received a copy of the GNU Lesser General Public -->
+<!-- License along with this program. If not, see -->
+<!-- <http://www.gnu.org/licenses/>. -->
+
+<!DOCTYPE utfx:tests PUBLIC "-//UTF-X//DTD utfx-tests 1.0//EN" "utfx_tests.dtd">
+<utfx:tests xmlns:utfx="http://utfx.org/test-definition"
+  xmlns:dtb="http://www.daisy.org/z3986/2005/dtbook/"
+  xmlns:brl="http://www.daisy.org/z3986/2009/braille/">
+  <utfx:stylesheet src="xsl/dtbook2sbsform.xsl"/>
+
+  <utfx:test>
+    <utfx:name>Plain link</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+        <dtb:a xml:lang="de" href="www.foo.ch">foo</dtb:a>
+      </utfx:source>
+      <utfx:expected>FOO</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+  
+  <utfx:test>
+    <utfx:name>External link</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+        <dtb:a xml:lang="de" href="www.foo.ch" external="true">foo</dtb:a>
+      </utfx:source>
+      <utfx:expected>FOO</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+  
+  <utfx:test>
+    <utfx:name>External email link</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+        <dtb:a xml:lang="de" href="mailto:info@sbs.ch" external="true">Kontakt</dtb:a>
+      </utfx:source>
+      <utfx:expected>KONTAKT</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+  
+  <utfx:test>
+    <utfx:name>External email link mixed</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+        <dtb:a xml:lang="de" href="mailto:info@sbs.ch" external="true">Kontakt <dtb:span class="brl:computer">peter34@gmx.net</dtb:span></dtb:a>
+      </utfx:source>
+      <utfx:expected>KONTAKT '$PETER34"@GMX.NET</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>Internal link</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+	<stub xml:lang="de">
+          <dtb:a id="foo"/>
+          <dtb:a href="#foo">foo</dtb:a>
+	</stub>
+      </utfx:source>
+      <utfx:expected>FOO</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>Internal pageref link</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+	<stub xml:lang="de">
+          <dtb:a id="foo"/>
+          <dtb:a href="#foo" class="pageref">foo</dtb:a>
+	</stub>
+      </utfx:source>
+      <utfx:expected>FOO</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>External link using computer braille</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+	<stub xml:lang="de">
+          <dtb:a href="http://www.sbs.ch"><dtb:span class="brl:computer">www.sbs.ch</dtb:span></dtb:a>
+	</stub>
+      </utfx:source>
+      <utfx:expected>'$WWW.SBS.CH</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>External link using computer braille</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+	<stub xml:lang="de">
+          <dtb:a href="http://www.e-text.ch"><dtb:span class="brl:computer">www.e-text.ch</dtb:span></dtb:a>
+	</stub>
+      </utfx:source>
+      <utfx:expected>'$WWW.E-TEXT.CH</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>External link with params using computer braille</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+	<stub xml:lang="de">
+          <dtb:a href="http://www.google-test.ch/test?=:;+%#$"><dtb:span class="brl:computer">http://www.google-test.ch/test?=:;+%#$</dtb:span></dtb:a>
+	</stub>
+      </utfx:source>
+      <utfx:expected>'$HTTP://WWW.GOOGLE-TEST.CH/TEST?=:;+%#$$</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>External link with numbers using computer braille</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+	<stub xml:lang="de">
+          <dtb:a href="mailto:peter34@gmx.net"><dtb:span class="brl:computer">peter34@gmx.net</dtb:span></dtb:a>
+	</stub>
+      </utfx:source>
+      <utfx:expected>'$PETER34"@GMX.NET</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>External email link using computer braille</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+	<stub xml:lang="de">
+          <dtb:a href="mailto:info@sbs.ch"><dtb:span class="brl:computer">mailto:info@sbs.ch</dtb:span></dtb:a>
+	</stub>
+      </utfx:source>
+      <utfx:expected>'$MAILTO:INFO"@SBS.CH</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>External email link using computer braille</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+	<stub xml:lang="de">
+          <dtb:a href="mailto:meier_alex@ubs.com"><dtb:span class="brl:computer">meier_alex@ubs.com</dtb:span></dtb:a>
+	</stub>
+      </utfx:source>
+      <utfx:expected>'$MEIER"_ALEX"@UBS.COM</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+</utfx:tests>

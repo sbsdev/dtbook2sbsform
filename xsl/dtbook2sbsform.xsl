@@ -57,6 +57,9 @@
   <xsl:variable name="GROSS_FUER_EINZELBUCHSTABE">╤</xsl:variable>
   <xsl:variable name="KLEINBUCHSTABE">╩</xsl:variable>
   
+  <!-- Tables for computer braille -->
+  <xsl:variable name="computer_braille_tables" select="'sbs.dis,sbs-special.cti,sbs-code.cti'"/>
+
   <xsl:variable name="volumes">
     <xsl:value-of select="count(//brl:volume[@brl:grade=$contraction]) + 1"/>
   </xsl:variable>
@@ -274,39 +277,37 @@
       <xsl:text>sbs-de-capsign.mod,</xsl:text>
     </xsl:if>
     <xsl:if
-      test="$actual_contraction = '2' and not($context=('num_roman','abbr','date_month','date_day','name_capitalized','a'))">
+      test="$actual_contraction = '2' and not($context=('num_roman','abbr','date_month','date_day','name_capitalized'))">
       <xsl:text>sbs-de-letsign.mod,</xsl:text>
     </xsl:if>
-    <xsl:if test="not($context = 'date_month' or $context = 'denominator' or $context = 'a' or $context = 'index' or $context = 'linenum')">
+    <xsl:if test="not($context = 'date_month' or $context = 'denominator' or $context = 'index' or $context = 'linenum')">
       <xsl:text>sbs-numsign.mod,</xsl:text>
     </xsl:if>
-    <xsl:if test="$context != 'a'">
-      <xsl:choose>
-        <xsl:when
+    <xsl:choose>
+      <xsl:when
           test="$context = 'num_ordinal' or $context = 'date_day' or $context = 'denominator' or $context = 'index'">
-          <xsl:text>sbs-litdigit-lower.mod,</xsl:text>
-        </xsl:when>
-        <xsl:otherwise>
-          <xsl:text>sbs-litdigit-upper.mod,</xsl:text>
-        </xsl:otherwise>
-      </xsl:choose>
-    </xsl:if>
-    <xsl:if test="$context != 'date_month' and $context != 'date_day' and $context != 'a'">
+        <xsl:text>sbs-litdigit-lower.mod,</xsl:text>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:text>sbs-litdigit-upper.mod,</xsl:text>
+      </xsl:otherwise>
+    </xsl:choose>
+    <xsl:if test="$context != 'date_month' and $context != 'date_day'">
       <xsl:text>sbs-de-core.mod,</xsl:text>
     </xsl:if>
     <xsl:if
-      test="$context = 'name_capitalized' or $context = 'num_roman' or ($context = 'abbr' and not(my:containsDot(.))) or ($actual_contraction &lt;= '1' and $context != 'date_day' and $context != 'date_month' and $context != 'a')">
+      test="$context = 'name_capitalized' or $context = 'num_roman' or ($context = 'abbr' and not(my:containsDot(.))) or ($actual_contraction &lt;= '1' and $context != 'date_day' and $context != 'date_month')">
       <xsl:text>sbs-de-g0-core.mod,</xsl:text>
     </xsl:if>
     <xsl:if
-      test="$actual_contraction = '1' and $context != 'a' and $context != 'num_roman' and ($context != 'name_capitalized' and ($context != 'abbr' or my:containsDot(.)) and $context != 'date_month' and $context != 'date_day')">
+      test="$actual_contraction = '1' and $context != 'num_roman' and ($context != 'name_capitalized' and ($context != 'abbr' or my:containsDot(.)) and $context != 'date_month' and $context != 'date_day')">
       <xsl:if test="$use_local_dictionary = true()">
         <xsl:value-of select="concat('sbs-de-g1-white-',$document_identifier,'.mod,')"/>
       </xsl:if>
       <xsl:text>sbs-de-g1-white.mod,</xsl:text>
       <xsl:text>sbs-de-g1-core.mod,</xsl:text>
     </xsl:if>
-    <xsl:if test="$actual_contraction = '2' and $context != 'a' and $context != 'num_roman'">
+    <xsl:if test="$actual_contraction = '2' and $context != 'num_roman'">
       <xsl:if test="$context = 'place'">
         <xsl:if test="$use_local_dictionary = true()">
           <xsl:value-of select="concat('sbs-de-g2-place-white-',$document_identifier,'.mod,')"/>
@@ -1583,22 +1584,27 @@
     <xsl:call-template name="handle_abbr"/>
   </xsl:template>
 
+  <!-- ======= -->
+  <!-- Links   -->
+  <!-- ======= -->
+
   <xsl:template match="dtb:a">
-    <xsl:variable name="braille_tables">
-      <xsl:call-template name="getTable"/>
-    </xsl:variable>
-    <xsl:value-of select="louis:translate(string($braille_tables), '&#x257C;')"/>
     <xsl:apply-templates/>
   </xsl:template>
 
-  <xsl:template match="dtb:a/text()">
-    <xsl:variable name="braille_tables">
-      <xsl:call-template name="getTable">
-	<xsl:with-param name="context" select="'a'"/>
-      </xsl:call-template>
-    </xsl:variable>
-    <xsl:value-of select="louis:translate(string($braille_tables), string())"/>
+  <!-- Announce computer braille -->
+  <xsl:template match="dtb:span[@class='brl:computer']">
+    <xsl:value-of select="louis:translate(string($computer_braille_tables), '&#x257C;')"/>
+    <xsl:apply-templates/>
   </xsl:template>
+
+  <xsl:template match="dtb:span[@class='brl:computer']/text()">
+    <xsl:value-of select="louis:translate(string($computer_braille_tables), string())"/>
+  </xsl:template>
+
+  <!-- ======= -->
+  <!-- Div     -->
+  <!-- ======= -->
 
   <xsl:template match="dtb:div">
     <xsl:value-of select="concat('&#10;y DIVb_', my:get-brl-class(.), '&#10;')"/>
