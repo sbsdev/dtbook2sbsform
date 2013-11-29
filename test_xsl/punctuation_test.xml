@@ -33,7 +33,8 @@
       <utfx:source>
         <dtb:p xml:lang="de"> <dtb:em>2</dtb:em>? <dtb:em>2</dtb:em>! <dtb:em>2</dtb:em>; (<dtb:em>2</dtb:em>) »<dtb:em>2</dtb:em>« </dtb:p>
       </utfx:source>
-      <utfx:expected>y P
+      <utfx:expected>
+y P
   _#B'? _#B'+ _#B'; =_#B'= (_#B') </utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
@@ -48,7 +49,8 @@
         <dtb:p>»Am 10?«</dtb:p>
         <dtb:p>»Am 10?«</dtb:p>
       </utfx:source>
-      <utfx:expected>y P
+      <utfx:expected>
+y P
  (AM #AJ'?)
 y P
  (AM #AJ'?)</utfx:expected>
@@ -67,7 +69,8 @@ y P
           <dtb:p>(blo)</dtb:p>
         </stub>
       </utfx:source>
-      <utfx:expected>y P
+      <utfx:expected>
+y P
  #BJ M*UTC #,+AJ#BJAB
 y P
  =BLO=</utfx:expected>
@@ -83,7 +86,8 @@ y P
       <utfx:source>
         <dtb:p xml:lang="de"> <brl:num role="ordinal">2.</brl:num>? <brl:num role="ordinal">2.</brl:num>! <brl:num role="ordinal">2.</brl:num>; (<brl:num role="ordinal">2.</brl:num>) »<brl:num role="ordinal">2.</brl:num>« </dtb:p>
       </utfx:source>
-      <utfx:expected>y P
+      <utfx:expected>
+y P
   #;'? #;'+ #;'; =#;'= (#;') </utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
@@ -98,7 +102,8 @@ y P
         <dtb:p>»Am <brl:num role="ordinal">10.</brl:num>?«</dtb:p>
         <dtb:p>»Am <brl:num role="ordinal">10.</brl:num>?«</dtb:p>
       </utfx:source>
-      <utfx:expected>y P
+      <utfx:expected>
+y P
  (AM #,)'?)
 y P
  (AM #,)'?)</utfx:expected>

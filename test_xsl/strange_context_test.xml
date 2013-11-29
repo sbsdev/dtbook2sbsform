@@ -33,7 +33,9 @@
       <utfx:source>
         <dtb:p xml:lang="de">(<brl:date value="2007-07-06">6.7.2007</brl:date>) ab«.</dtb:p>
       </utfx:source>
-      <utfx:expected>y P&#13; =#+G#BJJG'= AB).</utfx:expected>
+      <utfx:expected>
+y P
+ =#+G#BJJG'= AB).</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
   
@@ -46,7 +48,9 @@
       <utfx:source>
         <dtb:p xml:lang="de">(<brl:date value="2007-07-06">6.7.2007</brl:date>) ab.</dtb:p>
       </utfx:source>
-      <utfx:expected>y P&#13; =#+G#BJJG'= AB.</utfx:expected>
+      <utfx:expected>
+y P
+ =#+G#BJJG'= AB.</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
 
@@ -59,7 +63,9 @@
       <utfx:source>
         <dtb:p xml:lang="de">(<brl:date value="2007-07-06">6.7.2007</brl:date>) ab«</dtb:p>
       </utfx:source>
-      <utfx:expected>y P&#13; =#+G#BJJG'= AB)</utfx:expected>
+      <utfx:expected>
+y P
+ =#+G#BJJG'= AB)</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
   
@@ -72,7 +78,9 @@
       <utfx:source>
         <dtb:p xml:lang="de">(<brl:date value="2007-07-06">6.7.2007</brl:date>) ab</dtb:p>
       </utfx:source>
-      <utfx:expected>y P&#13; =#+G#BJJG'= AB</utfx:expected>
+      <utfx:expected>
+y P
+ =#+G#BJJG'= AB</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
   

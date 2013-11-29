@@ -34,13 +34,11 @@
       <utfx:source>
 	<stub xml:lang="de">Foo<dtb:noteref idref="#footnote1">a</dtb:noteref>	Bar<dtb:noteref idref="#footnote2">b</dtb:noteref> Baz</stub>
       </utfx:source>
-      <utfx:expected>
- FOO'*#A
+      <utfx:expected>FOO'*#A
 * 
   BAR'*#B
 * 
-  BAZ
-</utfx:expected>
+  BAZ</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
 
@@ -96,7 +94,7 @@ a
  #D THIS IS +OTH7 TE]
 y EndVol
 y BrlVol
-      </utfx:expected>
+</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
 
@@ -110,7 +108,12 @@ y BrlVol
       <utfx:source>
 	<dtb:h1 xml:lang="de">Sein und nicht sein<dtb:noteref idref="#fn1">1</dtb:noteref></dtb:h1>
       </utfx:source>
-      <utfx:expected>y H1&#13; 9 U N 9'*#A&#13;*</utfx:expected>
+      <utfx:expected>
+y H1
+ 9 U N 9'*#A
+* 
+ 
+</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
 
@@ -124,7 +127,11 @@ y BrlVol
       <utfx:source>
 	<dtb:p xml:lang="de">Hier die Fussnote<dtb:noteref idref="#fn1">1</dtb:noteref>, vor einem Komma</dtb:p>
       </utfx:source>
-      <utfx:expected>y P&#13; HR 0 FU^NO('*#A,&#13;* &#13; ? 6[ KXA</utfx:expected>
+      <utfx:expected>
+y P
+ HR 0 FU^NO('*#A,
+* 
+ ? 6[ KXA</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
 
@@ -138,7 +145,11 @@ y BrlVol
       <utfx:source>
 	<dtb:p xml:lang="de">Hier die Fussnote<dtb:noteref idref="#fn1">1</dtb:noteref>! vor einem</dtb:p>
       </utfx:source>
-      <utfx:expected>y P&#13; HR 0 FU^NO('*#A'+&#13;* &#13; ? 6[</utfx:expected>
+      <utfx:expected>
+y P
+ HR 0 FU^NO('*#A'+
+* 
+ ? 6[</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
 
@@ -152,7 +163,11 @@ y BrlVol
       <utfx:source>
 	<dtb:p xml:lang="de">Hier die Fussnote<dtb:noteref idref="#fn1">1</dtb:noteref>? vor einem</dtb:p>
       </utfx:source>
-      <utfx:expected>y P&#13; HR 0 FU^NO('*#A'?&#13;* &#13; ? 6[</utfx:expected>
+      <utfx:expected>
+y P
+ HR 0 FU^NO('*#A'?
+* 
+ ? 6[</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
 
@@ -166,7 +181,11 @@ y BrlVol
       <utfx:source>
 	<dtb:p xml:lang="de">Hier die Fussnote<dtb:noteref idref="#fn1">1</dtb:noteref>( vor einem</dtb:p>
       </utfx:source>
-      <utfx:expected>y P&#13; HR 0 FU^NO('*#A'=&#13;* &#13; ? 6[</utfx:expected>
+      <utfx:expected>
+y P
+ HR 0 FU^NO('*#A'=
+* 
+ ? 6[</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
 

@@ -33,7 +33,9 @@
       <utfx:source>
         <dtb:p xml:lang="de">bla <dtb:em brl:render="quote">ble ble 8</dtb:em>: blo</dtb:p>
       </utfx:source>
-      <utfx:expected>y P&#13; BLA (BLE BLE #H'): BLO</utfx:expected>
+      <utfx:expected>
+y P
+ BLA (BLE BLE #H'): BLO</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
   
@@ -46,7 +48,9 @@
       <utfx:source>
         <dtb:p xml:lang="de">bla <dtb:em brl:render="quote">ble ble 8</dtb:em>! blo</dtb:p>
       </utfx:source>
-      <utfx:expected>y P&#13; BLA (BLE BLE #H')+ BLO</utfx:expected>
+      <utfx:expected>
+y P
+ BLA (BLE BLE #H')+ BLO</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
   
@@ -59,7 +63,9 @@
       <utfx:source>
         <dtb:p xml:lang="de">bla <dtb:em brl:render="quote">ble ble 8</dtb:em>? blo</dtb:p>
       </utfx:source>
-      <utfx:expected>y P&#13; BLA (BLE BLE #H')? BLO</utfx:expected>
+      <utfx:expected>
+y P
+ BLA (BLE BLE #H')? BLO</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
   
@@ -72,7 +78,9 @@
       <utfx:source>
         <dtb:p xml:lang="de">bla <dtb:em brl:render="quote">ble ble 8</dtb:em>; blo</dtb:p>
       </utfx:source>
-      <utfx:expected>y P&#13; BLA (BLE BLE #H'); BLO</utfx:expected>
+      <utfx:expected>
+y P
+ BLA (BLE BLE #H'); BLO</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
   
@@ -85,7 +93,9 @@
       <utfx:source>
         <dtb:p xml:lang="de">bla <dtb:em brl:render="quote">ble ble 8</dtb:em>) blo</dtb:p>
       </utfx:source>
-      <utfx:expected>y P&#13; BLA (BLE BLE #H')= BLO</utfx:expected>
+      <utfx:expected>
+y P
+ BLA (BLE BLE #H')= BLO</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
   
@@ -98,7 +108,9 @@
       <utfx:source>
         <dtb:p xml:lang="de">bla <dtb:em brl:render="quote">ble ble 8</dtb:em>. blo</dtb:p>
       </utfx:source>
-      <utfx:expected>y P&#13; BLA (BLE BLE #H'). BLO</utfx:expected>
+      <utfx:expected>
+y P
+ BLA (BLE BLE #H'). BLO</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
   
@@ -111,7 +123,9 @@
       <utfx:source>
         <dtb:p xml:lang="de">bla <dtb:em brl:render="quote">ble ble 8</dtb:em>, blo</dtb:p>
       </utfx:source>
-      <utfx:expected>y P&#13; BLA (BLE BLE #H'), BLO</utfx:expected>
+      <utfx:expected>
+y P
+ BLA (BLE BLE #H'), BLO</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
   
@@ -124,7 +138,9 @@
       <utfx:source>
         <dtb:p xml:lang="de">bla <dtb:em brl:render="singlequote">ble ble 8</dtb:em>: blo</dtb:p>
       </utfx:source>
-      <utfx:expected>y P&#13; BLA '(BLE BLE #H'): BLO</utfx:expected>
+      <utfx:expected>
+y P
+ BLA '(BLE BLE #H'): BLO</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
   
@@ -137,7 +153,9 @@
       <utfx:source>
         <dtb:p xml:lang="de">bla <dtb:em brl:render="singlequote">ble ble 8</dtb:em>! blo</dtb:p>
       </utfx:source>
-      <utfx:expected>y P&#13; BLA '(BLE BLE #H')+ BLO</utfx:expected>
+      <utfx:expected>
+y P
+ BLA '(BLE BLE #H')+ BLO</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
   
@@ -150,7 +168,9 @@
       <utfx:source>
         <dtb:p xml:lang="de">bla <dtb:em brl:render="singlequote">ble ble 8</dtb:em>? blo</dtb:p>
       </utfx:source>
-      <utfx:expected>y P&#13; BLA '(BLE BLE #H')? BLO</utfx:expected>
+      <utfx:expected>
+y P
+ BLA '(BLE BLE #H')? BLO</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
   
@@ -163,7 +183,9 @@
       <utfx:source>
         <dtb:p xml:lang="de">bla <dtb:em brl:render="singlequote">ble ble 8</dtb:em>; blo</dtb:p>
       </utfx:source>
-      <utfx:expected>y P&#13; BLA '(BLE BLE #H'); BLO</utfx:expected>
+      <utfx:expected>
+y P
+ BLA '(BLE BLE #H'); BLO</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
   
@@ -176,7 +198,9 @@
       <utfx:source>
         <dtb:p xml:lang="de">bla <dtb:em brl:render="singlequote">ble ble 8</dtb:em>) blo</dtb:p>
       </utfx:source>
-      <utfx:expected>y P&#13; BLA '(BLE BLE #H')= BLO</utfx:expected>
+      <utfx:expected>
+y P
+ BLA '(BLE BLE #H')= BLO</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
   
@@ -189,7 +213,9 @@
       <utfx:source>
         <dtb:p xml:lang="de">bla <dtb:em brl:render="singlequote">ble ble 8</dtb:em>. blo</dtb:p>
       </utfx:source>
-      <utfx:expected>y P&#13; BLA '(BLE BLE #H'). BLO</utfx:expected>
+      <utfx:expected>
+y P
+ BLA '(BLE BLE #H'). BLO</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
   
@@ -202,7 +228,9 @@
       <utfx:source>
         <dtb:p xml:lang="de">bla <dtb:em brl:render="singlequote">ble ble 8</dtb:em>, blo</dtb:p>
       </utfx:source>
-      <utfx:expected>y P&#13; BLA '(BLE BLE #H'), BLO</utfx:expected>
+      <utfx:expected>
+y P
+ BLA '(BLE BLE #H'), BLO</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
   

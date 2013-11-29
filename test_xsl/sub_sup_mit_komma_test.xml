@@ -33,7 +33,9 @@
       <utfx:source>
         <dtb:p xml:lang="de">2<dtb:sup>23</dtb:sup>, x<dtb:sup>2</dtb:sup>, x<dtb:sup>-2</dtb:sup>, </dtb:p>
       </utfx:source>
-      <utfx:expected>y P&#13; #B0;:', 'X0;', 'X0-;', </utfx:expected>
+      <utfx:expected>
+y P
+ #B0;:', 'X0;', 'X0-;', </utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
 
@@ -46,7 +48,9 @@
       <utfx:source>
         <dtb:p xml:lang="de"><dtb:abbr>Cu</dtb:abbr><dtb:sup>2+</dtb:sup>, </dtb:p>
       </utfx:source>
-      <utfx:expected>y P&#13; $CU\#B&quot;+', </utfx:expected>
+      <utfx:expected>
+y P
+ $CU\#B&quot;+', </utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
 
@@ -59,7 +63,9 @@
       <utfx:source>
         <dtb:p xml:lang="de"><dtb:abbr>CO</dtb:abbr><dtb:sub>2</dtb:sub>, </dtb:p>
       </utfx:source>
-      <utfx:expected>y P&#13; &gt;CO1;', </utfx:expected>
+      <utfx:expected>
+y P
+ &gt;CO1;', </utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
 

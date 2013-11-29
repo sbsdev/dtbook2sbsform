@@ -80,8 +80,7 @@ y DIVe_foo
       </utfx:source>
       <utfx:expected>
 y P
- FOO BAR BAZ
-</utfx:expected>
+ FOO BAR BAZ</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
 
@@ -94,9 +93,7 @@ y P
       <utfx:source>
 	<dtb:th xml:lang="de">Foo <dtb:samp>Bar</dtb:samp> Baz</dtb:th>
       </utfx:source>
-      <utfx:expected>
-FOO BAR BAZ
-</utfx:expected>
+      <utfx:expected>FOO BAR BAZ</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
 
@@ -109,9 +106,7 @@ FOO BAR BAZ
       <utfx:source>
 	<dtb:td xml:lang="de">Foo <dtb:samp>Bar</dtb:samp> Baz</dtb:td>
       </utfx:source>
-      <utfx:expected>
-FOO BAR BAZ
-</utfx:expected>
+      <utfx:expected>FOO BAR BAZ</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
 

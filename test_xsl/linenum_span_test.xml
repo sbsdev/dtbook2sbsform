@@ -37,9 +37,7 @@
       </utfx:source>
       <utfx:expected>
 y P_LN
-  bE| 'A M OF M+'Y ]'YL%
-
-</utfx:expected>
+  bE| 'A M OF M+'Y ]'YL% </utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
 
@@ -57,9 +55,7 @@ y P_LN
 y P_LN
  | 'A M OF 
 y P_LN_noi
- bE| M+'Y ]'YL%
-
-</utfx:expected>
+ bE| M+'Y ]'YL% </utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
 
@@ -78,9 +74,7 @@ y P_LN_noi
 y P_LN
  |  __'A M OF '.
 y P_LN_noi
- bE| M+'Y ]'YL%
-
-</utfx:expected>
+ bE| M+'Y ]'YL% </utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
 
@@ -101,9 +95,7 @@ y P_LN
 y P_LN_noi
  bE| M+'Y 
 y P_LN_noi
- AJ| ]'YL%
-
-</utfx:expected>
+ AJ| ]'YL% </utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
 
@@ -121,9 +113,7 @@ y P_LN_noi
       <utfx:expected>
 y BLANK
 y P_LN
-  bE| 'A M OF M+'Y ]'YL%
-
-</utfx:expected>
+  bE| 'A M OF M+'Y ]'YL% </utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
 
@@ -140,7 +130,8 @@ y P_LN
 	  <dtb:p><dtb:span class='linenum'>10</dtb:span>baz</dtb:p>
 	</dtb:level6>
       </utfx:source>
-      <utfx:expected>y LEVEL6b
+      <utfx:expected>
+y LEVEL6b
 .xNOPAGENUM
 
 y SECT_LNb
@@ -176,7 +167,8 @@ y LEVEL6e
 	  <dtb:p><dtb:span class='linenum'>10</dtb:span>buz</dtb:p>
 	</dtb:level6>
       </utfx:source>
-      <utfx:expected>y LEVEL6b
+      <utfx:expected>
+y LEVEL6b
 .xNOPAGENUM
 
 y SECT_LNb
