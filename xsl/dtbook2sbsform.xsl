@@ -1592,13 +1592,16 @@
     <xsl:apply-templates/>
   </xsl:template>
 
-  <!-- Announce computer braille -->
-  <xsl:template match="dtb:span[@class='brl:computer']">
+  <!-- ================ -->
+  <!-- Computer Braille -->
+  <!-- ================ -->
+
+  <xsl:template match="brl:computer">
     <xsl:value-of select="louis:translate(string($computer_braille_tables), '&#x257C;')"/>
     <xsl:apply-templates/>
   </xsl:template>
 
-  <xsl:template match="dtb:span[@class='brl:computer']/text()">
+  <xsl:template match="brl:computer/text()">
     <xsl:value-of select="louis:translate(string($computer_braille_tables), string())"/>
   </xsl:template>
 

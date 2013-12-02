@@ -31,7 +31,7 @@
     </utfx:stylesheet-params>
     <utfx:assert-equal>
       <utfx:source>
-        <dtb:span class="brl:computer" xml:lang="de">www.xyz.ch</dtb:span>
+        <brl:computer xml:lang="de">www.xyz.ch</brl:computer>
       </utfx:source>
       <utfx:expected>'$WWW.XYZ.CH</utfx:expected>
     </utfx:assert-equal>
@@ -44,7 +44,7 @@
     </utfx:stylesheet-params>
     <utfx:assert-equal>
       <utfx:source>
-        <dtb:span class="brl:computer" xml:lang="de">www.e-text.ch</dtb:span>
+        <brl:computer xml:lang="de">www.e-text.ch</brl:computer>
       </utfx:source>
       <utfx:expected>'$WWW.E-TEXT.CH</utfx:expected>
     </utfx:assert-equal>
@@ -57,7 +57,7 @@
     </utfx:stylesheet-params>
     <utfx:assert-equal>
       <utfx:source>
-        <dtb:span class="brl:computer" xml:lang="de">meier_alex@ubs.com</dtb:span>
+        <brl:computer xml:lang="de">meier_alex@ubs.com</brl:computer>
       </utfx:source>
       <utfx:expected>'$MEIER"_ALEX"@UBS.COM</utfx:expected>
     </utfx:assert-equal>
@@ -70,7 +70,7 @@
     </utfx:stylesheet-params>
     <utfx:assert-equal>
       <utfx:source>
-        <dtb:span class="brl:computer" xml:lang="de">http://www.google-test.ch/test?=:;+%#$</dtb:span>
+        <brl:computer xml:lang="de">http://www.google-test.ch/test?=:;+%#$</brl:computer>
       </utfx:source>
       <utfx:expected>'$HTTP://WWW.GOOGLE-TEST.CH/TEST?=:;+%#$$</utfx:expected>
     </utfx:assert-equal>
@@ -83,7 +83,7 @@
     </utfx:stylesheet-params>
     <utfx:assert-equal>
       <utfx:source>
-        <dtb:span class="brl:computer" xml:lang="de">peter34@gmx.net</dtb:span>
+        <brl:computer xml:lang="de">peter34@gmx.net</brl:computer>
       </utfx:source>
       <utfx:expected>'$PETER34"@GMX.NET</utfx:expected>
     </utfx:assert-equal>
@@ -96,7 +96,7 @@
     </utfx:stylesheet-params>
     <utfx:assert-equal>
       <utfx:source>
-        <dtb:span class="brl:computer" xml:lang="de">@peter34</dtb:span>
+        <brl:computer xml:lang="de">@peter34</brl:computer>
       </utfx:source>
       <utfx:expected>'$"@PETER34</utfx:expected>
     </utfx:assert-equal>

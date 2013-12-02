@@ -70,7 +70,7 @@
     </utfx:stylesheet-params>
     <utfx:assert-equal>
       <utfx:source>
-        <dtb:a xml:lang="de" href="mailto:info@sbs.ch" external="true">Kontakt <dtb:span class="brl:computer">peter34@gmx.net</dtb:span></dtb:a>
+        <dtb:a xml:lang="de" href="mailto:info@sbs.ch" external="true">Kontakt <brl:computer>peter34@gmx.net</brl:computer></dtb:a>
       </utfx:source>
       <utfx:expected>KONTAKT '$PETER34"@GMX.NET</utfx:expected>
     </utfx:assert-equal>
@@ -116,7 +116,7 @@
     <utfx:assert-equal>
       <utfx:source>
 	<stub xml:lang="de">
-          <dtb:a href="http://www.sbs.ch"><dtb:span class="brl:computer">www.sbs.ch</dtb:span></dtb:a>
+          <dtb:a href="http://www.sbs.ch"><brl:computer>www.sbs.ch</brl:computer></dtb:a>
 	</stub>
       </utfx:source>
       <utfx:expected>'$WWW.SBS.CH</utfx:expected>
@@ -131,7 +131,7 @@
     <utfx:assert-equal>
       <utfx:source>
 	<stub xml:lang="de">
-          <dtb:a href="http://www.e-text.ch"><dtb:span class="brl:computer">www.e-text.ch</dtb:span></dtb:a>
+          <dtb:a href="http://www.e-text.ch"><brl:computer>www.e-text.ch</brl:computer></dtb:a>
 	</stub>
       </utfx:source>
       <utfx:expected>'$WWW.E-TEXT.CH</utfx:expected>
@@ -146,7 +146,7 @@
     <utfx:assert-equal>
       <utfx:source>
 	<stub xml:lang="de">
-          <dtb:a href="http://www.google-test.ch/test?=:;+%#$"><dtb:span class="brl:computer">http://www.google-test.ch/test?=:;+%#$</dtb:span></dtb:a>
+          <dtb:a href="http://www.google-test.ch/test?=:;+%#$"><brl:computer>http://www.google-test.ch/test?=:;+%#$</brl:computer></dtb:a>
 	</stub>
       </utfx:source>
       <utfx:expected>'$HTTP://WWW.GOOGLE-TEST.CH/TEST?=:;+%#$$</utfx:expected>
@@ -161,7 +161,7 @@
     <utfx:assert-equal>
       <utfx:source>
 	<stub xml:lang="de">
-          <dtb:a href="mailto:peter34@gmx.net"><dtb:span class="brl:computer">peter34@gmx.net</dtb:span></dtb:a>
+          <dtb:a href="mailto:peter34@gmx.net"><brl:computer>peter34@gmx.net</brl:computer></dtb:a>
 	</stub>
       </utfx:source>
       <utfx:expected>'$PETER34"@GMX.NET</utfx:expected>
@@ -176,7 +176,7 @@
     <utfx:assert-equal>
       <utfx:source>
 	<stub xml:lang="de">
-          <dtb:a href="mailto:info@sbs.ch"><dtb:span class="brl:computer">mailto:info@sbs.ch</dtb:span></dtb:a>
+          <dtb:a href="mailto:info@sbs.ch"><brl:computer>mailto:info@sbs.ch</brl:computer></dtb:a>
 	</stub>
       </utfx:source>
       <utfx:expected>'$MAILTO:INFO"@SBS.CH</utfx:expected>
@@ -191,7 +191,7 @@
     <utfx:assert-equal>
       <utfx:source>
 	<stub xml:lang="de">
-          <dtb:a href="mailto:meier_alex@ubs.com"><dtb:span class="brl:computer">meier_alex@ubs.com</dtb:span></dtb:a>
+          <dtb:a href="mailto:meier_alex@ubs.com"><brl:computer>meier_alex@ubs.com</brl:computer></dtb:a>
 	</stub>
       </utfx:source>
       <utfx:expected>'$MEIER"_ALEX"@UBS.COM</utfx:expected>
