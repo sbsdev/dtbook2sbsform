@@ -20,6 +20,8 @@
   <name>DAISY Pipeline 2 module :: sbs:dtbook-to-sbsform</name>
   
   <properties>
+    <sbs-braille-tables.version>1.6-SNAPSHOT</sbs-braille-tables.version>
+    <sbs-hyphenation-tables.version>1.13-SNAPSHOT</sbs-hyphenation-tables.version>
     <felix.version>4.0.3</felix.version>
     <pax-exam.version>3.3.0</pax-exam.version>
     <junit.version>4.11</junit.version>
@@ -113,6 +115,64 @@
             </goals>
           </execution>
         </executions>
+      </plugin>
+      <plugin>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>copy-dependencies</id>
+            <phase>prepare-package</phase>
+            <goals>
+              <goal>copy</goal>
+            </goals>
+            <configuration>
+              <useBaseVersion>true</useBaseVersion>
+              <artifactItems>
+                <artifactItem>
+                  <groupId>ch.sbs.pipeline</groupId>
+                  <artifactId>sbs-braille-tables</artifactId>
+                  <version>${sbs-braille-tables.version}</version>
+                </artifactItem>
+                <artifactItem>
+                  <groupId>ch.sbs.pipeline</groupId>
+                  <artifactId>sbs-hyphenation-tables</artifactId>
+                  <version>${sbs-hyphenation-tables.version}</version>
+                </artifactItem>
+              </artifactItems>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.vafer</groupId>
+        <artifactId>jdeb</artifactId>
+        <configuration>
+          <dataSet>
+            <data>
+              <type>file</type>
+              <src>target/${project.artifactId}-${project.version}.jar</src>
+              <mapper>
+                <type>perm</type>
+                <prefix>/opt/daisy-pipeline2/modules</prefix>
+              </mapper>
+            </data>
+            <data>
+              <type>file</type>
+              <src>target/dependency/sbs-braille-tables-${sbs-braille-tables.version}.jar</src>
+              <mapper>
+                <type>perm</type>
+                <prefix>/opt/daisy-pipeline2/modules</prefix>
+              </mapper>
+            </data><data>
+              <type>file</type>
+              <src>target/dependency/sbs-hyphenation-tables-${sbs-hyphenation-tables.version}.jar</src>
+              <mapper>
+                <type>perm</type>
+                <prefix>/opt/daisy-pipeline2/modules</prefix>
+              </mapper>
+            </data>
+          </dataSet>
+        </configuration>
       </plugin>
     </plugins>
   </build>
