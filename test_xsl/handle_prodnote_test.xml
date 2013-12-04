@@ -51,7 +51,7 @@
         <dtb:prodnote xml:lang="de">In der Blindenschriftausgabe wurden sämtliche Abbildungen weggelassen.</dtb:prodnote>
       </utfx:source>
       <utfx:expected>
-	<brl:literal>&lt;=</brl:literal>In der Blindenschriftausgabe wurden sämtliche Abbildungen weggelassen.<brl:literal>&lt;=</brl:literal>
+	<brl:literal>&apos;&lt;=</brl:literal>In der Blindenschriftausgabe wurden sämtliche Abbildungen weggelassen.<brl:literal>&apos;&lt;=</brl:literal>
       </utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
@@ -69,7 +69,7 @@
       </dtb:prodnote>
       </utfx:source>
       <utfx:expected>
-	<dtb:p brl:class="ind"><brl:literal>&lt;=</brl:literal>Anmerkung für die Blindenschriftausgabe:</dtb:p><dtb:p brl:class="ind">Eine Zeichenerklärung befindet sich am Ende des Buches.<brl:literal>&lt;=</brl:literal></dtb:p>
+	<dtb:p brl:class="ind"><brl:literal>&apos;&lt;=</brl:literal>Anmerkung für die Blindenschriftausgabe:</dtb:p><dtb:p brl:class="ind">Eine Zeichenerklärung befindet sich am Ende des Buches.<brl:literal>&apos;&lt;=</brl:literal></dtb:p>
       </utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
