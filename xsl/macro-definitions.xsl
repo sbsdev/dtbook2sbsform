@@ -1288,7 +1288,7 @@ i f=1 l=1
       select="louis:translate(string($braille_tables), 'Lesebehinderte, Zürich')"/>
     <xsl:text>&#10;a&#10; </xsl:text>
     <xsl:variable name="boilerplate">
-      <dtb:a xml:lang="de">www.sbs.ch</dtb:a>
+      <dtb:a xml:lang="de"><brl:computer>www.sbs.ch</brl:computer></dtb:a>
     </xsl:variable>
     <xsl:apply-templates select="$boilerplate"/>
     <xsl:text>&#10;l&#10; </xsl:text>
