@@ -34,7 +34,9 @@
   <xsl:strip-space elements="*"/>
   <xsl:preserve-space
     elements="dtb:p dtb:byline dtb:author dtb:li dtb:lic dtb:doctitle dtb:docauthor dtb:span dtb:em dtb:strong brl:emph dtb:line dtb:h1 dtb:h2 dtb:h3 dtb:h4 dtb:h5 dtb:h6"/>
-
+  
+  <xsl:param name="TABLE_BASE_URI">file:/usr/local/share/liblouis/tables/</xsl:param>
+  
   <xsl:param name="contraction">2</xsl:param>
   <xsl:param name="version">0</xsl:param>
   <xsl:param name="cells_per_line">28</xsl:param>
@@ -275,6 +277,7 @@
         </xsl:otherwise>
       </xsl:choose>
     </xsl:variable>
+    <xsl:value-of select="$TABLE_BASE_URI"/>
     <xsl:text>sbs.dis,</xsl:text>
     <xsl:text>sbs-de-core6.cti,</xsl:text>
     <xsl:text>sbs-de-accents.cti,</xsl:text>

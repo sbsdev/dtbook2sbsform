@@ -44,6 +44,15 @@
 					<xsl:text>&#xA;&#xA;    </xsl:text>
 					<xsl:comment>&#xA;      This XSpec test was automatically generated from <xsl:value-of select="$test_name"/>.utfx&#xA;    </xsl:comment>
 					<xsl:text>&#xA;&#xA;</xsl:text>
+					<xsl:if test="$stylesheet='dtbook2sbsform.xsl'">
+						<xsl:text>    </xsl:text>
+						<x:param name="TABLE_BASE_URI">
+							<xsl:if test="not($test_name='getTable_test')">
+								<xsl:attribute name="select">'http://www.sbs.ch/pipeline/liblouis/tables/'</xsl:attribute>
+							</xsl:if>
+						</x:param>
+						<xsl:text>&#xA;</xsl:text>
+					</xsl:if>
 					<xsl:for-each select="tokenize(current-grouping-key(), ',\s')">
 						<xsl:text>    </xsl:text>
 						<x:param name="{substring-before(., '=')}" select="{substring-after(., '=')}"/>

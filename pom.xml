@@ -29,6 +29,18 @@
   </properties>
   
   <dependencies>
+    <dependency>
+      <groupId>ch.sbs.pipeline</groupId>
+      <artifactId>sbs-braille-tables</artifactId>
+      <version>${sbs-braille-tables.version}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>ch.sbs.pipeline</groupId>
+      <artifactId>sbs-hyphenation-tables</artifactId>
+      <version>${sbs-hyphenation-tables.version}</version>
+      <scope>provided</scope>
+    </dependency>
     <!--
         The tests depend on a modification to xspec-maven-plugin which is not accepted
         by Romain yet. For now you have to build it yourself. Get the code from
@@ -127,16 +139,11 @@
             </goals>
             <configuration>
               <useBaseVersion>true</useBaseVersion>
+              <prependGroupId>true</prependGroupId>
               <artifactItems>
                 <artifactItem>
                   <groupId>ch.sbs.pipeline</groupId>
-                  <artifactId>sbs-braille-tables</artifactId>
-                  <version>${sbs-braille-tables.version}</version>
-                </artifactItem>
-                <artifactItem>
-                  <groupId>ch.sbs.pipeline</groupId>
                   <artifactId>sbs-hyphenation-tables</artifactId>
-                  <version>${sbs-hyphenation-tables.version}</version>
                 </artifactItem>
               </artifactItems>
             </configuration>
@@ -158,14 +165,7 @@
             </data>
             <data>
               <type>file</type>
-              <src>target/dependency/sbs-braille-tables-${sbs-braille-tables.version}.jar</src>
-              <mapper>
-                <type>perm</type>
-                <prefix>/opt/daisy-pipeline2/modules</prefix>
-              </mapper>
-            </data><data>
-              <type>file</type>
-              <src>target/dependency/sbs-hyphenation-tables-${sbs-hyphenation-tables.version}.jar</src>
+              <src>target/dependency/ch.sbs.pipeline.sbs-hyphenation-tables-${sbs-hyphenation-tables.version}.jar</src>
               <mapper>
                 <type>perm</type>
                 <prefix>/opt/daisy-pipeline2/modules</prefix>
