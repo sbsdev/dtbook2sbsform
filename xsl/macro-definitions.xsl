@@ -685,18 +685,18 @@ y b PLISTb ; 'pl' Liste
 ?nl:nl+1
 ?nl=1
 +lm1
-+i f=1 l=3
++i f=1 l=3 w=1 W=1
 ?nl=2
-+i f=3 l=5
++i f=3 l=5 w=3 W=3
 ?nl=3
-+i f=5 l=7
++i f=5 l=7 w=5 W=5
 y e PLISTb
 y b PLISTe
 ?nl:nl-1
 ?nl=2
-+i f=3 l=5
++i f=3 l=5 w=3 W=3
 ?nl=1
-+i f=1 l=3
++i f=1 l=3 w=1 W=1
 ?nl=0
 +lm1
 +n2
@@ -711,18 +711,18 @@ y b ULISTb ; 'ul' Liste
 ?nl:nl+1
 ?nl=1
 +lm1
-+i f=1 l=3
++i f=1 l=3 w=1 W=1
 ?nl=2
-+i f=3 l=5
++i f=3 l=5 w=3 W=3
 ?nl=3
-+i f=5 l=7
++i f=5 l=7 w=5 W=5
 y e ULISTb
 y b ULISTe
 ?nl:nl-1
 ?nl=2
-+i f=3 l=5
++i f=3 l=5 w=3 W=3
 ?nl=1
-+i f=1 l=3
++i f=1 l=3 w=1 W=1
 ?nl=0
 +lm1
 +n2
@@ -737,18 +737,18 @@ y b OLISTb ; 'ol' Liste
 ?nl:nl+1
 ?nl=1
 +lm1
-+i f=1 l=3
++i f=1 l=3 w=1 W=1
 ?nl=2
-+i f=3 l=5
++i f=3 l=5 w=3 W=3
 ?nl=3
-+i f=5 l=7
++i f=5 l=7 w=5 W=5
 y e OLISTb
 y b OLISTe
 ?nl:nl-1
 ?nl=2
-+i f=3 l=5
++i f=3 l=5 w=3 W=3
 ?nl=1
-+i f=1 l=3
++i f=1 l=3 w=1 W=1
 ?nl=0
 +lm1
 +n2
