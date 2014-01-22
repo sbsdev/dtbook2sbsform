@@ -41,7 +41,7 @@
     </p:option>
     
     <p:import href="dtbook-to-sbsform.convert.xpl"/>
-    <p:import href="http://www.daisy.org/pipeline/modules/fileset-utils/xproc/fileset-library.xpl"/>
+    <p:import href="http://www.daisy.org/pipeline/modules/fileset-utils/library.xpl"/>
     
     <!-- ========================= -->
     <!-- CONVERT DTBOOK TO SBSFORM -->

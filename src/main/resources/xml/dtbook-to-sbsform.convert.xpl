@@ -22,7 +22,7 @@
     <p:option name="hyphenation" required="true"/>
         
     <p:import href="utils/normalize-uri.xpl"/>
-    <p:import href="http://www.daisy.org/pipeline/modules/fileset-utils/xproc/fileset-library.xpl"/>
+    <p:import href="http://www.daisy.org/pipeline/modules/fileset-utils/library.xpl"/>
     
     <pxi:normalize-uri>
         <p:with-option name="href" select="$output-dir"/>
