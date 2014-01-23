@@ -20,7 +20,6 @@
   <name>DAISY Pipeline 2 module :: sbs:dtbook-to-sbsform</name>
   
   <properties>
-    <sbs-braille-tables.version>1.6-SNAPSHOT</sbs-braille-tables.version>
     <sbs-hyphenation-tables.version>1.13-SNAPSHOT</sbs-hyphenation-tables.version>
     <felix.version>4.0.3</felix.version>
     <pax-exam.version>3.3.0</pax-exam.version>
