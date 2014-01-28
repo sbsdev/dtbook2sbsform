@@ -446,7 +446,7 @@
     <xsl:text>&#10;</xsl:text>
     <xsl:text>x SBS Braille Tables Version: </xsl:text>
     <!-- Use a special table to query the version of the SBS-specific (German) tables -->
-    <xsl:value-of select="my:louis-translate('sbs-version.utb', '{{sbs-braille-tables-version}}')"/>
+    <xsl:value-of select="my:louis-translate(concat($TABLE_BASE_URI,'sbs-version.utb'), '{{sbs-braille-tables-version}}')"/>
     <xsl:text>&#10;</xsl:text>
     <xsl:text>x contraction:</xsl:text><xsl:value-of select="$contraction"/><xsl:text>&#10;</xsl:text>
     <xsl:text>x cells_per_line:</xsl:text><xsl:value-of select="$cells_per_line"/><xsl:text>&#10;</xsl:text>

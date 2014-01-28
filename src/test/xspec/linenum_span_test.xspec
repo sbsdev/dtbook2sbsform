@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<x:description xmlns:utfx="http://utfx.org/test-definition" xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:dtb="http://www.daisy.org/z3986/2005/dtbook/" xmlns:brl="http://www.daisy.org/z3986/2009/braille/" stylesheet="file:/home/eglic/src/dtbook2sbsform/src/main/resources/xml/dtbook2sbsform.xsl" preserve-space="dtb:p dtb:byline dtb:author dtb:li dtb:lic dtb:doctitle dtb:docauthor dtb:span dtb:em dtb:strong brl:emph dtb:line dtb:h1 dtb:h2 dtb:h3 dtb:h4 dtb:h5 dtb:h6">
+
+    <!--
+      This XSpec test was automatically generated from linenum_span_test.utfx
+    -->
+
+    <x:param name="contraction" select="2"/>
+
+    <x:scenario label="p with linenum span">
+      <x:context>
+        <dtb:p xml:lang="de">
+	  <dtb:span class="linenum">5</dtb:span>A Man of Many Styles
+	</dtb:p>
+      </x:context>
+      <x:expect label="braille">
+y P_LN
+  bE| 'A M OF M+'Y ]'YL% </x:expect>
+    </x:scenario>
+
+    <x:scenario label="p with linenum span in the middle">
+      <x:context>
+        <dtb:p xml:lang="de">A Man of <dtb:span class="linenum">5</dtb:span>Many Styles
+	</dtb:p>
+      </x:context>
+      <x:expect label="braille">
+y P_LN
+ | 'A M OF 
+y P_LN_noi
+ bE| M+'Y ]'YL% </x:expect>
+    </x:scenario>
+
+    <x:scenario label="p with linenum span in the middle with em">
+      <x:context>
+        <dtb:p xml:lang="de">
+	  <dtb:em>A Man of </dtb:em><dtb:span class="linenum">5</dtb:span>Many Styles
+	</dtb:p>
+      </x:context>
+      <x:expect label="braille">
+y P_LN
+ |  __'A M OF '.
+y P_LN_noi
+ bE| M+'Y ]'YL% </x:expect>
+    </x:scenario>
+
+    <x:scenario label="p with multiple linenum span in the middle">
+      <x:context>
+        <dtb:p xml:lang="de">
+          A Man of <dtb:span class="linenum">5</dtb:span>Many <dtb:span class="linenum">10</dtb:span>Styles
+	</dtb:p>
+      </x:context>
+      <x:expect label="braille">
+y P_LN
+ |  'A M OF 
+y P_LN_noi
+ bE| M+'Y 
+y P_LN_noi
+ AJ| ]'YL% </x:expect>
+    </x:scenario>
+
+    <x:scenario label="p with linenum span with precedingemptyline">
+      <x:context>
+        <dtb:p xml:lang="de" class="precedingemptyline">
+	  <dtb:span class="linenum">5</dtb:span>A Man of Many Styles
+	</dtb:p>
+      </x:context>
+      <x:expect label="braille">
+y BLANK
+y P_LN
+  bE| 'A M OF M+'Y ]'YL% </x:expect>
+    </x:scenario>
+
+    <x:scenario label="Mixed p some some with span class linenum">
+      <x:context>
+        <dtb:level6 xml:lang="de">
+	  <dtb:p><dtb:span class="linenum">5</dtb:span>foo</dtb:p>
+	  <dtb:p>bar</dtb:p>
+	  <dtb:p><dtb:span class="linenum">10</dtb:span>baz</dtb:p>
+	</dtb:level6>
+      </x:context>
+      <x:expect label="braille">
+y LEVEL6b
+.xNOPAGENUM
+
+y SECT_LNb
+
+y P_LN
+ bE| FOO
+y P_LN
+ | BAR
+y P_LN
+ AJ| BAZ
+
+y SECT_LNe
+
+y LEVEL6e
+</x:expect>
+    </x:scenario>
+
+    <x:scenario label="Mixed p some some with span class linenum">
+      <x:context>
+        <dtb:level6 xml:lang="de">
+	  <dtb:p><dtb:span class="linenum">5</dtb:span>foo</dtb:p>
+	  <dtb:blockquote>haha</dtb:blockquote>
+	  <dtb:p>bar</dtb:p>
+	  <dtb:p>baz</dtb:p>
+	  <dtb:blockquote>hehe</dtb:blockquote>
+	  <dtb:p>fuz</dtb:p>
+	  <dtb:p><dtb:span class="linenum">10</dtb:span>buz</dtb:p>
+	</dtb:level6>
+      </x:context>
+      <x:expect label="braille">
+y LEVEL6b
+.xNOPAGENUM
+
+y SECT_LNb
+
+y P_LN
+ bE| FOO
+
+y SECT_LNe
+
+y BLQUOb
+HAHA
+y BLQUOe
+
+y P
+ BAR
+y P
+ BAZ
+y BLQUOb
+HEHE
+y BLQUOe
+
+y SECT_LNb
+
+y P_LN
+ | FUZ
+y P_LN
+ AJ| BUZ
+
+y SECT_LNe
+
+y LEVEL6e
+</x:expect>
+    </x:scenario>
+
+</x:description>

@@ -1,0 +1,475 @@
+<?xml version="1.0" encoding="utf-8"?>
+<x:description xmlns:utfx="http://utfx.org/test-definition" xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:dtb="http://www.daisy.org/z3986/2005/dtbook/" xmlns:brl="http://www.daisy.org/z3986/2009/braille/" stylesheet="file:/home/eglic/src/dtbook2sbsform/src/main/resources/xml/dtbook2sbsform.xsl" preserve-space="dtb:p dtb:byline dtb:author dtb:li dtb:lic dtb:doctitle dtb:docauthor dtb:span dtb:em dtb:strong brl:emph dtb:line dtb:h1 dtb:h2 dtb:h3 dtb:h4 dtb:h5 dtb:h6">
+
+    <!--
+      This XSpec test was automatically generated from table_test.utfx
+    -->
+
+
+    <x:scenario label="Tables">
+      <x:context>
+        <stub xml:lang="de">
+	  <dtb:table>
+            <dtb:caption>Alle Angaben ohne Gewähr</dtb:caption>
+            <dtb:thead>
+              <dtb:tr>
+		<dtb:th>Land</dtb:th>
+		<dtb:th><dtb:abbr>BIP 1980</dtb:abbr></dtb:th>
+		<dtb:th><dtb:abbr>BNP 1980</dtb:abbr></dtb:th>
+		<dtb:th>Fläche</dtb:th>
+		<dtb:th>Einwohner</dtb:th>
+              </dtb:tr>
+            </dtb:thead>
+            <dtb:tfoot>
+              <dtb:tr>
+		<dtb:th>(gemäss <dtb:abbr>OECD</dtb:abbr>)</dtb:th>
+		<dtb:th>in Mia. <dtb:abbr>CHF</dtb:abbr></dtb:th>
+		<dtb:th>in Mia. <dtb:abbr>CHF</dtb:abbr></dtb:th>
+		<dtb:th>in <dtb:abbr>ha</dtb:abbr></dtb:th>
+		<dtb:th>(ohne Rentner)</dtb:th>
+              </dtb:tr>
+            </dtb:tfoot>
+            <dtb:tbody>
+              <dtb:tr>
+		<dtb:td><dtb:abbr>USA</dtb:abbr></dtb:td>
+		<dtb:td>1234</dtb:td>
+		<dtb:td>3456</dtb:td>
+		<dtb:td>234.889</dtb:td>
+		<dtb:td>1.345.666</dtb:td>
+              </dtb:tr>
+              <dtb:tr>
+		<dtb:td>Japan</dtb:td>
+		<dtb:td>2345</dtb:td>
+		<dtb:td>6789</dtb:td>
+		<dtb:td>11.889</dtb:td>
+		<dtb:td>345.666</dtb:td>
+              </dtb:tr>
+              <dtb:tr>
+		<dtb:td>Indien</dtb:td>
+		<dtb:td>3445</dtb:td>
+		<dtb:td>5678</dtb:td>
+		<dtb:td>34.889</dtb:td>
+		<dtb:td>250.345.666</dtb:td>
+              </dtb:tr>
+              <dtb:tr>
+		<dtb:td>Grönland</dtb:td>
+		<dtb:td>3442</dtb:td>
+		<dtb:td>5628</dtb:td>
+		<dtb:td>14.889</dtb:td>
+		<dtb:td>234</dtb:td>
+              </dtb:tr>
+              <dtb:tr>
+		<dtb:td>Russland</dtb:td>
+		<dtb:td>342</dtb:td>
+		<dtb:td>528</dtb:td>
+		<dtb:td>234.889</dtb:td>
+		<dtb:td>234.346.000</dtb:td>
+              </dtb:tr>
+            </dtb:tbody>
+          </dtb:table>
+        </stub>
+      </x:context>
+      <x:expect label="braille">
+y TABLEb
+
+y CAPTION
+ AE +GABC OE &amp;!WH
+xxx Linearisierte Version xxx
+y THEADb
+
+y TRb
+
+y THb
+ L+D
+y THe
+y THb
+ :: &gt;BIP #AIHJ
+y THe
+y THb
+ :: &gt;BNP #AIHJ
+y THe
+y THb
+ :: FL@4E
+y THe
+y THb
+ :: 6WOHN7
+y THe
+y TRe
+
+y THEADe
+
+y TBODYb
+
+y TRb
+
+y TDb
+ &gt;USA
+y TDe
+y TDb
+ :: #ABCD
+y TDe
+y TDb
+ :: #CDEF
+y TDe
+y TDb
+ :: #BCD.HHI
+y TDe
+y TDb
+ :: #A.CDE.FFF
+y TDe
+y TRe
+
+y TRb
+
+y TDb
+ JAPAN
+y TDe
+y TDb
+ :: #BCDE
+y TDe
+y TDb
+ :: #FGHI
+y TDe
+y TDb
+ :: #AA.HHI
+y TDe
+y TDb
+ :: #CDE.FFF
+y TDe
+y TRe
+
+y TRb
+
+y TDb
+ *DIC
+y TDe
+y TDb
+ :: #CDDE
+y TDe
+y TDb
+ :: #EFGH
+y TDe
+y TDb
+ :: #CD.HHI
+y TDe
+y TDb
+ :: #BEJ.CDE.FFF
+y TDe
+y TRe
+
+y TRb
+
+y TDb
+ GR9NL+D
+y TDe
+y TDb
+ :: #CDDB
+y TDe
+y TDb
+ :: #EFBH
+y TDe
+y TDb
+ :: #AD.HHI
+y TDe
+y TDb
+ :: #BCD
+y TDe
+y TRe
+
+y TRb
+
+y TDb
+ RU^L+D
+y TDe
+y TDb
+ :: #CDB
+y TDe
+y TDb
+ :: #EBH
+y TDe
+y TDb
+ :: #BCD.HHI
+y TDe
+y TDb
+ :: #BCD.CDF.JJJ
+y TDe
+y TRe
+
+y TBODYe
+
+y TFOOTb
+
+y TRb
+
+y THb
+ =&amp;M@^ &gt;OECD=
+y THe
+y THb
+ :: * MIA. &gt;CHF
+y THe
+y THb
+ :: * MIA. &gt;CHF
+y THe
+y THb
+ :: * 'HA
+y THe
+y THb
+ :: =OE RCTN7=
+y THe
+y TRe
+
+y TFOOTe
+
+xxx D-Zeilen-Version xxx
+&gt;skip
+DL+D           &gt;BIP #AIHJ   &gt;BNP #AIHJ   FL@4E     6WOHN7      
+D:::           ::::::::::   ::::::::::   :::::     ::::::      
+D&gt;USA .......  #ABCD .....  #CDEF .....  #BCD.HHI  #A.CDE.FFF  
+DJAPAN ......  #BCDE .....  #FGHI .....  #AA.HHI   #CDE.FFF ...
+D*DIC .......  #CDDE .....  #EFGH .....  #CD.HHI   #BEJ.CDE.FFF
+DGR9NL+D ....  #CDDB .....  #EFBH .....  #AD.HHI   #BCD .......
+DRU^L+D .....  #CDB ......  #EBH ......  #BCD.HHI  #BCD.CDF.JJJ
+D=&amp;M@^ &gt;OECD=  * MIA. &gt;CHF  * MIA. &gt;CHF  * 'HA     =OE RCTN7=  
+D::::::::::::  :::::::::::  :::::::::::  :::::     ::::::::::  
+:skip
+
+xxx D-Zeilen-Version (gedreht) xxx
+&gt;skip
+DL+D ......  &gt;USA .....  JAPAN ..  *DIC .......  GR9NL+D  RU^L+D .....  =&amp;M@^ &gt;OECD=
+D&gt;BIP #AIHJ  #ABCD ....  #BCDE ..  #CDDE ......  #CDDB    #CDB .......  * MIA. &gt;CHF 
+D&gt;BNP #AIHJ  #CDEF ....  #FGHI ..  #EFGH ......  #EFBH    #EBH .......  * MIA. &gt;CHF 
+DFL@4E ....  #BCD.HHI    #AA.HHI   #CD.HHI ....  #AD.HHI  #BCD.HHI ...  * 'HA ......
+D6WOHN7 ...  #A.CDE.FFF  #CDE.FFF  #BEJ.CDE.FFF  #BCD ..  #BCD.CDF.JJJ  =OE RCTN7=  
+:skip
+y TABLEe
+</x:expect>
+    </x:scenario>
+
+    <x:scenario label="Table w/o tbody">
+      <x:context>
+        <stub xml:lang="de">
+	  <dtb:table>
+            <dtb:tr>
+	      <dtb:td>1</dtb:td>
+	      <dtb:td>2</dtb:td>
+	      <dtb:td>3</dtb:td>
+            </dtb:tr>
+            <dtb:tr>
+	      <dtb:td>a</dtb:td>
+	      <dtb:td>b</dtb:td>
+	      <dtb:td>c</dtb:td>
+            </dtb:tr>
+          </dtb:table>
+        </stub>
+      </x:context>
+      <x:expect label="braille">
+y TABLEb
+
+xxx Linearisierte Version xxx
+y TRb
+
+y TDb
+ #A
+y TDe
+y TDb
+ :: #B
+y TDe
+y TDb
+ :: #C
+y TDe
+y TRe
+
+y TRb
+
+y TDb
+ 'A
+y TDe
+y TDb
+ :: 'B
+y TDe
+y TDb
+ :: 'C
+y TDe
+y TRe
+
+xxx D-Zeilen-Version xxx
+&gt;skip
+D#A  #B  #C
+D'A  'B  'C
+:skip
+
+xxx D-Zeilen-Version (gedreht) xxx
+&gt;skip
+D#A  'A
+D#B  'B
+D#C  'C
+:skip
+y TABLEe
+</x:expect>
+    </x:scenario>
+
+    <x:scenario label="Table with irregular structure">
+      <x:context>
+        <stub xml:lang="de">
+	  <dtb:table>
+            <dtb:tr>
+	      <dtb:td>1</dtb:td>
+	      <dtb:td>2</dtb:td>
+	      <dtb:td>3</dtb:td>
+            </dtb:tr>
+            <dtb:tr>
+	      <dtb:td>a</dtb:td>
+	      <dtb:td>b</dtb:td>
+            </dtb:tr>
+          </dtb:table>
+        </stub>
+      </x:context>
+      <x:expect label="braille">
+y TABLEb
+
+xxx Linearisierte Version xxx
+y TRb
+
+y TDb
+ #A
+y TDe
+y TDb
+ :: #B
+y TDe
+y TDb
+ :: #C
+y TDe
+y TRe
+
+y TRb
+
+y TDb
+ 'A
+y TDe
+y TDb
+ :: 'B
+y TDe
+y TRe
+
+xxx D-Zeilen-Version xxx
+&gt;skip
+D#A  #B  #C
+D'A  'B
+:skip
+
+xxx D-Zeilen-Version (gedreht) xxx
+&gt;skip
+D#A  'A
+D#B  'B
+D#C    
+:skip
+y TABLEe
+</x:expect>
+    </x:scenario>
+
+    <x:scenario label="Another table with irregular structure">
+      <x:context>
+        <stub xml:lang="de">
+	  <dtb:table>
+            <dtb:tr>
+	      <dtb:th>Foo</dtb:th>
+            </dtb:tr>
+            <dtb:tr>
+	      <dtb:td>a</dtb:td>
+	      <dtb:td>b</dtb:td>
+            </dtb:tr>
+          </dtb:table>
+        </stub>
+      </x:context>
+      <x:expect label="braille">
+y TABLEb
+
+xxx Linearisierte Version xxx
+y TRb
+
+y THb
+ FOO
+y THe
+y TRe
+
+y TRb
+
+y TDb
+ 'A
+y TDe
+y TDb
+ :: 'B
+y TDe
+y TRe
+
+xxx D-Zeilen-Version xxx
+&gt;skip
+DFOO
+D:::
+D'A   'B
+:skip
+
+xxx D-Zeilen-Version (gedreht) xxx
+&gt;skip
+DFOO  'A
+D ..  'B
+:skip
+y TABLEe
+</x:expect>
+    </x:scenario>
+
+    <x:scenario label="A table with colspan">
+      <x:context>
+        <stub xml:lang="de">
+	  <dtb:table>
+            <dtb:tr>
+	      <dtb:th colspan="2">Foo</dtb:th>
+            </dtb:tr>
+            <dtb:tr>
+	      <dtb:td>a</dtb:td>
+	      <dtb:td>b</dtb:td>
+            </dtb:tr>
+          </dtb:table>
+        </stub>
+      </x:context>
+      <x:expect label="braille">
+y TABLEb
+
+xxx Linearisierte Version xxx
+y TRb
+
+y THb
+ FOO
+y THe
+y THb
+ :: FOO
+y THe
+y TRe
+
+y TRb
+
+y TDb
+ 'A
+y TDe
+y TDb
+ :: 'B
+y TDe
+y TRe
+
+xxx D-Zeilen-Version xxx
+&gt;skip
+DFOO    
+D:::    
+D'A   'B
+:skip
+
+xxx D-Zeilen-Version (gedreht) xxx
+&gt;skip
+DFOO  'A
+D ..  'B
+:skip
+y TABLEe
+</x:expect>
+    </x:scenario>
+
+</x:description>

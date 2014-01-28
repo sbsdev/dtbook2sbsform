@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<x:description xmlns:utfx="http://utfx.org/test-definition" xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:dtb="http://www.daisy.org/z3986/2005/dtbook/" xmlns:brl="http://www.daisy.org/z3986/2009/braille/" stylesheet="file:/home/eglic/src/dtbook2sbsform/src/main/resources/xml/handle-prodnote.xsl">
+
+    <!--
+      This XSpec test was automatically generated from handle_prodnote_test.utfx
+    -->
+
+    <x:param name="contraction" select="2"/>
+
+    <x:scenario label="Empty Prodnote">
+      <x:context>
+        <stub xml:lang="de">
+        </stub>
+      </x:context>
+      <x:expect label="braille">
+        <stub xml:lang="de">
+        </stub>
+      </x:expect>
+    </x:scenario>
+
+    <x:scenario label="Inline Prodnote">
+      <x:context>
+        <dtb:prodnote xml:lang="de">In der Blindenschriftausgabe wurden sämtliche Abbildungen weggelassen.</dtb:prodnote>
+      </x:context>
+      <x:expect label="braille">
+	<brl:literal>&lt;=</brl:literal>In der Blindenschriftausgabe wurden sämtliche Abbildungen weggelassen.<brl:literal>&lt;=</brl:literal>
+      </x:expect>
+    </x:scenario>
+
+    <x:scenario label="Block Prodnote">
+      <x:context>
+        <dtb:prodnote xml:lang="de">
+	  <dtb:p brl:class="ind">Anmerkung für die Blindenschriftausgabe:</dtb:p>
+	  <dtb:p brl:class="ind">Eine Zeichenerklärung befindet sich am Ende des Buches.</dtb:p>
+      </dtb:prodnote>
+      </x:context>
+      <x:expect label="braille">
+	<dtb:p brl:class="ind"><brl:literal>&lt;=</brl:literal>Anmerkung für die Blindenschriftausgabe:</dtb:p><dtb:p brl:class="ind">Eine Zeichenerklärung befindet sich am Ende des Buches.<brl:literal>&lt;=</brl:literal></dtb:p>
+      </x:expect>
+    </x:scenario>
+
+</x:description>

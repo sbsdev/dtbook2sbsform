@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<x:description xmlns:utfx="http://utfx.org/test-definition" xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:dtb="http://www.daisy.org/z3986/2005/dtbook/" xmlns:brl="http://www.daisy.org/z3986/2009/braille/" stylesheet="file:/home/eglic/src/dtbook2sbsform/src/main/resources/xml/dtbook2sbsform.xsl" preserve-space="dtb:p dtb:byline dtb:author dtb:li dtb:lic dtb:doctitle dtb:docauthor dtb:span dtb:em dtb:strong brl:emph dtb:line dtb:h1 dtb:h2 dtb:h3 dtb:h4 dtb:h5 dtb:h6">
+
+    <!--
+      This XSpec test was automatically generated from computerBraille_test.utfx
+    -->
+
+    <x:param name="contraction" select="2"/>
+
+    <x:scenario label="getTable for a">
+      <x:call template="getTable"/>
+      <x:context>
+        <a xml:lang="de"/>
+      </x:context>
+      <x:expect label="braille">file:/usr/local/share/liblouis/tables/sbs.dis,sbs-de-core6.cti,sbs-de-accents.cti,sbs-special.cti,sbs-whitespace.mod,sbs-de-hyph-none.mod,sbs-de-accents-ch.mod,sbs-special.mod</x:expect>
+    </x:scenario>
+
+    <x:scenario label="Computer Braille">
+      <x:context>
+        <dtb:a xml:lang="de">www.xyz.ch</dtb:a>
+      </x:context>
+      <x:expect label="braille">'$WWW.XYZ.CH</x:expect>
+    </x:scenario>
+
+    <x:scenario label="Computer Braille">
+      <x:context>
+        <dtb:a xml:lang="de">www.e-text.ch</dtb:a>
+      </x:context>
+      <x:expect label="braille">'$WWW.E-TEXT.CH</x:expect>
+    </x:scenario>
+
+    <x:scenario label="URLs email">
+      <x:context>
+        <dtb:a xml:lang="de">meier_alex@ubs.com</dtb:a>
+      </x:context>
+      <x:expect label="braille">'$MEIER"_ALEX"@UBS.COM</x:expect>
+    </x:scenario>
+
+    <x:scenario label="URLs special">
+      <x:context>
+        <dtb:a xml:lang="de">http://www.google-test.ch/test?=:;+%#$</dtb:a>
+      </x:context>
+      <x:expect label="braille">'$HTTP://WWW.GOOGLE-TEST.CH/TEST?=:;+%#$</x:expect>
+    </x:scenario>
+
+    <x:scenario label="URLs numbers">
+      <x:context>
+        <dtb:a xml:lang="de">peter34@gmx.net</dtb:a>
+      </x:context>
+      <x:expect label="braille">'$PETER34"@GMX.NET</x:expect>
+    </x:scenario>
+
+</x:description>

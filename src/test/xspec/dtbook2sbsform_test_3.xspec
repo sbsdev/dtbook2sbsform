@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<x:description xmlns:utfx="http://utfx.org/test-definition" xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:dtb="http://www.daisy.org/z3986/2005/dtbook/" xmlns:brl="http://www.daisy.org/z3986/2009/braille/" stylesheet="file:/home/eglic/src/dtbook2sbsform/src/main/resources/xml/dtbook2sbsform.xsl" preserve-space="dtb:p dtb:byline dtb:author dtb:li dtb:lic dtb:doctitle dtb:docauthor dtb:span dtb:em dtb:strong brl:emph dtb:line dtb:h1 dtb:h2 dtb:h3 dtb:h4 dtb:h5 dtb:h6">
+
+    <!--
+      This XSpec test was automatically generated from dtbook2sbsform_test.utfx
+    -->
+
+    <x:param name="contraction" select="2"/>
+    <x:param name="hyphenation" select="true()"/>
+
+    <x:scenario label="Downgrading">
+      <x:context>
+        <stub xml:lang="de">
+          <dtb:p>Kurzschrift schrift schrift <dtb:span>╙</dtb:span><dtb:span brl:grade="1">Vollschrift</dtb:span> kurz kurz kurz</dtb:p>
+          <dtb:p>Kurzschrift schrift schrift <dtb:span>╙</dtb:span><dtb:span brl:grade="0">Basisschrift</dtb:span> kurz kurz kurz</dtb:p>
+          <dtb:p>Kurzschrift schrift schrift <dtb:span>╚</dtb:span><dtb:span brl:grade="1">Vollschrift schrift schrift</dtb:span><dtb:span>╝</dtb:span> kurz kurz kurz</dtb:p>
+          <dtb:p>Kurzschrift schrift schrift <dtb:span>╚</dtb:span><dtb:span brl:grade="0">Basisschrift schrift schrift</dtb:span><dtb:span>╝</dtb:span> kurz kurz kurz</dtb:p>
+          <dtb:p>Kurzschrift schrift schrift <dtb:span>╚</dtb:span><dtb:span brl:grade="1">Vollschrift/Vollschrift</dtb:span><dtb:span>╝</dtb:span> kurz kurz kurz</dtb:p>
+          <dtb:p>Kurzschrift schrift schrift <dtb:span>╚</dtb:span><dtb:span brl:grade="0">Basisschrift/Basisschrift</dtb:span><dtb:span>╝</dtb:span> kurz kurz kurz</dtb:p>
+          <dtb:p>Kurzschrift schrift schrift <dtb:span>╚</dtb:span><dtb:span brl:grade="1">Vollschrift-​Vollschrift</dtb:span><dtb:span>╝</dtb:span> kurz kurz kurz</dtb:p>
+          <dtb:p>Kurzschrift schrift schrift <dtb:span>╚</dtb:span><dtb:span brl:grade="0">Basisschrift-​Basisschrift</dtb:span><dtb:span>╝</dtb:span> kurz kurz kurz</dtb:p>
+        </stub>
+      </x:context>
+      <x:expect label="braille">
+y P
+ KZ5T 5T 5T '.VOLL5RIFT KZ KZ KZ
+y P
+ KZ5T 5T 5T '.BASISSCHRIFT KZ KZ KZ
+y P
+ KZ5T 5T 5T -.VOLL5RIFT 5RIFT 5RIFT'. KZ KZ KZ
+y P
+ KZ5T 5T 5T -.BASISSCHRIFT SCHRIFT SCHRIFT'. KZ KZ KZ
+y P
+ KZ5T 5T 5T -.VOLL5RIFT!,mVOLL5RIFT'. KZ KZ KZ
+y P
+ KZ5T 5T 5T -.BASISSCHRIFT!,mBASISSCHRIFT'. KZ KZ KZ
+y P
+ KZ5T 5T 5T -.VOLL5RIFT-mVOLL5RIFT'. KZ KZ KZ
+y P
+ KZ5T 5T 5T -.BASISSCHRIFT-mBASISSCHRIFT'. KZ KZ KZ</x:expect>
+    </x:scenario>
+
+    <x:scenario label="Emphasis: Wortgrenzenerkennung bei &#34;-&#34; und &#34;/&#34;">
+      <x:context>
+        <stub xml:lang="de"><dtb:em>Wort</dtb:em>, <dtb:strong>Wort</dtb:strong>, <brl:emph>Wort</brl:emph>. <dtb:em>Zwei Wörter</dtb:em>, <dtb:strong>eins/zwei</dtb:strong>, <brl:emph>eins-​zwei</brl:emph>.</stub>
+      </x:context>
+      <x:expect label="braille">_W?T, _W?T, _W?T. __ZW3 W9RT7'., __6S!,mZW3'., __6S-mZW3'..</x:expect>
+    </x:scenario>
+
+</x:description>
