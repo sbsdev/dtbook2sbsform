@@ -37,23 +37,40 @@
   
   <xsl:param name="TABLE_BASE_URI">file:/usr/local/share/liblouis/tables/</xsl:param>
   
-  <xsl:param name="contraction">2</xsl:param>
-  <xsl:param name="version">0</xsl:param>
-  <xsl:param name="cells_per_line">28</xsl:param>
-  <xsl:param name="lines_per_page">28</xsl:param>
-  <xsl:param name="hyphenation" select="false()"/>
-  <xsl:param name="toc_level">0</xsl:param>
-  <xsl:param name="footer_level">0</xsl:param>
-  <xsl:param name="show_original_page_numbers" select="true()"/>
-  <xsl:param name="show_v_forms" select="true()"/>
-  <xsl:param name="downshift_ordinals" select="true()"/>
-  <xsl:param name="enable_capitalization" select="false()"/>
-  <xsl:param name="detailed_accented_characters">de-accents-ch</xsl:param>
-  <xsl:param name="include_macros" select="true()"/>
-  <xsl:param name="footnote_placement">standard</xsl:param>
-  <xsl:param name="use_local_dictionary" select="false()"/>
-  <xsl:param name="document_identifier"></xsl:param>
-  
+  <xsl:param name="_contraction" select="'2'"/>
+  <xsl:param name="_version" select="'0'"/>
+  <xsl:param name="_cells_per_line" select="'28'"/>
+  <xsl:param name="_lines_per_page" select="'28'"/>
+  <xsl:param name="_hyphenation" select="'false'"/>
+  <xsl:param name="_toc_level" select="'0'"/>
+  <xsl:param name="_footer_level" select="'0'"/>
+  <xsl:param name="_show_original_page_numbers"  select="'true'"/>
+  <xsl:param name="_show_v_forms" select="'true'"/>
+  <xsl:param name="_downshift_ordinals" select="'true'"/>
+  <xsl:param name="_enable_capitalization" select="'false'"/>
+  <xsl:param name="_detailed_accented_characters" select="'de-accents-ch'"/>
+  <xsl:param name="_include_macros" select="'true'"/>
+  <xsl:param name="_footnote_placement" select="'standard'"/>
+  <xsl:param name="_use_local_dictionary" select="'false'"/>
+  <xsl:param name="_document_identifier" select="''"/>
+
+  <xsl:param name="contraction" select="number($_contraction)"/>
+  <xsl:param name="version" select="$_version"/>
+  <xsl:param name="cells_per_line" select="number($_cells_per_line)"/>
+  <xsl:param name="lines_per_page" select="number($_lines_per_page)"/>
+  <xsl:param name="hyphenation" select="$_hyphenation='true'"/>
+  <xsl:param name="toc_level" select="number($_toc_level)"/>
+  <xsl:param name="footer_level" select="number($_footer_level)"/>
+  <xsl:param name="show_original_page_numbers" select="$_show_original_page_numbers='true'"/>
+  <xsl:param name="show_v_forms" select="$_show_v_forms='true'"/>
+  <xsl:param name="downshift_ordinals" select="$_downshift_ordinals='true'"/>
+  <xsl:param name="enable_capitalization" select="$_enable_capitalization='true'"/>
+  <xsl:param name="detailed_accented_characters" select="$_detailed_accented_characters"/>
+  <xsl:param name="include_macros" select="$_include_macros='true'"/>
+  <xsl:param name="footnote_placement" select="$_footnote_placement"/>
+  <xsl:param name="use_local_dictionary" select="$_use_local_dictionary='true'"/>
+  <xsl:param name="document_identifier" select="$_document_identifier"/>
+
   <!-- TODO: introduce more constants (variables), e.g. for &#x250A; -->
   <xsl:variable name="GROSS_FUER_BUCHSTABENFOLGE">╦</xsl:variable>
   <xsl:variable name="GROSS_FUER_EINZELBUCHSTABE">╤</xsl:variable>

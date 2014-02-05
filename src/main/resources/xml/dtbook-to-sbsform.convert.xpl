@@ -19,8 +19,24 @@
     </p:output>
     
     <p:option name="output-dir" required="true"/>
+
+    <p:option name="contraction" required="true"/>
+    <p:option name="version" required="true"/>
+    <p:option name="cells_per_line" required="true"/>
+    <p:option name="lines_per_page" required="true"/>
     <p:option name="hyphenation" required="true"/>
-        
+    <p:option name="toc_level" required="true"/>
+    <p:option name="footer_level" required="true"/>
+    <p:option name="include_macros" required="true"/>
+    <p:option name="show_original_page_numbers" required="true"/>
+    <p:option name="show_v_forms" required="true"/>
+    <p:option name="downshift_ordinals" required="true"/>
+    <p:option name="enable_capitalization" required="true"/>
+    <p:option name="detailed_accented_characters" required="true"/>
+    <p:option name="footnote_placement" required="true"/>
+    <p:option name="use_local_dictionary" required="true"/>
+    <p:option name="document_identifier" required="true"/>
+            
     <p:import href="utils/normalize-uri.xpl"/>
     <p:import href="http://www.daisy.org/pipeline/modules/fileset-utils/library.xpl"/>
     
@@ -100,8 +116,6 @@
             <p:inline>
                 <xsl:stylesheet version="2.0">
                     <xsl:import href="dtbook2sbsform.xsl"/>
-                    <xsl:param name="_hyphenation"/>
-                    <xsl:variable name="hyphenation" select="$_hyphenation='true'"/>
                     <xsl:template match="/">
                         <xsl:element name="c:data">
                             <xsl:attribute name="content-type" select="'text/x-sbsform-g2'"/>
@@ -111,7 +125,22 @@
                 </xsl:stylesheet>
             </p:inline>
         </p:input>
+        <p:with-param name="_contraction" select="$contraction"/>
+        <p:with-param name="_version" select="$version"/>
+        <p:with-param name="_cells_per_line" select="$cells_per_line"/>
+        <p:with-param name="_lines_per_page" select="$lines_per_page"/>
         <p:with-param name="_hyphenation" select="$hyphenation"/>
+        <p:with-param name="_toc_level" select="$toc_level"/>
+        <p:with-param name="_footer_level" select="$footer_level"/>
+        <p:with-param name="_include_macros" select="$include_macros"/>
+        <p:with-param name="_show_original_page_numbers" select="$show_original_page_numbers"/>
+        <p:with-param name="_show_v_forms" select="$show_v_forms"/>
+        <p:with-param name="_downshift_ordinals" select="$downshift_ordinals"/>
+        <p:with-param name="_enable_capitalization" select="$enable_capitalization"/>
+        <p:with-param name="_detailed_accented_characters" select="$detailed_accented_characters"/>
+        <p:with-param name="_footnote_placement" select="$footnote_placement"/>
+        <p:with-param name="_use_local_dictionary" select="$use_local_dictionary"/>
+        <p:with-param name="_document_identifier" select="$document_identifier"/>
     </p:xslt>
     
     <!-- ========== -->
