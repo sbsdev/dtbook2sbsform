@@ -140,4 +140,26 @@
       <x:expect label="braille">P.</x:expect>
     </x:scenario>
 
+    <x:scenario label="Falsches Resultat bei ABBR Basisschrift/Vollschrift (CDs) (#1613)">
+      <x:context>
+        <stub xml:lang="de">
+          <dtb:p><dtb:abbr>CD</dtb:abbr>s</dtb:p>
+        </stub>
+      </x:context>
+      <x:expect label="braille">
+y P
+ &gt;CD'S</x:expect>
+    </x:scenario>
+
+    <x:scenario label="Falsches Resultat bei ABBR Basisschrift/Vollschrift (CDs) (#1613)">
+      <x:context>
+        <stub xml:lang="de">
+          <dtb:p><dtb:abbr>CD</dtb:abbr>S</dtb:p>
+        </stub>
+      </x:context>
+      <x:expect label="braille">
+y P
+ &gt;CDS</x:expect>
+    </x:scenario>
+
 </x:description>

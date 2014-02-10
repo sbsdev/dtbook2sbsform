@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<!-- Copyright (C) 2011 Swiss Library for the Blind, Visually Impaired and Print Disabled -->
+
+<!-- This file is part of dtbook2sbsform. -->
+
+<!-- dtbook2sbsform is free software: you can redistribute it -->
+<!-- and/or modify it under the terms of the GNU Lesser General Public -->
+<!-- License as published by the Free Software Foundation, either -->
+<!-- version 3 of the License, or (at your option) any later version. -->
+
+<!-- This program is distributed in the hope that it will be useful, -->
+<!-- but WITHOUT ANY WARRANTY; without even the implied warranty of -->
+<!-- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU -->
+<!-- Lesser General Public License for more details. -->
+
+<!-- You should have received a copy of the GNU Lesser General Public -->
+<!-- License along with this program. If not, see -->
+<!-- <http://www.gnu.org/licenses/>. -->
+
+<!DOCTYPE utfx:tests PUBLIC "-//UTF-X//DTD utfx-tests 1.0//EN" "utfx_tests.dtd">
+<utfx:tests xmlns:utfx="http://utfx.org/test-definition"
+  xmlns:dtb="http://www.daisy.org/z3986/2005/dtbook/"
+  xmlns:brl="http://www.daisy.org/z3986/2009/braille/">
+  <utfx:stylesheet src="xsl/dtbook2sbsform.xsl"/>
+
+  <utfx:test>
+    <utfx:name>Einformige Kürzungen vor Klammern (#1746)</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+        <stub xml:lang="de">aber(blabla) auf(blabla) bei(blabla) durch(blabla) für(blabla) gegen(blabla) gewesen(blabla) immer(blabla) jetzt(blabla) mehr(blabla) mit(blabla) nicht(blabla) über(blabla) und(blabla) unter(blabla) voll(blabla) von(blabla) vor(blabla) </stub>
+      </utfx:source>
+      <utfx:expected>,A'=BLABLA= ,1'=BLABLA= ,B'=BLABLA= ,4'=BLABLA= ,F'=BLABLA= ,G'=BLABLA= ,&amp;'=BLABLA= ,X'=BLABLA= ,J'=BLABLA= ,='=BLABLA= ,T'=BLABLA= ,N'=BLABLA= ,8'=BLABLA= ,U'=BLABLA= ,/'=BLABLA= ,Q'=BLABLA= ,V'=BLABLA= ,?'=BLABLA= </utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>	
+  
+  <utfx:test>
+    <utfx:name>Einformige Kürzungen nach Klammern (#1746)</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+        <stub xml:lang="de">(blabla)aber (blabla)auf (blabla)bei (blabla)durch (blabla)für (blabla)gegen (blabla)gewesen (blabla)immer (blabla)jetzt (blabla)mehr (blabla)mit (blabla)nicht (blabla)über (blabla)und (blabla)unter (blabla)voll (blabla)von (blabla)vor </stub>
+      </utfx:source>
+      <utfx:expected>=BLABLA'=,A =BLABLA'=,1 =BLABLA'=,B =BLABLA'=,4 =BLABLA'=,F =BLABLA'=,G =BLABLA'=,&amp; =BLABLA'=,X =BLABLA'=,J =BLABLA'=,= =BLABLA'=,T =BLABLA'=,N =BLABLA'=,8 =BLABLA'=,U =BLABLA'=,/ =BLABLA'=,Q =BLABLA'=,V =BLABLA'=,? </utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+  
+</utfx:tests>

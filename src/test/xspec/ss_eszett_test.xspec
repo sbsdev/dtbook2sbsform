@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<x:description xmlns:utfx="http://utfx.org/test-definition" xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:dtb="http://www.daisy.org/z3986/2005/dtbook/" xmlns:brl="http://www.daisy.org/z3986/2009/braille/" stylesheet="../../main/resources/xml/dtbook2sbsform.xsl" preserve-space="dtb:p dtb:byline dtb:author dtb:li dtb:lic dtb:doctitle dtb:docauthor dtb:span dtb:em dtb:strong brl:emph dtb:line dtb:h1 dtb:h2 dtb:h3 dtb:h4 dtb:h5 dtb:h6">
+
+    <!--
+      This XSpec test was automatically generated from ss_eszett_test.utfx
+    -->
+
+    <x:param name="contraction" select="2"/>
+
+    <x:scenario label="Kuerzungen mit ss">
+      <x:context>
+        <stub xml:lang="de">besser dass dessen gröss gross muss schliess sprech wiss</stub>
+      </x:context>
+      <x:expect label="braille">SS ^ D^ !G^ G^ M^ 5^ ,^ W^</x:expect>
+    </x:scenario>
+
+    <x:scenario label="Kuerzungen mit Eszett">
+      <x:context>
+        <stub xml:lang="de">daß größ groß muß schließ wiß</stub>
+      </x:context>
+      <x:expect label="braille">^ !G^ G^ M^ 5^ W^</x:expect>
+    </x:scenario>
+
+    <x:scenario label="Ausdruecke mit Eszett">
+      <x:context>
+        <stub xml:lang="de">aß eß iß oß uß</stub>
+      </x:context>
+      <x:expect label="braille">A'^ E'^ I'^ O'^ U'^</x:expect>
+    </x:scenario>
+
+</x:description>
