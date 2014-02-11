@@ -31,12 +31,13 @@
 			<xsl:variable name="stylesheet" as="xs:string" select="replace(/utfx:tests/utfx:stylesheet/@src, '^xsl/', '')"/>
 			<xsl:variable name="stylesheet-uri" as="xs:anyURI"
 			              select="resolve-uri(concat('src/main/resources/xml/', $stylesheet), $project_home)"/>
+			<xsl:variable name="stylesheet-uri-relative" select="concat('../../main/resources/xml/', $stylesheet)"/>
 			<xsl:result-document method="xml" encoding="utf-8" indent="no"
 			                     href="{if (last() &gt; 1)
 			                              then resolve-uri(concat('src/test/xspec/', $test_name, '_', position(), '.xspec'), $project_home)
 			                              else resolve-uri(concat('src/test/xspec/', $test_name, '.xspec'), $project_home)}">
 				<xsl:text>&#xA;</xsl:text>
-				<x:description stylesheet="{$stylesheet-uri}">
+				<x:description stylesheet="{$stylesheet-uri-relative}">
 					<xsl:if test="$stylesheet='dtbook2sbsform.xsl'">
 						<xsl:attribute name="preserve-space"
 						               select="doc($stylesheet-uri)/xsl:stylesheet/xsl:preserve-space/@elements"/>

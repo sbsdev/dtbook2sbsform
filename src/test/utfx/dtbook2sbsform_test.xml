@@ -256,6 +256,62 @@ y POEMe_foo
   </utfx:test>
 
   <utfx:test>
+    <utfx:name>Translation of linegroup</utfx:name>
+    <utfx:assert-equal>
+      <utfx:source>
+	<dtb:linegroup xml:lang="de"></dtb:linegroup>
+      </utfx:source>
+      <utfx:expected>
+y LINEGRb
+ 
+y LINEGRe
+</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+  
+  <utfx:test>
+    <utfx:name>Translation of linegroup with brl:class attr</utfx:name>
+    <utfx:assert-equal>
+      <utfx:source>
+	<dtb:linegroup xml:lang="de" brl:class="foo"></dtb:linegroup>
+      </utfx:source>
+      <utfx:expected>
+y LINEGRb_foo
+ 
+y LINEGRe_foo
+</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+  
+  <utfx:test>
+    <utfx:name>Translation of line</utfx:name>
+    <utfx:assert-equal>
+      <utfx:source>
+	<dtb:line xml:lang="de"></dtb:line>
+      </utfx:source>
+      <utfx:expected>
+y LINEb
+ 
+y LINEe
+</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+  
+  <utfx:test>
+    <utfx:name>Translation of line with brl:class attr</utfx:name>
+    <utfx:assert-equal>
+      <utfx:source>
+	<dtb:line xml:lang="de" brl:class="foo"></dtb:line>
+      </utfx:source>
+      <utfx:expected>
+y LINEb_foo
+ 
+y LINEe_foo
+</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
     <utfx:name>Selection feature</utfx:name>
     <utfx:assert-equal>
       <utfx:source>
@@ -1439,4 +1495,410 @@ y LEVEL1e
 </utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
+  
+  <utfx:test>
+    <utfx:name>Fehlender Pt. 6 (Apo) vor Anführungszeichen im Wortinnern (#1525)</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="1"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+        <stub xml:lang="de">
+          <dtb:p>Gruppen»mahlzeit«</dtb:p>
+          <dtb:p>»Gruppen«mahlzeit</dtb:p>
+        </stub>
+      </utfx:source>
+      <utfx:expected>
+y P
+ GRUPPEN(MAHLZ3T)
+y P
+ (GRUPPEN)MAHLZ3T</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>Fehlender Pt. 6 (Apo) vor Anführungszeichen im Wortinnern (#1525)</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+        <stub xml:lang="de">
+          <dtb:p>Gruppen»mahlzeit«</dtb:p>
+          <dtb:p>»Gruppen«mahlzeit</dtb:p>
+        </stub>
+      </utfx:source>
+      <utfx:expected>
+y P
+ GRUPPC'(MAHLZT)
+y P
+ (GRUPPC')MAHLZT</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+  
+  <utfx:test>
+    <utfx:name>"ver-"-Vorsilbe wird nach Bindestrich als "-" statt "V7" ausgegeben (#1714)</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+        <stub xml:lang="de">
+          <dtb:p>Vereinigung</dtb:p>
+          <dtb:p>Fußballvereinigung</dtb:p>
+          <dtb:p>Fußball-Vereinigung</dtb:p>
+        </stub>
+      </utfx:source>
+      <utfx:expected>
+y P
+ -6>U
+y P
+ FU'^BAQV76>U
+y P
+ FU'^BAQ-V76>U</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+  
+  <utfx:test>
+    <utfx:name>Schrägstrich zwischen ABBR wird getilgt (#1752)</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="1"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+        <stub xml:lang="de">
+          <dtb:p><dtb:abbr>A</dtb:abbr>/<dtb:abbr>Z</dtb:abbr></dtb:p>
+        </stub>
+      </utfx:source>
+      <utfx:expected>
+y P
+ >A!,m>Z</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+  
+  <utfx:test>
+    <utfx:name>Schrägstrich zwischen ABBR wird getilgt (#1752)</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+        <stub xml:lang="de">
+          <dtb:p><dtb:abbr>A</dtb:abbr>/<dtb:abbr>Z</dtb:abbr></dtb:p>
+        </stub>
+      </utfx:source>
+      <utfx:expected>
+y P
+ >A!,m>Z</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+  
+  <utfx:test>
+    <utfx:name>Zahl nach ABBR erzeugt zwei Apostrophe (#1753)</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="1"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+        <stub xml:lang="de">
+          <dtb:p><dtb:abbr>A</dtb:abbr>4</dtb:p>
+        </stub>
+      </utfx:source>
+      <utfx:expected>
+y P
+ >A#D</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>Zahl nach ABBR erzeugt zwei Apostrophe (#1753)</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+        <stub xml:lang="de">
+          <dtb:p><dtb:abbr>A</dtb:abbr>4</dtb:p>
+        </stub>
+      </utfx:source>
+      <utfx:expected>
+y P
+ >A#D</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+  
+  <utfx:test>
+    <utfx:name>Pt. 6 (Apo) nach Zahl vor A-J innerhalb A (URLs) (#1815)</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="1"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+        <stub xml:lang="de">
+          <dtb:p><dtb:a href="http://www.fit4chat.ch" external="true">www.fit4chat.ch</dtb:a></dtb:p>
+        </stub>
+      </utfx:source>
+      <utfx:expected>
+y P
+ '$WWW.FIT4CHAT.CH</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+  
+  <utfx:test>
+    <utfx:name>Falsche Übersetzung bei BRL:NAME mit Context name_capitalized (#1887)</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+        <stub xml:lang="de">
+          <dtb:p>
+            <brl:name>McDonald</brl:name>
+            <brl:name>McBünzli</brl:name>
+            <brl:name>McKünzli</brl:name>
+          </dtb:p>
+        </stub>
+      </utfx:source>
+      <utfx:expected>
+y P
+  $MC$DONALD $MC$B8NZLI $MC$K8NZLI </utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>Falsche Übersetzung bei BRL:NAME mit Context name_capitalized (#1887)</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+      <utfx:with-param name="hyphenation" select="true()"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+        <stub xml:lang="de">
+          <dtb:p>
+            <brl:name>Mc­Do­nald</brl:name>
+            <brl:name>Mc­Bünz­li</brl:name>
+            <brl:name>Mc­Künz­li</brl:name>
+          </dtb:p>
+        </stub>
+      </utfx:source>
+      <utfx:expected>
+y P
+  $MCt$DOtNALD $MCt$B8NZtLI $MCt$K8NZtLI </utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+  
+  <utfx:test>
+    <utfx:name>fehlender Pt. 6 (Apo) nach ABBR, wenn nur 1 Buchstabe in ABBR (#1903)</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+        <stub xml:lang="de">
+          <dtb:p>Die hohen <dtb:abbr>C</dtb:abbr>s</dtb:p>
+        </stub>
+      </utfx:source>
+      <utfx:expected>
+y P
+ 0 HOHC >C'S</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>fehlender Pt. 6 (Apo) nach ABBR, wenn nur 1 Buchstabe in ABBR (#1903)</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+        <stub xml:lang="de">
+          <dtb:p>bla <dtb:abbr>GmbH</dtb:abbr>s bla</dtb:p>
+        </stub>
+      </utfx:source>
+      <utfx:expected>
+y P
+ BLA $GMB>H'S BLA</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+  
+  <utfx:test>
+    <utfx:name>Punkt 6 (Apo) fälschlicherweise vor Klammer, wenn direkt nach Tag (#1902)</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+        <stub xml:lang="de">
+          <dtb:p>ble <brl:num role="ordinal">33.</brl:num> blo</dtb:p>
+          <dtb:p>(bla)</dtb:p>
+        </stub>
+      </utfx:source>
+      <utfx:expected>
+y P
+ BLE #:: BLO
+y P
+ =BLA=</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+  
+  <utfx:test>
+    <utfx:name>2a &amp; &lt;brl:num&gt;2&lt;/brl:num&gt;a</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+        <stub xml:lang="de">
+          <dtb:p><brl:num>2</brl:num>a</dtb:p>
+          <dtb:p>2a</dtb:p>
+        </stub>
+      </utfx:source>
+      <utfx:expected>
+y P
+ #B'A
+y P
+ #B'A</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>2a &amp; &lt;brl:num&gt;2&lt;/brl:num&gt;a</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="1"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+        <stub xml:lang="de">
+          <dtb:p><brl:num>2</brl:num>a</dtb:p>
+          <dtb:p>2a</dtb:p>
+        </stub>
+      </utfx:source>
+      <utfx:expected>
+y P
+ #B'A
+y P
+ #B'A</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+  
+  <utfx:test>
+    <utfx:name>&lt;em&gt;CD&lt;/em&gt;s</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="1"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+        <stub xml:lang="de">
+          <dtb:p><dtb:em>CD</dtb:em>s</dtb:p>
+        </stub>
+      </utfx:source>
+      <utfx:expected>
+y P
+ _CD'.S</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+  
+  <utfx:test>
+    <utfx:name>&lt;em&gt;CD&lt;/em&gt;s</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+        <stub xml:lang="de">
+          <dtb:p><dtb:em>CD</dtb:em>s</dtb:p>
+        </stub>
+      </utfx:source>
+      <utfx:expected>
+y P
+ _'CD'.S</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+  
+  <utfx:test>
+    <utfx:name>Fehlender Pt. 6 (apo) bei Wort+Zahl-Ausdrücken (#1503)</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+        <stub xml:lang="de">Peter25</stub>
+      </utfx:source>
+      <utfx:expected>PET7'#BE</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>Fehlender Pt. 6 (apo) bei Wort+Zahl-Ausdrücken (#1503)</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="1"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+        <stub xml:lang="de">Peter25</stub>
+      </utfx:source>
+      <utfx:expected>PETER#BE</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+  
+  <utfx:test>
+    <utfx:name>Number followed by closing quote: apo must be inserted</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="1"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+        <stub xml:lang="de">
+          <dtb:p>Rakete »Ariane 2« und</dtb:p>
+        </stub>
+      </utfx:source>
+      <utfx:expected>
+y P
+ RAKETE (ARIANE #B') UND</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>Letter followed by closing quote: no apo must be inserted</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="1"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+        <stub xml:lang="de">
+          <dtb:p>Rakete »Ariane B« und </dtb:p>
+        </stub>
+      </utfx:source>
+      <utfx:expected>
+y P
+ RAKETE (ARIANE B) UND </utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+  
+  <utfx:test>
+    <utfx:name>closing quote after number: apostrophe must be inserted</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="1"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+        <stub xml:lang="de">»2«</stub>
+      </utfx:source>
+      <utfx:expected>(#B')</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>closing quote after number: apostrophe must be inserted</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+        <stub xml:lang="de">»2«</stub>
+      </utfx:source>
+      <utfx:expected>(#B')</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+  
 </utfx:tests>

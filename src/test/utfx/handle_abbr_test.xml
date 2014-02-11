@@ -271,4 +271,72 @@
     </utfx:assert-equal>
   </utfx:test>
 
+  <utfx:test>
+    <utfx:name>Falsches Resultat bei ABBR Basisschrift/Vollschrift (CDs) (#1613)</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="1"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+        <stub xml:lang="de">
+          <dtb:p><dtb:abbr>CD</dtb:abbr>s</dtb:p>
+        </stub>
+      </utfx:source>
+      <utfx:expected>
+y P
+ &gt;CD'S</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>Falsches Resultat bei ABBR Basisschrift/Vollschrift (CDs) (#1613)</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+        <stub xml:lang="de">
+          <dtb:p><dtb:abbr>CD</dtb:abbr>s</dtb:p>
+        </stub>
+      </utfx:source>
+      <utfx:expected>
+y P
+ &gt;CD'S</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+  
+  <utfx:test>
+    <utfx:name>Falsches Resultat bei ABBR Basisschrift/Vollschrift (CDs) (#1613)</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="1"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+        <stub xml:lang="de">
+          <dtb:p><dtb:abbr>CD</dtb:abbr>S</dtb:p>
+        </stub>
+      </utfx:source>
+      <utfx:expected>
+y P
+ &gt;CDS</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>Falsches Resultat bei ABBR Basisschrift/Vollschrift (CDs) (#1613)</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+        <stub xml:lang="de">
+          <dtb:p><dtb:abbr>CD</dtb:abbr>S</dtb:p>
+        </stub>
+      </utfx:source>
+      <utfx:expected>
+y P
+ &gt;CDS</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+  
 </utfx:tests>
