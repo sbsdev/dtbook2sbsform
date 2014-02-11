@@ -141,6 +141,7 @@
         <p:with-param name="_footnote_placement" select="$footnote_placement"/>
         <p:with-param name="_use_local_dictionary" select="$use_local_dictionary"/>
         <p:with-param name="_document_identifier" select="$document_identifier"/>
+        <p:with-param name="TABLE_BASE_URI" select="file:/usr/local/share/liblouis/tables/"/>
     </p:xslt>
     
     <!-- ========== -->

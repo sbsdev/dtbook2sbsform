@@ -35,7 +35,7 @@
   <xsl:preserve-space
     elements="dtb:p dtb:byline dtb:author dtb:li dtb:lic dtb:doctitle dtb:docauthor dtb:span dtb:em dtb:strong brl:emph dtb:line dtb:h1 dtb:h2 dtb:h3 dtb:h4 dtb:h5 dtb:h6"/>
   
-  <xsl:param name="TABLE_BASE_URI">file:/usr/local/share/liblouis/tables/</xsl:param>
+  <xsl:param name="TABLE_BASE_URI"></xsl:param>
   
   <xsl:param name="_contraction" select="'2'"/>
   <xsl:param name="_version" select="'0'"/>
