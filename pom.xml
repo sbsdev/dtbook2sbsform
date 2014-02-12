@@ -21,6 +21,7 @@
   
   <properties>
     <sbs-hyphenation-tables.version>1.13-SNAPSHOT</sbs-hyphenation-tables.version>
+    <sbs-braille-tables.version>1.6-SNAPSHOT</sbs-braille-tables.version>
     <felix.version>4.0.3</felix.version>
     <pax-exam.version>3.3.0</pax-exam.version>
     <junit.version>4.11</junit.version>
