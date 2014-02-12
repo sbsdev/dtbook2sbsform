@@ -35,25 +35,25 @@
     
     <p:option name="contraction" required="false" px:type="integer" select="'2'"/>
     <p:option name="version" required="false" px:type="string" select="'0'"/>
-    <p:option name="cells_per_line" required="false" px:type="integer" select="'28'"/>
-    <p:option name="lines_per_page" required="false" px:type="integer" select="'28'"/>
+    <p:option name="cells-per-line" required="false" px:type="integer" select="'28'"/>
+    <p:option name="lines-per-page" required="false" px:type="integer" select="'28'"/>
     <p:option name="hyphenation" required="false" px:type="boolean" select="'false'">
         <p:documentation>
             <h2 px:role="name">hyphenation</h2>
             <p px:role="desc">Whether to perform hyphenation or not.</p>
         </p:documentation>
     </p:option>
-    <p:option name="toc_level" required="false" px:type="integer" select="'0'"/>
-    <p:option name="footer_level" required="false" px:type="integer" select="'0'"/>
-    <p:option name="show_original_page_numbers" required="false" px:type="boolean" select="'true'"/>
-    <p:option name="show_v_forms" required="false" px:type="boolean" select="'true'"/>
-    <p:option name="downshift_ordinals" required="false" px:type="boolean" select="'true'"/>
-    <p:option name="enable_capitalization" required="false" px:type="boolean" select="'false'"/>
-    <p:option name="detailed_accented_characters" required="false" px:type="string" select="'de-accents-ch'"/>
-    <p:option name="include_macros" required="false" px:type="boolean" select="'true'"/>
-    <p:option name="footnote_placement" required="false" px:type="string" select="'standard'"/>
-    <p:option name="use_local_dictionary" required="false" px:type="boolean" select="'false'"/>
-    <p:option name="document_identifier" required="false" px:type="string" select="''"/>
+    <p:option name="toc-level" required="false" px:type="integer" select="'0'"/>
+    <p:option name="footer-level" required="false" px:type="integer" select="'0'"/>
+    <p:option name="show-original-page-numbers" required="false" px:type="boolean" select="'true'"/>
+    <p:option name="show-v-forms" required="false" px:type="boolean" select="'true'"/>
+    <p:option name="downshift-ordinals" required="false" px:type="boolean" select="'true'"/>
+    <p:option name="enable-capitalization" required="false" px:type="boolean" select="'false'"/>
+    <p:option name="detailed-accented-characters" required="false" px:type="string" select="'de-accents-ch'"/>
+    <p:option name="include-macros" required="false" px:type="boolean" select="'true'"/>
+    <p:option name="footnote-placement" required="false" px:type="string" select="'standard'"/>
+    <p:option name="use-local-dictionary" required="false" px:type="boolean" select="'false'"/>
+    <p:option name="document-identifier" required="false" px:type="string" select="''"/>
 
     <p:import href="dtbook-to-sbsform.convert.xpl"/>
     <p:import href="http://www.daisy.org/pipeline/modules/fileset-utils/library.xpl"/>
@@ -72,20 +72,20 @@
 
         <p:with-option name="contraction" select="$contraction"/>
         <p:with-option name="version" select="$version"/>
-        <p:with-option name="cells_per_line" select="$cells_per_line"/>
-        <p:with-option name="lines_per_page" select="$lines_per_page"/>
+        <p:with-option name="cells_per_line" select="$cells-per-line"/>
+        <p:with-option name="lines_per_page" select="$lines-per-page"/>
         <p:with-option name="hyphenation" select="$hyphenation"/>
-        <p:with-option name="toc_level" select="$toc_level"/>
-        <p:with-option name="footer_level" select="$footer_level"/>
-        <p:with-option name="include_macros" select="$include_macros"/>
-        <p:with-option name="show_original_page_numbers" select="$show_original_page_numbers"/>
-        <p:with-option name="show_v_forms" select="$show_v_forms"/>
-        <p:with-option name="downshift_ordinals" select="$downshift_ordinals"/>
-        <p:with-option name="enable_capitalization" select="$enable_capitalization"/>
-        <p:with-option name="detailed_accented_characters" select="$detailed_accented_characters"/>
-        <p:with-option name="footnote_placement" select="$footnote_placement"/>
-        <p:with-option name="use_local_dictionary" select="$use_local_dictionary"/>
-        <p:with-option name="document_identifier" select="$document_identifier"/>
+        <p:with-option name="toc_level" select="$toc-level"/>
+        <p:with-option name="footer_level" select="$footer-level"/>
+        <p:with-option name="include_macros" select="$include-macros"/>
+        <p:with-option name="show_original_page_numbers" select="$show-original-page-numbers"/>
+        <p:with-option name="show_v_forms" select="$show-v-forms"/>
+        <p:with-option name="downshift_ordinals" select="$downshift-ordinals"/>
+        <p:with-option name="enable_capitalization" select="$enable-capitalization"/>
+        <p:with-option name="detailed_accented_characters" select="$detailed-accented-characters"/>
+        <p:with-option name="footnote_placement" select="$footnote-placement"/>
+        <p:with-option name="use_local_dictionary" select="$use-local-dictionary"/>
+        <p:with-option name="document_identifier" select="$document-identifier"/>
     </sbs:dtbook-to-sbsform.convert>
     
     <!-- ===================== -->
