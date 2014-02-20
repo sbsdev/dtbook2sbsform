@@ -41,6 +41,31 @@
       <version>${sbs-hyphenation-tables.version}</version>
       <scope>provided</scope>
     </dependency>
+    <dependency>
+      <groupId>org.daisy.pipeline.modules.braille</groupId>
+      <artifactId>liblouis-saxon</artifactId>
+      <version>1.1.0</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.daisy.pipeline.modules.braille</groupId>
+      <artifactId>liblouis-native</artifactId>
+      <version>1.1.0</version>
+      <classifier>linux</classifier>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.daisy.libs</groupId>
+      <artifactId>saxon-he</artifactId>
+      <version>9.4.0.7</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>commons-io</groupId>
+      <artifactId>commons-io</artifactId>
+      <version>2.4</version>
+      <scope>test</scope>
+    </dependency>
     <!--
         The tests depend on a modification to xspec-maven-plugin which is not accepted
         by Romain yet. For now you have to build it yourself. Get the code from
@@ -52,10 +77,26 @@
       <version>1.0.0-SNAPSHOT</version>
       <scope>test</scope>
     </dependency>
+    <!--
+        A second dependency which you have to build yourself is saxon-adapter. see:
+        [https://github.com/daisy-consortium/pipeline-build/utils/tree/saxon_adapter]
+    -->
     <dependency>
-      <groupId>commons-io</groupId>
-      <artifactId>commons-io</artifactId>
-      <version>2.4</version>
+      <groupId>org.daisy.pipeline</groupId>
+      <artifactId>saxon-adapter</artifactId>
+      <version>1.0-SNAPSHOT</version>
+      <scope>test</scope>
+      <exclusions>
+        <exclusion>
+          <groupId>org.slf4j</groupId>
+          <artifactId>slf4j-jdk14</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.servicemix.bundles</groupId>
+      <artifactId>org.apache.servicemix.bundles.xmlresolver</artifactId>
+      <version>1.2_5</version>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -72,7 +113,7 @@
     </dependency>
     <dependency>
       <groupId>org.ops4j.pax.exam</groupId>
-      <artifactId>pax-exam-container-native</artifactId>
+      <artifactId>pax-exam-container-forked</artifactId>
       <version>${pax-exam.version}</version>
       <scope>test</scope>
     </dependency>
@@ -86,6 +127,12 @@
       <groupId>org.ops4j.pax.exam</groupId>
       <artifactId>pax-exam-link-mvn</artifactId>
       <version>${pax-exam.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>1.5.11</version>
       <scope>test</scope>
     </dependency>
     <dependency>

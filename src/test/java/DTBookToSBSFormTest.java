@@ -1,5 +1,3 @@
-package ch.sbs.sbsform;
-
 import java.io.File;
 
 import java.net.URI;
@@ -47,17 +45,17 @@ public class DTBookToSBSFormTest {
 			mavenBundle().groupId("ch.qos.logback").artifactId("logback-core").version("1.0.11"),
 			mavenBundle().groupId("ch.qos.logback").artifactId("logback-classic").version("1.0.11"),
 			mavenBundle().groupId("org.apache.felix").artifactId("org.apache.felix.scr").version("1.6.2"),
-			mavenBundle().groupId("com.google.guava").artifactId("guava").version("15.0"),
-			mavenBundle().groupId("org.daisy.libs").artifactId("saxon-he").version("9.4.0.7"),
-			mavenBundle().groupId("org.daisy.pipeline").artifactId("saxon-adapter").version("1.0-SNAPSHOT"),
-			mavenBundle().groupId("net.java.dev.jna").artifactId("jna").version("3.5.2"),
-			mavenBundle().groupId("org.liblouis").artifactId("liblouis-java").version("1.1.0"),
-			mavenBundle().groupId("org.daisy.pipeline.modules.braille").artifactId("common-java").version("1.1.0"),
-			mavenBundle().groupId("org.daisy.pipeline.modules.braille").artifactId("liblouis-native").version("1.1.0").classifier("linux"),
-			mavenBundle().groupId("org.daisy.pipeline.modules.braille").artifactId("liblouis-core").version("1.1.0"),
-			mavenBundle().groupId("org.daisy.pipeline.modules.braille").artifactId("liblouis-saxon").version("1.1.0"),
+			mavenBundle().groupId("com.google.guava").artifactId("guava").versionAsInProject(),
+			mavenBundle().groupId("org.daisy.libs").artifactId("saxon-he").versionAsInProject(),
+			mavenBundle().groupId("net.java.dev.jna").artifactId("jna").versionAsInProject(),
+			mavenBundle().groupId("org.liblouis").artifactId("liblouis-java").versionAsInProject(),
+			mavenBundle().groupId("org.daisy.pipeline.modules.braille").artifactId("common-java").versionAsInProject(),
+			mavenBundle().groupId("org.daisy.pipeline.modules.braille").artifactId("liblouis-native").versionAsInProject().classifier("linux"),
+			mavenBundle().groupId("org.daisy.pipeline.modules.braille").artifactId("liblouis-core").versionAsInProject(),
+			mavenBundle().groupId("org.daisy.pipeline.modules.braille").artifactId("liblouis-saxon").versionAsInProject(),
 			mavenBundle().groupId("ch.sbs.pipeline").artifactId("sbs-braille-tables").versionAsInProject(),
-			mavenBundle().groupId("org.apache.servicemix.bundles").artifactId("org.apache.servicemix.bundles.xmlresolver").version("1.2_5"),
+			mavenBundle().groupId("org.daisy.pipeline").artifactId("saxon-adapter").versionAsInProject(),
+			mavenBundle().groupId("org.apache.servicemix.bundles").artifactId("org.apache.servicemix.bundles.xmlresolver").versionAsInProject(),
 			mavenBundle().groupId("org.daisy.maven").artifactId("xspec-runner").versionAsInProject(),
 			mavenBundle().groupId("commons-io").artifactId("commons-io").versionAsInProject(),
 			junitBundles()
@@ -72,14 +70,12 @@ public class DTBookToSBSFormTest {
 		Map<String,File> tests = new HashMap<String,File>();
 		Collection<File> testFiles = FileUtils.listFiles(testsDir, new String[]{"xspec"}, true);
 		for (File file : testFiles)
-			tests.put(getTestName(testsDir, file), file);
+			tests.put(
+				file.getAbsolutePath().substring(testsDir.getAbsolutePath().length() + 1)
+					.replaceAll("\\.xspec$", "")
+					.replaceAll("[\\./\\\\]", "_"),
+				file);
 		TestResults result = xspecRunner.run(tests, reportsDir);
 		assertEquals("Number of failures and errors should be zero", 0L, result.getFailures() + result.getErrors());
-	}
-	
-	private static String getTestName(File baseDir, File testFile) {
-		return testFile.getAbsolutePath().substring(baseDir.getAbsolutePath().length() + 1)
-			.replaceAll(".xspec$", "")
-			.replaceAll("[\\./\\\\]", "_");
 	}
 }
