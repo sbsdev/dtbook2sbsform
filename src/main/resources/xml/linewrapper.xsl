@@ -15,7 +15,7 @@
 	    * Drop trailing whitespace
 	-->
 	
-	<xsl:param name="FILL_COLUMN" as="xs:integer" select="80"/>
+	<xsl:param name="FILL_COLUMN" as="xs:integer" select="78"/>
 	
 	<xsl:template match="/*">
 		<xsl:copy>
@@ -49,7 +49,7 @@
 			<xsl:variable name="rest" as="xs:string*" select="$chunks[position() &gt; 1]"/>
 			<xsl:variable name="chunk_len" as="xs:integer" select="string-length($chunk)"/>
 			<xsl:choose>
-				<xsl:when test="$col &gt; 0 and $col + $chunk_len &gt;= $FILL_COLUMN">
+				<xsl:when test="$col &gt; 0 and $col + 1 + $chunk_len &gt; $FILL_COLUMN">
 					<xsl:value-of select="concat('&#xA; ', $chunk)"/>
 					<xsl:call-template name="wrap-line">
 						<xsl:with-param name="chunks" select="$rest"/>
