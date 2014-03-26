@@ -192,6 +192,10 @@
                   <groupId>ch.sbs.pipeline</groupId>
                   <artifactId>sbs-hyphenation-tables</artifactId>
                 </artifactItem>
+                <artifactItem>
+                  <groupId>ch.sbs.pipeline</groupId>
+                  <artifactId>sbs-braille-tables</artifactId>
+                </artifactItem>
               </artifactItems>
             </configuration>
           </execution>
@@ -213,6 +217,14 @@
             <data>
               <type>file</type>
               <src>target/dependency/ch.sbs.pipeline.sbs-hyphenation-tables-${sbs-hyphenation-tables.version}.jar</src>
+              <mapper>
+                <type>perm</type>
+                <prefix>/opt/daisy-pipeline2/modules</prefix>
+              </mapper>
+            </data>
+            <data>
+              <type>file</type>
+              <src>target/dependency/ch.sbs.pipeline.sbs-braille-tables-${sbs-braille-tables.version}.jar</src>
               <mapper>
                 <type>perm</type>
                 <prefix>/opt/daisy-pipeline2/modules</prefix>
