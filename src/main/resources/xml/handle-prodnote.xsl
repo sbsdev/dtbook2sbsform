@@ -26,8 +26,8 @@
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     exclude-result-prefixes="xs brl">
 
-    <xsl:param name="announcement" as="xs:string" select="'&lt;='"/>
-    <xsl:param name="deannouncement" as="xs:string" select="'&lt;='"/>
+    <xsl:param name="announcement" as="xs:string">'&lt;=</xsl:param>
+    <xsl:param name="deannouncement" as="xs:string">'&lt;=</xsl:param>
 
     <xsl:output method="xml" encoding="utf-8" indent="no"/>
 

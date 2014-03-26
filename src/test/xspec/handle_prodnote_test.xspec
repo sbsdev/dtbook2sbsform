@@ -23,7 +23,7 @@
         <dtb:prodnote xml:lang="de">In der Blindenschriftausgabe wurden sämtliche Abbildungen weggelassen.</dtb:prodnote>
       </x:context>
       <x:expect label="braille">
-	<brl:literal>&lt;=</brl:literal>In der Blindenschriftausgabe wurden sämtliche Abbildungen weggelassen.<brl:literal>&lt;=</brl:literal>
+	<brl:literal>'&lt;=</brl:literal>In der Blindenschriftausgabe wurden sämtliche Abbildungen weggelassen.<brl:literal>'&lt;=</brl:literal>
       </x:expect>
     </x:scenario>
 
@@ -35,7 +35,7 @@
       </dtb:prodnote>
       </x:context>
       <x:expect label="braille">
-	<dtb:p brl:class="ind"><brl:literal>&lt;=</brl:literal>Anmerkung für die Blindenschriftausgabe:</dtb:p><dtb:p brl:class="ind">Eine Zeichenerklärung befindet sich am Ende des Buches.<brl:literal>&lt;=</brl:literal></dtb:p>
+	<dtb:p brl:class="ind"><brl:literal>'&lt;=</brl:literal>Anmerkung für die Blindenschriftausgabe:</dtb:p><dtb:p brl:class="ind">Eine Zeichenerklärung befindet sich am Ende des Buches.<brl:literal>'&lt;=</brl:literal></dtb:p>
       </x:expect>
     </x:scenario>
 

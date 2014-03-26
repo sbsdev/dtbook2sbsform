@@ -127,7 +127,7 @@ y P
     <x:scenario label="Pt. 6 (Apo) nach Zahl vor A-J innerhalb A (URLs) (#1815)">
       <x:context>
         <stub xml:lang="de">
-          <dtb:p><dtb:a href="http://www.fit4chat.ch" external="true">www.fit4chat.ch</dtb:a></dtb:p>
+          <dtb:p><dtb:a href="http://www.fit4chat.ch" external="true"><brl:computer>www.fit4chat.ch</brl:computer></dtb:a></dtb:p>
         </stub>
       </x:context>
       <x:expect label="braille">
@@ -135,7 +135,7 @@ y P
  '$WWW.FIT4CHAT.CH</x:expect>
     </x:scenario>
 
-    <x:scenario pending="expected failure" label="2a &amp; &lt;brl:num&gt;2&lt;/brl:num&gt;a">
+    <x:scenario label="2a &amp; &lt;brl:num&gt;2&lt;/brl:num&gt;a">
       <x:context>
         <stub xml:lang="de">
           <dtb:p><brl:num>2</brl:num>a</dtb:p>

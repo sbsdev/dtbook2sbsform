@@ -7,47 +7,46 @@
 
     <x:param name="contraction" select="2"/>
 
-    <x:scenario label="getTable for a">
-      <x:call template="getTable"/>
-      <x:context>
-        <a xml:lang="de"/>
-      </x:context>
-      <x:expect label="braille">sbs.dis,sbs-de-core6.cti,sbs-de-accents.cti,sbs-special.cti,sbs-whitespace.mod,sbs-de-hyph-none.mod,sbs-de-accents-ch.mod,sbs-special.mod</x:expect>
-    </x:scenario>
-
     <x:scenario label="Computer Braille">
       <x:context>
-        <dtb:a xml:lang="de">www.xyz.ch</dtb:a>
+        <brl:computer xml:lang="de">www.xyz.ch</brl:computer>
       </x:context>
       <x:expect label="braille">'$WWW.XYZ.CH</x:expect>
     </x:scenario>
 
     <x:scenario label="Computer Braille">
       <x:context>
-        <dtb:a xml:lang="de">www.e-text.ch</dtb:a>
+        <brl:computer xml:lang="de">www.e-text.ch</brl:computer>
       </x:context>
       <x:expect label="braille">'$WWW.E-TEXT.CH</x:expect>
     </x:scenario>
 
     <x:scenario label="URLs email">
       <x:context>
-        <dtb:a xml:lang="de">meier_alex@ubs.com</dtb:a>
+        <brl:computer xml:lang="de">meier_alex@ubs.com</brl:computer>
       </x:context>
       <x:expect label="braille">'$MEIER"_ALEX"@UBS.COM</x:expect>
     </x:scenario>
 
     <x:scenario label="URLs special">
       <x:context>
-        <dtb:a xml:lang="de">http://www.google-test.ch/test?=:;+%#$</dtb:a>
+        <brl:computer xml:lang="de">http://www.google-test.ch/test?=:;+%#$</brl:computer>
       </x:context>
-      <x:expect label="braille">'$HTTP://WWW.GOOGLE-TEST.CH/TEST?=:;+%#$</x:expect>
+      <x:expect label="braille">'$HTTP://WWW.GOOGLE-TEST.CH/TEST?=:;+%#$$</x:expect>
     </x:scenario>
 
     <x:scenario label="URLs numbers">
       <x:context>
-        <dtb:a xml:lang="de">peter34@gmx.net</dtb:a>
+        <brl:computer xml:lang="de">peter34@gmx.net</brl:computer>
       </x:context>
       <x:expect label="braille">'$PETER34"@GMX.NET</x:expect>
+    </x:scenario>
+
+    <x:scenario label="Twitter handle">
+      <x:context>
+        <brl:computer xml:lang="de">@peter34</brl:computer>
+      </x:context>
+      <x:expect label="braille">'$"@PETER34</x:expect>
     </x:scenario>
 
 </x:description>

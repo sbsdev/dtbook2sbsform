@@ -176,50 +176,6 @@ y POEMe_foo
 </x:expect>
     </x:scenario>
 
-    <x:scenario label="Translation of linegroup">
-      <x:context>
-        <dtb:linegroup xml:lang="de"/>
-      </x:context>
-      <x:expect label="braille">
-y LINEGRb
- 
-y LINEGRe
-</x:expect>
-    </x:scenario>
-
-    <x:scenario label="Translation of linegroup with brl:class attr">
-      <x:context>
-        <dtb:linegroup xml:lang="de" brl:class="foo"/>
-      </x:context>
-      <x:expect label="braille">
-y LINEGRb_foo
- 
-y LINEGRe_foo
-</x:expect>
-    </x:scenario>
-
-    <x:scenario label="Translation of line">
-      <x:context>
-        <dtb:line xml:lang="de"/>
-      </x:context>
-      <x:expect label="braille">
-y LINEb
- 
-y LINEe
-</x:expect>
-    </x:scenario>
-
-    <x:scenario label="Translation of line with brl:class attr">
-      <x:context>
-        <dtb:line xml:lang="de" brl:class="foo"/>
-      </x:context>
-      <x:expect label="braille">
-y LINEb_foo
- 
-y LINEe_foo
-</x:expect>
-    </x:scenario>
-
     <x:scenario label="Selection feature">
       <x:context>
         <brl:select xml:lang="de">

@@ -25,16 +25,15 @@
   <utfx:stylesheet src="xsl/dtbook2sbsform.xsl"/>
 
   <utfx:test>
-    <utfx:name>getTable for a</utfx:name>
+    <utfx:name>Computer Braille</utfx:name>
     <utfx:stylesheet-params>
       <utfx:with-param name="contraction" select="2"/>
     </utfx:stylesheet-params>
-    <utfx:call-template name="getTable"/>
     <utfx:assert-equal>
       <utfx:source>
-        <a xml:lang="de"/>
+        <brl:computer xml:lang="de">www.xyz.ch</brl:computer>
       </utfx:source>
-      <utfx:expected>sbs.dis,sbs-de-core6.cti,sbs-de-accents.cti,sbs-special.cti,sbs-whitespace.mod,sbs-de-hyph-none.mod,sbs-de-accents-ch.mod,sbs-special.mod</utfx:expected>
+      <utfx:expected>'$WWW.XYZ.CH</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
 
@@ -45,20 +44,7 @@
     </utfx:stylesheet-params>
     <utfx:assert-equal>
       <utfx:source>
-        <dtb:a xml:lang="de">www.xyz.ch</dtb:a>
-      </utfx:source>
-      <utfx:expected>'$WWW.XYZ.CH</utfx:expected>
-    </utfx:assert-equal>
-  </utfx:test>
-  
-  <utfx:test>
-    <utfx:name>Computer Braille</utfx:name>
-    <utfx:stylesheet-params>
-      <utfx:with-param name="contraction" select="2"/>
-    </utfx:stylesheet-params>
-    <utfx:assert-equal>
-      <utfx:source>
-        <dtb:a xml:lang="de">www.e-text.ch</dtb:a>
+        <brl:computer xml:lang="de">www.e-text.ch</brl:computer>
       </utfx:source>
       <utfx:expected>'$WWW.E-TEXT.CH</utfx:expected>
     </utfx:assert-equal>
@@ -71,12 +57,12 @@
     </utfx:stylesheet-params>
     <utfx:assert-equal>
       <utfx:source>
-        <dtb:a xml:lang="de">meier_alex@ubs.com</dtb:a>
+        <brl:computer xml:lang="de">meier_alex@ubs.com</brl:computer>
       </utfx:source>
       <utfx:expected>'$MEIER"_ALEX"@UBS.COM</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
-  
+
   <utfx:test>
     <utfx:name>URLs special</utfx:name>
     <utfx:stylesheet-params>
@@ -84,12 +70,12 @@
     </utfx:stylesheet-params>
     <utfx:assert-equal>
       <utfx:source>
-        <dtb:a xml:lang="de">http://www.google-test.ch/test?=:;+%#$</dtb:a>
+        <brl:computer xml:lang="de">http://www.google-test.ch/test?=:;+%#$</brl:computer>
       </utfx:source>
-      <utfx:expected>'$HTTP://WWW.GOOGLE-TEST.CH/TEST?=:;+%#$</utfx:expected>
+      <utfx:expected>'$HTTP://WWW.GOOGLE-TEST.CH/TEST?=:;+%#$$</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
-  
+
   <utfx:test>
     <utfx:name>URLs numbers</utfx:name>
     <utfx:stylesheet-params>
@@ -97,10 +83,23 @@
     </utfx:stylesheet-params>
     <utfx:assert-equal>
       <utfx:source>
-        <dtb:a xml:lang="de">peter34@gmx.net</dtb:a>
+        <brl:computer xml:lang="de">peter34@gmx.net</brl:computer>
       </utfx:source>
       <utfx:expected>'$PETER34"@GMX.NET</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
-  
+
+  <utfx:test>
+    <utfx:name>Twitter handle</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+        <brl:computer xml:lang="de">@peter34</brl:computer>
+      </utfx:source>
+      <utfx:expected>'$"@PETER34</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
 </utfx:tests>
