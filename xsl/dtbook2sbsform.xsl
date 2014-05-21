@@ -1276,7 +1276,7 @@
   </xsl:template>
 
   <xsl:template match="dtb:br">
-    <!-- ignore for now -->
+    <xsl:text>u</xsl:text>
   </xsl:template>
 
   <!-- ======== -->
