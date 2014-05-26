@@ -170,7 +170,7 @@
     </zip>
   </target>
 
-  <target name="package" depends="jar">
+  <target name="package" depends="jar" description="Build a debian package">
     <taskdef name="deb" classname="org.vafer.jdeb.ant.DebAntTask"/>
 
     <copy todir="${build.dir}/debian/control">
