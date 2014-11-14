@@ -920,6 +920,7 @@ y e EndVol
     <xsl:sequence select="my:padded-comment('Hilfsmakros')"/>
     <xsl:if test="$toc_level &gt; 0">
       <xsl:text>y b Inhaltsv
+H`tbu::::::::::::
 E
 P1
 ~~
@@ -952,6 +953,9 @@ y e EndBook
     <xsl:if test="$volumes &gt; 1 and $toc_level &gt; 0">
       <xsl:text>
 y b InhTit                   ; Hilfsmakro zum Inhaltsverzeichnis der Einzelbaende
+?it:it+1
+?it>1
++H`tbu::::::::::::
 H`z
 H`P1
 I ~=j
