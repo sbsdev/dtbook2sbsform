@@ -98,8 +98,18 @@
   <xsl:function name="my:louis-translate" as="xs:string">
     <xsl:param name="table" as="xs:string"/>
     <xsl:param name="text" as="xs:string"/>
-    <xsl:sequence select="translate(louis:translate($table, replace($text, '(\p{Z}|\s)+', ' '), $hyphenation),
-                                    '&#x00AD;&#x200B;', 'tm')"/>
+    <!--
+        can't use louis:translate(..., ..., $hyphenation) because of bug in liblouis-saxon v1.1.1
+    -->
+    <xsl:choose>
+      <xsl:when test="$hyphenation">
+        <xsl:sequence select="translate(louis:translate($table, replace($text, '(\p{Z}|\s)+', ' '), true()),
+                                        '&#x00AD;&#x200B;', 'tm')"/>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:sequence select="louis:translate($table, replace($text, '(\p{Z}|\s)+', ' '))"/>
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:function>
   
   <!-- =========================== -->

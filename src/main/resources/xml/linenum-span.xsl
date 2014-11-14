@@ -28,7 +28,7 @@
     </xsl:if>
     <!-- make it "right justified" (assuming we only have two digits max) -->
     <xsl:if test="string-length(.) = 1">b</xsl:if>
-    <xsl:value-of select="louis:translate($braille_tables, string())" />
+    <xsl:value-of select="my:louis-translate($braille_tables, string())" />
     <xsl:text>| </xsl:text>
   </xsl:template>
 
