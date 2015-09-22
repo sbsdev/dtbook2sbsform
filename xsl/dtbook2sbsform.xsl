@@ -1193,16 +1193,8 @@
     <xsl:text>&#10;* &#10; </xsl:text>
   </xsl:template>
   
-  <!-- Remove the punctuation in a text node if it follows a noteref, since the punctuation was handled by the noteref matcher -->
-  <xsl:template match="text()[my:starts-with-punctuation(.) and exists((preceding::*[1][self::dtb:noteref] intersect ancestor-or-self::*[my:is-block-element(.)][1]//dtb:noteref))]" priority="100">
-    <xsl:variable name="braille_tables">
-      <xsl:call-template name="getTable"/>
-    </xsl:variable>
-    <xsl:value-of select="louis:translate(string($braille_tables), substring-after(string(),' '))"/>
-  </xsl:template>
-
-  <!-- Remove the punctuation in a text node if it follows a annoref, since the punctuation was handled by the annoref matcher -->
-  <xsl:template match="text()[my:starts-with-punctuation(.) and exists((preceding::*[1][self::dtb:annoref] intersect ancestor-or-self::*[my:is-block-element(.)][1]//dtb:annoref))]" priority="100">
+  <!-- Remove the punctuation in a text node if it follows a noteref/annoref, since the punctuation was handled by the noteref/annoref matcher -->
+  <xsl:template match="text()[my:starts-with-punctuation(.) and my:preceding-textnode-within-block(.)[ancestor::dtb:noteref|ancestor::dtb:annoref]]" priority="100">
     <xsl:variable name="braille_tables">
       <xsl:call-template name="getTable"/>
     </xsl:variable>
