@@ -416,7 +416,7 @@ y e P
 </xsl:text>
     </xsl:if>
 
-    <xsl:if test="//dtb:p[not(@brl:class) and contains(@class, 'precedingemptyline')]">
+    <xsl:if test="//dtb:p[contains(@class, 'precedingemptyline')]">
       <xsl:text>
 y b BLANK
 lm1
@@ -425,7 +425,7 @@ y e BLANK
 </xsl:text>
     </xsl:if>
 
-    <xsl:if test="//dtb:p[not(@brl:class) and contains(@class, 'precedingseparator')]">
+    <xsl:if test="//dtb:p[contains(@class, 'precedingseparator')]">
       <xsl:text>
 y b SEPARATOR
 B+
