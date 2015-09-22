@@ -198,9 +198,23 @@ y P
       <utfx:source>
         <dtb:p xml:lang="de"><brl:v-form>EUEREM</brl:v-form></dtb:p>
       </utfx:source>
+      <utfx:expected>y P
+ $EUEREM</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+  
+  <utfx:test>
+    <utfx:name>Sie mit Apostroph ausserhalb Tag (#2109)</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+        <dtb:p xml:lang="de"><brl:v-form>Sie</brl:v-form>'s</dtb:p>
+      </utfx:source>
       <utfx:expected>
 y P
- $EUEREM</utfx:expected>
+ $S'S</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
 </utfx:tests>
