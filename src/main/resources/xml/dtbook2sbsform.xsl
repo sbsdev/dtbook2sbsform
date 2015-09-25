@@ -121,64 +121,38 @@
   <!-- =============== -->
   <!-- Table selection -->
   <!-- =============== -->
+
+  <xsl:function name="my:get-contraction" as="xs:string">
+    <xsl:param name="context"/>
+    <xsl:sequence
+	select="if ($context/ancestor-or-self::dtb:span[@brl:grade and @brl:grade &lt; $contraction])
+		then $context/ancestor-or-self::dtb:span/@brl:grade
+		else if (lang('de',$context))
+		then string($contraction)
+		else '0'"/>
+  </xsl:function>
   
   <xsl:template name="getTable">
     <xsl:param name="context" select="local-name()"/>
     <!-- handle explicit setting of the contraction -->
-    <xsl:variable name="actual_contraction">
-      <xsl:choose>
-        <xsl:when test="ancestor-or-self::dtb:span[@brl:grade and @brl:grade &lt; $contraction]">
-          <xsl:value-of select="ancestor-or-self::dtb:span/@brl:grade"/>
-        </xsl:when>
-        <xsl:when test="lang('de')">
-          <xsl:value-of select="$contraction"/>
-        </xsl:when>
-        <xsl:otherwise>
-          <xsl:value-of select="'0'"/>
-        </xsl:otherwise>
-      </xsl:choose>
-    </xsl:variable>
-    <xsl:value-of select="$TABLE_BASE_URI"/>
-    <xsl:text>sbs.dis,</xsl:text>
-    <xsl:text>sbs-de-core6.cti,</xsl:text>
-    <xsl:text>sbs-de-accents.cti,</xsl:text>
-    <xsl:text>sbs-special.cti,</xsl:text>
-    <xsl:text>sbs-whitespace.mod,</xsl:text>
-    <xsl:if
-      test="$context = 'v-form' or $context = 'name_capitalized' or ($actual_contraction != '2' and $enable_capitalization = true())">
-      <xsl:text>sbs-de-capsign.mod,</xsl:text>
-    </xsl:if>
-    <xsl:if
-      test="$actual_contraction = '2' and not($context=('num_roman','abbr','date_month','date_day','name_capitalized'))">
-      <xsl:text>sbs-de-letsign.mod,</xsl:text>
-    </xsl:if>
-    <xsl:if test="not($context = 'date_month' or $context = 'denominator' or $context = 'index' or $context = 'linenum')">
-      <xsl:text>sbs-numsign.mod,</xsl:text>
-    </xsl:if>
-    <xsl:choose>
-      <xsl:when
-          test="$context = 'num_ordinal' or $context = 'date_day' or $context = 'denominator' or $context = 'index'">
-        <xsl:text>sbs-litdigit-lower.mod,</xsl:text>
-      </xsl:when>
-      <xsl:otherwise>
-        <xsl:text>sbs-litdigit-upper.mod,</xsl:text>
-      </xsl:otherwise>
-    </xsl:choose>
-    <xsl:if test="$context != 'date_month' and $context != 'date_day'">
-      <xsl:text>sbs-de-core.mod,</xsl:text>
-    </xsl:if>
-    <xsl:if
-      test="$context = 'name_capitalized' or $context = 'num_roman' or ($context = 'abbr' and not(my:containsDot(.))) or ($actual_contraction &lt;= '1' and $context != 'date_day' and $context != 'date_month')">
-      <xsl:text>sbs-de-g0-core.mod,</xsl:text>
-    </xsl:if>
-    <xsl:if
-      test="$actual_contraction = '1' and $context != 'num_roman' and ($context != 'name_capitalized' and ($context != 'abbr' or my:containsDot(.)) and $context != 'date_month' and $context != 'date_day')">
-      <xsl:if test="$use_local_dictionary = true()">
-        <xsl:value-of select="concat('sbs-de-g1-white-',$document_identifier,'.mod,')"/>
-      </xsl:if>
-      <xsl:text>sbs-de-g1-white.mod,</xsl:text>
-      <xsl:text>sbs-de-g1-core.mod,</xsl:text>
-    </xsl:if>
+    <xsl:variable name="actual_contraction" select="my:get-contraction(.)"/>
+    <xsl:value-of
+	select="concat($TABLE_BASE_URI,
+		string-join((
+		'sbs.dis',
+		'sbs-de-core6.cti',
+		'sbs-de-accents.cti',
+		'sbs-special.cti',
+		'sbs-whitespace.mod',
+		if ($context = 'v-form' or $context = 'name_capitalized' or ($actual_contraction != '2' and $enable_capitalization = true())) then 'sbs-de-capsign.mod' else '',
+		if ($actual_contraction = '2' and not($context=('num_roman','abbr','date_month','date_day','name_capitalized'))) then 'sbs-de-letsign.mod' else '',
+		if (not($context = 'date_month' or $context = 'denominator' or $context = 'index' or $context = 'linenum')) then 'sbs-numsign.mod' else '',
+		if ($context = 'num_ordinal' or $context = 'date_day' or $context = 'denominator' or $context = 'index') then 'sbs-litdigit-lower.mod' else 'sbs-litdigit-upper.mod',
+		if ($context != 'date_month' and $context != 'date_day') then 'sbs-de-core.mod' else '',
+		if ($context = 'name_capitalized' or $context = 'num_roman' or ($context = 'abbr' and not(my:containsDot(.))) or ($actual_contraction &lt;= '1' and $context != 'date_day' and $context != 'date_month')) then 'sbs-de-g0-core.mod' else '',
+		if ($actual_contraction = '1' and $context != 'num_roman' and ($context != 'name_capitalized' and ($context != 'abbr' or my:containsDot(.)) and $context != 'date_month' and $context != 'date_day')) then string-join((if ($use_local_dictionary = true()) then concat('sbs-de-g1-white-',$document_identifier,'.mod,') else '', 'sbs-de-g1-white.mod', 'sbs-de-g1-core.mod')[. != ''],',') else ''
+		)[. != ''], ','))"/>
+    <xsl:text>,</xsl:text>
     <xsl:if test="$actual_contraction = '2' and $context != 'num_roman'">
       <xsl:if test="$context = 'place'">
         <xsl:if test="$use_local_dictionary = true()">
