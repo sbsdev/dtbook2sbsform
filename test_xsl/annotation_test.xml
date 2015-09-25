@@ -25,7 +25,7 @@
   <utfx:stylesheet src="xsl/dtbook2sbsform.xsl"/>
 
   <utfx:test>
-    <utfx:name>annotation  with standard placement and automatic numbering</utfx:name>
+    <utfx:name>annotation with standard placement and automatic numbering</utfx:name>
     <utfx:stylesheet-params>
       <utfx:with-param name="contraction" select="2"/>
       <utfx:with-param name="footnote_placement" select="'standard'"/>
@@ -43,7 +43,7 @@
   </utfx:test>
 
   <utfx:test>
-    <utfx:name>annotation  with standard placement and automatic numbering</utfx:name>
+    <utfx:name>annotation with standard placement and automatic numbering</utfx:name>
     <utfx:stylesheet-params>
       <utfx:with-param name="contraction" select="2"/>
       <utfx:with-param name="footnote_placement" select="'standard'"/>
