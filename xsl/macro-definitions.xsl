@@ -40,14 +40,8 @@
   </xsl:function>
 
   <xsl:template name="sbsform-macro-definitions">
-    <xsl:variable name="braille_tables">
-      <xsl:call-template name="getTable"/>
-    </xsl:variable>
-    <xsl:variable name="vform_braille_tables">
-      <xsl:call-template name="getTable">
-        <xsl:with-param name="context" select="'v-form'"/>
-      </xsl:call-template>
-    </xsl:variable>
+    <xsl:variable name="braille_tables" select="my:get-tables(.,local-name())"/>
+    <xsl:variable name="vform_braille_tables" select="my:get-tables(.,'v-form')"/>
     <xsl:sequence select="my:padded-comment('ANFANG SBSFORM.MAK', '================================================================================')"/>
     <xsl:text>x Bei Aenderungen den ganzen Block in separate Makrodatei auslagern.&#10;</xsl:text>
 
