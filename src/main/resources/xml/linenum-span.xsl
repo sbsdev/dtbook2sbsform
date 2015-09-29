@@ -17,18 +17,13 @@
        a linenumber. -->
 
   <xsl:template match="dtb:span[@class='linenum']">
-    <xsl:variable name="braille_tables">
-      <xsl:call-template name="getTable">
-        <xsl:with-param name="context" select="'linenum'"/>
-      </xsl:call-template>
-    </xsl:variable>
     <xsl:if test="preceding-sibling::dtb:* or
 		  preceding-sibling::text()[not(normalize-space(string())='')]">
       <xsl:text>&#10;y P_LN_noi&#10; </xsl:text>
     </xsl:if>
     <!-- make it "right justified" (assuming we only have two digits max) -->
     <xsl:if test="string-length(.) = 1">b</xsl:if>
-    <xsl:value-of select="my:louis-translate($braille_tables, string())" />
+    <xsl:value-of select="my:louis-translate(my:get-tables(.,'linenum'), string())" />
     <xsl:text>| </xsl:text>
   </xsl:template>
 
