@@ -22,7 +22,7 @@
   xmlns:dtb="http://www.daisy.org/z3986/2005/dtbook/" xmlns:louis="http://liblouis.org/liblouis"
   xmlns:brl="http://www.daisy.org/z3986/2009/braille/" xmlns:my="http://my-functions"
   xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:data="http://sbsform.ch/data"
-  xmlns:math="http://www.w3.org/1998/Math/MathML" xmlns:pef="http://www.daisy.org/ns/2008/pef"
+  xmlns:math="http://www.w3.org/1998/Math/MathML"
   exclude-result-prefixes="dtb louis data my" extension-element-prefixes="my">
 	
   <xsl:import href="functions.xsl"/>
@@ -93,140 +93,6 @@
       <xsl:otherwise>standard</xsl:otherwise>
     </xsl:choose>
   </xsl:variable>
-  
-  <!-- ======================= -->
-  <!-- Main translate function -->
-  <!-- ======================= -->
-  
-  <xsl:function name="my:louis-translate" as="xs:string">
-    <xsl:param name="table" as="xs:string"/>
-    <xsl:param name="text" as="xs:string"/>
-    <xsl:variable name="unicode-braille"
-                  select="louis:translate(
-                            concat('(sbs)(liblouis-table:&quot;',$table,'&quot;)'),
-                            replace($text, '(\p{Z}|\s)+', ' '))"/>
-    <xsl:variable name="ascii-braille" as="xs:string*">
-      <xsl:analyze-string regex="[\s&#x00A0;&#x00AD;&#x200B;]+" select="$unicode-braille">
-        <xsl:matching-substring>
-          <xsl:sequence select="translate(.,'&#x00AD;&#x200B;','tm')"/>
-        </xsl:matching-substring>
-        <xsl:non-matching-substring>
-          <xsl:sequence select="pef:encode('(liblouis-table:&quot;sbs.dis&quot;)', .)"/>
-        </xsl:non-matching-substring>
-      </xsl:analyze-string>
-    </xsl:variable>
-    <xsl:sequence select="string-join($ascii-braille,'')"/>
-  </xsl:function>
-  
-  <!-- =============== -->
-  <!-- Table selection -->
-  <!-- =============== -->
-
-  <xsl:function name="my:get-contraction" as="xs:string">
-    <xsl:param name="context"/>
-    <xsl:sequence
-	select="if ($context/ancestor-or-self::dtb:span[@brl:grade and @brl:grade &lt; $contraction])
-		then $context/ancestor-or-self::dtb:span/@brl:grade
-		else if (lang('de',$context))
-		then string($contraction)
-		else '0'"/>
-  </xsl:function>
-
-  <!-- Just for testing purposes, because utf-8 cannot call functions -->
-  <xsl:template name="getTable">
-    <xsl:sequence select="my:get-tables(.,local-name())"/>
-  </xsl:template>
-
-  <xsl:function name="my:get-tables" as="xs:string">
-    <xsl:param name="ctx"/>
-    <xsl:param name="context"/>
-    <!-- handle explicit setting of the contraction -->
-    <xsl:variable name="actual_contraction" select="my:get-contraction($ctx)"/>
-    <xsl:variable name="result">
-    <xsl:value-of
-	select="concat($TABLE_BASE_URI,
-		string-join((
-		'sbs.dis',
-		'sbs-de-core6.cti',
-		'sbs-de-accents.cti',
-		'sbs-special.cti',
-		'sbs-whitespace.mod',
-		if ($context = 'v-form' or $context = 'name_capitalized' or ($actual_contraction != '2' and $enable_capitalization = true())) then 'sbs-de-capsign.mod' else '',
-		if ($actual_contraction = '2' and not($context=('num_roman','abbr','date_month','date_day','name_capitalized'))) then 'sbs-de-letsign.mod' else '',
-		if (not($context = 'date_month' or $context = 'denominator' or $context = 'index' or $context = 'linenum')) then 'sbs-numsign.mod' else '',
-		if ($context = 'num_ordinal' or $context = 'date_day' or $context = 'denominator' or $context = 'index') then 'sbs-litdigit-lower.mod' else 'sbs-litdigit-upper.mod',
-		if ($context != 'date_month' and $context != 'date_day') then 'sbs-de-core.mod' else '',
-		if ($context = 'name_capitalized' or $context = 'num_roman' or ($context = 'abbr' and not(my:containsDot($ctx))) or ($actual_contraction &lt;= '1' and $context != 'date_day' and $context != 'date_month')) then 'sbs-de-g0-core.mod' else '',
-		if ($actual_contraction = '1' and $context != 'num_roman' and ($context != 'name_capitalized' and ($context != 'abbr' or my:containsDot($ctx)) and $context != 'date_month' and $context != 'date_day')) then string-join((if ($use_local_dictionary = true()) then concat('sbs-de-g1-white-',$document_identifier,'.mod,') else '', 'sbs-de-g1-white.mod', 'sbs-de-g1-core.mod')[. != ''],',') else ''
-		)[. != ''], ','))"/>
-    <xsl:text>,</xsl:text>
-    <xsl:if test="$actual_contraction = '2' and $context != 'num_roman'">
-      <xsl:if test="$context = 'place'">
-        <xsl:if test="$use_local_dictionary = true()">
-          <xsl:value-of select="concat('sbs-de-g2-place-white-',$document_identifier,'.mod,')"/>
-        </xsl:if>
-        <xsl:text>sbs-de-g2-place-white.mod,</xsl:text>
-        <xsl:text>sbs-de-g2-place.mod,</xsl:text>
-      </xsl:if>
-      <xsl:if test="$context = 'place' or $context = 'name'">
-        <xsl:if test="$use_local_dictionary = true()">
-          <xsl:value-of select="concat('sbs-de-g2-name-white-',$document_identifier,'.mod,')"/>
-        </xsl:if>
-        <xsl:text>sbs-de-g2-name-white.mod,</xsl:text>
-        <xsl:text>sbs-de-g2-name.mod,</xsl:text>
-      </xsl:if>
-      <xsl:if
-        test="$context != 'name' and $context != 'name_capitalized' and $context != 'place' and ($context != 'abbr' or  my:containsDot($ctx)) and $context != 'date_day' and $context != 'date_month'">
-        <xsl:if test="$use_local_dictionary = true()">
-          <xsl:value-of select="concat('sbs-de-g2-white-',$document_identifier,'.mod,')"/>
-        </xsl:if>
-        <xsl:text>sbs-de-g2-white.mod,</xsl:text>
-        <xsl:text>sbs-de-g2-core.mod,</xsl:text>
-      </xsl:if>
-    </xsl:if>
-    <xsl:choose>
-      <xsl:when test="$hyphenation = false()">
-        <xsl:text>sbs-de-hyph-none.mod,</xsl:text>
-      </xsl:when>
-      <xsl:otherwise>
-        <xsl:choose>
-          <xsl:when test="lang('de-1901',$ctx)">
-            <xsl:text>sbs-de-hyph-old.mod,</xsl:text>
-          </xsl:when>
-          <xsl:otherwise>
-            <xsl:text>sbs-de-hyph-new.mod,</xsl:text>
-          </xsl:otherwise>
-        </xsl:choose>
-      </xsl:otherwise>
-    </xsl:choose>
-    <xsl:if test="$context != 'date_month' and $context != 'date_day'">
-      <xsl:choose>
-        <xsl:when test="$ctx/ancestor-or-self::dtb:span[@brl:accents = 'reduced']">
-          <xsl:text>sbs-de-accents-reduced.mod,</xsl:text>
-        </xsl:when>
-        <xsl:when test="$ctx/ancestor-or-self::dtb:span[@brl:accents = 'detailed']">
-          <xsl:text>sbs-de-accents.mod,</xsl:text>
-        </xsl:when>
-        <xsl:otherwise>
-          <!-- no local accents are defined -->
-          <xsl:choose>
-            <xsl:when test="$detailed_accented_characters = 'de-accents-ch'">
-              <xsl:text>sbs-de-accents-ch.mod,</xsl:text>
-            </xsl:when>
-            <xsl:when test="$detailed_accented_characters = 'de-accents-reduced'">
-              <xsl:text>sbs-de-accents-reduced.mod,</xsl:text>
-            </xsl:when>
-            <xsl:otherwise>
-              <xsl:text>sbs-de-accents.mod,</xsl:text>
-            </xsl:otherwise>
-          </xsl:choose>
-        </xsl:otherwise>
-      </xsl:choose>
-    </xsl:if>
-    <xsl:text>sbs-special.mod</xsl:text>
-  </xsl:variable>
-  <xsl:sequence select="$result"/>
-  </xsl:function>
 
   <xsl:template name="rest-of-frontmatter">
     <xsl:text>&#10;y BOOKb&#10;</xsl:text>
