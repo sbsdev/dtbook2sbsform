@@ -6,5 +6,7 @@
   <nextCatalog catalog="org:daisy:pipeline:modules:fileset-utils"/>
   <nextCatalog catalog="org:daisy:pipeline:modules:braille:liblouis-saxon"/>
   <nextCatalog catalog="org:daisy:pipeline:modules:braille:libhyphen-saxon"/>
+  <nextCatalog catalog="org:daisy:pipeline:modules:braille:pef-saxon"/>
   <nextCatalog catalog="ch:sbs:pipeline:sbs-hyphenation-tables"/>
+  <nextCatalog catalog="ch:sbs:pipeline:sbs-braille-tables"/>
 </catalog>

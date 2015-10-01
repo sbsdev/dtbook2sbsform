@@ -19,5 +19,6 @@
   </root>
   
   <logger name="org.daisy" level="DEBUG"/>
+  <logger name="ch.sbs" level="DEBUG"/>
 
 </configuration>

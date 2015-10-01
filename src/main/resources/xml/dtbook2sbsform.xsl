@@ -22,7 +22,7 @@
   xmlns:dtb="http://www.daisy.org/z3986/2005/dtbook/" xmlns:louis="http://liblouis.org/liblouis"
   xmlns:brl="http://www.daisy.org/z3986/2009/braille/" xmlns:my="http://my-functions"
   xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:data="http://sbsform.ch/data"
-  xmlns:math="http://www.w3.org/1998/Math/MathML"
+  xmlns:math="http://www.w3.org/1998/Math/MathML" xmlns:pef="http://www.daisy.org/ns/2008/pef"
   exclude-result-prefixes="dtb louis data my" extension-element-prefixes="my">
 	
   <xsl:include href="macro-definitions.xsl"/>
@@ -98,18 +98,21 @@
   <xsl:function name="my:louis-translate" as="xs:string">
     <xsl:param name="table" as="xs:string"/>
     <xsl:param name="text" as="xs:string"/>
-    <!--
-        can't use louis:translate(..., ..., $hyphenation) because of bug in liblouis-saxon v1.1.1
-    -->
-    <xsl:choose>
-      <xsl:when test="$hyphenation">
-        <xsl:sequence select="translate(louis:translate($table, replace($text, '(\p{Z}|\s)+', ' '), true()),
-                                        '&#x00AD;&#x200B;', 'tm')"/>
-      </xsl:when>
-      <xsl:otherwise>
-        <xsl:sequence select="louis:translate($table, replace($text, '(\p{Z}|\s)+', ' '))"/>
-      </xsl:otherwise>
-    </xsl:choose>
+    <xsl:variable name="unicode-braille"
+                  select="louis:translate(
+                            concat('(sbs)(liblouis-table:&quot;',$table,'&quot;)'),
+                            replace($text, '(\p{Z}|\s)+', ' '))"/>
+    <xsl:variable name="ascii-braille" as="xs:string*">
+      <xsl:analyze-string regex="[\s&#x00A0;&#x00AD;&#x200B;]+" select="$unicode-braille">
+        <xsl:matching-substring>
+          <xsl:sequence select="translate(.,'&#x00AD;&#x200B;','tm')"/>
+        </xsl:matching-substring>
+        <xsl:non-matching-substring>
+          <xsl:sequence select="pef:encode('(liblouis-table:&quot;sbs.dis&quot;)', .)"/>
+        </xsl:non-matching-substring>
+      </xsl:analyze-string>
+    </xsl:variable>
+    <xsl:sequence select="string-join($ascii-braille,'')"/>
   </xsl:function>
   
   <!-- =========================== -->
