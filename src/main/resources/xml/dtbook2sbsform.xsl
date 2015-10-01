@@ -74,14 +74,6 @@
   <xsl:param name="use_local_dictionary" select="$_use_local_dictionary='true'"/>
   <xsl:param name="document_identifier" select="$_document_identifier"/>
 
-  <!-- TODO: introduce more constants (variables), e.g. for &#x250A; -->
-  <xsl:variable name="GROSS_FUER_BUCHSTABENFOLGE">╦</xsl:variable>
-  <xsl:variable name="GROSS_FUER_EINZELBUCHSTABE">╤</xsl:variable>
-  <xsl:variable name="KLEINBUCHSTABE">╩</xsl:variable>
-  
-  <!-- Tables for computer braille -->
-  <xsl:variable name="computer_braille_tables" select="'sbs.dis,sbs-special.cti,sbs-code.cti'"/>
-
   <xsl:variable name="volumes">
     <xsl:value-of select="count(//brl:volume[@brl:grade=$contraction]) + 1"/>
   </xsl:variable>

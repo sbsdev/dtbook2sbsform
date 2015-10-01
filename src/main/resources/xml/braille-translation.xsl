@@ -29,6 +29,13 @@
     xmlns:pef="http://www.daisy.org/ns/2008/pef"
     exclude-result-prefixes="dtb louis my" extension-element-prefixes="my">
 
+  <xsl:variable name="GROSS_FUER_BUCHSTABENFOLGE">╦</xsl:variable>
+  <xsl:variable name="GROSS_FUER_EINZELBUCHSTABE">╤</xsl:variable>
+  <xsl:variable name="KLEINBUCHSTABE">╩</xsl:variable>
+  
+  <!-- Tables for computer braille -->
+  <xsl:variable name="computer_braille_tables" select="'sbs.dis,sbs-special.cti,sbs-code.cti'"/>
+  
   <!-- ======================= -->
   <!-- Main translate function -->
   <!-- ======================= -->
