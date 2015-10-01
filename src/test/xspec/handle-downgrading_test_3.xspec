@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<x:description xmlns:utfx="http://utfx.org/test-definition" xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:dtb="http://www.daisy.org/z3986/2005/dtbook/" xmlns:brl="http://www.daisy.org/z3986/2009/braille/" stylesheet="../../main/resources/xml/handle-downgrading.xsl">
+
+    <!--
+      This XSpec test was automatically generated from handle-downgrading_test.utfx
+    -->
+
+    <x:param name="contraction" select="0"/>
+
+    <x:scenario label="Language change (but contraction for whole document is '0')">
+      <x:context>
+        <stub xml:lang="de">
+          <dtb:p>Jetzt folgt ein Gedicht:</dtb:p>
+          <dtb:poem xml:lang="en">
+            <dtb:linegroup>
+              <dtb:line>If you want to get a favour done</dtb:line>
+              <dtb:line>By some obliging friend,</dtb:line>
+              <dtb:line>And want a promise, safe and sure,</dtb:line>
+              <dtb:line>On which you may depend,</dtb:line>
+              <dtb:line>Don't go to him who always has</dtb:line>
+              <dtb:line>Much leisure time to plan,</dtb:line>
+              <dtb:line>If you want your favour done,</dtb:line>
+              <dtb:line>Just ask the busy man.</dtb:line>
+            </dtb:linegroup>
+          </dtb:poem>
+        </stub>
+      </x:context>
+      <x:expect label="braille">
+        <stub xml:lang="de">
+          <dtb:p>Jetzt folgt ein Gedicht:</dtb:p>
+          <dtb:poem xml:lang="en">
+            <dtb:linegroup>
+              <dtb:line>If you want to get a favour done</dtb:line>
+              <dtb:line>By some obliging friend,</dtb:line>
+              <dtb:line>And want a promise, safe and sure,</dtb:line>
+              <dtb:line>On which you may depend,</dtb:line>
+              <dtb:line>Don't go to him who always has</dtb:line>
+              <dtb:line>Much leisure time to plan,</dtb:line>
+              <dtb:line>If you want your favour done,</dtb:line>
+              <dtb:line>Just ask the busy man.</dtb:line>
+            </dtb:linegroup>
+          </dtb:poem>
+        </stub>
+      </x:expect>
+    </x:scenario>
+
+</x:description>

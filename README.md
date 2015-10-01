@@ -2,6 +2,9 @@
 
 This project provides:
 
+TODO: update to "A module for the DAISY Pipeline 2 to convert DTBook
+to sbsform."
+
 a command line tool to transform [dtbook xml source files][dtbook]
 into a braille format proprietary to [SBS][] using [Saxon][] with a
 [java extension][] that offers translating text into braille using
@@ -53,9 +56,14 @@ Performs [utfx](http://utf-x.sourceforge.net/) (svn version) tests.
 + http://xmlizer.net
 + http://github.com/bwagner
 
+### Bert Frees
+
++ https://github.com/bertfrees
+
 ## License
 
-Copyright 2011, 2015 SBS.
+Copyright 2011, 2015 SBS Swiss Library for the Blind, Visually
+Impaired and Print Disabled
 
 Licensed under GNU Lesser General Public License as published by the
 Free Software Foundation, either

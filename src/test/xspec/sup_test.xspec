@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<x:description xmlns:utfx="http://utfx.org/test-definition" xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:dtb="http://www.daisy.org/z3986/2005/dtbook/" xmlns:brl="http://www.daisy.org/z3986/2009/braille/" stylesheet="../../main/resources/xml/dtbook2sbsform.xsl" preserve-space="dtb:p dtb:byline dtb:author dtb:li dtb:lic dtb:doctitle dtb:docauthor dtb:span dtb:em dtb:strong brl:emph dtb:line dtb:h1 dtb:h2 dtb:h3 dtb:h4 dtb:h5 dtb:h6">
+
+    <!--
+      This XSpec test was automatically generated from sup_test.utfx
+    -->
+
+    <x:param name="contraction" select="2"/>
+
+    <x:scenario label="sup als Exponent">
+      <x:context>
+        <dtb:p xml:lang="de">2<dtb:sup>23</dtb:sup> x<dtb:sup>2</dtb:sup> x<dtb:sup>-2</dtb:sup> (2<dtb:sup>23</dtb:sup>) (x<dtb:sup>2</dtb:sup>) (x<dtb:sup>-2</dtb:sup>) </dtb:p>
+      </x:context>
+      <x:expect label="braille">
+y P
+ #B0;: 'X0; 'X0-; =#B0;:'= ='X0;'= ='X0-;'= </x:expect>
+    </x:scenario>
+
+    <x:scenario label="sup als oberer Index">
+      <x:context>
+        <dtb:p xml:lang="de"><dtb:abbr>Cu</dtb:abbr><dtb:sup>2+</dtb:sup></dtb:p>
+      </x:context>
+      <x:expect label="braille">
+y P
+ $CU\#B"+</x:expect>
+    </x:scenario>
+
+    <x:scenario label="sup mit select (hochgestellter Text)">
+      <x:context>
+        <dtb:p xml:lang="de">Kapital mal Zinssatz<dtb:sup><brl:select><brl:when-braille> hoch Zeit</brl:when-braille><brl:otherwise>Zeit</brl:otherwise></brl:select></dtb:sup></dtb:p>
+      </x:context>
+      <x:expect label="braille">
+y P
+ KP MAL Z*SSZ HO4 ZT</x:expect>
+    </x:scenario>
+
+    <x:scenario label="sup mit select (Markierungen Chemie)">
+      <x:context>
+        <dtb:p xml:lang="de"><dtb:abbr>V</dtb:abbr><dtb:sup><brl:select><brl:when-braille><brl:literal>&gt;/</brl:literal></brl:when-braille><brl:otherwise>*</brl:otherwise></brl:select></dtb:sup></dtb:p>
+      </x:context>
+      <x:expect label="braille">
+y P
+ &gt;V&gt;/</x:expect>
+    </x:scenario>
+
+</x:description>

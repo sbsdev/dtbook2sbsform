@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<x:description xmlns:utfx="http://utfx.org/test-definition" xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:dtb="http://www.daisy.org/z3986/2005/dtbook/" xmlns:brl="http://www.daisy.org/z3986/2009/braille/" stylesheet="../../main/resources/xml/dtbook2sbsform.xsl" preserve-space="dtb:p dtb:byline dtb:author dtb:li dtb:lic dtb:doctitle dtb:docauthor dtb:span dtb:em dtb:strong brl:emph dtb:line dtb:h1 dtb:h2 dtb:h3 dtb:h4 dtb:h5 dtb:h6">
+
+    <!--
+      This XSpec test was automatically generated from block_boundary_test.utfx
+    -->
+
+    <x:param name="contraction" select="2"/>
+
+    <x:scenario label="context across block boundaries Bug #1395 with em before">
+      <x:context>
+        <stub xml:lang="de"><dtb:byline><dtb:em>Tages-Anzeiger</dtb:em></dtb:byline>
+      <utfx:with-param name="hyphenation" select="true()"/>
+          <dtb:p>Zum Autor</dtb:p></stub>
+      </x:context>
+      <x:expect label="braille">
+y BYLINE
+ __TAG%-+Z3G7'.
+y P
+ ZM 1TOR</x:expect>
+    </x:scenario>
+
+    <x:scenario label="context across block boundaries Bug #1395 with em after">
+      <x:context>
+        <stub xml:lang="de"><dtb:byline>Tages-Anzeiger</dtb:byline><dtb:p><dtb:em>Zum Autor</dtb:em></dtb:p></stub>
+      </x:context>
+      <x:expect label="braille">
+y BYLINE
+ TAG%-+Z3G7
+y P
+ __ZM 1TOR'.</x:expect>
+    </x:scenario>
+
+    <x:scenario label="context across block boundaries Bug #1395 with em both">
+      <x:context>
+        <stub xml:lang="de"><dtb:byline><dtb:em>Tages-Anzeiger</dtb:em></dtb:byline>
+          <dtb:p><dtb:em>Zum Autor</dtb:em></dtb:p></stub>
+      </x:context>
+      <x:expect label="braille">
+y BYLINE
+ __TAG%-+Z3G7'.
+y P
+ __ZM 1TOR'.</x:expect>
+    </x:scenario>
+
+    <x:scenario label="context across block boundaries Bug #1395">
+      <x:context>
+        <stub xml:lang="de"><dtb:byline>Tages-Anzeiger</dtb:byline>
+          <dtb:p>Zum Autor</dtb:p></stub>
+      </x:context>
+      <x:expect label="braille">
+y BYLINE
+ TAG%-+Z3G7
+y P
+ ZM 1TOR</x:expect>
+    </x:scenario>
+
+    <x:scenario label="Context across text nodes ending with punctuation ">
+      <x:context>
+        <stub xml:lang="de">»<dtb:span>Tages-Anzeiger.</dtb:span>« Zum Autor</stub>
+      </x:context>
+      <x:expect label="braille">(TAG%-+Z3G7.) ZM 1TOR</x:expect>
+    </x:scenario>
+
+    <x:scenario label="Context across block boundaries ending with punctuation ">
+      <x:context>
+        <stub xml:lang="de">»Tages-Anzeiger.<dtb:p>« Zum Autor</dtb:p></stub>
+      </x:context>
+      <x:expect label="braille">(TAG%-+Z3G7.
+y P
+ ) ZM 1TOR</x:expect>
+    </x:scenario>
+
+    <x:scenario label="Another weird context problem">
+      <x:context>
+        <dtb:p xml:lang="de"><dtb:em>Mist</dtb:em>, dachte er, <dtb:em>wie komme ich hier raus?</dtb:em></dtb:p>
+      </x:context>
+      <x:expect label="braille">
+y P
+ _MI], D&lt;( 7, __2 KXE # HR R1S?'.</x:expect>
+    </x:scenario>
+
+</x:description>
