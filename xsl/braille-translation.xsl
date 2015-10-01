@@ -28,6 +28,13 @@
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     exclude-result-prefixes="dtb louis my" extension-element-prefixes="my">
 
+  <xsl:variable name="GROSS_FUER_BUCHSTABENFOLGE">╦</xsl:variable>
+  <xsl:variable name="GROSS_FUER_EINZELBUCHSTABE">╤</xsl:variable>
+  <xsl:variable name="KLEINBUCHSTABE">╩</xsl:variable>
+
+  <!-- Tables for computer braille -->
+  <xsl:variable name="computer_braille_tables" select="'sbs.dis,sbs-special.cti,sbs-code.cti'"/>
+
   <xsl:function name="my:get-contraction" as="xs:string">
     <xsl:param name="context"/>
     <xsl:sequence
