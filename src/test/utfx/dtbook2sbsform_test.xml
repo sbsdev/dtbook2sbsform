@@ -1453,8 +1453,7 @@ y LEVEL1e
       </utfx:source>
       <utfx:expected>
 y P
- ... BLA uBLA.
-</utfx:expected>
+ ... BLA uBLA.</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
 

@@ -96,8 +96,7 @@ y LEVEL1e
       </x:context>
       <x:expect label="braille">
 y P
- ... BLA uBLA.
-</x:expect>
+ ... BLA uBLA.</x:expect>
     </x:scenario>
 
     <x:scenario label="Fehlender Pt. 6 (Apo) vor Anführungszeichen im Wortinnern (#1525)">

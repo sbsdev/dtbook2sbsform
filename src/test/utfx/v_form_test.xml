@@ -198,7 +198,8 @@ y P
       <utfx:source>
         <dtb:p xml:lang="de"><brl:v-form>EUEREM</brl:v-form></dtb:p>
       </utfx:source>
-      <utfx:expected>y P
+      <utfx:expected>
+y P
  $EUEREM</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>

@@ -167,7 +167,7 @@
 
   <!-- Just for testing purposes, because utf-8 cannot call functions -->
   <xsl:template name="getTable">
-    <xsl:sequence select="my:get-tables(.,local-name())"/>
+    <xsl:value-of select="my:get-tables(.,local-name())"/>
   </xsl:template>
 
   <!-- ======= -->

@@ -9,7 +9,7 @@
 
     <x:scenario label="Homograph mit 's am Ende (#2195)">
       <x:context>
-        <dtb:p xml:lang="de"> bla <brl:homograph>wachs<brl:separator/>tube</brl:homograph>'s blo </dtb:p>
+        <dtb:p xml:lang="de"> bla <brl:homograph>wachs<brl:separator/>tube</brl:homograph>'s blo</dtb:p>
       </x:context>
       <x:expect label="braille">
 y P

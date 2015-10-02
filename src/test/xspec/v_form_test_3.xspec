@@ -38,7 +38,8 @@ y P
       <x:context>
         <dtb:p xml:lang="de"><brl:v-form>EUEREM</brl:v-form></dtb:p>
       </x:context>
-      <x:expect label="braille">y P
+      <x:expect label="braille">
+y P
  $EUEREM</x:expect>
     </x:scenario>
 

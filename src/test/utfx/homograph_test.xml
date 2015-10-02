@@ -31,7 +31,7 @@
     </utfx:stylesheet-params>
     <utfx:assert-equal>
       <utfx:source>
-        <dtb:p xml:lang="de"> bla <brl:homograph>wachs<brl:separator/>tube</brl:homograph>'s blo </dtb:p>
+        <dtb:p xml:lang="de"> bla <brl:homograph>wachs<brl:separator/>tube</brl:homograph>'s blo</dtb:p>
       </utfx:source>
       <utfx:expected>
 y P
