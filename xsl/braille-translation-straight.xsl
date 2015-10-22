@@ -28,6 +28,8 @@
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     exclude-result-prefixes="dtb louis my" extension-element-prefixes="my">
 
+  <xsl:output method="xml" encoding="utf-8" indent="yes"/>
+
   <xsl:import href="functions.xsl"/>
 
   <xsl:param name="contraction">2</xsl:param>
