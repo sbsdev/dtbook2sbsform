@@ -40,6 +40,7 @@
   <xsl:param name="detailed_accented_characters">de-accents-ch</xsl:param>
   <xsl:param name="use_local_dictionary" select="false()"/>
   <xsl:param name="document_identifier"></xsl:param>
+  <xsl:param name="ascii_encoding" select="false()"></xsl:param>
 
   <xsl:variable name="GROSS_FUER_BUCHSTABENFOLGE">╦</xsl:variable>
   <xsl:variable name="GROSS_FUER_EINZELBUCHSTABE">╤</xsl:variable>
@@ -66,7 +67,7 @@
     <xsl:variable name="result">
     <xsl:value-of
 	select="string-join((
-		'sbs.dis',
+		if ($ascii_encoding) then 'sbs.dis' else 'unicode.dis',
 		'sbs-de-core6.cti',
 		'sbs-de-accents.cti',
 		'sbs-special.cti',
