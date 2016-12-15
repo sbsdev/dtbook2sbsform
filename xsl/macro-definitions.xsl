@@ -1245,6 +1245,9 @@ i f=1 l=1
 	  <xsl:text>&#10;l&#10; </xsl:text>
 	  <xsl:value-of select="louis:translate(string($braille_tables), my:filter-hyphenation('Wir dan­ken dem Ver­lag für die freund­liche Be­reit­stel­lung der elek­troni­schen Text­da­ten. '))"/>
 	</xsl:if>
+	<xsl:text>&#10;lm1&#10;x</xsl:text>
+        <xsl:value-of
+            select="louis:translate(string($braille_tables), my:filter-hyphenation('Dieses Braille­buch ist nicht Kor­rek­tur ge­le­sen.'))"/>
       </xsl:otherwise>
     </xsl:choose>
     <xsl:if test="$book_type = 'rucksack'">
@@ -1271,7 +1274,7 @@ i f=1 l=1
       </xsl:otherwise>
     </xsl:choose>
     <xsl:value-of
-      select="louis:translate(string($braille_tables), 'Verlag, Satz und Druck')"/>
+      select="louis:translate(string($braille_tables), 'Braillebearbeitung und Druck')"/>
     <xsl:text>&#10;a&#10; </xsl:text>
     <xsl:call-template name="handle_abbr">
       <xsl:with-param name="context" select="'abbr'"/>
