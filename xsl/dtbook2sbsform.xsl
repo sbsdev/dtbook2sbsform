@@ -1463,7 +1463,7 @@
 	   neatly works around a bug where liblouis doesn't correctly
 	   announce multi-word emphasis -->
         <xsl:choose>
-          <xsl:when test="not($isFirst) or not($isLast) or (count(tokenize(string(.), '(\s|/|-)+')[string(.) ne '']) > 1)">
+          <xsl:when test="not($isFirst) or not($isLast) or (count(tokenize(string(.), '(\s|&#xA0;|/|-)+')[string(.) ne '']) > 1)">
             <!-- There are multiple words. -->
             <xsl:if test="$isFirst">
               <!-- Insert a multiple word announcement -->
