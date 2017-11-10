@@ -1,5 +1,6 @@
-# Copyright (C) 2010 Swiss Library for the Blind, Visually Impaired and Print
-# Disabled
+#!/bin/sh
+
+# Copyright (C) 2010,2017 Swiss Library for the Blind, Visually Impaired and Print Disabled
 #
 # This file is part of dtbook2sbsform.
 #

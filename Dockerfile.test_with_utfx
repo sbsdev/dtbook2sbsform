@@ -1,0 +1,35 @@
+# Create a Docker image in which we can still run the utfx tests.
+# Those only run with an older version of Java
+
+FROM openjdk:7-jdk
+RUN apt-get update && apt-get install -y \
+    ant \
+    autoconf \
+    curl \
+    libtool \
+    make \
+    texinfo
+
+WORKDIR /root/src/
+RUN curl -L https://github.com/liblouis/liblouis/archive/liblouis_2_5_2.tar.gz | tar zx
+WORKDIR /root/src/liblouis-liblouis_2_5_2/
+RUN ./autogen.sh && \
+    ./configure --enable-ucs4 && \
+    make && \
+    make install && \
+    ldconfig
+
+WORKDIR /root/src/
+RUN curl -L https://github.com/sbsdev/sbs-braille-tables/archive/liblouis_2_5_2.tar.gz | tar zx
+WORKDIR /root/src/sbs-braille-tables-liblouis_2_5_2/
+RUN ./autogen.sh && \
+    ./configure && \
+    make && \
+    make install
+RUN touch \
+    /usr/local/share/liblouis/tables/sbs-de-g1-white.mod \
+    /usr/local/share/liblouis/tables/sbs-de-g2-white.mod
+
+WORKDIR /usr/src/dtbook2sbsform
+
+ENTRYPOINT ["./utfx.sh"]
