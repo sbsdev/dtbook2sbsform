@@ -2,37 +2,42 @@
 
 This project provides:
 
-a command line tool to transform [dtbook xml source files][dtbook]
-into a braille format proprietary to [SBS][] using [Saxon][] with a
-[java extension][] that offers translating text into braille using
-[liblouis][].
-
-[dtbook]: http://en.wikipedia.org/wiki/DTBook
-[SBS]: http://www.sbs.ch
-[Saxon]: http://saxon.sourceforge.net/
-[java extension]: https://github.com/sbsdev/LiblouisSaxonExtension
-[liblouis]: http://liblouis.org
+a command line tool to transform [dtbook xml source
+files](http://en.wikipedia.org/wiki/DTBook) into a braille format
+proprietary to [SBS](http://www.sbs.ch) using
+[Saxon](http://saxon.sourceforge.net) with a [java
+extension](https://github.com/sbsdev/LiblouisSaxonExtension) that
+offers translating text into braille using
+[liblouis](http://www.liblouis.org).
 
 ## Usage command line tools
 
-    cd dtbook2sbsform
-    ./dtbook2sbsform.sh dtbook.xml
-    
+``` console
+cd dtbook2sbsform
+./dtbook2sbsform.sh dtbook.xml
+```
+
 calls `saxon.sh`, transforms `dtbook.xml` and performs line breaking
 using `linebreak.sh` printing output onto stdout.
 
-    ./saxon.sh
-    
+``` console
+./saxon.sh
+```
+
 calls saxon, offering its rich command line interface, includes our
 extension function (see `resources/xsl/dtbook2sbsform.xsl`).
 
-    ./linebreak.sh
-    
+``` console
+./linebreak.sh
+```
+
 breaks lines according to sbs rules: only lines beginning with a blank
 will be broken. Line width is 80 chars.
 
-    ./utfx.sh
-    
+``` console
+./utfx.sh
+```
+
 Performs [utfx](http://utf-x.sourceforge.net/) (svn version) tests.
 
 ## Prerequisite installs
