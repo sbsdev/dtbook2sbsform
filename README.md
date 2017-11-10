@@ -42,6 +42,28 @@ Performs [utfx](http://utf-x.sourceforge.net/) (svn version) tests.
     use Java 7 or lower.
 * [liblouis](http://code.google.com/p/liblouis/)
 
+## Testing
+
+This project has been ported to support testing via xprocspec tests.
+For legacy reasons however testing with `utfx` is still supported via
+a Docker image.
+
+``` console
+docker build -t dtbook2sbsform -f Dockerfile.test_with_utfx .
+```
+
+To run the tests using above image simply run
+
+``` console
+docker run --rm --volume=$(pwd):/usr/src/dtbook2sbsform -t dtbook2sbsform
+```
+
+To run a single test file use the following command:
+
+``` console
+docker run --rm --volume=$(pwd):/usr/src/dtbook2sbsform -t dtbook2sbsform -Dutfx.test.file=test_xsl/11_most_frequent_bugs_test.xml
+```
+
 ## Authors
 
 ### Christian Egli
