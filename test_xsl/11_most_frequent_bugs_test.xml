@@ -31,7 +31,7 @@
     </utfx:stylesheet-params>
     <utfx:assert-equal>
       <utfx:source>
-        <dtb:p><dtb:em>bla&#160;blo</dtb:em></dtb:p>
+	<dtb:p xml:lang="de"><dtb:em>bla&#160;blo</dtb:em></dtb:p>
       </utfx:source>
       <utfx:expected>
 y P
@@ -46,7 +46,7 @@ y P
     </utfx:stylesheet-params>
     <utfx:assert-equal>
       <utfx:source>
-	<dtb:p> bla <dtb:pagenum id="page-10" page="normal">10</dtb:pagenum><dtb:a id="p-10"/>
+	<dtb:p xml:lang="de"> bla <dtb:pagenum id="page-10" page="normal">10</dtb:pagenum><dtb:a id="p-10"/>
 	<dtb:pagenum id="page-11" page="normal">11</dtb:pagenum><dtb:a id="p-11"/> blo </dtb:p>
       </utfx:source>
       <utfx:expected>
