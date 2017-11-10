@@ -59,4 +59,237 @@ j 11
     </utfx:assert-equal>
   </utfx:test>
 
+  <utfx:test>
+    <utfx:name>Falsche Übersetzungen bei mixed emphasis, http://redmine.sbszh.ch/issues/2464</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+	<stub xml:lang="de">
+	  <dtb:p><dtb:em>experimental</dtb:em>protektorverhalten</dtb:p>
+	  <dtb:p>experimental<dtb:em>protektor</dtb:em>verhalten</dtb:p>
+	  <dtb:p>experimentalprotektor<dtb:em>verhalten</dtb:em></dtb:p>
+	</stub>
+      </utfx:source>
+      <utfx:expected>
+y P
+ _XP7IMCT:'.PRO(KT?V7H:TC
+y P
+ XP7IMCT:'_PRO(KT?'.V7H:TC
+y P
+ XP7IMCT:PRO(KT?'_V7H:TC
+      </utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>Pfeilsymbole erscheinen fälschlicherweise IMMER mit Leerzeichen davor und dahinter, http://redmine.sbszh.ch/issues/2456</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+	<stub xml:lang="de">
+	  <dtb:p> Abgase → Umweltverschmutzung </dtb:p>
+	  <dtb:p> Siehe Kapitel 3 (→ Kaufvertrag) </dtb:p>
+	</stub>
+      </utfx:source>
+      <utfx:expected>
+y P
+  ABGASE ::O UMWYTV75MUTZU 
+y P
+  S0HE KAPITY #C =::O K1FV7TG=
+      </utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>Inhalt von BRL:COMPUTER enthält fälschlicherweise Trennmarken, http://redmine.sbszh.ch/issues/2360</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+	<stub xml:lang="de">
+	</stub>
+      </utfx:source>
+      <utfx:expected>
+      </utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>Automatische Korrektur des Abstands zwischen Operator und Zahl, http://redmine.sbszh.ch/issues/2326</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+	<dtb:p xml:lang="de">Kaufpreis × 4</dtb:p>
+      </utfx:source>
+      <utfx:expected>
+y P
+ K1FPR3S "(#D
+      </utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>Plus</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+	<stub xml:lang="de">222 + 222 222+222 222 +222 wort + wort wort + 222</stub>
+      </utfx:source>
+      <utfx:expected>#BBB "+#BBB #BBB "+#BBB #BBB "+#BBB W?T "+ W?T W?T "+#BBB</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>Minus</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+	<stub xml:lang="de">222 &#x2212; 222 222&#x2212;222 222 &#x2212;222 wort &#x2212; wort wort &#x2212; 222</stub>
+      </utfx:source>
+      <utfx:expected>#BBB "-#BBB #BBB "-#BBB #BBB "-#BBB W?T "- W?T W?T "-#BBB</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>Malkreuz</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+	<stub xml:lang="de">222 × 222 222×222 222 ×222 wort × wort wort × 222</stub>
+      </utfx:source>
+      <utfx:expected>#BBB "(#BBB #BBB "(#BBB #BBB "(#BBB W?T "( W?T W?T "(#BBB</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>Geteilt durch</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+	<stub xml:lang="de">222 ÷ 222 222÷222 222 ÷222 wort ÷ wort wort ÷ 222</stub>
+      </utfx:source>
+      <utfx:expected>#BBB ":#BBB #BBB ":#BBB #BBB ":#BBB W?T ": W?T W?T ":#BBB</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>Gleich</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+	<stub xml:lang="de">222 = 222 222=222 222 =222 wort = wort wort = 222</stub>
+      </utfx:source>
+      <utfx:expected>#BBB "=#BBB #BBB "=#BBB #BBB "=#BBB W?T "= W?T W?T "=#BBB</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>Fehlender Punkt 6 Apo bei Frage-/Ausrufezeichen in Klammern, http://redmine.sbszh.ch/issues/2324</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+	<dtb:p xml:lang="de">(?) (!)</dtb:p>
+      </utfx:source>
+      <utfx:expected>
+y P
+ ='?= ='+=
+      </utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>Korrektur des Trademark-Symbols, http://redmine.sbszh.ch/issues/2270</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+	<stub xml:lang="de">foo™</stub>
+      </utfx:source>
+      <utfx:expected>FOO'=>TM=</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>Falsche Übersetzung bei Wörtern mit Stern `*`, http://redmine.sbszh.ch/issues/2187</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+	<stub xml:lang="de">
+	  <dtb:p>Martell</dtb:p>
+	  <dtb:p>Martell*</dtb:p>
+	</stub>
+      </utfx:source>
+      <utfx:expected>
+y P
+ M)(Q
+y P
+ M)(Q'*
+      </utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>Fragezeichen nach Klammer fälschlicherweise ohne Pt. 6 Apo, http://redmine.sbszh.ch/issues/2186</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+	<stub xml:lang="de">
+	  <dtb:p>bla (45-55) blo</dtb:p>
+	  <dtb:p>bla ?-55 blo</dtb:p>
+	  <dtb:p>bla (?-55) blo</dtb:p>
+	</stub>
+      </utfx:source>
+      <utfx:expected>
+y P
+ BLA =#DE-#EE'= BLO
+y P
+ BLA '?-#EE BLO
+y P
+ BLA ='?-#EE'= BLO
+      </utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>falsches Resultat bei Wortersatzstrich -xxx, wenn direkt nach Tag, http://redmine.sbszh.ch/issues/1505</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+	<stub xml:lang="de">
+	  <dtb:p>-losenheim</dtb:p>
+	</stub>
+      </utfx:source>
+      <utfx:expected>
+y P
+ '-LOSCH3M
+      </utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
 </utfx:tests>
