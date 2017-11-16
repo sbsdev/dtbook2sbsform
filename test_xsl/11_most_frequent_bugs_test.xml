@@ -105,21 +105,6 @@ y P
   </utfx:test>
 
   <utfx:test>
-    <utfx:name>Inhalt von BRL:COMPUTER enthält fälschlicherweise Trennmarken, http://redmine.sbszh.ch/issues/2360</utfx:name>
-    <utfx:stylesheet-params>
-      <utfx:with-param name="contraction" select="2"/>
-    </utfx:stylesheet-params>
-    <utfx:assert-equal>
-      <utfx:source>
-	<stub xml:lang="de">
-	</stub>
-      </utfx:source>
-      <utfx:expected>
-      </utfx:expected>
-    </utfx:assert-equal>
-  </utfx:test>
-
-  <utfx:test>
     <utfx:name>Automatische Korrektur des Abstands zwischen Operator und Zahl, http://redmine.sbszh.ch/issues/2326</utfx:name>
     <utfx:stylesheet-params>
       <utfx:with-param name="contraction" select="2"/>
