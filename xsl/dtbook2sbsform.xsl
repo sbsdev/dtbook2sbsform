@@ -1476,7 +1476,7 @@
             </xsl:if>
           </xsl:when>
           <xsl:otherwise>
-            <!-- Its a single word. Insert a single word announcement unless it is within a word -->
+            <!-- It's a single word. Insert a single word announcement unless it is within a word -->
             <xsl:choose>
               <!-- emph is at the beginning of the word -->
               <xsl:when
