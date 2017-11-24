@@ -941,9 +941,9 @@
     <xsl:text>&#10;j </xsl:text>
     <xsl:value-of select="text()"/>
     <!-- Add a newline unless the following node is another pagenum
-         (ignore intermediate empty text nodes and comment nodes -->
+         (ignore anchor nodes and empty text nodes) -->
     <xsl:variable name="following-nodes"
-      select="following-sibling::* | following-sibling::text()[normalize-space(.)]"/>
+      select="following-sibling::*[not(local-name()='a')] | following-sibling::text()[normalize-space(.)]"/>
     <!-- FIXME: this doesn't properly handle comment nodes -->
     <xsl:if test="not($following-nodes[position() = 1 and local-name() = 'pagenum'])">
       <!-- add a space for the following inline elements -->

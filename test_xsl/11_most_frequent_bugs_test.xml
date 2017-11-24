@@ -39,25 +39,74 @@ y P
     </utfx:assert-equal>
   </utfx:test>
 
-<!--   <utfx:test> -->
-<!--     <utfx:name>Fälschlicherweise Leerzeile in SBSForm-Code bei aufeinanderfolgenden PAGENUM mit A, http://redmine.sbszh.ch/issues/2470</utfx:name> -->
-<!--     <utfx:stylesheet-params> -->
-<!--       <utfx:with-param name="contraction" select="2"/> -->
-<!--     </utfx:stylesheet-params> -->
-<!--     <utfx:assert-equal> -->
-<!--       <utfx:source> -->
-<!-- 	<dtb:p xml:lang="de"> bla <dtb:pagenum id="page-10" page="normal">10</dtb:pagenum><dtb:a id="p-10"/> -->
-<!-- 	<dtb:pagenum id="page-11" page="normal">11</dtb:pagenum><dtb:a id="p-11"/> blo </dtb:p> -->
-<!--       </utfx:source> -->
-<!--       <utfx:expected> -->
-<!-- y P -->
-<!--   BLA  -->
-<!-- j 10 -->
-<!-- j 11 -->
-<!--   BLO -->
-<!--       </utfx:expected> -->
-<!--     </utfx:assert-equal> -->
-<!--   </utfx:test> -->
+  <utfx:test>
+    <utfx:name>Fälschlicherweise Leerzeile in SBSForm-Code bei aufeinanderfolgenden PAGENUM mit A, http://redmine.sbszh.ch/issues/2470</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+	<dtb:p xml:lang="de"> bla <dtb:pagenum id="page-10" page="normal">10</dtb:pagenum><dtb:a id="p-10"/>
+	<dtb:pagenum id="page-11" page="normal">11</dtb:pagenum><dtb:a id="p-11"/> blo </dtb:p>
+      </utfx:source>
+      <utfx:expected>
+y P
+  BLA 
+j 10 
+j 11
+  BLO
+      </utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>aufeinanderfolgende PAGENUMs</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+	<dtb:p xml:lang="de">
+	  <dtb:pagenum id="page-10" page="normal">10</dtb:pagenum>
+	  
+	  <dtb:pagenum id="page-11" page="normal">11</dtb:pagenum>
+	</dtb:p>
+      </utfx:source>
+      <utfx:expected>
+y P
+  
+j 10 
+j 11
+
+      </utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>aufeinanderfolgende PAGENUMs</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+	<dtb:p xml:lang="de">
+	  <dtb:pagenum id="page-10" page="normal">10</dtb:pagenum>
+
+	  Foo
+
+	  <dtb:pagenum id="page-11" page="normal">11</dtb:pagenum>
+	</dtb:p>
+      </utfx:source>
+      <utfx:expected>
+y P
+  
+j 10
+  FOO 
+j 11
+
+      </utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
 
 <!--   <utfx:test> -->
 <!--     <utfx:name>Falsche Übersetzungen bei mixed emphasis, http://redmine.sbszh.ch/issues/2464</utfx:name> -->
