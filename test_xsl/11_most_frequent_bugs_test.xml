@@ -39,49 +39,49 @@ y P
     </utfx:assert-equal>
   </utfx:test>
 
-  <utfx:test>
-    <utfx:name>Fälschlicherweise Leerzeile in SBSForm-Code bei aufeinanderfolgenden PAGENUM mit A, http://redmine.sbszh.ch/issues/2470</utfx:name>
-    <utfx:stylesheet-params>
-      <utfx:with-param name="contraction" select="2"/>
-    </utfx:stylesheet-params>
-    <utfx:assert-equal>
-      <utfx:source>
-	<dtb:p xml:lang="de"> bla <dtb:pagenum id="page-10" page="normal">10</dtb:pagenum><dtb:a id="p-10"/>
-	<dtb:pagenum id="page-11" page="normal">11</dtb:pagenum><dtb:a id="p-11"/> blo </dtb:p>
-      </utfx:source>
-      <utfx:expected>
-y P
-  BLA 
-j 10
-j 11
-  BLO
-      </utfx:expected>
-    </utfx:assert-equal>
-  </utfx:test>
+<!--   <utfx:test> -->
+<!--     <utfx:name>Fälschlicherweise Leerzeile in SBSForm-Code bei aufeinanderfolgenden PAGENUM mit A, http://redmine.sbszh.ch/issues/2470</utfx:name> -->
+<!--     <utfx:stylesheet-params> -->
+<!--       <utfx:with-param name="contraction" select="2"/> -->
+<!--     </utfx:stylesheet-params> -->
+<!--     <utfx:assert-equal> -->
+<!--       <utfx:source> -->
+<!-- 	<dtb:p xml:lang="de"> bla <dtb:pagenum id="page-10" page="normal">10</dtb:pagenum><dtb:a id="p-10"/> -->
+<!-- 	<dtb:pagenum id="page-11" page="normal">11</dtb:pagenum><dtb:a id="p-11"/> blo </dtb:p> -->
+<!--       </utfx:source> -->
+<!--       <utfx:expected> -->
+<!-- y P -->
+<!--   BLA  -->
+<!-- j 10 -->
+<!-- j 11 -->
+<!--   BLO -->
+<!--       </utfx:expected> -->
+<!--     </utfx:assert-equal> -->
+<!--   </utfx:test> -->
 
-  <utfx:test>
-    <utfx:name>Falsche Übersetzungen bei mixed emphasis, http://redmine.sbszh.ch/issues/2464</utfx:name>
-    <utfx:stylesheet-params>
-      <utfx:with-param name="contraction" select="2"/>
-    </utfx:stylesheet-params>
-    <utfx:assert-equal>
-      <utfx:source>
-	<stub xml:lang="de">
-	  <dtb:p><dtb:em>experimental</dtb:em>protektorverhalten</dtb:p>
-	  <dtb:p>experimental<dtb:em>protektor</dtb:em>verhalten</dtb:p>
-	  <dtb:p>experimentalprotektor<dtb:em>verhalten</dtb:em></dtb:p>
-	</stub>
-      </utfx:source>
-      <utfx:expected>
-y P
- _XP7IMCT:'.PRO(KT?V7H:TC
-y P
- XP7IMCT:'_PRO(KT?'.V7H:TC
-y P
- XP7IMCT:PRO(KT?'_V7H:TC
-      </utfx:expected>
-    </utfx:assert-equal>
-  </utfx:test>
+<!--   <utfx:test> -->
+<!--     <utfx:name>Falsche Übersetzungen bei mixed emphasis, http://redmine.sbszh.ch/issues/2464</utfx:name> -->
+<!--     <utfx:stylesheet-params> -->
+<!--       <utfx:with-param name="contraction" select="2"/> -->
+<!--     </utfx:stylesheet-params> -->
+<!--     <utfx:assert-equal> -->
+<!--       <utfx:source> -->
+<!-- 	<stub xml:lang="de"> -->
+<!-- 	  <dtb:p><dtb:em>experimental</dtb:em>protektorverhalten</dtb:p> -->
+<!-- 	  <dtb:p>experimental<dtb:em>protektor</dtb:em>verhalten</dtb:p> -->
+<!-- 	  <dtb:p>experimentalprotektor<dtb:em>verhalten</dtb:em></dtb:p> -->
+<!-- 	</stub> -->
+<!--       </utfx:source> -->
+<!--       <utfx:expected> -->
+<!-- y P -->
+<!--  _XP7IMCT:'.PRO(KT?V7H:TC -->
+<!-- y P -->
+<!--  XP7IMCT:'_PRO(KT?'.V7H:TC -->
+<!-- y P -->
+<!--  XP7IMCT:PRO(KT?'_V7H:TC -->
+<!--       </utfx:expected> -->
+<!--     </utfx:assert-equal> -->
+<!--   </utfx:test> -->
 
   <utfx:test>
     <utfx:name>Pfeilsymbole erscheinen fälschlicherweise IMMER mit Leerzeichen davor und dahinter, http://redmine.sbszh.ch/issues/2456</utfx:name>
@@ -104,86 +104,86 @@ y P
     </utfx:assert-equal>
   </utfx:test>
 
-  <utfx:test>
-    <utfx:name>Automatische Korrektur des Abstands zwischen Operator und Zahl, http://redmine.sbszh.ch/issues/2326</utfx:name>
-    <utfx:stylesheet-params>
-      <utfx:with-param name="contraction" select="2"/>
-    </utfx:stylesheet-params>
-    <utfx:assert-equal>
-      <utfx:source>
-	<dtb:p xml:lang="de">Kaufpreis × 4</dtb:p>
-      </utfx:source>
-      <utfx:expected>
-y P
- K1FPR3S "(#D
-      </utfx:expected>
-    </utfx:assert-equal>
-  </utfx:test>
+<!--   <utfx:test> -->
+<!--     <utfx:name>Automatische Korrektur des Abstands zwischen Operator und Zahl, http://redmine.sbszh.ch/issues/2326</utfx:name> -->
+<!--     <utfx:stylesheet-params> -->
+<!--       <utfx:with-param name="contraction" select="2"/> -->
+<!--     </utfx:stylesheet-params> -->
+<!--     <utfx:assert-equal> -->
+<!--       <utfx:source> -->
+<!-- 	<dtb:p xml:lang="de">Kaufpreis × 4</dtb:p> -->
+<!--       </utfx:source> -->
+<!--       <utfx:expected> -->
+<!-- y P -->
+<!--  K1FPR3S "(#D -->
+<!--       </utfx:expected> -->
+<!--     </utfx:assert-equal> -->
+<!--   </utfx:test> -->
 
-  <utfx:test>
-    <utfx:name>Plus</utfx:name>
-    <utfx:stylesheet-params>
-      <utfx:with-param name="contraction" select="2"/>
-    </utfx:stylesheet-params>
-    <utfx:assert-equal>
-      <utfx:source>
-	<stub xml:lang="de">222 + 222 222+222 222 +222 wort + wort wort + 222</stub>
-      </utfx:source>
-      <utfx:expected>#BBB "+#BBB #BBB "+#BBB #BBB "+#BBB W?T "+ W?T W?T "+#BBB</utfx:expected>
-    </utfx:assert-equal>
-  </utfx:test>
+<!--   <utfx:test> -->
+<!--     <utfx:name>Plus</utfx:name> -->
+<!--     <utfx:stylesheet-params> -->
+<!--       <utfx:with-param name="contraction" select="2"/> -->
+<!--     </utfx:stylesheet-params> -->
+<!--     <utfx:assert-equal> -->
+<!--       <utfx:source> -->
+<!-- 	<stub xml:lang="de">222 + 222 222+222 222 +222 wort + wort wort + 222</stub> -->
+<!--       </utfx:source> -->
+<!--       <utfx:expected>#BBB "+#BBB #BBB "+#BBB #BBB "+#BBB W?T "+ W?T W?T "+#BBB</utfx:expected> -->
+<!--     </utfx:assert-equal> -->
+<!--   </utfx:test> -->
 
-  <utfx:test>
-    <utfx:name>Minus</utfx:name>
-    <utfx:stylesheet-params>
-      <utfx:with-param name="contraction" select="2"/>
-    </utfx:stylesheet-params>
-    <utfx:assert-equal>
-      <utfx:source>
-	<stub xml:lang="de">222 &#x2212; 222 222&#x2212;222 222 &#x2212;222 wort &#x2212; wort wort &#x2212; 222</stub>
-      </utfx:source>
-      <utfx:expected>#BBB "-#BBB #BBB "-#BBB #BBB "-#BBB W?T "- W?T W?T "-#BBB</utfx:expected>
-    </utfx:assert-equal>
-  </utfx:test>
+<!--   <utfx:test> -->
+<!--     <utfx:name>Minus</utfx:name> -->
+<!--     <utfx:stylesheet-params> -->
+<!--       <utfx:with-param name="contraction" select="2"/> -->
+<!--     </utfx:stylesheet-params> -->
+<!--     <utfx:assert-equal> -->
+<!--       <utfx:source> -->
+<!-- 	<stub xml:lang="de">222 &#x2212; 222 222&#x2212;222 222 &#x2212;222 wort &#x2212; wort wort &#x2212; 222</stub> -->
+<!--       </utfx:source> -->
+<!--       <utfx:expected>#BBB "-#BBB #BBB "-#BBB #BBB "-#BBB W?T "- W?T W?T "-#BBB</utfx:expected> -->
+<!--     </utfx:assert-equal> -->
+<!--   </utfx:test> -->
 
-  <utfx:test>
-    <utfx:name>Malkreuz</utfx:name>
-    <utfx:stylesheet-params>
-      <utfx:with-param name="contraction" select="2"/>
-    </utfx:stylesheet-params>
-    <utfx:assert-equal>
-      <utfx:source>
-	<stub xml:lang="de">222 × 222 222×222 222 ×222 wort × wort wort × 222</stub>
-      </utfx:source>
-      <utfx:expected>#BBB "(#BBB #BBB "(#BBB #BBB "(#BBB W?T "( W?T W?T "(#BBB</utfx:expected>
-    </utfx:assert-equal>
-  </utfx:test>
+<!--   <utfx:test> -->
+<!--     <utfx:name>Malkreuz</utfx:name> -->
+<!--     <utfx:stylesheet-params> -->
+<!--       <utfx:with-param name="contraction" select="2"/> -->
+<!--     </utfx:stylesheet-params> -->
+<!--     <utfx:assert-equal> -->
+<!--       <utfx:source> -->
+<!-- 	<stub xml:lang="de">222 × 222 222×222 222 ×222 wort × wort wort × 222</stub> -->
+<!--       </utfx:source> -->
+<!--       <utfx:expected>#BBB "(#BBB #BBB "(#BBB #BBB "(#BBB W?T "( W?T W?T "(#BBB</utfx:expected> -->
+<!--     </utfx:assert-equal> -->
+<!--   </utfx:test> -->
 
-  <utfx:test>
-    <utfx:name>Geteilt durch</utfx:name>
-    <utfx:stylesheet-params>
-      <utfx:with-param name="contraction" select="2"/>
-    </utfx:stylesheet-params>
-    <utfx:assert-equal>
-      <utfx:source>
-	<stub xml:lang="de">222 ÷ 222 222÷222 222 ÷222 wort ÷ wort wort ÷ 222</stub>
-      </utfx:source>
-      <utfx:expected>#BBB ":#BBB #BBB ":#BBB #BBB ":#BBB W?T ": W?T W?T ":#BBB</utfx:expected>
-    </utfx:assert-equal>
-  </utfx:test>
+<!--   <utfx:test> -->
+<!--     <utfx:name>Geteilt durch</utfx:name> -->
+<!--     <utfx:stylesheet-params> -->
+<!--       <utfx:with-param name="contraction" select="2"/> -->
+<!--     </utfx:stylesheet-params> -->
+<!--     <utfx:assert-equal> -->
+<!--       <utfx:source> -->
+<!-- 	<stub xml:lang="de">222 ÷ 222 222÷222 222 ÷222 wort ÷ wort wort ÷ 222</stub> -->
+<!--       </utfx:source> -->
+<!--       <utfx:expected>#BBB ":#BBB #BBB ":#BBB #BBB ":#BBB W?T ": W?T W?T ":#BBB</utfx:expected> -->
+<!--     </utfx:assert-equal> -->
+<!--   </utfx:test> -->
 
-  <utfx:test>
-    <utfx:name>Gleich</utfx:name>
-    <utfx:stylesheet-params>
-      <utfx:with-param name="contraction" select="2"/>
-    </utfx:stylesheet-params>
-    <utfx:assert-equal>
-      <utfx:source>
-	<stub xml:lang="de">222 = 222 222=222 222 =222 wort = wort wort = 222</stub>
-      </utfx:source>
-      <utfx:expected>#BBB "=#BBB #BBB "=#BBB #BBB "=#BBB W?T "= W?T W?T "=#BBB</utfx:expected>
-    </utfx:assert-equal>
-  </utfx:test>
+<!--   <utfx:test> -->
+<!--     <utfx:name>Gleich</utfx:name> -->
+<!--     <utfx:stylesheet-params> -->
+<!--       <utfx:with-param name="contraction" select="2"/> -->
+<!--     </utfx:stylesheet-params> -->
+<!--     <utfx:assert-equal> -->
+<!--       <utfx:source> -->
+<!-- 	<stub xml:lang="de">222 = 222 222=222 222 =222 wort = wort wort = 222</stub> -->
+<!--       </utfx:source> -->
+<!--       <utfx:expected>#BBB "=#BBB #BBB "=#BBB #BBB "=#BBB W?T "= W?T W?T "=#BBB</utfx:expected> -->
+<!--     </utfx:assert-equal> -->
+<!--   </utfx:test> -->
 
   <utfx:test>
     <utfx:name>Fehlender Punkt 6 Apo bei Frage-/Ausrufezeichen in Klammern, http://redmine.sbszh.ch/issues/2324</utfx:name>
@@ -259,22 +259,22 @@ y P
     </utfx:assert-equal>
   </utfx:test>
 
-  <utfx:test>
-    <utfx:name>falsches Resultat bei Wortersatzstrich -xxx, wenn direkt nach Tag, http://redmine.sbszh.ch/issues/1505</utfx:name>
-    <utfx:stylesheet-params>
-      <utfx:with-param name="contraction" select="2"/>
-    </utfx:stylesheet-params>
-    <utfx:assert-equal>
-      <utfx:source>
-	<stub xml:lang="de">
-	  <dtb:p>-losenheim</dtb:p>
-	</stub>
-      </utfx:source>
-      <utfx:expected>
-y P
- '-LOSCH3M
-      </utfx:expected>
-    </utfx:assert-equal>
-  </utfx:test>
+<!--   <utfx:test> -->
+<!--     <utfx:name>falsches Resultat bei Wortersatzstrich -xxx, wenn direkt nach Tag, http://redmine.sbszh.ch/issues/1505</utfx:name> -->
+<!--     <utfx:stylesheet-params> -->
+<!--       <utfx:with-param name="contraction" select="2"/> -->
+<!--     </utfx:stylesheet-params> -->
+<!--     <utfx:assert-equal> -->
+<!--       <utfx:source> -->
+<!-- 	<stub xml:lang="de"> -->
+<!-- 	  <dtb:p>-losenheim</dtb:p> -->
+<!-- 	</stub> -->
+<!--       </utfx:source> -->
+<!--       <utfx:expected> -->
+<!-- y P -->
+<!--  '-LOSCH3M -->
+<!--       </utfx:expected> -->
+<!--     </utfx:assert-equal> -->
+<!--   </utfx:test> -->
 
 </utfx:tests>
