@@ -108,29 +108,29 @@ j 11
     </utfx:assert-equal>
   </utfx:test>
 
-<!--   <utfx:test> -->
-<!--     <utfx:name>Falsche Übersetzungen bei mixed emphasis, http://redmine.sbszh.ch/issues/2464</utfx:name> -->
-<!--     <utfx:stylesheet-params> -->
-<!--       <utfx:with-param name="contraction" select="2"/> -->
-<!--     </utfx:stylesheet-params> -->
-<!--     <utfx:assert-equal> -->
-<!--       <utfx:source> -->
-<!-- 	<stub xml:lang="de"> -->
-<!-- 	  <dtb:p><dtb:em>experimental</dtb:em>protektorverhalten</dtb:p> -->
-<!-- 	  <dtb:p>experimental<dtb:em>protektor</dtb:em>verhalten</dtb:p> -->
-<!-- 	  <dtb:p>experimentalprotektor<dtb:em>verhalten</dtb:em></dtb:p> -->
-<!-- 	</stub> -->
-<!--       </utfx:source> -->
-<!--       <utfx:expected> -->
-<!-- y P -->
-<!--  _XP7IMCT:'.PRO(KT?V7H:TC -->
-<!-- y P -->
-<!--  XP7IMCT:'_PRO(KT?'.V7H:TC -->
-<!-- y P -->
-<!--  XP7IMCT:PRO(KT?'_V7H:TC -->
-<!--       </utfx:expected> -->
-<!--     </utfx:assert-equal> -->
-<!--   </utfx:test> -->
+  <utfx:test>
+    <utfx:name>Falsche Übersetzungen bei mixed emphasis, http://redmine.sbszh.ch/issues/2464</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+	<stub xml:lang="de">
+	  <dtb:p><dtb:em>experimental</dtb:em>protektorverhalten</dtb:p>
+	  <dtb:p>experimental<dtb:em>protektor</dtb:em>verhalten</dtb:p>
+	  <dtb:p>experimentalprotektor<dtb:em>verhalten</dtb:em></dtb:p>
+	</stub>
+      </utfx:source>
+      <utfx:expected>
+y P
+ _XP7IMCT:'.PRO(KT?V7H:TC
+y P
+ XP7IMCT:'_PRO(KT?'.V7H:TC
+y P
+ XP7IMCT:PRO(KT?'_V7H:TC
+      </utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
 
   <utfx:test>
     <utfx:name>Pfeilsymbole erscheinen fälschlicherweise IMMER mit Leerzeichen davor und dahinter, http://redmine.sbszh.ch/issues/2456</utfx:name>

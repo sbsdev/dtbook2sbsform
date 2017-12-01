@@ -1482,20 +1482,23 @@
               <xsl:when
                 test="my:ends-with-non-word(preceding-sibling::text()[1]) and my:starts-with-word(following-sibling::text()[1])">
                 <xsl:value-of select="louis:translate(string($braille_tables), '&#x255F;')"/>
-                <xsl:apply-templates/>
+		<!-- when translating make sure to inhibit contraction at the end by inserting a special character -->
+		<xsl:value-of select="louis:translate(string($braille_tables), concat(string(),'&#x250A;'))"/>
                 <xsl:value-of select="louis:translate(string($braille_tables), '&#x2561;')"/>
               </xsl:when>
               <!-- emph is at the end of the word -->
               <xsl:when
                 test="my:ends-with-word(preceding-sibling::text()[1]) and my:starts-with-non-word(following-sibling::text()[1])">
                 <xsl:value-of select="louis:translate(string($braille_tables), '&#x255E;')"/>
-                <xsl:apply-templates/>
+		<!-- when translating make sure to inhibit contraction at the beginning by inserting a special character -->
+		<xsl:value-of select="louis:translate(string($braille_tables), concat('&#x250A;',string()))"/>
               </xsl:when>
               <!-- emph is inside the word -->
               <xsl:when
                 test="my:ends-with-word(preceding-sibling::text()[1]) and my:starts-with-word(following-sibling::text()[1])">
                 <xsl:value-of select="louis:translate(string($braille_tables), '&#x255E;')"/>
-                <xsl:apply-templates/>
+		<!-- when translating make sure to inhibit contraction at the beginning or at the end by inserting a special character -->
+		<xsl:value-of select="louis:translate(string($braille_tables), concat('&#x250A;',string(),'&#x250A;'))"/>
                 <xsl:value-of select="louis:translate(string($braille_tables), '&#x2561;')"/>
               </xsl:when>
               <xsl:otherwise>
