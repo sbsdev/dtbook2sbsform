@@ -212,6 +212,11 @@
     <xsl:value-of select="not(empty($string)) and matches($string, '\S$')"/>
   </xsl:function>
 
+  <xsl:function name="my:ends-with-whitespace" as="xs:boolean">
+    <xsl:param name="string"/>
+    <xsl:value-of select="not(empty($string)) and matches($string, '\s$')"/>
+  </xsl:function>
+
   <xsl:function name="my:starts-with-punctuation" as="xs:boolean">
     <xsl:param name="string"/>
     <xsl:value-of select="matches($string, '^\p{P}')"/>
@@ -225,6 +230,11 @@
   <xsl:function name="my:ends-with-punctuation-word" as="xs:boolean">
     <xsl:param name="string"/>
     <xsl:value-of select="matches($string, '\W([-/]|\p{P})+$')"/>
+  </xsl:function>
+
+  <xsl:function name="my:starts-with-wortersatzstrich" as="xs:boolean">
+    <xsl:param name="string"/>
+    <xsl:value-of select="matches($string, '^-\w')"/>
   </xsl:function>
 
   <xsl:function name="my:filter-hyphenation" as="xs:string">
@@ -1946,6 +1956,25 @@
       <xsl:call-template name="getTable"/>
     </xsl:variable>
     <xsl:value-of select="louis:translate(string($braille_tables), concat('&#x250A;',string()))"/>
+  </xsl:template>
+
+  <!-- Handle "Wortersatzstrich" -->
+  <!-- assume a text node starts with a Wortersatzstrich if it matches the regexp and the previous text node ends in whitespace -->
+  <xsl:template
+    match="text()[my:starts-with-wortersatzstrich(string()) and my:ends-with-whitespace(string(my:preceding-textnode-within-block(.)))]">
+    <xsl:variable name="braille_tables">
+      <xsl:call-template name="getTable"/>
+    </xsl:variable>
+    <xsl:value-of select="louis:translate(string($braille_tables), concat('&#x2569;',string()))"/>
+  </xsl:template>
+
+  <!-- assume a text node starts with a Wortersatzstrich if it matches the regexp and is the first text node within the block -->
+  <xsl:template
+    match="text()[my:starts-with-wortersatzstrich(string()) and exists(ancestor-or-self::*[my:is-block-element(.)]) and empty(my:preceding-textnode-within-block(.))]">
+    <xsl:variable name="braille_tables">
+      <xsl:call-template name="getTable"/>
+    </xsl:variable>
+    <xsl:value-of select="louis:translate(string($braille_tables), concat('&#x2569;',string()))"/>
   </xsl:template>
 
   <!-- Handle single word mixed emphasis -->

@@ -308,22 +308,22 @@ y P
     </utfx:assert-equal>
   </utfx:test>
 
-<!--   <utfx:test> -->
-<!--     <utfx:name>falsches Resultat bei Wortersatzstrich -xxx, wenn direkt nach Tag, http://redmine.sbszh.ch/issues/1505</utfx:name> -->
-<!--     <utfx:stylesheet-params> -->
-<!--       <utfx:with-param name="contraction" select="2"/> -->
-<!--     </utfx:stylesheet-params> -->
-<!--     <utfx:assert-equal> -->
-<!--       <utfx:source> -->
-<!-- 	<stub xml:lang="de"> -->
-<!-- 	  <dtb:p>-losenheim</dtb:p> -->
-<!-- 	</stub> -->
-<!--       </utfx:source> -->
-<!--       <utfx:expected> -->
-<!-- y P -->
-<!--  '-LOSCH3M -->
-<!--       </utfx:expected> -->
-<!--     </utfx:assert-equal> -->
-<!--   </utfx:test> -->
+  <utfx:test>
+    <utfx:name>falsches Resultat bei Wortersatzstrich -xxx, wenn direkt nach Tag, http://redmine.sbszh.ch/issues/1505</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+	<stub xml:lang="de">
+	  <dtb:p>-losenheim</dtb:p>
+	</stub>
+      </utfx:source>
+      <utfx:expected>
+y P
+ '-LOSCH3M
+      </utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
 
 </utfx:tests>

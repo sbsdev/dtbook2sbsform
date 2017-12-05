@@ -27,18 +27,18 @@
   <!-- We handle this case manually for now using a brl:select, so
        most of these test cases are commented out. -->
 
-  <!-- <utfx:test> -->
-  <!--   <utfx:name>Wortersatzstrich</utfx:name> -->
-  <!--   <utfx:stylesheet-params> -->
-  <!--     <utfx:with-param name="contraction" select="2"/> -->
-  <!--   </utfx:stylesheet-params> -->
-  <!--   <utfx:assert-equal> -->
-  <!--     <utfx:source> -->
-  <!--       <dtb:p xml:lang="de">-tragen</dtb:p> -->
-  <!--     </utfx:source> -->
-  <!--     <utfx:expected>y P&#13; '-TGC</utfx:expected> -->
-  <!--   </utfx:assert-equal> -->
-  <!-- </utfx:test> -->
+  <utfx:test>
+    <utfx:name>Wortersatzstrich</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+        <dtb:p xml:lang="de">-tragen</dtb:p>
+      </utfx:source>
+      <utfx:expected>y P&#13; '-TGC</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
   
   <utfx:test>
     <utfx:name>Wortersatzstrich (http://redmine.sbszh.ch/issues/1505)</utfx:name>
@@ -55,23 +55,23 @@ y P
     </utfx:assert-equal>
   </utfx:test>
   
-  <!-- <utfx:test> -->
-  <!--   <utfx:name>Wortersatzstrich I(http://redmine.sbszh.ch/issues/1505)</utfx:name> -->
-  <!--   <utfx:stylesheet-params> -->
-  <!--     <utfx:with-param name="contraction" select="2"/> -->
-  <!--   </utfx:stylesheet-params> -->
-  <!--   <utfx:assert-equal> -->
-  <!--     <utfx:source> -->
-  <!--       <dtb:p xml:lang="de">Arbeits</dtb:p> -->
-  <!--       <dtb:p xml:lang="de">-losenheim</dtb:p> -->
-  <!--     </utfx:source> -->
-  <!--     <utfx:expected>
+  <utfx:test>
+    <utfx:name>Wortersatzstrich I(http://redmine.sbszh.ch/issues/1505)</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+        <dtb:p xml:lang="de">Arbeits</dtb:p>
+        <dtb:p xml:lang="de">-losenheim</dtb:p>
+      </utfx:source>
+      <utfx:expected>
 y P
  )BS
 y P
- '-LOSCH3M</utfx:expected> -->
-  <!--   </utfx:assert-equal> -->
-  <!-- </utfx:test> -->
+ '-LOSCH3M</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
   
   <utfx:test>
     <utfx:name>Wortersatzstrich II(http://redmine.sbszh.ch/issues/1505)</utfx:name>
@@ -91,31 +91,31 @@ y P
     </utfx:assert-equal>
   </utfx:test>
   
-  <!-- <utfx:test> -->
-  <!--   <utfx:name>Wortersatzstrich III</utfx:name> -->
-  <!--   <utfx:stylesheet-params> -->
-  <!--     <utfx:with-param name="contraction" select="2"/> -->
-  <!--   </utfx:stylesheet-params> -->
-  <!--   <utfx:assert-equal> -->
-  <!--     <utfx:source> -->
-  <!-- 	<stub xml:lang="de">Arbeits<dtb:span>-losenheim</dtb:span></stub> -->
-  <!--     </utfx:source> -->
-  <!--     <utfx:expected>)BS-LOSCH3M</utfx:expected> -->
-  <!--   </utfx:assert-equal> -->
-  <!-- </utfx:test> -->
+  <utfx:test>
+    <utfx:name>Wortersatzstrich III</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+  	<dtb:p xml:lang="de">Arbeits<dtb:span>-losenheim</dtb:span></dtb:p>
+      </utfx:source>
+      <utfx:expected>y P&#13; )BS-LOSCH3M</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
   
-  <!-- <utfx:test> -->
-  <!--   <utfx:name>Wortersatzstrich IV</utfx:name> -->
-  <!--   <utfx:stylesheet-params> -->
-  <!--     <utfx:with-param name="contraction" select="2"/> -->
-  <!--   </utfx:stylesheet-params> -->
-  <!--   <utfx:assert-equal> -->
-  <!--     <utfx:source> -->
-  <!-- 	<stub xml:lang="de">Arbeits <dtb:span>-losenheim</dtb:span></stub> -->
-  <!--     </utfx:source> -->
-  <!--     <utfx:expected>)BS '-LOSCH3M</utfx:expected> -->
-  <!--   </utfx:assert-equal> -->
-  <!-- </utfx:test> -->
+  <utfx:test>
+    <utfx:name>Wortersatzstrich IV</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+  	<dtb:p xml:lang="de">Arbeits <dtb:span>-losenheim</dtb:span></dtb:p>
+      </utfx:source>
+      <utfx:expected>y P&#13; )BS '-LOSCH3M</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
 
   <!-- <utfx:test> -->
   <!--   <utfx:name>Wortersatzstrich V</utfx:name> -->
@@ -124,9 +124,9 @@ y P
   <!--   </utfx:stylesheet-params> -->
   <!--   <utfx:assert-equal> -->
   <!--     <utfx:source> -->
-  <!-- 	<stub xml:lang="de">Arbeits <dtb:span>"-losenheim"</dtb:span></stub> -->
+  <!-- 	<dtb:p xml:lang="de">Arbeits <dtb:span>"-losenheim"</dtb:span></dtb:p> -->
   <!--     </utfx:source> -->
-  <!--     <utfx:expected>)BS '-LOSCH3M</utfx:expected> -->
+  <!--     <utfx:expected>)y P&#13; BS '-LOSCH3M</utfx:expected> -->
   <!--   </utfx:assert-equal> -->
   <!-- </utfx:test> -->
   

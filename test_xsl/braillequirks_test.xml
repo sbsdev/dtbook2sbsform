@@ -348,7 +348,7 @@ mm</brl:num>
   </utfx:test>
 
   <utfx:test>
-    <utfx:name>Kursive/Fette Anführungszeichen bei brl:render="ignore" (http://redmine.sbszh.ch/issues/show/1006)</utfx:name>
+    <utfx:name>Kursive/Fette Anführungszeichen bei brl:render="ignore" I (http://redmine.sbszh.ch/issues/show/1006)</utfx:name>
     <utfx:stylesheet-params>
       <utfx:with-param name="contraction" select="2"/>
     </utfx:stylesheet-params>
@@ -361,7 +361,7 @@ mm</brl:num>
   </utfx:test>
 
   <utfx:test>
-    <utfx:name>Kursive/Fette Anführungszeichen bei brl:render="ignore" (http://redmine.sbszh.ch/issues/show/1006)</utfx:name>
+    <utfx:name>Kursive/Fette Anführungszeichen bei brl:render="ignore" II (http://redmine.sbszh.ch/issues/show/1006)</utfx:name>
     <utfx:stylesheet-params>
       <utfx:with-param name="contraction" select="2"/>
     </utfx:stylesheet-params>
@@ -374,7 +374,7 @@ mm</brl:num>
   </utfx:test>
 
   <utfx:test>
-    <utfx:name>Kursive/Fette Anführungszeichen bei brl:render="ignore" (http://redmine.sbszh.ch/issues/show/1006)</utfx:name>
+    <utfx:name>Kursive/Fette Anführungszeichen bei brl:render="ignore" III (http://redmine.sbszh.ch/issues/show/1006)</utfx:name>
     <utfx:stylesheet-params>
       <utfx:with-param name="contraction" select="2"/>
     </utfx:stylesheet-params>
@@ -387,7 +387,7 @@ mm</brl:num>
   </utfx:test>
 
   <utfx:test>
-    <utfx:name>Kursive/Fette Anführungszeichen bei brl:render="ignore" (http://redmine.sbszh.ch/issues/show/1006)</utfx:name>
+    <utfx:name>Kursive/Fette Anführungszeichen bei brl:render="ignore" IV (http://redmine.sbszh.ch/issues/show/1006)</utfx:name>
     <utfx:stylesheet-params>
       <utfx:with-param name="contraction" select="2"/>
     </utfx:stylesheet-params>
