@@ -299,7 +299,7 @@
         <xsl:text>sbs-litdigit-lower.mod,</xsl:text>
       </xsl:when>
       <xsl:otherwise>
-        <xsl:text>sbs-litdigit-upper.mod,</xsl:text>
+        <xsl:text>litdigits6Dots.uti,</xsl:text>
       </xsl:otherwise>
     </xsl:choose>
     <xsl:if test="$context != 'date_month' and $context != 'date_day'">
