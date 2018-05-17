@@ -56,6 +56,12 @@ a Docker image.
 ``` console
 docker build -t dtbook2sbsform -f Dockerfile.test_with_utfx .
 ```
+If you really want you can also build an image to test against old
+versions of liblouis and the braille tables:
+
+``` console
+docker build --build-arg LIBLOUIS_VERSION=liblouis_2_5_2 --build-arg BRAILLE_TABLES_VERSION=liblouis_2_5_2 -t dtbook2sbsform -f Dockerfile.test_with_utfx .
+```
 
 To run the tests using above image simply run
 
