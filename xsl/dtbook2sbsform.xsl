@@ -1150,6 +1150,7 @@
     <xsl:text>I L=n&#10;</xsl:text>
     <xsl:text>i f=1 l=3 w=5&#10;</xsl:text>
     <xsl:for-each select="//(dtb:note|dtb:annotation)">
+      <xsl:sort select="//(dtb:noteref|dtb:annoref)[@idref=concat('#',current()/@id)]/count(preceding::dtb:noteref|preceding::dtb:annoref)+1"/>
       <xsl:apply-templates/>
     </xsl:for-each>
     <xsl:text>&#10;O&#10;</xsl:text>
