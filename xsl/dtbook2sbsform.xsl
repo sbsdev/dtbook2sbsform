@@ -33,7 +33,11 @@
   <xsl:output method="text" encoding="utf-8" indent="no"/>
   <xsl:strip-space elements="*"/>
   <xsl:preserve-space
-    elements="dtb:p dtb:byline dtb:author dtb:li dtb:lic dtb:doctitle dtb:docauthor dtb:span dtb:em dtb:strong brl:emph dtb:line dtb:h1 dtb:h2 dtb:h3 dtb:h4 dtb:h5 dtb:h6"/>
+    elements="dtb:p dtb:byline dtb:author dtb:li dtb:lic dtb:doctitle
+	      dtb:docauthor dtb:span dtb:em dtb:strong brl:emph
+	      dtb:line dtb:h1 dtb:h2 dtb:h3 dtb:h4 dtb:h5 dtb:h6
+	      dtb:bridgehead dtb:hd dtb:caption dtb:dd dtb:dt dtb:sub
+	      dtb:sup"/>
 
   <xsl:param name="contraction">2</xsl:param>
   <xsl:param name="version">0</xsl:param>
