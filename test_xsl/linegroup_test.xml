@@ -98,7 +98,7 @@ y LINEe_foo
       </utfx:source>
       <utfx:expected>
 y LINEb
- bF| D HR ] 6 KL67 TE]. % &amp;HT D)UM.
+ bF| D HR ] 6 KL67 TE]. % G=T D)UM.
 y LINEe
 </utfx:expected>
     </utfx:assert-equal>
@@ -112,7 +112,7 @@ y LINEe
       </utfx:source>
       <utfx:expected>
 y LINEb
- CF| D HR ] 6 KL67 TE]. % &amp;HT D)UM.
+ CF| D HR ] 6 KL67 TE]. % G=T D)UM.
 y LINEe
 </utfx:expected>
     </utfx:assert-equal>
@@ -128,15 +128,15 @@ y LINEe
       </utfx:source>
       <utfx:expected>
 y LINEb
- bF| D HR ] 6 KL67 TE]. % &amp;HT D)UM.
+ bF| D HR ] 6 KL67 TE]. % G=T D)UM.
 y LINEe
 
 y LINEb
- | D HR ] 6 KL67 TE]. % &amp;HT D)UM.
+ | D HR ] 6 KL67 TE]. % G=T D)UM.
 y LINEe
 
 y LINEb
- bF| D HR ] 6 KL67 TE]. % &amp;HT D)UM.
+ bF| D HR ] 6 KL67 TE]. % G=T D)UM.
 y LINEe
 </utfx:expected>
     </utfx:assert-equal>
@@ -154,7 +154,7 @@ y LINEe
 y POEM_LNb
 
 y LINEb
- bF| D HR ] 6 KL67 TE]. % &amp;HT D)UM.
+ bF| D HR ] 6 KL67 TE]. % G=T D)UM.
 y LINEe
 
 y POEM_LNe
@@ -175,11 +175,11 @@ y POEM_LNe
 y POEM_LNb
 
 y LINEb
- bF| D HR ] 6 KL67 TE]. % &amp;HT D)UM.
+ bF| D HR ] 6 KL67 TE]. % G=T D)UM.
 y LINEe
 
 y LINEb
- | D HR ] 6 KL67 TE]. % &amp;HT D)UM.
+ | D HR ] 6 KL67 TE]. % G=T D)UM.
 y LINEe
 
 y POEM_LNe
@@ -206,7 +206,7 @@ y POEM_LNb
 y LINEGR_LNb
  
 y LINEb
- bF| D HR ] 6 KL67 TE]. % &amp;HT D)UM.
+ bF| D HR ] 6 KL67 TE]. % G=T D)UM.
 y LINEe
 
 y LINEGR_LNe
@@ -214,7 +214,7 @@ y LINEGR_LNe
 y LINEGR_LNb
  
 y LINEb
- | D HR ] 6 KL67 TE]. % &amp;HT D)UM.
+ | D HR ] 6 KL67 TE]. % G=T D)UM.
 y LINEe
 
 y LINEGR_LNe

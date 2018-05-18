@@ -101,11 +101,11 @@ y IMGGRe
     </utfx:stylesheet-params>
     <utfx:assert-equal>
       <utfx:source>
-	<dtb:caption xml:lang="de" imgref="img1_1">Abb. 23: By the way, Sam, as someday you'll be paying for my entitlements, I'd like to thank you in advance.</dtb:caption>
+	<dtb:caption xml:lang="de" imgref="img1_1">Abb. 23: By the way, Sam, as someday you'll be paying for my, I'd like to thank you in advance.</dtb:caption>
       </utfx:source>
       <utfx:expected>
 y CAPTION
- ABB. #BC': B'Y THE WA'Y, SAM, AS SOMEDA'Y 'YOU'LL BE PA'Y*G FOR M'Y ^ITL[CTS, I'D LIKE TO TH+K 'YOU * ADV+'CE.</utfx:expected>
+ ABB. #BC': B'Y THE WA'Y, SAM, AS SOMEDA'Y 'YOU'LL BE PA'Y*G FOR M'Y, I'D LIKE TO TH+K 'YOU * ADV+'CE.</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
 
@@ -118,8 +118,7 @@ y CAPTION
       <utfx:source>
         <dtb:imggroup id="imggrp_2" xml:lang="de">
           <dtb:img id="img1_1" src="fig1_01.png" alt="someday"/>
-          <dtb:caption imgref="img1_1">Abb. 23: By the way, Sam, as someday you'll be paying for my
-          entitlements, I'd like to thank you in advance.</dtb:caption>
+          <dtb:caption imgref="img1_1">Abb. 23: By the way, Sam, as someday you'll be paying for my, I'd like to thank you in advance.</dtb:caption>
         </dtb:imggroup>
       </utfx:source>
       <utfx:expected>
@@ -129,7 +128,7 @@ y IMG
  SOMEDA'Y
 
 y CAPTION
- ABB. #BC': B'Y THE WA'Y, SAM, AS SOMEDA'Y 'YOU'LL BE PA'Y*G FOR M'Y ^ITL[CTS, I'D LIKE TO TH+K 'YOU * ADV+'CE.
+ ABB. #BC': B'Y THE WA'Y, SAM, AS SOMEDA'Y 'YOU'LL BE PA'Y*G FOR M'Y, I'D LIKE TO TH+K 'YOU * ADV+'CE.
 y IMGGRe
 </utfx:expected>
     </utfx:assert-equal>
