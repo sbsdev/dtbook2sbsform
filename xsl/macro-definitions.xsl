@@ -892,7 +892,7 @@ y e THe
       <xsl:text>y b EndVol
 n3
 L
-tCCCCCCCCCCCC
+t::::::::::::
 t
  </xsl:text>
       <xsl:value-of select="louis:translate(string($braille_tables),'Ende des')"/>
@@ -941,7 +941,7 @@ y e Inhaltsv
 lm1
 n3
 L
-tCCCCCCCCCCCC
+t::::::::::::
 t
  </xsl:text>
     <xsl:value-of select="louis:translate(string($braille_tables),'Ende des Buches')"/>
