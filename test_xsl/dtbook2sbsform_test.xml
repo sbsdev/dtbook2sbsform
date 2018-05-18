@@ -674,22 +674,6 @@ y POEMe
   </utfx:test>
   
   <utfx:test>
-    <utfx:name>Römische Zahlen</utfx:name>
-    <utfx:stylesheet-params>
-      <utfx:with-param name="contraction" select="2"/>
-    </utfx:stylesheet-params>
-    <utfx:assert-equal>
-      <utfx:source>
-        <dtb:p xml:lang="de">Henry <brl:num role="roman">IV</brl:num>.
-          Auf Seite <brl:num role="roman">iii</brl:num> beginnt das Vorwort.</dtb:p>
-      </utfx:source>
-      <utfx:expected>
-y P
- HCR'Y >IV. 1 S3( 'III ;G*NT D ,?W?T.</utfx:expected>
-    </utfx:assert-equal>
-  </utfx:test>
-  
-  <utfx:test>
     <utfx:name>Ordnungszahlen</utfx:name>
     <utfx:stylesheet-params>
       <utfx:with-param name="contraction" select="2"/>

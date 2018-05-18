@@ -1953,6 +1953,15 @@
     <xsl:value-of select="louis:translate(string($braille_tables), concat('&#x250B;',string()))"/>
   </xsl:template>
 
+  <!-- Handle letters after roman numbers -->
+  <xsl:template
+    match="text()[(preceding::* intersect my:preceding-textnode-within-block(.)/(ancestor::brl:num[@role='roman'])) and my:isLetter(substring(.,1,1))]" priority="100">
+    <xsl:variable name="braille_tables">
+      <xsl:call-template name="getTable"/>
+    </xsl:variable>
+    <xsl:value-of select="louis:translate(string($braille_tables), concat('&#x256C;',string()))"/>
+  </xsl:template>
+
   <!-- Handle apostrophe after v-form or after homograph -->
   <xsl:template
     match="text()[(preceding::* intersect my:preceding-textnode-within-block(.)/(ancestor::brl:v-form|ancestor::brl:homograph)) and matches(string(), '^''')]" priority="100">
