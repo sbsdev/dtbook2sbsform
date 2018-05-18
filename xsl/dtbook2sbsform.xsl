@@ -1954,6 +1954,15 @@
     <xsl:value-of select="louis:translate(string($braille_tables), concat('&#x250B;',string()))"/>
   </xsl:template>
 
+  <!-- Handle operators before measures -->
+  <xsl:template
+    match="text()[(following::* intersect my:following-textnode-within-block(.)/(ancestor::brl:num[@role='measure'])) and matches(.,'[\+−×÷=]\s+$')]" priority="100">
+    <xsl:variable name="braille_tables">
+      <xsl:call-template name="getTable"/>
+    </xsl:variable>
+    <xsl:value-of select="louis:translate(string($braille_tables), replace(string(),'\s+$',''))"/>
+  </xsl:template>
+
   <!-- Handle letters after roman numbers -->
   <xsl:template
     match="text()[(preceding::* intersect my:preceding-textnode-within-block(.)/(ancestor::brl:num[@role='roman'])) and my:isLetter(substring(.,1,1))]" priority="100">
