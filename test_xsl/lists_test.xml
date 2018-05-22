@@ -416,23 +416,23 @@ y LI
 y ULISTb
 
 y LI
- !- IT[ #A
-
-y LI
- !- IT[ #B
-
-y LI
- !-  
-y ULISTb
-
-y LI
  '- IT[ #A
 
 y LI
  '- IT[ #B
 
 y LI
- '- IT[ #C
+ '-  
+y ULISTb
+
+y LI
+ !- IT[ #A
+
+y LI
+ !- IT[ #B
+
+y LI
+ !- IT[ #C
 
 y ULISTe
  

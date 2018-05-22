@@ -687,7 +687,11 @@
       <xsl:text> </xsl:text>
     </xsl:if>
     <xsl:if test="$list/@type='ul'">
-      <xsl:value-of select="if (count(ancestor::dtb:list) mod 2 = 1) then '''- ' else '!- '"/>
+      <xsl:for-each-group select="reverse(for $my-list in ancestor::*[self::dtb:list] return $my-list)" group-adjacent="@type">
+	<xsl:if test="position()=1">
+	  <xsl:value-of select="if (count(current-group()/@type) mod 2 = 1) then '''- ' else '!- '"/>
+	</xsl:if>
+      </xsl:for-each-group>
     </xsl:if>
     <xsl:apply-templates/>
     <xsl:text>&#10;</xsl:text>
