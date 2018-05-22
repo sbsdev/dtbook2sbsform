@@ -259,4 +259,255 @@ y ULISTe
     </utfx:assert-equal>
   </utfx:test>
   
+  <utfx:test>
+    <utfx:name>Nested list I, http://redmine.sbszh.ch/issues/2677</utfx:name>
+    <utfx:assert-equal>
+      <utfx:source>
+        <stub xml:lang="de">
+	  <dtb:list type="ul">
+            <dtb:li>item 1</dtb:li>
+            <dtb:li>item 2</dtb:li>
+            <dtb:li>item 3</dtb:li>
+          </dtb:list>
+        </stub>
+      </utfx:source>
+      <utfx:expected>
+y ULISTb
+
+y LI
+ '- IT[ #A
+
+y LI
+ '- IT[ #B
+
+y LI
+ '- IT[ #C
+
+y ULISTe</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>Nested list II, http://redmine.sbszh.ch/issues/2677</utfx:name>
+    <utfx:assert-equal>
+      <utfx:source>
+        <stub xml:lang="de">
+          <dtb:list type="ul">
+            <dtb:li>item 1</dtb:li>
+            <dtb:li>item 2</dtb:li>
+            <dtb:li>
+              <dtb:list type="ul">
+		<dtb:li>item 1</dtb:li>
+		<dtb:li>item 2</dtb:li>
+		<dtb:li>
+                  <dtb:list type="ul">
+                    <dtb:li>item 1</dtb:li>
+                    <dtb:li>item 2</dtb:li>
+                    <dtb:li>item 3</dtb:li>
+                  </dtb:list>
+		</dtb:li>
+              </dtb:list>
+            </dtb:li>
+          </dtb:list>
+        </stub>
+      </utfx:source>
+      <utfx:expected>
+y ULISTb
+
+y LI
+ '- IT[ #A
+
+y LI
+ '- IT[ #B
+
+y LI
+ '-  
+y ULISTb
+
+y LI
+ !- IT[ #A
+
+y LI
+ !- IT[ #B
+
+y LI
+ !-  
+y ULISTb
+
+y LI
+ '- IT[ #A
+
+y LI
+ '- IT[ #B
+
+y LI
+ '- IT[ #C
+
+y ULISTe
+ 
+
+y ULISTe
+ 
+
+y ULISTe</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>Nested list III, http://redmine.sbszh.ch/issues/2677</utfx:name>
+    <utfx:assert-equal>
+      <utfx:source>
+        <stub xml:lang="de">
+          <dtb:list type="pl">
+            <dtb:li>item 1</dtb:li>
+            <dtb:li>item 2</dtb:li>
+          </dtb:list>
+        </stub>
+      </utfx:source>
+      <utfx:expected>
+y PLISTb
+
+y LI
+ IT[ #A
+
+y LI
+ IT[ #B
+
+y PLISTe
+      </utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>Nested list IV, http://redmine.sbszh.ch/issues/2677</utfx:name>
+    <utfx:assert-equal>
+      <utfx:source>
+        <stub xml:lang="de">
+          <dtb:list type="pl">
+            <dtb:li>item 1</dtb:li>
+            <dtb:li>item 2</dtb:li>
+            <dtb:li>
+              <dtb:list type="ul">
+		<dtb:li>item 1</dtb:li>
+		<dtb:li>item 2</dtb:li>
+		<dtb:li>
+                  <dtb:list type="ul">
+                    <dtb:li>item 1</dtb:li>
+                    <dtb:li>item 2</dtb:li>
+                    <dtb:li>item 3</dtb:li>
+                  </dtb:list>
+		</dtb:li>
+              </dtb:list>
+            </dtb:li>
+          </dtb:list>
+        </stub>
+      </utfx:source>
+      <utfx:expected>
+y PLISTb
+
+y LI
+ IT[ #A
+
+y LI
+ IT[ #B
+
+y LI
+  
+y ULISTb
+
+y LI
+ !- IT[ #A
+
+y LI
+ !- IT[ #B
+
+y LI
+ !-  
+y ULISTb
+
+y LI
+ '- IT[ #A
+
+y LI
+ '- IT[ #B
+
+y LI
+ '- IT[ #C
+
+y ULISTe
+ 
+
+y ULISTe
+ 
+
+y PLISTe</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>Nested list V, http://redmine.sbszh.ch/issues/2677</utfx:name>
+    <utfx:assert-equal>
+      <utfx:source>
+        <stub xml:lang="de">
+          <dtb:list type="ul">
+            <dtb:li>item 1</dtb:li>
+            <dtb:li>item 2</dtb:li>
+            <dtb:li>
+              <dtb:list type="pl">
+		<dtb:li>item 1</dtb:li>
+		<dtb:li>item 2</dtb:li>
+		<dtb:li>
+                  <dtb:list type="ul">
+                    <dtb:li>item 1</dtb:li>
+                    <dtb:li>item 2</dtb:li>
+                    <dtb:li>item 3</dtb:li>
+                  </dtb:list>
+		</dtb:li>
+              </dtb:list>
+            </dtb:li>
+          </dtb:list>
+        </stub>
+      </utfx:source>
+      <utfx:expected>
+y ULISTb
+
+y LI
+ '- IT[ #A
+
+y LI
+ '- IT[ #B
+
+y LI
+ '-  
+y PLISTb
+
+y LI
+ IT[ #A
+
+y LI
+ IT[ #B
+
+y LI
+  
+y ULISTb
+
+y LI
+ '- IT[ #A
+
+y LI
+ '- IT[ #B
+
+y LI
+ '- IT[ #C
+
+y ULISTe
+ 
+
+y PLISTe
+ 
+
+y ULISTe</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
 </utfx:tests>
