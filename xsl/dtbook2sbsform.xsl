@@ -176,6 +176,11 @@
     <xsl:value-of select="contains($string,'.')"/>
   </xsl:function>
   
+  <xsl:function name="my:containsDotNotAfterDigit" as="xs:boolean">
+    <xsl:param name="string"/>
+    <xsl:value-of select="matches($string,'\D\.')"/>
+  </xsl:function>
+
   <xsl:function name="my:starts-with-number" as="xs:boolean">
     <xsl:param name="string"/>
     <xsl:value-of select="matches($string, '^\d')"/>
@@ -337,7 +342,7 @@
         <xsl:text>sbs-de-g2-name.mod,</xsl:text>
       </xsl:if>
       <xsl:if
-        test="$context != 'name' and $context != 'name_capitalized' and $context != 'place' and ($context != 'abbr' or  my:containsDot(.)) and $context != 'date_day' and $context != 'date_month'">
+        test="$context != 'name' and $context != 'name_capitalized' and $context != 'place' and ($context != 'abbr' or my:containsDotNotAfterDigit(.)) and $context != 'date_day' and $context != 'date_month'">
         <xsl:if test="$use_local_dictionary = true()">
           <xsl:value-of select="concat('sbs-de-g2-white-',$document_identifier,'.mod,')"/>
         </xsl:if>
