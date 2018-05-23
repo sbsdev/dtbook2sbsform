@@ -6,8 +6,8 @@ services:
   - docker
 
 before_install:
-  - docker build -t sbsdev/dtbook2sbsform -f Dockerfile.test_with_utfx .
-  - docker run --rm --volume=$(pwd):/usr/src/dtbook2sbsform -t sbsdev/dtbook2sbsform
+  - docker build --build-arg LIBLOUIS_VERSION=liblouis_2_5_2 --build-arg BRAILLE_TABLES_VERSION=liblouis_2_5_2 -t sbsdev/dtbook2sbsform:legacy -f Dockerfile.test_with_utfx .
+  - docker run --rm --volume=$(pwd):/usr/src/dtbook2sbsform -t sbsdev/dtbook2sbsform:legacy
 
 script:
   - ./utfx.sh
