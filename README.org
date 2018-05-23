@@ -1,5 +1,7 @@
 #+TITLE: dtbook2sbsform
 
+[[https://travis-ci.com/sbsdev/dtbook2sbsform][https://travis-ci.com/sbsdev/dtbook2sbsform.svg?branch=master]]
+
 This project provides:
 
 a command line tool to transform [[http://en.wikipedia.org/wiki/DTBook][dtbook xml source files]] into a
