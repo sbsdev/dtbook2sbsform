@@ -3,8 +3,9 @@
 This project provides:
 
 a command line tool to transform [[http://en.wikipedia.org/wiki/DTBook][dtbook xml source files]] into a
-braille format proprietary to [[http://www.sbs.ch][SBS]] using [[http://saxon.sourceforge.net][Saxon]] with a [[https://github.com/sbsdev/LiblouisSaxonExtension][java extension]]
-that offers translating text into braille using [[http://www.liblouis.org][liblouis]].
+braille format proprietary to [[http://www.sbs.ch][Swiss Library for the Blind, Visually
+Impaired and Print Disabled]] using [[http://saxon.sourceforge.net][Saxon]] with a [[https://github.com/sbsdev/LiblouisSaxonExtension][java extension]] that
+offers translating text into braille using [[http://www.liblouis.org][liblouis]].
 
 * Build
 
@@ -87,7 +88,7 @@ docker run --rm --volume=$(pwd):/usr/src/dtbook2sbsform -t dtbook2sbsform -Dutfx
 
 * License
 
-Copyright 2011-2018 SBS.
+Copyright 2011-2018 Swiss Library for the Blind, Visually Impaired and Print Disabled.
 
 Licensed under GNU Lesser General Public License as published by the
 Free Software Foundation, either [[http://www.gnu.org/licenses/gpl-3.0.html][version 3]] of the License, or (at your
