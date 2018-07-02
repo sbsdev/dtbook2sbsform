@@ -1,0 +1,311 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<!-- Copyright (C) 2018 Swiss Library for the Blind, Visually Impaired and Print Disabled -->
+
+<!-- This file is part of dtbook2sbsform. -->
+
+<!-- dtbook2sbsform is free software: you can redistribute it -->
+<!-- and/or modify it under the terms of the GNU Lesser General Public -->
+<!-- License as published by the Free Software Foundation, either -->
+<!-- version 3 of the License, or (at your option) any later version. -->
+
+<!-- This program is distributed in the hope that it will be useful, -->
+<!-- but WITHOUT ANY WARRANTY; without even the implied warranty of -->
+<!-- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU -->
+<!-- Lesser General Public License for more details. -->
+
+<!-- You should have received a copy of the GNU Lesser General Public -->
+<!-- License along with this program. If not, see -->
+<!-- <http://www.gnu.org/licenses/>. -->
+
+<!DOCTYPE utfx:tests PUBLIC "-//UTF-X//DTD utfx-tests 1.0//EN" "utfx_tests.dtd">
+<utfx:tests xmlns:utfx="http://utfx.org/test-definition"
+  xmlns:dtb="http://www.daisy.org/z3986/2005/dtbook/"
+  xmlns:brl="http://www.daisy.org/z3986/2009/braille/">
+  <utfx:stylesheet src="xsl/dtbook2sbsform.xsl"/>
+
+  <utfx:test>
+    <utfx:name>measure m mit Dezimalkomma</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+	<stub xml:lang="de"><brl:num role="measure">1,8 m</brl:num></stub>
+      </utfx:source>
+      <utfx:expected>#A,H'M</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>measure m mit Dezimalpunkt</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+	<stub xml:lang="de"><brl:num role="measure">1.8 m</brl:num></stub>
+      </utfx:source>
+      <utfx:expected>#A.H'M</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>measure mm mit Dezimalpunkt</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+	<stub xml:lang="de"><brl:num role="measure">1.8 mm</brl:num></stub>
+      </utfx:source>
+      <utfx:expected>#A.H'MM</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>measure Hz mit Dezimalpunkt</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+	<stub xml:lang="de"><brl:num role="measure">1.8 Hz</brl:num></stub>
+      </utfx:source>
+      <utfx:expected>#A.H$HZ</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>measure MW mit Dezimalpunkt</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+	<stub xml:lang="de"><brl:num role="measure">1.8 MW</brl:num></stub>
+      </utfx:source>
+      <utfx:expected>#A.H&gt;MW</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>measure kW mit Dezimalpunkt</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+	<stub xml:lang="de"><brl:num role="measure">1.8 kW</brl:num></stub>
+      </utfx:source>
+      <utfx:expected>#A.H'K&gt;W</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>measure V mit Dezimalpunkt</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+	<stub xml:lang="de"><brl:num role="measure">1.8 V</brl:num></stub>
+      </utfx:source>
+      <utfx:expected>#A.H&gt;V</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>num role=measure "14 km/h" Bug #1523</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal normalise-internal-whitespace="yes">
+      <utfx:source>
+        <dtb:p xml:lang="de"><brl:num role="measure">14 km/h</brl:num></dtb:p>
+      </utfx:source>
+      <utfx:expected>
+y P
+ #AD'KM!,m'H</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>24 mm Falsches Resultat bei brl:num role="measure", wenn Zeilenumbruch zwischen Zahl und Einheit steht Bug #1263</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal normalise-internal-whitespace="yes">
+      <utfx:source>
+        <dtb:p xml:lang="de"><brl:num role="measure">24
+          mm</brl:num></dtb:p>
+      </utfx:source>
+      <utfx:expected>
+y P
+ #BD'MM</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+  
+  <utfx:test>
+    <utfx:name>test 1 for brl:num role="measure", wenn Zeilenumbruch zwischen Zahl und Einheit steht (http://redmine.sbszh.ch/issues/show/898) </utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+        <stub xml:lang="de">
+          <brl:num role="measure">24 mm</brl:num>
+        </stub>
+      </utfx:source>
+      <utfx:expected>#BD'MM</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>test 2 for brl:num role="measure", wenn Zeilenumbruch zwischen Zahl und Einheit steht (http://redmine.sbszh.ch/issues/show/898) </utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+        <stub xml:lang="de">
+          <brl:num role="measure">24 
+mm</brl:num>
+        </stub>
+      </utfx:source>
+      <utfx:expected>#BD'MM</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>test 3 for wenn Zeilenumbruch zwischen Zahl und Einheit steht sollte Leerzeichen getilgt werden (http://redmine.sbszh.ch/issues/show/898) </utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+        <stub xml:lang="de">
+          <dtb:abbr>Nr.
+25</dtb:abbr>
+        </stub>
+      </utfx:source>
+      <utfx:expected>NR.#BE</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>Whitespace after operator before measure</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+        <dtb:p xml:lang="de">10 + <brl:num role="measure">5 m</brl:num> Umfang</dtb:p>
+      </utfx:source>
+      <utfx:expected>
+y P
+ #AJ "+#E'M UMF+G</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>Whitespace after operator before measure</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+        <dtb:p xml:lang="de">10 − <brl:num role="measure">5 m</brl:num> Umfang</dtb:p>
+      </utfx:source>
+      <utfx:expected>
+y P
+ #AJ "-#E'M UMF+G</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>Whitespace after operator before measure</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+        <dtb:p xml:lang="de">10 × <brl:num role="measure">5 m</brl:num> Umfang</dtb:p>
+      </utfx:source>
+      <utfx:expected>
+y P
+ #AJ "(#E'M UMF+G</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>Whitespace after operator before measure</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+        <dtb:p xml:lang="de">10 ÷ <brl:num role="measure">5 m</brl:num> Umfang</dtb:p>
+      </utfx:source>
+      <utfx:expected>
+y P
+ #AJ ":#E'M UMF+G</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>Whitespace after operator before measure</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+        <dtb:p xml:lang="de">10 = <brl:num role="measure">5 m</brl:num> Umfang</dtb:p>
+      </utfx:source>
+      <utfx:expected>
+y P
+ #AJ "=#E'M UMF+G</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>Measure with number that cointains a decimal point, http://redmine.sbszh.ch/issues/2574</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+        <stub xml:lang="de"><brl:num role="measure">300.000 sec</brl:num></stub>
+      </utfx:source>
+      <utfx:expected>#CJJ.JJJ'SEC</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+    <utfx:test>
+    <utfx:name>Dot (separator) in number with measure unit, http://redmine.sbszh.ch/issues/2574</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+        <stub xml:lang="de">bla <brl:num role="measure">300.000 sec</brl:num> blo</stub>
+      </utfx:source>
+      <utfx:expected>BLA #CJJ.JJJ'SEC BLO</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>Dot (separator) in number with measure unit, http://redmine.sbszh.ch/issues/2574</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+        <stub xml:lang="de">bla <brl:num role="measure">300.000 km/sec</brl:num> blo</stub>
+      </utfx:source>
+      <utfx:expected>BLA #CJJ.JJJ'KM!,m'SEC BLO</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+
+</utfx:tests>

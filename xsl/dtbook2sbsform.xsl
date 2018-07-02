@@ -33,7 +33,12 @@
   <xsl:output method="text" encoding="utf-8" indent="no"/>
   <xsl:strip-space elements="*"/>
   <xsl:preserve-space
-    elements="dtb:p dtb:byline dtb:author dtb:li dtb:lic dtb:doctitle dtb:docauthor dtb:span dtb:em dtb:strong brl:emph dtb:line dtb:h1 dtb:h2 dtb:h3 dtb:h4 dtb:h5 dtb:h6"/>
+    elements="dtb:p dtb:byline dtb:author dtb:li dtb:lic dtb:doctitle
+	      dtb:docauthor dtb:span dtb:em dtb:strong brl:emph
+	      dtb:line dtb:h1 dtb:h2 dtb:h3 dtb:h4 dtb:h5 dtb:h6
+	      dtb:bridgehead dtb:hd dtb:caption dtb:dd dtb:dt dtb:sub
+	      dtb:sup brl:running-line brl:toc-line
+	      dtb:td dtb:th dtb:a"/>
 
   <xsl:param name="contraction">2</xsl:param>
   <xsl:param name="version">0</xsl:param>
@@ -172,6 +177,11 @@
     <xsl:value-of select="contains($string,'.')"/>
   </xsl:function>
   
+  <xsl:function name="my:containsDotNotAfterDigit" as="xs:boolean">
+    <xsl:param name="string"/>
+    <xsl:value-of select="matches($string,'\D\.')"/>
+  </xsl:function>
+
   <xsl:function name="my:starts-with-number" as="xs:boolean">
     <xsl:param name="string"/>
     <xsl:value-of select="matches($string, '^\d')"/>
@@ -333,7 +343,7 @@
         <xsl:text>sbs-de-g2-name.mod,</xsl:text>
       </xsl:if>
       <xsl:if
-        test="$context != 'name' and $context != 'name_capitalized' and $context != 'place' and ($context != 'abbr' or  my:containsDot(.)) and $context != 'date_day' and $context != 'date_month'">
+        test="$context != 'name' and $context != 'name_capitalized' and $context != 'place' and ($context != 'abbr' or my:containsDotNotAfterDigit(.)) and $context != 'date_day' and $context != 'date_month'">
         <xsl:if test="$use_local_dictionary = true()">
           <xsl:value-of select="concat('sbs-de-g2-white-',$document_identifier,'.mod,')"/>
         </xsl:if>
@@ -683,7 +693,11 @@
       <xsl:text> </xsl:text>
     </xsl:if>
     <xsl:if test="$list/@type='ul'">
-      <xsl:value-of select="if (count(ancestor::dtb:list) mod 2 = 1) then '''- ' else '!- '"/>
+      <xsl:for-each-group select="reverse(for $my-list in ancestor::*[self::dtb:list] return $my-list)" group-adjacent="@type">
+	<xsl:if test="position()=1">
+	  <xsl:value-of select="if (count(current-group()/@type) mod 2 = 1) then '''- ' else '!- '"/>
+	</xsl:if>
+      </xsl:for-each-group>
     </xsl:if>
     <xsl:apply-templates/>
     <xsl:text>&#10;</xsl:text>
@@ -1146,6 +1160,7 @@
     <xsl:text>I L=n&#10;</xsl:text>
     <xsl:text>i f=1 l=3 w=5&#10;</xsl:text>
     <xsl:for-each select="//(dtb:note|dtb:annotation)">
+      <xsl:sort select="//(dtb:noteref|dtb:annoref)[@idref=concat('#',current()/@id)]/count(preceding::dtb:noteref|preceding::dtb:annoref)+1"/>
       <xsl:apply-templates/>
     </xsl:for-each>
     <xsl:text>&#10;O&#10;</xsl:text>
@@ -1199,7 +1214,7 @@
     </xsl:if>
     <xsl:variable name="note_number" select="count(preceding::dtb:noteref|preceding::dtb:annoref)+1"/>
     <xsl:value-of select="louis:translate(string($braille_tables), concat('*',string($note_number)))"/>
-    <xsl:value-of select="louis:translate(string($braille_tables), concat('&#x250B;', substring-before(string(my:following-textnode-within-block(.)), ' ')))"/>
+    <xsl:value-of select="louis:translate(string($braille_tables), concat('&#x250B;', tokenize(string(my:following-textnode-within-block(.)), ' ')[1]))"/>
     <xsl:text>&#10;* &#10; </xsl:text>
   </xsl:template>
   
@@ -1947,6 +1962,24 @@
       <xsl:call-template name="getTable"/>
     </xsl:variable>
     <xsl:value-of select="louis:translate(string($braille_tables), concat('&#x250B;',string()))"/>
+  </xsl:template>
+
+  <!-- Handle operators before measures -->
+  <xsl:template
+    match="text()[(following::* intersect my:following-textnode-within-block(.)/(ancestor::brl:num[@role='measure'])) and matches(.,'[\+−×÷=]\s+$')]" priority="100">
+    <xsl:variable name="braille_tables">
+      <xsl:call-template name="getTable"/>
+    </xsl:variable>
+    <xsl:value-of select="louis:translate(string($braille_tables), replace(string(),'\s+$',''))"/>
+  </xsl:template>
+
+  <!-- Handle letters after roman numbers -->
+  <xsl:template
+    match="text()[(preceding::* intersect my:preceding-textnode-within-block(.)/(ancestor::brl:num[@role='roman'])) and my:isLetter(substring(.,1,1))]" priority="100">
+    <xsl:variable name="braille_tables">
+      <xsl:call-template name="getTable"/>
+    </xsl:variable>
+    <xsl:value-of select="louis:translate(string($braille_tables), concat('&#x256C;',string()))"/>
   </xsl:template>
 
   <!-- Handle apostrophe after v-form or after homograph -->

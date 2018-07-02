@@ -189,4 +189,281 @@ y P
     </utfx:assert-equal>
   </utfx:test>
 
+  <utfx:test>
+    <utfx:name>Punctuation after noteref I, http://redmine.sbszh.ch/issues/2532 </utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+	<dtb:p xml:lang="de">blo<dtb:noteref idref="#fn">*</dtb:noteref>, ble</dtb:p>
+      </utfx:source>
+      <utfx:expected>
+y P
+ BLO'*#A,
+* 
+ BLE</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>Punctuation after noteref II, http://redmine.sbszh.ch/issues/2532 </utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+	<dtb:p xml:lang="de">blo<dtb:noteref idref="#fn">*</dtb:noteref>. ble</dtb:p>
+      </utfx:source>
+      <utfx:expected>
+y P
+ BLO'*#A.
+* 
+ BLE</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>Punctuation after noteref III, http://redmine.sbszh.ch/issues/2532 </utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+	<dtb:p xml:lang="de">blo<dtb:noteref idref="#fn">*</dtb:noteref>; ble</dtb:p>
+      </utfx:source>
+      <utfx:expected>
+y P
+ BLO'*#A';
+* 
+ BLE</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>Punctuation after noteref IV, http://redmine.sbszh.ch/issues/2532 </utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+	<dtb:p xml:lang="de">blo<dtb:noteref idref="#fn">*</dtb:noteref>! ble</dtb:p>
+      </utfx:source>
+      <utfx:expected>
+y P
+ BLO'*#A'+
+* 
+ BLE</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>Punctuation after noteref V, http://redmine.sbszh.ch/issues/2532 </utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+	<dtb:p xml:lang="de">blo<dtb:noteref idref="#fn">*</dtb:noteref>? ble</dtb:p>
+      </utfx:source>
+      <utfx:expected>
+y P
+ BLO'*#A'?
+* 
+ BLE</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>Punctuation after noteref VI, http://redmine.sbszh.ch/issues/2532 </utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+	<dtb:p xml:lang="de">blo<dtb:noteref idref="#fn">*</dtb:noteref>) ble</dtb:p>
+      </utfx:source>
+      <utfx:expected>
+y P
+ BLO'*#A'=
+* 
+ BLE</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>Punctuation after noteref VII, http://redmine.sbszh.ch/issues/2532 </utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+	<dtb:p xml:lang="de">blo<dtb:noteref idref="#fn">*</dtb:noteref>« ble</dtb:p>
+      </utfx:source>
+      <utfx:expected>
+y P
+ BLO'*#A')
+* 
+ BLE</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>Punctuation after noteref VIII, http://redmine.sbszh.ch/issues/2532 </utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+	<dtb:p xml:lang="de">blo<dtb:noteref idref="#fn">*</dtb:noteref>,</dtb:p>
+      </utfx:source>
+      <utfx:expected>
+y P
+ BLO'*#A,
+* </utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>Punctuation after noteref IX, http://redmine.sbszh.ch/issues/2532 </utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+	<dtb:p xml:lang="de">blo<dtb:noteref idref="#fn">*</dtb:noteref>.</dtb:p>
+      </utfx:source>
+      <utfx:expected>
+y P
+ BLO'*#A.
+* </utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>Punctuation after noteref X, http://redmine.sbszh.ch/issues/2532 </utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+	<dtb:p xml:lang="de">blo<dtb:noteref idref="#fn">*</dtb:noteref>;</dtb:p>
+      </utfx:source>
+      <utfx:expected>
+y P
+ BLO'*#A';
+* </utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>Punctuation after noteref XI, http://redmine.sbszh.ch/issues/2532 </utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+	<dtb:p xml:lang="de">blo<dtb:noteref idref="#fn">*</dtb:noteref>!</dtb:p>
+      </utfx:source>
+      <utfx:expected>
+y P
+ BLO'*#A'+
+* </utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>Punctuation after noteref XII, http://redmine.sbszh.ch/issues/2532 </utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+	<dtb:p xml:lang="de">blo<dtb:noteref idref="#fn">*</dtb:noteref>?</dtb:p>
+      </utfx:source>
+      <utfx:expected>
+y P
+ BLO'*#A'?
+* </utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>Punctuation after noteref XIII, http://redmine.sbszh.ch/issues/2532 </utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+	<dtb:p xml:lang="de">blo<dtb:noteref idref="#fn">*</dtb:noteref>)</dtb:p>
+      </utfx:source>
+      <utfx:expected>
+y P
+ BLO'*#A'=
+* </utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>Punctuation after noteref XIV, http://redmine.sbszh.ch/issues/2532 </utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+	<dtb:p xml:lang="de">blo<dtb:noteref idref="#fn">*</dtb:noteref>«</dtb:p>
+      </utfx:source>
+      <utfx:expected>
+y P
+ BLO'*#A')
+* </utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>order of note elems should be the same as the corresponding noteref elements http://redmine.sbszh.ch/issues/1264</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+      <utfx:with-param name="footnote_placement" select="'standard'"/>
+    </utfx:stylesheet-params>
+    <utfx:call-template name="insert_footnotes"/>
+    <utfx:assert-equal>
+      <utfx:source>
+        <dtb:dtbook xml:lang="de">
+          <dtb:p><dtb:noteref idref="#fn1">*</dtb:noteref></dtb:p>
+          <dtb:p><dtb:noteref idref="#fn2">*</dtb:noteref></dtb:p>
+          <dtb:p><dtb:noteref idref="#fn3">*</dtb:noteref></dtb:p>
+          <dtb:note id="fn3">
+            <dtb:p>drei</dtb:p>
+          </dtb:note>
+          <dtb:note id="fn2">
+            <dtb:p>zwei</dtb:p>
+          </dtb:note>
+          <dtb:note id="fn1">
+            <dtb:p>eins</dtb:p>
+          </dtb:note>
+	</dtb:dtbook>
+      </utfx:source>
+      <utfx:expected>
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx Fussnoten xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+&quot;N %Y.nfk
+O
+I L=n
+i f=1 l=3 w=5
+
+p 
+ '*#A 6S
+p 
+ '*#B ZW3
+p 
+ '*#C DR3
+O
+&quot;N %Y.fk
+I *=j L=j
+i f=3 l=1
+&quot;* %Y.nfk</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
 </utfx:tests>

@@ -674,22 +674,6 @@ y POEMe
   </utfx:test>
   
   <utfx:test>
-    <utfx:name>Römische Zahlen</utfx:name>
-    <utfx:stylesheet-params>
-      <utfx:with-param name="contraction" select="2"/>
-    </utfx:stylesheet-params>
-    <utfx:assert-equal>
-      <utfx:source>
-        <dtb:p xml:lang="de">Henry <brl:num role="roman">IV</brl:num>.
-          Auf Seite <brl:num role="roman">iii</brl:num> beginnt das Vorwort.</dtb:p>
-      </utfx:source>
-      <utfx:expected>
-y P
- HCR'Y >IV. 1 S3( 'III ;G*NT D ,?W?T.</utfx:expected>
-    </utfx:assert-equal>
-  </utfx:test>
-  
-  <utfx:test>
     <utfx:name>Ordnungszahlen</utfx:name>
     <utfx:stylesheet-params>
       <utfx:with-param name="contraction" select="2"/>
@@ -901,21 +885,6 @@ y P
   </utfx:test>
   
   <!-- <utfx:test> -->
-  <!--   <utfx:name>num role=measure "14 km/h" Bug #1523</utfx:name> -->
-  <!--   <utfx:stylesheet-params> -->
-  <!--     <utfx:with-param name="contraction" select="2"/> -->
-  <!--   </utfx:stylesheet-params> -->
-  <!--   <utfx:assert-equal normalise-internal-whitespace="yes"> -->
-  <!--     <utfx:source> -->
-  <!--       <dtb:p xml:lang="de"><brl:num role="measure">14 km/h</brl:num></dtb:p> -->
-  <!--     </utfx:source> -->
-  <!--     <utfx:expected>
-y P
- #AD'KM!,'H</utfx:expected> -->
-  <!--   </utfx:assert-equal> -->
-  <!-- </utfx:test> -->
-
-  <!-- <utfx:test> -->
   <!--   <utfx:name>num role=measure 1 "20m" Bug #1213</utfx:name> -->
   <!--   <utfx:stylesheet-params> -->
   <!--     <utfx:with-param name="contraction" select="2"/> -->
@@ -972,22 +941,6 @@ y P
       <utfx:expected>
 y P
  &gt;X$BOX</utfx:expected>
-    </utfx:assert-equal>
-  </utfx:test>
-  
-  <utfx:test>
-    <utfx:name>24 mm Falsches Resultat bei brl:num role="measure", wenn Zeilenumbruch zwischen Zahl und Einheit steht Bug #1263</utfx:name>
-    <utfx:stylesheet-params>
-      <utfx:with-param name="contraction" select="2"/>
-    </utfx:stylesheet-params>
-    <utfx:assert-equal normalise-internal-whitespace="yes">
-      <utfx:source>
-        <dtb:p xml:lang="de"><brl:num role="measure">24
-          mm</brl:num></dtb:p>
-      </utfx:source>
-      <utfx:expected>
-y P
- #BD'MM</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
   

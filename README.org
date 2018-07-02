@@ -1,0 +1,97 @@
+#+TITLE: dtbook2sbsform
+
+[[https://travis-ci.com/sbsdev/dtbook2sbsform][https://travis-ci.com/sbsdev/dtbook2sbsform.svg?branch=master]]
+
+This project provides:
+
+a command line tool to transform [[http://en.wikipedia.org/wiki/DTBook][dtbook xml source files]] into a
+braille format proprietary to [[http://www.sbs.ch][Swiss Library for the Blind, Visually
+Impaired and Print Disabled]] using [[http://saxon.sourceforge.net][Saxon]] with a [[https://github.com/sbsdev/LiblouisSaxonExtension][java extension]] that
+offers translating text into braille using [[http://www.liblouis.org][liblouis]].
+
+* Build
+
+#+BEGIN_SRC shell
+ant -e clean dist package
+#+END_SRC
+
+* Usage of command line tools
+
+#+BEGIN_SRC shell
+cd dtbook2sbsform
+./dtbook2sbsform.sh dtbook.xml
+#+END_SRC
+
+calls =saxon.sh=, transforms =dtbook.xml= and performs line breaking
+using =linebreak.sh= printing output onto stdout.
+
+#+BEGIN_SRC shell
+./saxon.sh
+#+END_SRC
+
+calls saxon, offering its rich command line interface, includes our
+extension function (see =resources/xsl/dtbook2sbsform.xsl=).
+
+#+BEGIN_SRC shell
+./linebreak.sh
+#+END_SRC
+
+breaks lines according to sbs rules: only lines beginning with a blank
+will be broken. Line width is 80 chars.
+
+#+BEGIN_SRC shell
+./utfx.sh
+#+END_SRC
+
+Performs [[http://utf-x.sourceforge.net/][utfx]] (svn version) tests.
+
+* Prerequisite installs
+- [[http://java.sun.com][java]]
+  - Unfortunately this project is not compatible with Java 8. Please use
+    Java 7 or lower.
+- [[http://code.google.com/p/liblouis/][liblouis]]
+
+* Testing
+
+This project has been ported to support testing via xprocspec tests.
+For legacy reasons however testing with =utfx= is still supported via
+a Docker image.
+
+#+BEGIN_SRC shell
+docker build -t dtbook2sbsform -f Dockerfile.test_with_utfx .
+#+END_SRC
+
+If you really want you can also build an image to test against old
+versions of liblouis and the braille tables:
+
+#+BEGIN_SRC shell
+docker build --build-arg LIBLOUIS_VERSION=liblouis_2_5_2 --build-arg BRAILLE_TABLES_VERSION=liblouis_2_5_2 -t dtbook2sbsform -f Dockerfile.test_with_utfx .
+#+END_SRC
+
+To run the tests using above image simply run
+
+#+BEGIN_SRC shell
+docker run --rm --volume=$(pwd):/usr/src/dtbook2sbsform -t dtbook2sbsform
+#+END_SRC
+
+To run a single test file use the following command:
+
+#+BEGIN_SRC shell
+docker run --rm --volume=$(pwd):/usr/src/dtbook2sbsform -t dtbook2sbsform -Dutfx.test.file=test_xsl/11_most_frequent_bugs_test.xml
+#+END_SRC
+
+* Authors
+*** Christian Egli
+-  https://github.com/egli
+
+*** Bernhard Wagner
+-  http://xmlizer.net
+-  http://github.com/bwagner
+
+* License
+
+Copyright 2011-2018 Swiss Library for the Blind, Visually Impaired and Print Disabled.
+
+Licensed under GNU Lesser General Public License as published by the
+Free Software Foundation, either [[http://www.gnu.org/licenses/gpl-3.0.html][version 3]] of the License, or (at your
+option) any later version.

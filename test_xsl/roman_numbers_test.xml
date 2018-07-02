@@ -1,0 +1,148 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<!-- Copyright (C) 2018 Swiss Library for the Blind, Visually Impaired and Print Disabled -->
+
+<!-- This file is part of dtbook2sbsform. -->
+
+<!-- dtbook2sbsform is free software: you can redistribute it -->
+<!-- and/or modify it under the terms of the GNU Lesser General Public -->
+<!-- License as published by the Free Software Foundation, either -->
+<!-- version 3 of the License, or (at your option) any later version. -->
+
+<!-- This program is distributed in the hope that it will be useful, -->
+<!-- but WITHOUT ANY WARRANTY; without even the implied warranty of -->
+<!-- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU -->
+<!-- Lesser General Public License for more details. -->
+
+<!-- You should have received a copy of the GNU Lesser General Public -->
+<!-- License along with this program. If not, see -->
+<!-- <http://www.gnu.org/licenses/>. -->
+
+<!DOCTYPE utfx:tests PUBLIC "-//UTF-X//DTD utfx-tests 1.0//EN" "utfx_tests.dtd">
+<utfx:tests xmlns:utfx="http://utfx.org/test-definition"
+  xmlns:dtb="http://www.daisy.org/z3986/2005/dtbook/"
+  xmlns:brl="http://www.daisy.org/z3986/2009/braille/">
+  <utfx:stylesheet src="xsl/dtbook2sbsform.xsl"/>
+
+  <utfx:test>
+    <utfx:name>Römische Zahlen</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+        <dtb:p xml:lang="de">Henry <brl:num role="roman">IV</brl:num>.
+          Auf Seite <brl:num role="roman">iii</brl:num> beginnt das Vorwort.</dtb:p>
+      </utfx:source>
+      <utfx:expected>
+y P
+ HCR'Y >IV. 1 S3( 'III ;G*NT D ,?W?T.</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+  
+  <utfx:test>
+    <utfx:name>Roman number, http://redmine.sbszh.ch/issues/2634</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="0"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+        <dtb:p xml:lang="de">Seite <brl:num role="roman">VI</brl:num></dtb:p>
+      </utfx:source>
+      <utfx:expected>
+y P
+ SEITE >VI</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>Roman number with characters following, http://redmine.sbszh.ch/issues/2634</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="0"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+        <dtb:p xml:lang="de">Seite <brl:num role="roman">VI</brl:num>)  </dtb:p>
+      </utfx:source>
+      <utfx:expected>
+y P
+ SEITE >VI=</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>Roman number with characters following, http://redmine.sbszh.ch/issues/2634</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="0"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+        <dtb:p xml:lang="de">Seite <brl:num role="roman">VI</brl:num>,  </dtb:p>
+      </utfx:source>
+      <utfx:expected>
+y P
+ SEITE >VI,</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>Roman number with characters following, http://redmine.sbszh.ch/issues/2634</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="0"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+        <dtb:p xml:lang="de">Seite <brl:num role="roman">VI</brl:num>.  </dtb:p>
+      </utfx:source>
+      <utfx:expected>
+y P
+ SEITE >VI.</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>Roman number with characters following, http://redmine.sbszh.ch/issues/2634</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="0"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+        <dtb:p xml:lang="de">Seite <brl:num role="roman">VI</brl:num>  </dtb:p>
+      </utfx:source>
+      <utfx:expected>
+y P
+ SEITE >VI</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>Roman number with characters following, http://redmine.sbszh.ch/issues/2634</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="0"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+        <dtb:p xml:lang="de">Seite <brl:num role="roman">VI</brl:num>ff. </dtb:p>
+      </utfx:source>
+      <utfx:expected>
+y P
+ SEITE >VI'FF.</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>Roman number with characters following, http://redmine.sbszh.ch/issues/2634</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="0"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+        <dtb:p xml:lang="de">Seite <brl:num role="roman">VI</brl:num>UIUIUI </dtb:p>
+      </utfx:source>
+      <utfx:expected>
+y P
+ SEITE >VI'UIUIUI</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+</utfx:tests>
