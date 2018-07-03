@@ -541,9 +541,9 @@ y P
 y P
  KZ5T 5T 5T -.BASISSCHRIFT SCHRIFT SCHRIFT'. KZ KZ KZ
 y P
- KZ5T 5T 5T -.VOLL5RIFT!,mVOLL5RIFT'. KZ KZ KZ
+ KZ5T 5T 5T -.VOLL5RIFT!,VOLL5RIFT'. KZ KZ KZ
 y P
- KZ5T 5T 5T -.BASISSCHRIFT!,mBASISSCHRIFT'. KZ KZ KZ
+ KZ5T 5T 5T -.BASISSCHRIFT!,BASISSCHRIFT'. KZ KZ KZ
 y P
  KZ5T 5T 5T -.VOLL5RIFT-mVOLL5RIFT'. KZ KZ KZ
 y P
@@ -642,7 +642,7 @@ y POEMe
       <utfx:source>
         <stub xml:lang="de"><dtb:em>Wort</dtb:em>, <dtb:strong>Wort</dtb:strong>, <brl:emph>Wort</brl:emph>. <dtb:em>Zwei Wörter</dtb:em>, <dtb:strong>eins/zwei</dtb:strong>, <brl:emph>eins-­zwei</brl:emph>.</stub>
       </utfx:source>
-      <utfx:expected>_W?T, _W?T, _W?T. __ZW3 W9RT7'., __6S!,mZW3'., __6S-mZW3'..</utfx:expected>
+      <utfx:expected>_W?T, _W?T, _W?T. __ZW3 W9RT7'., __6S!,ZW3'., __6S-mZW3'..</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
   
