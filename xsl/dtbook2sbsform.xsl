@@ -292,10 +292,15 @@
     <xsl:text>sbs-de-accents.cti,</xsl:text>
     <xsl:text>sbs-special.cti,</xsl:text>
     <xsl:text>sbs-whitespace.mod,</xsl:text>
-    <xsl:if
-      test="$context = 'v-form' or $context = 'name_capitalized' or ($actual_contraction != '2' and $enable_capitalization = true())">
-      <xsl:text>sbs-de-capsign.mod,</xsl:text>
-    </xsl:if>
+    <xsl:choose >
+      <xsl:when
+	  test="$context = 'v-form' or $context = 'name_capitalized' or ($actual_contraction != '2' and $enable_capitalization = true())">
+	<xsl:text>sbs-de-capsign.mod,</xsl:text>
+      </xsl:when>
+      <xsl:otherwise>
+	<xsl:text>sbs-de-capsign-fake.mod,</xsl:text>
+      </xsl:otherwise>
+    </xsl:choose>
     <xsl:if
       test="$actual_contraction = '2' and not($context=('num_roman','abbr','date_month','date_day','name_capitalized'))">
       <xsl:text>sbs-de-letsign.mod,</xsl:text>
