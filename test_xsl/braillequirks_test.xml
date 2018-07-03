@@ -145,7 +145,7 @@ y LINEe
       <utfx:source>
         <stub xml:space="preserve" xml:lang="de"><dtb:em>Mein Mann.</dtb:em> <brl:v-form>Ihr</brl:v-form></stub>
       </utfx:source>
-      <utfx:expected>__M6 MN.'. $I</utfx:expected>
+      <utfx:expected>__M6 M+N.'. $I</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
 
@@ -294,7 +294,7 @@ y LINEe
       <utfx:source>
         <stub xml:lang="de">Produktion/Test</stub>
       </utfx:source>
-      <utfx:expected>QDUKTJ!,mTE]</utfx:expected>
+      <utfx:expected>QDUKTION!,TE]</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
 
