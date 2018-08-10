@@ -1074,14 +1074,14 @@
   </xsl:template>
 
   <xsl:template match="dtb:sup[matches(., '^[-]*\d+$')]">
-      <!-- Ziffern bekommen das Exponentzeichen und werden tiefgestellt -->
+      <!-- Ziffern bekommen das Zeichen für den oberen Index und werden tiefgestellt -->
       <xsl:variable name="braille_tables">
         <xsl:call-template name="getTable">
           <xsl:with-param name="context" select="'index'"/>
         </xsl:call-template>
       </xsl:variable>
       <xsl:value-of
-	  select="louis:translate(string($braille_tables),concat('&#x257E;',string()))" />
+	  select="louis:translate(string($braille_tables),concat('&#x2580;',string()))" />
   </xsl:template>
 
   <xsl:template match="dtb:sup">
