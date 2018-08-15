@@ -77,6 +77,19 @@
     </xsl:choose>
   </xsl:variable>
   
+  <xsl:variable name="emphasis_to_special_map">
+    <entry emphasis="emph" position="single">&#x255F;</entry>
+    <entry emphasis="emph" position="start">&#x2560;</entry>
+    <entry emphasis="emph" position="end">&#x2563;</entry>
+    <entry emphasis="emph" position="innerStart">&#x255E;</entry>
+    <entry emphasis="emph" position="innerEnd">&#x2561;</entry>
+    <entry emphasis="emph2" position="single">&#x256D;</entry>
+    <entry emphasis="emph2" position="start">&#x256E;</entry>
+    <entry emphasis="emph2" position="end">&#x256F;</entry>
+    <entry emphasis="emph2" position="innerStart">&#x2570;</entry>
+    <entry emphasis="emph2" position="innerEnd">&#x2571;</entry>
+  </xsl:variable>
+
   <!-- =========================== -->
   <!-- Queries for block vs inline -->
   <!-- =========================== -->
@@ -269,6 +282,13 @@
   <xsl:function name="my:insert-element-changed-comment" as="xs:string">
     <xsl:param name="element" as="xs:string"/>
     <xsl:value-of select="concat('&#10;', 'xxx Was originally a ', $element, '&#10;')"/>
+  </xsl:function>
+
+  <xsl:function name="my:emphasis-special-sign" as="xs:string">
+    <xsl:param name="emphasis" as="xs:string"/>
+    <xsl:param name="position" as="xs:string"/>
+    <xsl:sequence
+	select="$emphasis_to_special_map/entry[@emphasis=$emphasis and @position=$position]"/>
   </xsl:function>
 
   <xsl:template name="getTable">
@@ -1492,17 +1512,19 @@
 	   For that reason we do the announcing here in xslt. This also
 	   neatly works around a bug where liblouis doesn't correctly
 	   announce multi-word emphasis -->
+        <xsl:variable name="emphasis" select="if (@brl:render = 'emph2') then 'emph2' else 'emph'"/>
         <xsl:choose>
           <xsl:when test="not($isFirst) or not($isLast) or (count(tokenize(string(.), '(\s|&#xA0;|/|-)+')[string(.) ne '']) > 1)">
             <!-- There are multiple words. -->
             <xsl:if test="$isFirst">
               <!-- Insert a multiple word announcement -->
-              <xsl:value-of select="louis:translate(string($braille_tables), '&#x2560;')"/>
+              <xsl:value-of
+		  select="louis:translate(string($braille_tables), my:emphasis-special-sign($emphasis, 'start'))"/>
             </xsl:if>
             <xsl:apply-templates/>
             <xsl:if test="$isLast">
               <!-- Announce the end of emphasis -->
-              <xsl:value-of select="louis:translate(string($braille_tables), '&#x2563;')"/>
+              <xsl:value-of select="louis:translate(string($braille_tables), my:emphasis-special-sign($emphasis, 'end'))"/>
             </xsl:if>
           </xsl:when>
           <xsl:otherwise>
@@ -1511,28 +1533,28 @@
               <!-- emph is at the beginning of the word -->
               <xsl:when
                 test="my:ends-with-non-word(preceding-sibling::text()[1]) and my:starts-with-word(following-sibling::text()[1])">
-                <xsl:value-of select="louis:translate(string($braille_tables), '&#x255F;')"/>
+                <xsl:value-of select="louis:translate(string($braille_tables), my:emphasis-special-sign($emphasis, 'single'))"/>
 		<!-- when translating make sure to inhibit contraction at the end by inserting a special character -->
 		<xsl:value-of select="louis:translate(string($braille_tables), concat(string(),'&#x250A;'))"/>
-                <xsl:value-of select="louis:translate(string($braille_tables), '&#x2561;')"/>
+                <xsl:value-of select="louis:translate(string($braille_tables), my:emphasis-special-sign($emphasis, 'innerEnd'))"/>
               </xsl:when>
               <!-- emph is at the end of the word -->
               <xsl:when
                 test="my:ends-with-word(preceding-sibling::text()[1]) and my:starts-with-non-word(following-sibling::text()[1])">
-                <xsl:value-of select="louis:translate(string($braille_tables), '&#x255E;')"/>
+                <xsl:value-of select="louis:translate(string($braille_tables), my:emphasis-special-sign($emphasis, 'innerStart'))"/>
 		<!-- when translating make sure to inhibit contraction at the beginning by inserting a special character -->
 		<xsl:value-of select="louis:translate(string($braille_tables), concat('&#x250A;',string()))"/>
               </xsl:when>
               <!-- emph is inside the word -->
               <xsl:when
                 test="my:ends-with-word(preceding-sibling::text()[1]) and my:starts-with-word(following-sibling::text()[1])">
-                <xsl:value-of select="louis:translate(string($braille_tables), '&#x255E;')"/>
+                <xsl:value-of select="louis:translate(string($braille_tables), my:emphasis-special-sign($emphasis, 'innerStart'))"/>
 		<!-- when translating make sure to inhibit contraction at the beginning or at the end by inserting a special character -->
 		<xsl:value-of select="louis:translate(string($braille_tables), concat('&#x250A;',string(),'&#x250A;'))"/>
-                <xsl:value-of select="louis:translate(string($braille_tables), '&#x2561;')"/>
+                <xsl:value-of select="louis:translate(string($braille_tables), my:emphasis-special-sign($emphasis, 'innerEnd'))"/>
               </xsl:when>
               <xsl:otherwise>
-                <xsl:value-of select="louis:translate(string($braille_tables), '&#x255F;')"/>
+                <xsl:value-of select="louis:translate(string($braille_tables), my:emphasis-special-sign($emphasis, 'single'))"/>
                 <xsl:apply-templates/>
               </xsl:otherwise>
             </xsl:choose>
