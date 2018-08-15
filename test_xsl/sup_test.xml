@@ -35,7 +35,7 @@
       </utfx:source>
       <utfx:expected>
 y P
- #B0;: 'X0; 'X0-; =#B0;:'= ='X0;'= ='X0-;'= </utfx:expected>
+ #B\;: 'X\; 'X\-; =#B\;:'= ='X\;'= ='X\-;'= </utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
 
