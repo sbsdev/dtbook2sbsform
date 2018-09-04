@@ -1885,7 +1885,7 @@
     </xsl:for-each>
   </xsl:template>
 
-  <xsl:template match="brl:time">
+  <xsl:template match="brl:time[@brl:render='compact']">
     <xsl:variable name="braille_tables">
       <xsl:call-template name="getTable"/>
     </xsl:variable>
@@ -1904,6 +1904,28 @@
       </xsl:for-each>
     </xsl:variable>
     <xsl:value-of select="louis:translate(string($braille_tables), string($time))"/>
+  </xsl:template>
+
+  <xsl:template match="brl:time">
+    <xsl:variable name="braille_tables">
+      <xsl:call-template name="getTable"/>
+    </xsl:variable>
+    <xsl:variable name="time">
+      <xsl:for-each select="tokenize(string(@value), ':')">
+	<xsl:choose>
+	  <!-- Drop the leading zero for the hours and append a dot -->
+	  <xsl:when test="not(position() = last())">
+	    <!-- translate the number and append a special character
+	         that will be converted to a plain colon -->
+	    <xsl:value-of select="louis:translate(string($braille_tables), concat(.,'&#x2573;'))"/>
+	  </xsl:when>
+	  <xsl:otherwise>
+	    <xsl:value-of select="louis:translate(string($braille_tables), string(.))"/>
+	  </xsl:otherwise>
+	</xsl:choose>
+      </xsl:for-each>
+    </xsl:variable>
+    <xsl:sequence select="$time"/>
   </xsl:template>
 
   <xsl:template match="brl:volume">

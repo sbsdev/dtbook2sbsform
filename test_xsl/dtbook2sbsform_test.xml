@@ -355,7 +355,7 @@ y DIVe_foo
     <utfx:name>Time</utfx:name>
     <utfx:assert-equal>
       <utfx:source>
-        <stub xml:lang="de"><brl:time value="10:30">10:30</brl:time></stub>
+        <stub xml:lang="de"><brl:time value="10:30" brl:render="compact">10:30</brl:time></stub>
       </utfx:source>
       <utfx:expected>#AJ.CJ</utfx:expected>
     </utfx:assert-equal>
@@ -365,7 +365,7 @@ y DIVe_foo
     <utfx:name>Time with leading zeros</utfx:name>
     <utfx:assert-equal>
       <utfx:source>
-        <stub xml:lang="de"><brl:time value="10:05">10:05</brl:time></stub>
+        <stub xml:lang="de"><brl:time value="10:05" brl:render="compact">10:05</brl:time></stub>
       </utfx:source>
       <utfx:expected>#AJ.JE</utfx:expected>
     </utfx:assert-equal>

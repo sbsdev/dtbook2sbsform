@@ -25,32 +25,28 @@
   <utfx:stylesheet src="xsl/dtbook2sbsform.xsl"/>
 
   <utfx:test>
-    <utfx:name>Whitespace between brl:date und brl:time inside bridgehead is removed, http://redmine.sbszh.ch/issues/2625</utfx:name>
+    <utfx:name>time compact</utfx:name>
     <utfx:stylesheet-params>
       <utfx:with-param name="contraction" select="2"/>
     </utfx:stylesheet-params>
     <utfx:assert-equal>
       <utfx:source>
-	<dtb:bridgehead xml:lang="de"><brl:date value="1945-01-26">26.01.1945</brl:date> <brl:time value="23:30" brl:render="compact">23:30</brl:time></dtb:bridgehead>
+	<brl:time xml:lang="de" brl:render="compact" value="09:30">09:30</brl:time>
       </utfx:source>
-      <utfx:expected>
-y BRIDGE
- #;+A#AIDE #BC.CJ</utfx:expected>
+      <utfx:expected>#I.CJ</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
 
   <utfx:test>
-    <utfx:name>Whitespace between brl:date und brl:time inside hd is removed, http://redmine.sbszh.ch/issues/2625</utfx:name>
+    <utfx:name>time standard</utfx:name>
     <utfx:stylesheet-params>
       <utfx:with-param name="contraction" select="2"/>
     </utfx:stylesheet-params>
     <utfx:assert-equal>
       <utfx:source>
-	<dtb:hd xml:lang="de"><brl:date value="1945-01-26">26.01.1945</brl:date> <brl:time value="23:30" brl:render="compact">23:30</brl:time></dtb:hd>
+	<brl:time xml:lang="de" value="09:30">09:30</brl:time>
       </utfx:source>
-      <utfx:expected>
-y HD
- #;+A#AIDE #BC.CJ</utfx:expected>
+      <utfx:expected>#JI':#CJ</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
 

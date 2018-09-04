@@ -580,7 +580,7 @@ y P
     </utfx:stylesheet-params>
     <utfx:assert-equal>
       <utfx:source>
-        <stub xml:lang="de"><brl:time value="11:05">11:05</brl:time></stub>
+        <stub xml:lang="de"><brl:time value="11:05" brl:render="compact">11:05</brl:time></stub>
       </utfx:source>
       <utfx:expected>#AA.JE</utfx:expected>
     </utfx:assert-equal>
