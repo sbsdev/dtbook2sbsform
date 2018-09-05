@@ -1492,17 +1492,35 @@
 	   For that reason we do the announcing here in xslt. This also
 	   neatly works around a bug where liblouis doesn't correctly
 	   announce multi-word emphasis -->
+	<xsl:variable name="map">
+	  <xsl:choose>
+	    <xsl:when test="@brl:render = 'emph2'">
+	      <entry key="start-multi">&#x256E;</entry>
+	      <entry key="end-multi">&#x256F;</entry>
+	      <entry key="start-single">&#x256D;</entry>
+	      <entry key="start-inside">&#x2570;</entry>
+	      <entry key="end-single">&#x2571;</entry>
+	    </xsl:when>
+	    <xsl:otherwise>
+	      <entry key="start-multi">&#x2560;</entry>
+	      <entry key="end-multi">&#x2563;</entry>
+	      <entry key="start-single">&#x255F;</entry>
+	      <entry key="start-inside">&#x255E;</entry>
+	      <entry key="end-single">&#x2561;</entry>
+	    </xsl:otherwise>
+	  </xsl:choose>
+	</xsl:variable>
         <xsl:choose>
           <xsl:when test="not($isFirst) or not($isLast) or (count(tokenize(string(.), '(\s|&#xA0;|/|-)+')[string(.) ne '']) > 1)">
             <!-- There are multiple words. -->
             <xsl:if test="$isFirst">
               <!-- Insert a multiple word announcement -->
-              <xsl:value-of select="louis:translate(string($braille_tables), '&#x2560;')"/>
+              <xsl:value-of select="louis:translate(string($braille_tables), $map/entry[@key='start-multi'])"/>
             </xsl:if>
             <xsl:apply-templates/>
             <xsl:if test="$isLast">
               <!-- Announce the end of emphasis -->
-              <xsl:value-of select="louis:translate(string($braille_tables), '&#x2563;')"/>
+              <xsl:value-of select="louis:translate(string($braille_tables), $map/entry[@key='end-multi'])"/>
             </xsl:if>
           </xsl:when>
           <xsl:otherwise>
@@ -1511,28 +1529,28 @@
               <!-- emph is at the beginning of the word -->
               <xsl:when
                 test="my:ends-with-non-word(preceding-sibling::text()[1]) and my:starts-with-word(following-sibling::text()[1])">
-                <xsl:value-of select="louis:translate(string($braille_tables), '&#x255F;')"/>
+                <xsl:value-of select="louis:translate(string($braille_tables), $map/entry[@key='start-single'])"/>
 		<!-- when translating make sure to inhibit contraction at the end by inserting a special character -->
 		<xsl:value-of select="louis:translate(string($braille_tables), concat(string(),'&#x250A;'))"/>
-                <xsl:value-of select="louis:translate(string($braille_tables), '&#x2561;')"/>
+                <xsl:value-of select="louis:translate(string($braille_tables), $map/entry[@key='end-single'])"/>
               </xsl:when>
               <!-- emph is at the end of the word -->
               <xsl:when
                 test="my:ends-with-word(preceding-sibling::text()[1]) and my:starts-with-non-word(following-sibling::text()[1])">
-                <xsl:value-of select="louis:translate(string($braille_tables), '&#x255E;')"/>
+                <xsl:value-of select="louis:translate(string($braille_tables), $map/entry[@key='start-inside'])"/>
 		<!-- when translating make sure to inhibit contraction at the beginning by inserting a special character -->
 		<xsl:value-of select="louis:translate(string($braille_tables), concat('&#x250A;',string()))"/>
               </xsl:when>
               <!-- emph is inside the word -->
               <xsl:when
                 test="my:ends-with-word(preceding-sibling::text()[1]) and my:starts-with-word(following-sibling::text()[1])">
-                <xsl:value-of select="louis:translate(string($braille_tables), '&#x255E;')"/>
+                <xsl:value-of select="louis:translate(string($braille_tables), $map/entry[@key='start-inside'])"/>
 		<!-- when translating make sure to inhibit contraction at the beginning or at the end by inserting a special character -->
 		<xsl:value-of select="louis:translate(string($braille_tables), concat('&#x250A;',string(),'&#x250A;'))"/>
-                <xsl:value-of select="louis:translate(string($braille_tables), '&#x2561;')"/>
+                <xsl:value-of select="louis:translate(string($braille_tables), $map/entry[@key='end-single'])"/>
               </xsl:when>
               <xsl:otherwise>
-                <xsl:value-of select="louis:translate(string($braille_tables), '&#x255F;')"/>
+                <xsl:value-of select="louis:translate(string($braille_tables), $map/entry[@key='start-single'])"/>
                 <xsl:apply-templates/>
               </xsl:otherwise>
             </xsl:choose>
