@@ -1265,14 +1265,7 @@ i f=1 l=1
       <xsl:value-of
         select="louis:translate(string($braille_tables), string(//dtb:meta[@name='prod:seriesNumber']/@content))"/>
     </xsl:if>
-    <xsl:choose>
-      <xsl:when test="$contraction = 2">
-        <xsl:text>&#10;lv21&#10; </xsl:text>
-      </xsl:when>
-      <xsl:otherwise>
-        <xsl:text>&#10;lv20&#10; </xsl:text>
-      </xsl:otherwise>
-    </xsl:choose>
+    <xsl:text>&#10;lv20&#10; </xsl:text>
     <xsl:value-of
       select="louis:translate(string($braille_tables), 'Braillebearbeitung und Druck')"/>
     <xsl:text>&#10;a&#10; </xsl:text>
