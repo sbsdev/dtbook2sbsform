@@ -114,5 +114,91 @@ y P
     </utfx:assert-equal>
   </utfx:test>
   
+  <utfx:test>
+    <utfx:name>brl:date I</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+      <utfx:with-param name="downshift_ordinals" select="true()"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+        <brl:date xml:lang="de">11.12.98</brl:date>
+      </utfx:source>
+      <utfx:expected>#,,AB#IH</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+  
+  <utfx:test>
+    <utfx:name>brl:date II</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+      <utfx:with-param name="downshift_ordinals" select="false()"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+        <brl:date xml:lang="de">11.12.98</brl:date>
+      </utfx:source>
+      <utfx:expected>#AA.AB.IH</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+  
+  <utfx:test>
+    <utfx:name>brl:date III</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+      <utfx:with-param name="downshift_ordinals" select="true()"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+        <brl:date xml:lang="de">31.4.2091</brl:date>
+      </utfx:source>
+      <utfx:expected>#:,D#BJIA</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+  
+  <utfx:test>
+    <utfx:name>brl:date IV</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+      <utfx:with-param name="downshift_ordinals" select="false()"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+        <brl:date xml:lang="de">31.4.2091</brl:date>
+      </utfx:source>
+      <utfx:expected>#CA.D.BJIA</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+  
+  <utfx:test>
+    <utfx:name>brl:date V</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+      <utfx:with-param name="downshift_ordinals" select="true()"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+        <brl:date xml:lang="de">01.01.2019</brl:date>
+        <brl:date xml:lang="de">1.1.2019</brl:date>
+      </utfx:source>
+      <utfx:expected> #),JA#BJAI#,A#BJAI</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+  
+  <utfx:test>
+    <utfx:name>brl:date VI</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+      <utfx:with-param name="downshift_ordinals" select="false()"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+        <brl:date xml:lang="de">01.01.2019</brl:date>
+        <brl:date xml:lang="de">1.1.2019</brl:date>
+      </utfx:source>
+      <utfx:expected>#JA.JA.BJAI#A.A.BJAI</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+  
   
 </utfx:tests>

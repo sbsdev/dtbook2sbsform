@@ -1848,41 +1848,43 @@
     <xsl:variable name="braille_tables">
       <xsl:call-template name="getTable"/>
     </xsl:variable>
-    <xsl:variable name="day_braille_tables">
-      <xsl:call-template name="getTable">
-        <xsl:with-param name="context" select="'date_day'"/>
-      </xsl:call-template>
-    </xsl:variable>
-    <xsl:variable name="month_braille_tables">
-      <xsl:call-template name="getTable">
-        <xsl:with-param name="context" select="'date_month'"/>
-      </xsl:call-template>
-    </xsl:variable>
-    <xsl:for-each select="tokenize(string(@value), '-')">
-      <!-- reverse the order, so we have day, month, year -->
-      <xsl:sort select="position()" order="descending" data-type="number"/>
-      <xsl:choose>
-        <xsl:when test="position() = 1">
-          <xsl:value-of
-            select="louis:translate(string($day_braille_tables), format-number(. cast as xs:integer,'#'))"
-          />
-        </xsl:when>
-        <xsl:when test="position() = 2">
-          <xsl:value-of
-            select="louis:translate(string($month_braille_tables), format-number(. cast as xs:integer,'#'))"
-          />
-        </xsl:when>
-        <xsl:otherwise>
-	  <xsl:if test="matches(string(.), '\d+')">
-	    <xsl:value-of
-		select="louis:translate(string($braille_tables), format-number(. cast as xs:integer,'#'))"/>
-	  </xsl:if>
-        </xsl:otherwise>
-      </xsl:choose>
-    </xsl:for-each>
-  </xsl:template>
-
     <xsl:choose>
+      <xsl:when test="$downshift_ordinals = true()">
+	<xsl:variable name="day_braille_tables">
+	  <xsl:call-template name="getTable">
+            <xsl:with-param name="context" select="'date_day'"/>
+	  </xsl:call-template>
+	</xsl:variable>
+	<xsl:variable name="month_braille_tables">
+	  <xsl:call-template name="getTable">
+            <xsl:with-param name="context" select="'date_month'"/>
+	  </xsl:call-template>
+	</xsl:variable>
+	<xsl:for-each select="tokenize(string(.), '\.')">
+	  <xsl:choose>
+            <xsl:when test="position() = 1">
+              <xsl:value-of
+		  select="louis:translate(string($day_braille_tables), normalize-space(string(.)))"
+		  />
+            </xsl:when>
+            <xsl:when test="position() = 2">
+              <xsl:value-of
+		  select="louis:translate(string($month_braille_tables), normalize-space(string(.)))"
+		  />
+            </xsl:when>
+            <xsl:otherwise>
+	      <xsl:if test="matches(normalize-space(string(.)), '\d+')">
+		<xsl:value-of
+		    select="louis:translate(string($braille_tables), normalize-space(string(.)))"/>
+	      </xsl:if>
+            </xsl:otherwise>
+	  </xsl:choose>
+	</xsl:for-each>
+      </xsl:when>
+      <xsl:otherwise>
+	<xsl:value-of select="louis:translate(string($braille_tables), normalize-space(string(.)))"/>
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
 
   <xsl:template match="brl:time">
