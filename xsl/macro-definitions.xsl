@@ -1246,9 +1246,8 @@ i f=1 l=1
 	  <xsl:value-of select="louis:translate(string($braille_tables), my:filter-hyphenation('Wir dan­ken dem Ver­lag für die freund­liche Be­reit­stel­lung der elek­troni­schen Text­da­ten. '))"/>
 	</xsl:if>
 	<xsl:text>&#10;lm1&#10;x</xsl:text>
-	<!-- do not hyphenate the next sentence, even if hyphenation is enabled -->
         <xsl:value-of
-            select="louis:translate(string($braille_tables), 'Dieses Braillebuch ist nicht Korrektur gelesen.')"/>
+            select="louis:translate(string($braille_tables), my:filter-hyphenation('Dieses Braille­buch ist nicht Kor­rek­tur gelesen.'))"/>
       </xsl:otherwise>
     </xsl:choose>
     <xsl:if test="$book_type = 'rucksack'">
