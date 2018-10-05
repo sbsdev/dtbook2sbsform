@@ -25,20 +25,7 @@
   <utfx:stylesheet src="xsl/dtbook2sbsform.xsl"/>
 
   <utfx:test>
-    <utfx:name>time compact</utfx:name>
-    <utfx:stylesheet-params>
-      <utfx:with-param name="contraction" select="2"/>
-    </utfx:stylesheet-params>
-    <utfx:assert-equal>
-      <utfx:source>
-	<brl:time xml:lang="de" brl:render="compact" value="09:30">09:30</brl:time>
-      </utfx:source>
-      <utfx:expected>#I.CJ</utfx:expected>
-    </utfx:assert-equal>
-  </utfx:test>
-
-  <utfx:test>
-    <utfx:name>time standard</utfx:name>
+    <utfx:name>time</utfx:name>
     <utfx:stylesheet-params>
       <utfx:with-param name="contraction" select="2"/>
     </utfx:stylesheet-params>
@@ -47,6 +34,103 @@
 	<brl:time xml:lang="de" value="09:30">09:30</brl:time>
       </utfx:source>
       <utfx:expected>#JI':#CJ</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>time using period</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+	<brl:time xml:lang="de" value="09:30">09.30</brl:time>
+      </utfx:source>
+      <utfx:expected>#JI.CJ</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>time using period without leading zero</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+	<brl:time xml:lang="de" value="09:30">9.30</brl:time>
+      </utfx:source>
+      <utfx:expected>#I.CJ</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>brl:time I</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+	<brl:time xml:lang="de">2:55:18.4</brl:time>
+      </utfx:source>
+      <utfx:expected>#B':#EE':#AH.D</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>brl:time II</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+	<brl:time xml:lang="de">2:55:18,4</brl:time>
+      </utfx:source>
+      <utfx:expected>#B':#EE':#AH,D</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>brl:time III</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+	<brl:time xml:lang="de">2:55.18,4</brl:time>
+      </utfx:source>
+      <utfx:expected>#B':#EE.AH,D</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>brl:time IV</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+	<stub xml:lang="de">
+	  <brl:time>4:20</brl:time> Uhr
+	  <brl:time>04:20</brl:time> Uhr
+	</stub>
+      </utfx:source>
+      <utfx:expected>#D':#BJ UHR #JD':#BJ UHR</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>brl:time V</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+	<stub xml:lang="de">
+	  <brl:time>4.20</brl:time> Uhr
+	  <brl:time>04.20</brl:time> Uhr
+	</stub>
+      </utfx:source>
+      <utfx:expected>#D.BJ UHR #JD.BJ UHR</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
 
