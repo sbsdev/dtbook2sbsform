@@ -1251,14 +1251,7 @@ i f=1 l=1
       </xsl:otherwise>
     </xsl:choose>
     <xsl:if test="$book_type = 'rucksack'">
-      <xsl:choose>
-        <xsl:when test="$contraction = 2">
-          <xsl:text>&#10;lv19&#10; </xsl:text>
-        </xsl:when>
-        <xsl:otherwise>
-          <xsl:text>&#10;lv18&#10; </xsl:text>
-        </xsl:otherwise>
-      </xsl:choose>
+      <xsl:text>&#10;lv18&#10; </xsl:text>
       <xsl:text>&#10;a&#10; </xsl:text>
       <xsl:value-of
         select="louis:translate(string($braille_tables), 'Rucksackbuch Nr.')"/>
