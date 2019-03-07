@@ -189,7 +189,7 @@
   
   <xsl:function name="my:ends-with-number" as="xs:boolean">
     <xsl:param name="string"/>
-    <xsl:value-of select="matches($string, '\d$')"/>
+    <xsl:value-of select="matches($string, '(\d|²|³)$')"/>
   </xsl:function>
 
   <xsl:function name="my:ends-with-non-word" as="xs:boolean">
@@ -1945,6 +1945,19 @@
       <xsl:call-template name="getTable"/>
     </xsl:variable>
     <xsl:value-of select="louis:translate(string($braille_tables), concat('&#x256C;',string()))"/>
+  </xsl:template>
+
+  <!-- Handle punctuation after a km2 and km3 inside measure -->
+  <xsl:template match="text()[my:starts-with-punctuation(string())
+  	     and my:ends-with-number(string(my:preceding-textnode-within-block(.)))
+	     and (preceding::* intersect my:preceding-textnode-within-block(.)/ancestor::brl:num[@role='measure'])]"
+      priority="100">
+    <xsl:variable name="braille_tables">
+      <xsl:call-template name="getTable"/>
+    </xsl:variable>
+    <!-- Handle km2 before comma slightly differently -->
+    <xsl:variable name="dummy_number" select="if (matches(string(), '^,')) then '&#x256C;' else '&#x250B;'"/>
+    <xsl:value-of select="louis:translate(string($braille_tables), concat($dummy_number,string()))"/>
   </xsl:template>
 
   <!-- Handle punctuation after a number and after ordinals -->

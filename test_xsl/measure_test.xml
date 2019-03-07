@@ -307,5 +307,116 @@ y P
     </utfx:assert-equal>
   </utfx:test>
 
+  <utfx:test>
+    <utfx:name>Square kilometers followed by period</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+        <dtb:p xml:lang="de">bla <brl:num role="measure">30 km²</brl:num>. bla</dtb:p>
+      </utfx:source>
+      <utfx:expected>y P
+ BLA #CJ'KM\;. BLA</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>Square kilometers followed by comma</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+        <dtb:p xml:lang="de">bla <brl:num role="measure">30 km²</brl:num>, bla</dtb:p>
+      </utfx:source>
+      <utfx:expected>y P
+ BLA #CJ'KM\;', BLA</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>Square kilometers followed by semicolon</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+        <dtb:p xml:lang="de">bla <brl:num role="measure">30 km²</brl:num>; bla</dtb:p>
+      </utfx:source>
+      <utfx:expected>y P
+ BLA #CJ'KM\;'; BLA</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>Square kilometers followed by colon</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+        <dtb:p xml:lang="de">bla <brl:num role="measure">30 km²</brl:num>: bla</dtb:p>
+      </utfx:source>
+      <utfx:expected>y P
+ BLA #CJ'KM\;': BLA</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>Square kilometers followed by question mark</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+        <dtb:p xml:lang="de">bla <brl:num role="measure">30 km²</brl:num>? bla</dtb:p>
+      </utfx:source>
+      <utfx:expected>y P
+ BLA #CJ'KM\;'? BLA</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>Square kilometers followed by exclamation mark</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+        <dtb:p xml:lang="de">bla <brl:num role="measure">30 km²</brl:num>! bla</dtb:p>
+      </utfx:source>
+      <utfx:expected>y P
+ BLA #CJ'KM\;'+ BLA</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>Square kilometers followed by right parenthesis</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+        <dtb:p xml:lang="de">bla <brl:num role="measure">30 km²</brl:num>) bla</dtb:p>
+      </utfx:source>
+      <utfx:expected>y P
+ BLA #CJ'KM\;'= BLA</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>Square kilometers followed by left-pointing double angle quotation mark</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+        <dtb:p xml:lang="de">bla <brl:num role="measure">30 km²</brl:num>« bla</dtb:p>
+      </utfx:source>
+      <utfx:expected>y P
+ BLA #CJ'KM\;') BLA</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
 
 </utfx:tests>
