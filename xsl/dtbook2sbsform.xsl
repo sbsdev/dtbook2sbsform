@@ -198,22 +198,28 @@
 
   <xsl:function name="my:ends-with-non-word" as="xs:boolean">
     <xsl:param name="string"/>
-    <xsl:value-of select="empty($string) or matches($string, '\W$')"/>
+    <!-- for the purpose of emphasis handling elipsis is treated just like a word -->
+    <xsl:value-of select="(empty($string) or matches($string, '\W$')) and not(matches($string, '\.\.\.$'))"/>
   </xsl:function>
 
   <xsl:function name="my:ends-with-word" as="xs:boolean">
     <xsl:param name="string"/>
-    <xsl:value-of select="not(empty($string)) and matches($string, '\w$')"/>
+    <!-- for the purpose of emphasis handling elipsis is treated just like a word -->
+    <xsl:value-of select="not(empty($string)) and
+			  matches($string, '(\w|\.\.\.)$')"/>
   </xsl:function>
 
   <xsl:function name="my:starts-with-non-word" as="xs:boolean">
     <xsl:param name="string"/>
-    <xsl:value-of select="empty($string) or matches($string, '^\W')"/>
+    <!-- for the purpose of emphasis handling elipsis is treated just like a word -->
+    <xsl:value-of select="(empty($string) or matches($string, '^\W')) and not(matches($string, '^\.\.\.'))"/>
   </xsl:function>
 
   <xsl:function name="my:starts-with-word" as="xs:boolean">
     <xsl:param name="string"/>
-    <xsl:value-of select="not(empty($string)) and matches($string, '^\w')"/>
+    <!-- for the purpose of emphasis handling elipsis is treated just like a word -->
+    <xsl:value-of select="not(empty($string)) and
+			  matches($string, '^(\w|\.\.\.)')"/>
   </xsl:function>
 
   <xsl:function name="my:starts-with-non-whitespace" as="xs:boolean">
