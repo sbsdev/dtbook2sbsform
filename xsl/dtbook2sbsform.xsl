@@ -102,6 +102,10 @@
     <xsl:sequence select="true()"/>
   </xsl:template>
 
+  <xsl:template match="dtb:bridgehead|dtb:hd|dtb:dd|dtb:dt|dtb:caption|dtb:th|dtb:td" as="xs:boolean" mode="is-block-element" priority="12">
+    <xsl:sequence select="true()"/>
+  </xsl:template>
+
   <xsl:function name="my:following-textnode-within-block" as="text()?">
     <xsl:param name="context"/>
     <xsl:sequence select="$context/following::text()[1] intersect $context/ancestor-or-self::*[my:is-block-element(.)][1]//text()"/>
