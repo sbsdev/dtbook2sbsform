@@ -102,16 +102,6 @@ y LINEe
   </utfx:test>
 
   <utfx:test>
-    <utfx:name>test for und/oder</utfx:name>
-    <utfx:assert-equal>
-      <utfx:source>
-        <stub xml:lang="de">Substanz und/oder deren</stub>
-      </utfx:source>
-      <utfx:expected>SUB]+Z U!,O D7C</utfx:expected>
-    </utfx:assert-equal>
-  </utfx:test>
-
-  <utfx:test>
     <utfx:name>test for <abbr>AM</abbr></utfx:name>
     <utfx:assert-equal>
       <utfx:source>
@@ -232,19 +222,6 @@ y LINEe
   </utfx:test>
 
   <utfx:test>
-    <utfx:name>test für Einzelbuchstaben mit Punkt</utfx:name>
-    <utfx:stylesheet-params>
-      <utfx:with-param name="contraction" select="2"/>
-    </utfx:stylesheet-params>
-    <utfx:assert-equal>
-      <utfx:source>
-        <stub xml:lang="de">A. B. C. D. E. F. G. H. I. J.</stub>
-      </utfx:source>
-      <utfx:expected>A. B. 'C. D. E. F. G. H. I. J.</utfx:expected>
-    </utfx:assert-equal>
-  </utfx:test>
-
-  <utfx:test>
     <utfx:name>test 2 for Apostroph (pt. 6) vor Einzelbuchstaben mit Punkt innerhalb abbr (http://redmine.sbszh.ch/issues/show/927) </utfx:name>
     <utfx:stylesheet-params>
       <utfx:with-param name="contraction" select="2"/>
@@ -260,19 +237,6 @@ y LINEe
   </utfx:test>
 
   <utfx:test>
-    <utfx:name>test 2 for Apostroph (pt. 6) erscheint zweimal bei Apostroph + Einzelbuchstabe (http://redmine.sbszh.ch/issues/show/929) </utfx:name>
-    <utfx:stylesheet-params>
-      <utfx:with-param name="contraction" select="2"/>
-    </utfx:stylesheet-params>
-    <utfx:assert-equal>
-      <utfx:source>
-        <stub xml:lang="de">wie geht's</stub>
-      </utfx:source>
-      <utfx:expected>2 G=T'S</utfx:expected>
-    </utfx:assert-equal>
-  </utfx:test>
-
-  <utfx:test>
     <utfx:name>&lt;em&gt; innerhalb Anführungszeichen liefern falsches Resultat (http://redmine.sbszh.ch/issues/show/1004)</utfx:name>
     <utfx:stylesheet-params>
       <utfx:with-param name="contraction" select="2"/>
@@ -282,19 +246,6 @@ y LINEe
         <stub xml:lang="de">»<dtb:em>Test</dtb:em>«</stub>
       </utfx:source>
       <utfx:expected>(_TE])</utfx:expected>
-    </utfx:assert-equal>
-  </utfx:test>
-
-  <utfx:test>
-    <utfx:name>Problem bei Schrägstrich: Kürzungen (http://redmine.sbszh.ch/issues/show/1005)</utfx:name>
-    <utfx:stylesheet-params>
-      <utfx:with-param name="contraction" select="2"/>
-    </utfx:stylesheet-params>
-    <utfx:assert-equal>
-      <utfx:source>
-        <stub xml:lang="de">Produktion/Test</stub>
-      </utfx:source>
-      <utfx:expected>QDUKTION!,TE]</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
 
@@ -471,32 +422,6 @@ y P
   </utfx:test>
 
   <utfx:test>
-    <utfx:name>Einzelbuchstaben mit Akzenten erhalten fälschlicherweise einen Pt.6 (http://redmine.sbszh.ch/issues/show/1010)</utfx:name>
-    <utfx:stylesheet-params>
-      <utfx:with-param name="contraction" select="2"/>
-    </utfx:stylesheet-params>
-    <utfx:assert-equal>
-      <utfx:source>
-        <stub xml:lang="de">à la carte</stub>
-      </utfx:source>
-      <utfx:expected>"[ LA 'C)(</utfx:expected>
-    </utfx:assert-equal>
-  </utfx:test>
-
-<!--  <utfx:test>
-    <utfx:name>Leerschläge vor und nach Schrägstrich werden getilgt (http://redmine.sbszh.ch/issues/show/1011)</utfx:name>
-    <utfx:stylesheet-params>
-      <utfx:with-param name="contraction" select="2"/>
-    </utfx:stylesheet-params>
-    <utfx:assert-equal>
-      <utfx:source>
-        <stub xml:lang="de">wort / wort</stub>
-      </utfx:source>
-      <utfx:expected>W?T !, W?T</utfx:expected>
-    </utfx:assert-equal>
-  </utfx:test>
--->
-  <utfx:test>
     <utfx:name>Falsches Resultat bei gemischtem Bruch, wenn Zeilenumbruch vorkommt (http://redmine.sbszh.ch/issues/show/1065)</utfx:name>
     <utfx:stylesheet-params>
       <utfx:with-param name="contraction" select="2"/>
@@ -507,28 +432,6 @@ y P
                 1/2</brl:num></stub>
       </utfx:source>
       <utfx:expected>#D#A;</utfx:expected>
-    </utfx:assert-equal>
-  </utfx:test>
-
-  <utfx:test>
-    <utfx:name>Check if unicode chars are eaten by liblouis</utfx:name>
-    <utfx:stylesheet-params>
-      <utfx:with-param name="contraction" select="2"/>
-    </utfx:stylesheet-params>
-    <utfx:assert-equal>
-      <utfx:source><stub xml:lang="de">&#x255E;</stub></utfx:source>
-      <utfx:expected>'_</utfx:expected>
-    </utfx:assert-equal>
-  </utfx:test>
-
-  <utfx:test>
-    <utfx:name>Check if unicode chars are eaten by liblouis</utfx:name>
-    <utfx:stylesheet-params>
-      <utfx:with-param name="contraction" select="2"/>
-    </utfx:stylesheet-params>
-    <utfx:assert-equal>
-      <utfx:source><stub xml:lang="de">&#x2561;</stub></utfx:source>
-      <utfx:expected>'.</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
 
@@ -647,23 +550,6 @@ y P
  (OKA'Y. A # 8E % \ GAR N W^C; B* 7] 6 PAAR JRE * E &gt;USA.)
 y P
  S HE V +F+G + E AKZCT ;M7KT, R E 1SL@ND7 -R0T, U FRAG(: (NA, U WOH7 KX] DU?)</utfx:expected>
-    </utfx:assert-equal>
-  </utfx:test>
-
-  <utfx:test>
-    <utfx:name>Gross, schliess, etc</utfx:name>
-    <utfx:stylesheet-params>
-      <utfx:with-param name="contraction" select="2"/>
-    </utfx:stylesheet-params>
-    <utfx:assert-equal>
-      <utfx:source>
-	<stub xml:lang="de">
-	  <dtb:p>Groß schließ Großmutter</dtb:p>
-	</stub>
-      </utfx:source>
-      <utfx:expected>
-y P
- G^ 5^ G^MUTT7</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
 
