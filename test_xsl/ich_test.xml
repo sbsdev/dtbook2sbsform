@@ -373,7 +373,7 @@
     </utfx:stylesheet-params>
     <utfx:assert-equal>
       <utfx:source>
-        <stub xml:lang="de"><dtb:em>ICH.</dtb:em></stub>
+        <stub xml:lang="de"><dtb:em>ICH</dtb:em>.</stub>
       </utfx:source>
       <utfx:expected>_#.</utfx:expected>
     </utfx:assert-equal>
@@ -386,7 +386,7 @@
     </utfx:stylesheet-params>
     <utfx:assert-equal>
       <utfx:source>
-        <stub xml:lang="de"><dtb:em>ICH,</dtb:em></stub>
+        <stub xml:lang="de"><dtb:em>ICH</dtb:em>,</stub>
       </utfx:source>
       <utfx:expected>_I4,</utfx:expected>
     </utfx:assert-equal>
@@ -399,7 +399,7 @@
     </utfx:stylesheet-params>
     <utfx:assert-equal>
       <utfx:source>
-        <stub xml:lang="de"><dtb:em>ICH;</dtb:em></stub>
+        <stub xml:lang="de"><dtb:em>ICH</dtb:em>;</stub>
       </utfx:source>
       <utfx:expected>_I4;</utfx:expected>
     </utfx:assert-equal>
@@ -412,7 +412,7 @@
     </utfx:stylesheet-params>
     <utfx:assert-equal>
       <utfx:source>
-        <stub xml:lang="de"><dtb:em>ICH:</dtb:em></stub>
+        <stub xml:lang="de"><dtb:em>ICH</dtb:em>:</stub>
       </utfx:source>
       <utfx:expected>_I4:</utfx:expected>
     </utfx:assert-equal>
@@ -425,7 +425,7 @@
     </utfx:stylesheet-params>
     <utfx:assert-equal>
       <utfx:source>
-        <stub xml:lang="de"><dtb:em>ICH!</dtb:em></stub>
+        <stub xml:lang="de"><dtb:em>ICH</dtb:em>!</stub>
       </utfx:source>
       <utfx:expected>_I4+</utfx:expected>
     </utfx:assert-equal>
@@ -438,7 +438,7 @@
     </utfx:stylesheet-params>
     <utfx:assert-equal>
       <utfx:source>
-        <stub xml:lang="de"><dtb:em>ICH?</dtb:em></stub>
+        <stub xml:lang="de"><dtb:em>ICH</dtb:em>?</stub>
       </utfx:source>
       <utfx:expected>_I4?</utfx:expected>
     </utfx:assert-equal>
