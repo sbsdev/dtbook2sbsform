@@ -2060,7 +2060,12 @@
     <xsl:variable name="braille_tables">
       <xsl:call-template name="getTable"/>
     </xsl:variable>
-    <xsl:value-of select="louis:translate(string($braille_tables), concat(string(),'&#x250A;'))"/>
+    <!-- Our braille tables have a bit of a problem with upper case, so cases like "ICH" most likely
+	 fail. That's why we convert the string to lower case before showing it to liblouis. This fails
+	 even worse if we enable capitalization, but for now it is a good enough solution. The real fix
+	 is of course to handle capitalisation properly in the liblouis tables. -->
+    <xsl:variable name="ich" select="if ($enable_capitalization = false()) then lower-case(string()) else string()"/>
+    <xsl:value-of select="louis:translate(string($braille_tables), concat($ich,'&#x250A;'))"/>
   </xsl:template>
 
   <xsl:template match="text()">
