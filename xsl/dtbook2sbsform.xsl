@@ -2029,7 +2029,7 @@
   <!-- Handle single word mixed emphasis -->
   <!-- mixed emphasis before-->
   <xsl:template
-    match="text()[my:starts-with-word(string()) and my:ends-with-word(string(my:preceding-textnode-within-block(.)[ancestor::dtb:em]))]">
+    match="text()[my:starts-with-word(string()) and my:ends-with-word(string(preceding::* intersect my:preceding-textnode-within-block(.)/(ancestor::dtb:em)))]">
     <xsl:variable name="braille_tables">
       <xsl:call-template name="getTable"/>
     </xsl:variable>
@@ -2038,7 +2038,7 @@
 
   <!-- mixed emphasis after-->
   <xsl:template
-    match="text()[my:ends-with-word(string()) and my:starts-with-word(string(my:following-textnode-within-block(.)[ancestor::dtb:em]))]">
+    match="text()[my:ends-with-word(string()) and my:starts-with-word(string(following::* intersect my:following-textnode-within-block(.)/(ancestor::dtb:em)))]">
     <xsl:variable name="braille_tables">
       <xsl:call-template name="getTable"/>
     </xsl:variable>

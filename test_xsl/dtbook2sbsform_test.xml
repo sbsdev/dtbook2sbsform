@@ -884,6 +884,38 @@ y P
     </utfx:assert-equal>
   </utfx:test>
   
+  <utfx:test>
+    <utfx:name>abbr 10 abbr inside em Bug dtbook2sbsform#14 (#2243)</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal normalise-internal-whitespace="yes">
+      <utfx:source>
+	<dtb:p xml:lang="de"><dtb:em>es lebe das Format <dtb:abbr>A</dtb:abbr>4</dtb:em></dtb:p>
+      </utfx:source>
+      <utfx:expected>
+y P
+ __% LBE D F?MAT >A#D'.
+      </utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>abbr 10 abbr inside em Bug dtbook2sbsform#14 (#2243)</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal normalise-internal-whitespace="yes">
+      <utfx:source>
+	<dtb:p xml:lang="de">es lebe das Format <dtb:abbr>A</dtb:abbr>4</dtb:p>
+      </utfx:source>
+      <utfx:expected>
+y P
+ % LBE D F?MAT >A#D
+      </utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
   <!-- <utfx:test> -->
   <!--   <utfx:name>num role=measure 1 "20m" Bug #1213</utfx:name> -->
   <!--   <utfx:stylesheet-params> -->
