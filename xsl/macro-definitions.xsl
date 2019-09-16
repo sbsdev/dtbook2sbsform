@@ -1221,7 +1221,7 @@ i f=1 l=1
         </xsl:call-template>
         <xsl:text>-</xsl:text>
         <xsl:value-of
-          select="louis:translate(string($braille_tables), my:filter-hyphenation('&#x250A;Ver­lag für die Be­reit­stel­lung der Da­ten.'))"/>
+          select="louis:translate(string($braille_tables), my:filter-hyphenation('V&#x250A;er­lag für die Be­reit­stel­lung der Da­ten.'))"/>
       </xsl:when>
       <xsl:otherwise>
         <xsl:value-of
