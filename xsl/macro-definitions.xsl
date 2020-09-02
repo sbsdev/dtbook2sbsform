@@ -1199,57 +1199,30 @@ L
 i f=1 l=1
  </xsl:text>
 
-    <xsl:choose>
-      <xsl:when test="$book_type = 'sjw'">
-        <xsl:value-of
-          select="louis:translate(string($braille_tables), my:filter-hyphenation('Braille­aus­ga­be mit freund­licher Ge­neh­mi­gung des '))"/>
-        <xsl:call-template name="handle_abbr">
-          <xsl:with-param name="context" select="'abbr'"/>
-          <xsl:with-param name="content" as="text()">
-	    <xsl:text>SJW</xsl:text>
-	  </xsl:with-param>
-        </xsl:call-template>
-        <xsl:value-of
-          select="louis:translate(string($braille_tables), my:filter-hyphenation(' Schwei­ze­ri­schen Ju­gend­schrif­ten­werks, Zürich.'))"/>
-        <xsl:value-of
-          select="louis:translate(string($braille_tables), my:filter-hyphenation(' Wir dan­ken dem '))"/>
-        <xsl:call-template name="handle_abbr">
-          <xsl:with-param name="context" select="'abbr'"/>
-          <xsl:with-param name="content" as="text()">
-	    <xsl:text>SJW</xsl:text>
-	  </xsl:with-param>
-        </xsl:call-template>
-        <xsl:text>-</xsl:text>
-        <xsl:value-of
-          select="louis:translate(string($braille_tables), my:filter-hyphenation('V&#x250A;er­lag für die Be­reit­stel­lung der Da­ten.'))"/>
-      </xsl:when>
-      <xsl:otherwise>
-        <xsl:value-of
-          select="louis:translate(string($braille_tables), my:filter-hyphenation('Dieses Braille­buch ist die aus­schließ­lich '))"/>
-        <xsl:value-of
-          select="louis:translate(string($braille_tables), my:filter-hyphenation('für die Nut­zung durch Seh- und Le­se­be­hin­der­te Men­schen '))"/>
-        <xsl:value-of
-          select="louis:translate(string($braille_tables), my:filter-hyphenation('be­stimm­te zu­gäng­li­che Ver­sion eines ur­he­ber­recht­lich '))"/>
-        <xsl:value-of
-          select="louis:translate(string($braille_tables), my:filter-hyphenation('ge­schütz­ten Werks. '))"/>
-        <xsl:value-of
-          select="louis:translate(string($vform_braille_tables), 'Sie ')"/>
-        <xsl:value-of select="louis:translate(string($braille_tables), my:filter-hyphenation('kön­nen '))"/>
-        <xsl:value-of
-          select="louis:translate(string($braille_tables), my:filter-hyphenation('es im Rah­men des Ur­he­ber­rechts per­sön­lich nut­zen, '))"/>
-        <xsl:value-of
-          select="louis:translate(string($braille_tables), my:filter-hyphenation('dür­fen es aber nicht wei­ter ver­brei­ten oder öf­fent­lich '))"/>
-        <xsl:value-of
-          select="louis:translate(string($braille_tables), my:filter-hyphenation('zu­gäng­lich ma­chen.'))"/>
-	<xsl:if test="//dtb:meta[lower-case(@name)='prod:source']/@content = 'electronicData'">
-	  <xsl:text>&#10;l&#10; </xsl:text>
-	  <xsl:value-of select="louis:translate(string($braille_tables), my:filter-hyphenation('Wir dan­ken dem Ver­lag für die freund­liche Be­reit­stel­lung der elek­troni­schen Text­da­ten. '))"/>
-	</xsl:if>
-	<xsl:text>&#10;lm1&#10;x</xsl:text>
-        <xsl:value-of
-            select="louis:translate(string($braille_tables), my:filter-hyphenation('Dieses Braille­buch ist nicht Kor­rek­tur gelesen.'))"/>
-      </xsl:otherwise>
-    </xsl:choose>
+    <xsl:value-of
+      select="louis:translate(string($braille_tables), my:filter-hyphenation('Dieses Braille­buch ist die aus­schließ­lich '))"/>
+    <xsl:value-of
+      select="louis:translate(string($braille_tables), my:filter-hyphenation('für die Nut­zung durch Seh- und Le­se­be­hin­der­te Men­schen '))"/>
+    <xsl:value-of
+      select="louis:translate(string($braille_tables), my:filter-hyphenation('be­stimm­te zu­gäng­li­che Ver­sion eines ur­he­ber­recht­lich '))"/>
+    <xsl:value-of
+      select="louis:translate(string($braille_tables), my:filter-hyphenation('ge­schütz­ten Werks. '))"/>
+    <xsl:value-of
+      select="louis:translate(string($vform_braille_tables), 'Sie ')"/>
+    <xsl:value-of select="louis:translate(string($braille_tables), my:filter-hyphenation('kön­nen '))"/>
+    <xsl:value-of
+      select="louis:translate(string($braille_tables), my:filter-hyphenation('es im Rah­men des Ur­he­ber­rechts per­sön­lich nut­zen, '))"/>
+    <xsl:value-of
+      select="louis:translate(string($braille_tables), my:filter-hyphenation('dür­fen es aber nicht wei­ter ver­brei­ten oder öf­fent­lich '))"/>
+    <xsl:value-of
+      select="louis:translate(string($braille_tables), my:filter-hyphenation('zu­gäng­lich ma­chen.'))"/>
+    <xsl:if test="//dtb:meta[lower-case(@name)='prod:source']/@content = 'electronicData'">
+      <xsl:text>&#10;l&#10; </xsl:text>
+      <xsl:value-of select="louis:translate(string($braille_tables), my:filter-hyphenation('Wir dan­ken dem Ver­lag für die freund­liche Be­reit­stel­lung der elek­troni­schen Text­da­ten. '))"/>
+    </xsl:if>
+    <xsl:text>&#10;lm1&#10;x</xsl:text>
+    <xsl:value-of
+        select="louis:translate(string($braille_tables), my:filter-hyphenation('Dieses Braille­buch ist nicht Kor­rek­tur gelesen.'))"/>
     <xsl:if test="$book_type = 'rucksack'">
       <xsl:text>&#10;lv18&#10; </xsl:text>
       <xsl:text>&#10;a&#10; </xsl:text>
