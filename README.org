@@ -12,7 +12,7 @@ offers translating text into braille using [[http://www.liblouis.org][liblouis]]
 * Build
 
 #+BEGIN_SRC shell
-ant -e clean dist package
+ant -e -lib /usr/share/java/jdeb.jar clean dist package
 #+END_SRC
 
 * Usage of command line tools
