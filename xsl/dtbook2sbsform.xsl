@@ -369,9 +369,6 @@
     <xsl:if test="$context != 'date_month' and $context != 'date_day'">
       <xsl:choose>
         <xsl:when test="ancestor-or-self::dtb:span[@brl:accents = 'reduced']">
-          <xsl:text>sbs-de-accents-reduced.mod,</xsl:text>
-        </xsl:when>
-        <xsl:when test="ancestor-or-self::dtb:span[@brl:accents = 'detailed']">
           <xsl:text>sbs-de-accents.mod,</xsl:text>
         </xsl:when>
         <xsl:otherwise>
@@ -379,9 +376,6 @@
           <xsl:choose>
             <xsl:when test="$detailed_accented_characters = 'de-accents-ch'">
               <xsl:text>sbs-de-accents-ch.mod,</xsl:text>
-            </xsl:when>
-            <xsl:when test="$detailed_accented_characters = 'de-accents-reduced'">
-              <xsl:text>sbs-de-accents-reduced.mod,</xsl:text>
             </xsl:when>
             <xsl:otherwise>
               <xsl:text>sbs-de-accents.mod,</xsl:text>
