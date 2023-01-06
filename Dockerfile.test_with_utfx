@@ -1,7 +1,7 @@
 # Create a Docker image in which we can still run the utfx tests.
 # Those only run with an older version of Java
 
-FROM openjdk:7-jdk
+FROM debian/eol:jessie
 RUN apt-get update && apt-get install -y \
     ant \
     autoconf \
