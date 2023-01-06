@@ -65,7 +65,7 @@ If you really want you can also build an image to test against old
 versions of liblouis and the braille tables:
 
 #+BEGIN_SRC shell
-docker build --build-arg LIBLOUIS_VERSION=liblouis_2_5_2 --build-arg BRAILLE_TABLES_VERSION=liblouis_2_5_2 -t dtbook2sbsform -f Dockerfile.test_with_utfx .
+  docker build --build-arg LIBLOUIS_VERSION=3.10.2 --build-arg BRAILLE_TABLES_VERSION=1.12.5 -t dtbook2sbsform -f Dockerfile.test_with_utfx .
 #+END_SRC
 
 To run the tests using above image simply run

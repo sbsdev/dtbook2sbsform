@@ -14,7 +14,8 @@ RUN apt-get update && apt-get install -y \
 ARG LIBLOUIS_VERSION=master
 ARG BRAILLE_TABLES_VERSION=master
 WORKDIR /root/src/
-RUN curl -L https://github.com/liblouis/liblouis/archive/${LIBLOUIS_VERSION}.tar.gz | tar zx
+RUN curl -L https://github.com/liblouis/liblouis/archive/refs/tags/v${LIBLOUIS_VERSION}.tar.gz | tar zx
+
 WORKDIR /root/src/liblouis-${LIBLOUIS_VERSION}/
 RUN ./autogen.sh && \
     ./configure --enable-ucs4 && \
@@ -23,7 +24,7 @@ RUN ./autogen.sh && \
     ldconfig
 
 WORKDIR /root/src/
-RUN curl -L https://github.com/sbsdev/sbs-braille-tables/archive/${BRAILLE_TABLES_VERSION}.tar.gz | tar zx
+RUN curl -L https://github.com/sbsdev/sbs-braille-tables/archive/v${BRAILLE_TABLES_VERSION}.tar.gz | tar zx
 WORKDIR /root/src/sbs-braille-tables-${BRAILLE_TABLES_VERSION}/
 RUN ./autogen.sh && \
     ./configure && \
