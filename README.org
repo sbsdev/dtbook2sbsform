@@ -1,10 +1,6 @@
 #+TITLE: dtbook2sbsform
 
-[[https://travis-ci.com/sbsdev/dtbook2sbsform][https://travis-ci.com/sbsdev/dtbook2sbsform.svg?branch=master]]
-
-This project provides:
-
-a command line tool to transform [[http://en.wikipedia.org/wiki/DTBook][dtbook xml source files]] into a
+A command line tool to transform [[http://en.wikipedia.org/wiki/DTBook][dtbook xml source files]] into a
 braille format proprietary to [[http://www.sbs.ch][Swiss Library for the Blind, Visually
 Impaired and Print Disabled]] using [[http://saxon.sourceforge.net][Saxon]] with a [[https://github.com/sbsdev/LiblouisSaxonExtension][java extension]] that
 offers translating text into braille using [[http://www.liblouis.org][liblouis]].
