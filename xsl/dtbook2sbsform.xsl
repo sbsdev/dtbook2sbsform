@@ -1370,8 +1370,13 @@
   <!-- ========== -->
 
   <xsl:template match="dtb:bridgehead">
+    <xsl:variable name="body"><xsl:apply-templates/></xsl:variable>
     <xsl:call-template name="inline_macro">
       <xsl:with-param name="macro" select="'BRIDGE'"/>
+      <xsl:with-param name="body">
+	<!-- Remove hypenation marks ('t','k', 'p' and 'w') -->
+	<xsl:value-of select="replace(string($body), '[tkpw]', '')"/>
+      </xsl:with-param>
     </xsl:call-template>
   </xsl:template>
 
