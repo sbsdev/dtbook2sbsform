@@ -47,7 +47,7 @@
                 <xsl:apply-templates mode="add-announcements" select=".">
                     <xsl:with-param name="top-element-id" select="generate-id(.)"/>
                     <xsl:with-param name="single-word"
-                        select="count(tokenize(string(.), '(\s|/|-)+')[string(.) != '']) &lt; 2"/>
+                        select="count(tokenize(string(.), '(\s|&#xA0;|/|-)+')[string(.) != '']) &lt; 2"/>
                 </xsl:apply-templates>
             </xsl:when>
             <xsl:otherwise>

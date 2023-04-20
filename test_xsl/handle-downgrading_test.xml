@@ -58,6 +58,27 @@
   </utfx:test>
 
   <utfx:test>
+    <utfx:name>Downgrading with nbsp</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+        <stub xml:lang="de">
+	  <dtb:p>bla <dtb:span brl:grade="0">H A L L O</dtb:span> bla</dtb:p>
+	  <dtb:p>bla <dtb:span brl:grade="0">H A L L O</dtb:span> bla</dtb:p>
+        </stub>
+      </utfx:source>
+      <utfx:expected>
+        <stub xml:lang="de">
+	  <dtb:p>bla <dtb:span>╚</dtb:span><dtb:span brl:grade="0">H A L L O</dtb:span><dtb:span>╝</dtb:span> bla</dtb:p>
+	  <dtb:p>bla <dtb:span>╚</dtb:span><dtb:span brl:grade="0">H A L L O</dtb:span><dtb:span>╝</dtb:span> bla</dtb:p>
+        </stub>
+      </utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
     <utfx:name>Downgrading from grade 1 to grade 0</utfx:name>
     <utfx:stylesheet-params>
       <utfx:with-param name="contraction" select="1"/>
