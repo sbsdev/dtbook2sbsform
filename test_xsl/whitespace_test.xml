@@ -25,7 +25,7 @@
   <utfx:stylesheet src="xsl/dtbook2sbsform.xsl"/>
 
   <utfx:test>
-    <utfx:name>All whitespace except nbsp is normalized</utfx:name>
+    <utfx:name>NBSP inside whitespace</utfx:name>
     <utfx:stylesheet-params>
       <utfx:with-param name="contraction" select="0"/>
     </utfx:stylesheet-params>
@@ -33,17 +33,53 @@
       <utfx:source>
 	<!-- nbsb inside whitespace is dropped -->
 	<dtb:p xml:lang="de">Hallo           &#160; Huhu</dtb:p>
-	<dtb:p xml:lang="de">Hallo&#160;Huhu</dtb:p>
-	<dtb:p xml:lang="de">Foo&#160;Bar Baz</dtb:p>
-	<dtb:p xml:lang="de">Foo&#160;Bar&#160;Baz</dtb:p>
       </utfx:source>
       <utfx:expected>
 y P
- HALLO HUHU
+ HALLO HUHU</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>Only NBSP</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="0"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+	<dtb:p xml:lang="de">Hallo&#160;Huhu</dtb:p>
+      </utfx:source>
+      <utfx:expected>
 y P
- HALLObHUHU
+ HALLObHUHU</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>NBSP and normal whitespace</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="0"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+	<dtb:p xml:lang="de">Foo&#160;Bar Baz</dtb:p>
+      </utfx:source>
+      <utfx:expected>
 y P
- FOObBAR BAZ
+ FOObBAR BAZ</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>Multiple NBSP</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="0"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+	<dtb:p xml:lang="de">Foo&#160;Bar&#160;Baz</dtb:p>
+      </utfx:source>
+      <utfx:expected>
 y P
  FOObBARbBAZ</utfx:expected>
     </utfx:assert-equal>
