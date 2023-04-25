@@ -80,7 +80,7 @@
 
 	<!-- 3rd party libs -->
 	<pathelement location="${lib.dir}/jna.jar" />
-	<pathelement location="${lib.dir}/louis.jar" />
+	<pathelement location="${lib.dir}/louis-1.0.jar" />
 	<pathelement location="${lib.dir}/saxon9he.jar" />
 	<!-- junit -->
 	<pathelement location="${lib.dir}/junit-4.8.2.jar" />
@@ -96,7 +96,7 @@
 
   <path id="runtime.classpath">
     <pathelement location="lib/saxon9he.jar"/>
-    <pathelement location="lib/louis.jar"/>
+    <pathelement location="lib/louis-1.0.jar"/>
     <pathelement location="lib/jna.jar"/>
     <pathelement location="lib/liblouissaxonx.jar"/>
     <pathelement location="lib/utfxFat.jar"/>

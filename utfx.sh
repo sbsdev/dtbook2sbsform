@@ -41,7 +41,7 @@ UTFX_TEST=${@:-"-Dutfx.test.dir=test_xsl"}
 LIB=lib
 # . required in class path, so utfx.properties is found!
 UTFX=.:$LIB/utfxFat.jar
-CP=$LIB/saxon9he.jar:$LIB/louis.jar:$LIB/jna.jar:$LIB/liblouissaxonx.jar:$UTFX
+CP=$LIB/saxon9he.jar:$LIB/louis-1.0.jar:$LIB/jna.jar:$LIB/liblouissaxonx.jar:$UTFX
 
 java $LOUIS_TRANSFORM_FACTORY $UTFX_TEST \
     -cp $CP utfx.runner.TestRunner utfx.framework.XSLTRegressionTest

@@ -35,7 +35,7 @@
       </utfx:source>
       <utfx:expected>
 y P
- __BLA BLO'.</utfx:expected>
+ __BLAbBLO'.</utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
 
