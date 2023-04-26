@@ -41,6 +41,15 @@ will be broken. Line width is 80 chars.
 
 Performs [[http://utf-x.sourceforge.net/][utfx]] (svn version) tests.
 
+* Dependencies
+- [[https://github.com/java-native-access/jna][jna]]
+- junit
+- [[https://github.com/sbsdev/LiblouisSaxonExtension][liblouissaxonx]]
+- [[https://github.com/sbsdev/liblouis-javabindings][louis-1.0.jar]]
+- [[https://central.sonatype.com/artifact/net.sf.saxon/Saxon-HE/12.1/overview][saxon9he.jar]]
+- [[https://utf-x.sourceforge.net/manual/manual.html][utfxFat.jar]]
+
+
 * Prerequisite installs
 - [[http://java.sun.com][java]]
   - Unfortunately this project is not compatible with Java 8. Please use
