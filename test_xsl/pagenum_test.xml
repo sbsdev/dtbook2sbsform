@@ -31,7 +31,7 @@
   <utfx:stylesheet src="xsl/dtbook2sbsform.xsl"/>
   
   <utfx:test>
-    <utfx:name>brl:volume und pagnum Bug #1290</utfx:name>
+    <utfx:name>brl:volume und pagenum Bug #1290</utfx:name>
     <utfx:stylesheet-params>
       <utfx:with-param name="contraction" select="2"/>
     </utfx:stylesheet-params>
