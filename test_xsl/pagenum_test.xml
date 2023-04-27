@@ -216,4 +216,102 @@ y LEVEL1e
 </utfx:expected>
     </utfx:assert-equal>
   </utfx:test>
+
+  <utfx:test>
+    <utfx:name>Missing page numbers I, https://github.com/sbsdev/dtbook2sbsform/issues/18</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+        <stub xml:lang="de">
+	  <dtb:level1>
+	    <dtb:p>foo</dtb:p>
+	    <dtb:pagenum id="page-76" page="normal">76</dtb:pagenum>
+	    <dtb:p>bar</dtb:p>
+	    <brl:volume brl:grade="2"/>
+	    <dtb:level2>
+	      <dtb:pagenum id="page-77" page="normal">77</dtb:pagenum>
+	    <dtb:p>baz</dtb:p>
+	    </dtb:level2>
+	  </dtb:level1>
+        </stub>
+      </utfx:source>
+      <utfx:expected>
+y LEVEL1b
+.xNOPAGENUM
+
+y P
+ FOO
+j 76
+ 
+y P
+ BAR
+y EndVol
+p
+
+j 77
+y BrlVol
+
+y LEVEL2b
+
+y P
+ BAZ
+y LEVEL2e
+
+y LEVEL1e
+</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
+  <utfx:test>
+    <utfx:name>Missing page numbers II, https://github.com/sbsdev/dtbook2sbsform/issues/18</utfx:name>
+    <utfx:stylesheet-params>
+      <utfx:with-param name="contraction" select="2"/>
+    </utfx:stylesheet-params>
+    <utfx:assert-equal>
+      <utfx:source>
+        <stub xml:lang="de">
+	  <dtb:level1>
+	    <dtb:p>foo</dtb:p>
+	    <dtb:pagenum id="page-76" page="normal">76</dtb:pagenum>
+	    <dtb:p>bar</dtb:p>
+	    <brl:volume brl:grade="2"/>
+	    <dtb:level2>
+	      <dtb:p>bla</dtb:p>
+	      <dtb:pagenum id="page-77" page="normal">77</dtb:pagenum>
+	      <dtb:p>baz</dtb:p>
+	    </dtb:level2>
+	  </dtb:level1>
+        </stub>
+      </utfx:source>
+      <utfx:expected>
+y LEVEL1b
+.xNOPAGENUM
+
+y P
+ FOO
+j 76
+ 
+y P
+ BAR
+y EndVol
+y BrlVol
+
+y LEVEL2b
+.xNOPAGENUM
+
+y P
+ BLA
+j 77
+ 
+y P
+ BAZ
+y LEVEL2e
+
+y LEVEL1e
+</utfx:expected>
+    </utfx:assert-equal>
+  </utfx:test>
+
 </utfx:tests>

@@ -934,7 +934,7 @@
   <xsl:template match="dtb:pagenum[preceding-sibling::*[position()=1 and local-name()='volume' and @brl:grade = $contraction]]"/>
 
   <!-- Handle levelN/pagenums after volume boundaries -->
-  <xsl:template match="dtb:pagenum[position()=1 and parent::*[substring(local-name(),0,6)='level' and preceding-sibling::*[position()=1 and local-name()='volume' and @brl:grade = $contraction]]]"/>
+  <xsl:template match="dtb:pagenum[empty(preceding-sibling::node())][parent::*[self::dtb:level1|self::dtb:level2|self::dtb:level3|self::dtb:level4|self::dtb:level5|self::dtb:level6][preceding-sibling::node()[1][self::brl:volume][@brl:grade = $contraction]]]"/>
 
   <xsl:template match="dtb:pagenum" mode="no-space-after">
     <xsl:call-template name="dtb:pagenum">
