@@ -292,6 +292,10 @@
         <xsl:when test="lang('de')">
           <xsl:value-of select="$contraction"/>
         </xsl:when>
+	<!-- switch to grade 1 for swiss german -->
+        <xsl:when test="lang('gsw')">
+          <xsl:value-of select="'1'"/>
+        </xsl:when>
         <xsl:otherwise>
           <xsl:value-of select="'0'"/>
         </xsl:otherwise>
