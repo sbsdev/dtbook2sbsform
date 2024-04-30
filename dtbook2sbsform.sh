@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Copyright (C) 2010 Swiss Library for the Blind, Visually Impaired and Print Disabled
 #
@@ -17,6 +17,9 @@
 # You should have received a copy of the GNU Lesser General Public
 # License along with this program. If not, see
 # <http://www.gnu.org/licenses/>.
+
+# exit if any of the processes fail
+set -eo pipefail
 
 if [ $# -lt 1 ] ; then
 	PRG=`basename $0`
