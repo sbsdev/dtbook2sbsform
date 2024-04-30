@@ -1,3 +1,4 @@
+#!/bin/sh
 
 # Copyright (C) 2010 Swiss Library for the Blind, Visually Impaired and Print Disabled
 #
