@@ -1910,7 +1910,7 @@
   <xsl:template match="brl:volume">
     <xsl:if test="@brl:grade = $contraction">
       <!-- Apply end notes -->
-      <xsl:if test="$footnote_placement = 'end_vol'">
+      <xsl:if test="$footnote_placement = 'end-vol'">
 	<xsl:variable name="V" select="current()"/>
 	<xsl:call-template name="handle_notes">
 	  <xsl:with-param name="noterefs" select="$V/(preceding::dtb:noteref|preceding::dtb:annoref)[following::brl:volume[@brl:grade = $contraction][1] is $V]"/>
