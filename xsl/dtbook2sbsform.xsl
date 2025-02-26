@@ -498,7 +498,7 @@
     <xsl:text>&#10;</xsl:text>
     <xsl:apply-templates/>
     <!-- Apply end notes of last volume -->
-    <xsl:if test="$footnote_placement = 'end_vol'">
+    <xsl:if test="$footnote_placement = 'end-vol'">
       <xsl:call-template name="handle_notes">
 	<xsl:with-param name="noterefs" select="//(dtb:noteref|dtb:annoref)[not(following::brl:volume[@brl:grade = $contraction])]"/>
       </xsl:call-template>

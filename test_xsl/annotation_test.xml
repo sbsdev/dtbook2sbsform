@@ -64,10 +64,10 @@
   </utfx:test>
 
   <utfx:test>
-    <utfx:name>annotation with end_vol placement</utfx:name>
+    <utfx:name>annotation with end-vol placement</utfx:name>
     <utfx:stylesheet-params>
       <utfx:with-param name="contraction" select="2"/>
-      <utfx:with-param name="footnote_placement" select="'end_vol'"/>
+      <utfx:with-param name="footnote_placement" select="'end-vol'"/>
     </utfx:stylesheet-params>
     <utfx:assert-equal>
       <utfx:source>
@@ -120,10 +120,10 @@ y BrlVol
   </utfx:test>
 
   <utfx:test>
-    <utfx:name>annotation in bodymatter with end_vol placement</utfx:name>
+    <utfx:name>annotation in bodymatter with end-vol placement</utfx:name>
     <utfx:stylesheet-params>
       <utfx:with-param name="contraction" select="2"/>
-      <utfx:with-param name="footnote_placement" select="'end_vol'"/>
+      <utfx:with-param name="footnote_placement" select="'end-vol'"/>
     </utfx:stylesheet-params>
     <utfx:assert-equal>
       <utfx:source>

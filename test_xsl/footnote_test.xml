@@ -43,10 +43,10 @@
   </utfx:test>
 
   <utfx:test>
-    <utfx:name>footnote with end_vol placement</utfx:name>
+    <utfx:name>footnote with end-vol placement</utfx:name>
     <utfx:stylesheet-params>
       <utfx:with-param name="contraction" select="2"/>
-      <utfx:with-param name="footnote_placement" select="'end_vol'"/>
+      <utfx:with-param name="footnote_placement" select="'end-vol'"/>
     </utfx:stylesheet-params>
     <utfx:assert-equal>
       <utfx:source>
