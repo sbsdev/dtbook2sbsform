@@ -110,8 +110,9 @@
 	<xsl:text>n6&#10;</xsl:text>
 	<xsl:text>L&#10;</xsl:text>
 	<xsl:text>i f=1 l=1&#10;</xsl:text>
+	<xsl:text>t&#10;</xsl:text>
 	<xsl:text>Y&#10;</xsl:text>
-	<xsl:text>u&#10;</xsl:text>
+	<xsl:text>u-&#10;</xsl:text>
 	<xsl:text>i f=3 l=1&#10;</xsl:text>
 	<xsl:text>y e H1_FRONT&#10;</xsl:text>
       </xsl:if>
