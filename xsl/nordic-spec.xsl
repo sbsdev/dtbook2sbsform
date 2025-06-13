@@ -8,7 +8,9 @@
 
   <!-- Handle extensions that are defined in the Nordic spec i.e. the
        "Requirements for Text and Image Quality and Markup with DTBook
-       XML, Version: 2011-2" -->
+       XML, Version: 2011-2"
+       (https://nlbdev.github.io/nordic-epub3-dtbook-migrator/resources/dtbook_markup_requirements_2011-2_v_1.docx)
+       -->
 
   <!-- ========== -->
   <!-- Excercises -->
