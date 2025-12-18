@@ -170,22 +170,24 @@ i A=0 R=0
     <xsl:if test="//dtb:level2">
       <xsl:text>
 y b LEVEL2b
-lm2
-n10
+lm1
+n12
 Y
 y e LEVEL2b
 y b LEVEL2e
 y e LEVEL2e
 y b H2
-lm1
+L1
+i R=4
 i f=3 l=1
 w
 Y
 u
+i R=0
 </xsl:text>
       <xsl:if test="$toc_level &gt; 1">
         <xsl:text>H`B+&#10;</xsl:text>
-        <xsl:text>H`i F=3 L=3&#10;</xsl:text>
+        <xsl:text>H`i F=3 L=5&#10;</xsl:text>
         <xsl:text>Y&#10;</xsl:text>
         <xsl:text>H`B-&#10;</xsl:text>
       </xsl:if>
@@ -198,7 +200,6 @@ u
     <xsl:if test="//dtb:level3">
       <xsl:text>
 y b LEVEL3b
-lm1
 n6
 Y
 y e LEVEL3b
@@ -206,14 +207,16 @@ y b LEVEL3e
 y e LEVEL3e
 y b H3
 lm1
+i R=4
 i f=3 l=1
 w
 Y
 u,
+i R=0
 </xsl:text>
       <xsl:if test="$toc_level &gt; 2">
         <xsl:text>H`B+&#10;</xsl:text>
-        <xsl:text>H`i F=5 L=3&#10;</xsl:text>
+        <xsl:text>H`i F=5 L=7&#10;</xsl:text>
         <xsl:text>Y&#10;</xsl:text>
         <xsl:text>H`B-&#10;</xsl:text>
       </xsl:if>
@@ -468,12 +471,14 @@ y e BYLINE
       <xsl:text>
 y b BLQUOb
 lm1
-n2
+n3
 i A=2
+i f=3 l=1
 y e BLQUOb
 y b BLQUOe
 i A=0
 lm1
+i f=3 l=1
 n2
 y e BLQUOe
 </xsl:text>
@@ -663,9 +668,11 @@ y e HD
 y b BRIDGE
 lm1
 i f=3 l=1
-n2
+n5
+i R=4
 w
 Y
+i R=0
 y e BRIDGE
 
 </xsl:text>
@@ -686,6 +693,7 @@ y b PLISTb ; 'pl' Liste
 ?nl:nl+1
 ?nl=1
 +lm1
++n4
 +i f=1 l=3 w=1 W=1
 ?nl=2
 +i f=3 l=5 w=3 W=3
@@ -712,6 +720,7 @@ y b ULISTb ; 'ul' Liste
 ?nl:nl+1
 ?nl=1
 +lm1
++n4
 +i f=1 l=3 w=1 W=1
 ?nl=2
 +i f=3 l=5 w=3 W=3
@@ -738,6 +747,7 @@ y b OLISTb ; 'ol' Liste
 ?nl:nl+1
 ?nl=1
 +lm1
++n4
 +i f=1 l=3 w=1 W=1
 ?nl=2
 +i f=3 l=5 w=3 W=3
