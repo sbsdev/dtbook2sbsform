@@ -7,8 +7,10 @@ offers translating text into braille using [[http://www.liblouis.org][liblouis]]
 
 * Build
 
+The build works with Java11. You need the ~ant-contrib~ package.
+
 #+BEGIN_SRC shell
-ant -e -lib /usr/share/java/jdeb.jar clean dist package
+just deb
 #+END_SRC
 
 * Usage of command line tools
