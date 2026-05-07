@@ -34,6 +34,15 @@ that plugin is compatible with Saxon 12.
 - If a fixed version becomes available, replace =XSpecTest.java= and the surefire configuration
   in =pom.xml= with the plugin.
 
+* TODO Publish liblouis-saxon-extension to Maven Central
+
+=org.liblouis:liblouis-saxon-extension= is currently only available as a local =~/.m2= install
+built from https://github.com/sbsdev/LiblouisSaxonExtension. This makes the build non-reproducible
+and requires manual setup on every new development machine.
+
+The extension should be published to Maven Central (or at minimum to a public Maven repository)
+so that the dependency can be resolved automatically like any other.
+
 * TODO Fix whitespace corruption in the converted XSpec files
 
 The UTFX test sources had carefully crafted whitespace inside =<utfx:source>= elements (e.g. a
