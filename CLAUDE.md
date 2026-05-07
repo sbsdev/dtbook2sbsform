@@ -65,6 +65,11 @@ cd LiblouisSaxonExtension && mvn install
 - `saxon.sh` — Saxon wrapper; accepts `-xsl:`, `-s:`, and parameter args
 - `linebreak.sh` — reads stdin, emits 80-char-wrapped output
 
+## Known issues and future work
+
+See `TODO.org` for a list of open issues, including pre-existing test failures and the
+xspec-maven-plugin incompatibility.
+
 ## Prerequisites
 
 - Java 11+
