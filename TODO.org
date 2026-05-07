@@ -34,19 +34,11 @@ that plugin is compatible with Saxon 12.
 - If a fixed version becomes available, replace =XSpecTest.java= and the surefire configuration
   in =pom.xml= with the plugin.
 
-* TODO Publish liblouis-saxon-extension to Maven Central
-
-=org.liblouis:liblouis-saxon-extension= is currently only available as a local =~/.m2= install
-built from https://github.com/sbsdev/LiblouisSaxonExtension. This makes the build non-reproducible
-and requires manual setup on every new development machine.
-
-The extension should be published to Maven Central (or at minimum to a public Maven repository)
-so that the dependency can be resolved automatically like any other.
-
 * TODO Add a GitHub Actions workflow to build and publish the deb on release tags
 
-Once =liblouis-saxon-extension= is on Maven Central, add a workflow that triggers on =v*= tags,
-runs =mvn package=, and uploads the =.deb= as a GitHub release asset.
+All dependencies are now on Maven Central, so a CI workflow is feasible.
+Add a workflow that triggers on =v*= tags, runs =mvn package=, and uploads the =.deb= as a
+GitHub release asset.
 
 * TODO Fix whitespace corruption in the converted XSpec files
 

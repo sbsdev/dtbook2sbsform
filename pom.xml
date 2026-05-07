@@ -27,21 +27,18 @@
   </properties>
 
   <dependencies>
-    <!-- Saxon HE - declared explicitly to override the 12.5 pulled in by liblouis-saxon-extension -->
     <dependency>
       <groupId>net.sf.saxon</groupId>
       <artifactId>Saxon-HE</artifactId>
       <version>12.9</version>
     </dependency>
 
-    <!-- Saxon extension for braille translation via liblouis.
-         Brings liblouis-java and jna as transitive deps.
-         Not on Maven Central yet; install locally from
-         https://github.com/sbsdev/LiblouisSaxonExtension -->
+    <!-- Official liblouis Java bindings (Maven Central).
+         Brings jna as a transitive dependency. -->
     <dependency>
       <groupId>org.liblouis</groupId>
-      <artifactId>liblouis-saxon-extension</artifactId>
-      <version>1.2.0-SNAPSHOT</version>
+      <artifactId>liblouis-java</artifactId>
+      <version>5.1.0</version>
     </dependency>
 
     <dependency>
