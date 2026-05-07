@@ -6,7 +6,7 @@
    <x:scenario label="title">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <dtb:title xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+        <dtb:title xml:lang="de">
 	  foo
 	</dtb:title>
       </x:context>
@@ -15,7 +15,7 @@
    <x:scenario label="title inside poem">
       <x:param name="contraction" select="2"/>
       <x:context>
-	        <dtb:poem xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+	        <dtb:poem xml:lang="de">
             <dtb:title>foo</dtb:title>
 	        </dtb:poem>
       </x:context>

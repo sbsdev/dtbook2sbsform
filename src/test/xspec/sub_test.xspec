@@ -6,7 +6,7 @@
    <x:scenario label="sub als unterer Index">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+        <dtb:p xml:lang="de">
             <dtb:abbr>CO</dtb:abbr>
             <dtb:sub>2</dtb:sub> 
             <dtb:abbr>H</dtb:abbr>
@@ -22,7 +22,7 @@ y P
    <x:scenario label="sub mit select (Markierungen Chemie)">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+        <dtb:p xml:lang="de">
             <dtb:abbr>V</dtb:abbr>
             <dtb:sub>
                <brl:select>

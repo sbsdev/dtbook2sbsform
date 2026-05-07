@@ -6,7 +6,7 @@
    <x:scenario label="punctuation after numbers">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de"> 
+        <dtb:p xml:lang="de"> 
             <dtb:em>2</dtb:em>? <dtb:em>2</dtb:em>! <dtb:em>2</dtb:em>; (<dtb:em>2</dtb:em>) »<dtb:em>2</dtb:em>« </dtb:p>
       </x:context>
       <x:expect label="result">
@@ -16,8 +16,8 @@ y P
    <x:scenario label="punctuation after numbers">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <dtb:p xmlns:utfx="http://utfx.org/test-definition">»Am 10?«</dtb:p>
-        <dtb:p xmlns:utfx="http://utfx.org/test-definition">»Am 10?«</dtb:p>
+        <dtb:p>»Am 10?«</dtb:p>
+        <dtb:p>»Am 10?«</dtb:p>
       </x:context>
       <x:expect label="result">
 y P
@@ -28,7 +28,7 @@ y P
    <x:scenario label="punctuation after numbers in a previous paragraph">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+        <stub xml:lang="de">
             <dtb:p>20 Minuten <brl:date value="2012-10-16">16.10.2012</brl:date>
             </dtb:p>
             <dtb:p>(blo)</dtb:p>
@@ -43,7 +43,7 @@ y P
    <x:scenario label="punctuation after ordinals">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de"> 
+        <dtb:p xml:lang="de"> 
             <brl:num role="ordinal">2.</brl:num>? <brl:num role="ordinal">2.</brl:num>! <brl:num role="ordinal">2.</brl:num>; (<brl:num role="ordinal">2.</brl:num>) »<brl:num role="ordinal">2.</brl:num>« </dtb:p>
       </x:context>
       <x:expect label="result">
@@ -53,8 +53,8 @@ y P
    <x:scenario label="punctuation after ordinals">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <dtb:p xmlns:utfx="http://utfx.org/test-definition">»Am <brl:num role="ordinal">10.</brl:num>?«</dtb:p>
-        <dtb:p xmlns:utfx="http://utfx.org/test-definition">»Am <brl:num role="ordinal">10.</brl:num>?«</dtb:p>
+        <dtb:p>»Am <brl:num role="ordinal">10.</brl:num>?«</dtb:p>
+        <dtb:p>»Am <brl:num role="ordinal">10.</brl:num>?«</dtb:p>
       </x:context>
       <x:expect label="result">
 y P

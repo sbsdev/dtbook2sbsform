@@ -6,7 +6,7 @@
    <x:scenario label="Falsche Kursiv-Ankündigung beim Gebrauch von nbsp statt gewöhnlichem Leerzeichen, http://redmine.sbszh.ch/issues/2625">
       <x:param name="contraction" select="2"/>
       <x:context>
-	        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+	        <dtb:p xml:lang="de">
             <dtb:em>bla blo</dtb:em>
          </dtb:p>
       </x:context>
@@ -17,7 +17,7 @@ y P
    <x:scenario label="Fälschlicherweise Leerzeile in SBSForm-Code bei aufeinanderfolgenden PAGENUM mit A, http://redmine.sbszh.ch/issues/2470">
       <x:param name="contraction" select="2"/>
       <x:context>
-	        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de"> bla <dtb:pagenum id="page-10" page="normal">10</dtb:pagenum>
+	        <dtb:p xml:lang="de"> bla <dtb:pagenum id="page-10" page="normal">10</dtb:pagenum>
             <dtb:a id="p-10"/>
 	           <dtb:pagenum id="page-11" page="normal">11</dtb:pagenum>
             <dtb:a id="p-11"/> blo </dtb:p>
@@ -33,7 +33,7 @@ j 11
    <x:scenario label="aufeinanderfolgende PAGENUMs">
       <x:param name="contraction" select="2"/>
       <x:context>
-	        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+	        <dtb:p xml:lang="de">
 	           <dtb:pagenum id="page-10" page="normal">10</dtb:pagenum>
 	  
 	           <dtb:pagenum id="page-11" page="normal">11</dtb:pagenum>
@@ -50,7 +50,7 @@ j 11
    <x:scenario label="aufeinanderfolgende PAGENUMs">
       <x:param name="contraction" select="2"/>
       <x:context>
-	        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+	        <dtb:p xml:lang="de">
 	           <dtb:pagenum id="page-10" page="normal">10</dtb:pagenum>
 
 	  Foo
@@ -70,7 +70,7 @@ j 11
    <x:scenario label="Falsche Übersetzungen bei mixed emphasis, http://redmine.sbszh.ch/issues/2464">
       <x:param name="contraction" select="2"/>
       <x:context>
-	        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+	        <stub xml:lang="de">
 	           <dtb:p>
                <dtb:em>experimental</dtb:em>protektorverhalten</dtb:p>
 	           <dtb:p>experimental<dtb:em>protektor</dtb:em>verhalten</dtb:p>
@@ -90,7 +90,7 @@ y P
    <x:scenario label="falsches Resultat bei Wortersatzstrich -xxx, wenn direkt nach Tag, http://redmine.sbszh.ch/issues/1505">
       <x:param name="contraction" select="2"/>
       <x:context>
-	        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+	        <stub xml:lang="de">
 	           <dtb:p>-losenheim</dtb:p>
 	        </stub>
       </x:context>

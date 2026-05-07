@@ -6,7 +6,7 @@
    <x:scenario label="covertitle">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <dtb:covertitle xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">foo</dtb:covertitle>
+        <dtb:covertitle xml:lang="de">foo</dtb:covertitle>
       </x:context>
       <x:expect label="result">
 xxx Was originally a dtb:covertitle
@@ -16,7 +16,7 @@ y P
    <x:scenario label="dateline">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <dtb:dateline xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">foo</dtb:dateline>
+        <dtb:dateline xml:lang="de">foo</dtb:dateline>
       </x:context>
       <x:expect label="result">
 xxx Was originally a dtb:dateline

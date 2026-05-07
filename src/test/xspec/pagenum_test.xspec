@@ -6,7 +6,7 @@
    <x:scenario label="brl:volume und pagenum Bug #1290">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+        <stub xml:lang="de">
             <dtb:level1>
                <dtb:h1>Titel1</dtb:h1>
                <dtb:p>bla</dtb:p>
@@ -49,7 +49,7 @@ y LEVEL1e
    <x:scenario label="brl:volume und pagnum">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">        
+        <stub xml:lang="de">        
 	           <dtb:p>... bla bla.</dtb:p>
 	           <brl:volume brl:grade="2"/>
 	           <dtb:pagenum>75</dtb:pagenum>
@@ -71,7 +71,7 @@ y P
    <x:scenario label="brl:volume und pagnum with other contraction">
       <x:param name="contraction" select="1"/>
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">        
+        <stub xml:lang="de">        
 	           <dtb:p>... bla bla.</dtb:p>
 	           <brl:volume brl:grade="2"/>
 	           <dtb:pagenum>75</dtb:pagenum>
@@ -89,7 +89,7 @@ y P
    <x:scenario label="brl:volume und levelN/pagnum">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+        <stub xml:lang="de">
 	           <dtb:level1>
 	              <dtb:p>... bla bla.</dtb:p>
 	           </dtb:level1>
@@ -128,7 +128,7 @@ y LEVEL1e
    <x:scenario label="brl:volume und levelN/pagnum with other contraction">
       <x:param name="contraction" select="1"/>
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+        <stub xml:lang="de">
 	           <dtb:level1>
 	              <dtb:p>... bla bla.</dtb:p>
 	           </dtb:level1>
@@ -163,7 +163,7 @@ y LEVEL1e
    <x:scenario label="Missing page numbers I, https://github.com/sbsdev/dtbook2sbsform/issues/18">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+        <stub xml:lang="de">
 	           <dtb:level1>
 	              <dtb:p>foo</dtb:p>
 	              <dtb:pagenum id="page-76" page="normal">76</dtb:pagenum>
@@ -204,7 +204,7 @@ y LEVEL1e
    <x:scenario label="Missing page numbers II, https://github.com/sbsdev/dtbook2sbsform/issues/18">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+        <stub xml:lang="de">
 	           <dtb:level1>
 	              <dtb:p>foo</dtb:p>
 	              <dtb:pagenum id="page-76" page="normal">76</dtb:pagenum>

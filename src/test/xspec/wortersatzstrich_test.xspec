@@ -6,15 +6,15 @@
    <x:scenario label="Wortersatzstrich">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">-tragen</dtb:p>
+        <dtb:p xml:lang="de">-tragen</dtb:p>
       </x:context>
       <x:expect label="result">y P&#xD; '-TGC</x:expect>
    </x:scenario>
    <x:scenario label="Wortersatzstrich I(http://redmine.sbszh.ch/issues/1505)">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">Arbeits</dtb:p>
-        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">-losenheim</dtb:p>
+        <dtb:p xml:lang="de">Arbeits</dtb:p>
+        <dtb:p xml:lang="de">-losenheim</dtb:p>
       </x:context>
       <x:expect label="result">
 y P
@@ -25,8 +25,8 @@ y P
    <x:scenario label="Wortersatzstrich II(http://redmine.sbszh.ch/issues/1505)">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">Arbeits</dtb:p>
-        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de"> -losenheim</dtb:p>
+        <dtb:p xml:lang="de">Arbeits</dtb:p>
+        <dtb:p xml:lang="de"> -losenheim</dtb:p>
       </x:context>
       <x:expect label="result">
 y P
@@ -37,7 +37,7 @@ y P
    <x:scenario label="Wortersatzstrich III">
       <x:param name="contraction" select="2"/>
       <x:context>
-  	      <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">Arbeits<dtb:span>-losenheim</dtb:span>
+  	      <dtb:p xml:lang="de">Arbeits<dtb:span>-losenheim</dtb:span>
          </dtb:p>
       </x:context>
       <x:expect label="result">y P&#xD; )BS-LOSCH3M</x:expect>
@@ -45,7 +45,7 @@ y P
    <x:scenario label="Wortersatzstrich IV">
       <x:param name="contraction" select="2"/>
       <x:context>
-  	      <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">Arbeits <dtb:span>-losenheim</dtb:span>
+  	      <dtb:p xml:lang="de">Arbeits <dtb:span>-losenheim</dtb:span>
          </dtb:p>
       </x:context>
       <x:expect label="result">y P&#xD; )BS '-LOSCH3M</x:expect>

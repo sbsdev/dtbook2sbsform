@@ -6,35 +6,35 @@
    <x:scenario label="getTable for fr and contraction = 2">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <p xmlns:utfx="http://utfx.org/test-definition" xml:lang="fr"/>
+        <p xml:lang="fr"/>
       </x:context>
       <x:expect label="result">sbs.dis,sbs-de-core6.cti,sbs-de-accents.cti,sbs-special.cti,sbs-whitespace.mod,sbs-de-capsign-fake.mod,sbs-numsign.mod,litdigits6Dots.uti,sbs-de-core.mod,sbs-de-g0-core.mod,sbs-de-accents-ch.mod,sbs-special.mod</x:expect>
    </x:scenario>
    <x:scenario label="getTable for fr and contraction = 1">
       <x:param name="contraction" select="1"/>
       <x:context>
-        <p xmlns:utfx="http://utfx.org/test-definition" xml:lang="fr"/>
+        <p xml:lang="fr"/>
       </x:context>
       <x:expect label="result">sbs.dis,sbs-de-core6.cti,sbs-de-accents.cti,sbs-special.cti,sbs-whitespace.mod,sbs-de-capsign-fake.mod,sbs-numsign.mod,litdigits6Dots.uti,sbs-de-core.mod,sbs-de-g0-core.mod,sbs-de-accents-ch.mod,sbs-special.mod</x:expect>
    </x:scenario>
    <x:scenario label="getTable for de and contraction = 1">
       <x:param name="contraction" select="1"/>
       <x:context>
-        <p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de"/>
+        <p xml:lang="de"/>
       </x:context>
       <x:expect label="result">sbs.dis,sbs-de-core6.cti,sbs-de-accents.cti,sbs-special.cti,sbs-whitespace.mod,sbs-de-capsign-fake.mod,sbs-numsign.mod,litdigits6Dots.uti,sbs-de-core.mod,sbs-de-g0-core.mod,sbs-de-g1-white.mod,sbs-de-g1-core.mod,sbs-de-accents-ch.mod,sbs-special.mod</x:expect>
    </x:scenario>
    <x:scenario label="getTable for de and contraction = 2">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de"/>
+        <p xml:lang="de"/>
       </x:context>
       <x:expect label="result">sbs.dis,sbs-de-core6.cti,sbs-de-accents.cti,sbs-special.cti,sbs-whitespace.mod,sbs-de-capsign-fake.mod,sbs-de-letsign.mod,sbs-numsign.mod,litdigits6Dots.uti,sbs-de-core.mod,sbs-de-g2-white.mod,sbs-de-g2-core.mod,sbs-de-accents-ch.mod,sbs-special.mod</x:expect>
    </x:scenario>
    <x:scenario label="getTable for de-1901 and contraction = 2">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de-1901"/>
+        <p xml:lang="de-1901"/>
       </x:context>
       <x:expect label="result">sbs.dis,sbs-de-core6.cti,sbs-de-accents.cti,sbs-special.cti,sbs-whitespace.mod,sbs-de-capsign-fake.mod,sbs-de-letsign.mod,sbs-numsign.mod,litdigits6Dots.uti,sbs-de-core.mod,sbs-de-g2-white.mod,sbs-de-g2-core.mod,sbs-de-accents-ch.mod,sbs-special.mod</x:expect>
    </x:scenario>
@@ -42,28 +42,28 @@
       <x:param name="contraction" select="2"/>
       <x:param name="hyphenation" select="true()"/>
       <x:context>
-        <p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de-1901"/>
+        <p xml:lang="de-1901"/>
       </x:context>
       <x:expect label="result">sbs.dis,sbs-de-core6.cti,sbs-de-accents.cti,sbs-special.cti,sbs-whitespace.mod,sbs-de-capsign-fake.mod,sbs-de-letsign.mod,sbs-numsign.mod,litdigits6Dots.uti,sbs-de-core.mod,sbs-de-g2-white.mod,sbs-de-g2-core.mod,sbs-de-accents-ch.mod,sbs-special.mod</x:expect>
    </x:scenario>
    <x:scenario label="getTable for de and contraction = 1 and accents reduced">
       <x:param name="contraction" select="1"/>
       <x:context>
-        <dtb:span xmlns:utfx="http://utfx.org/test-definition" brl:accents="reduced" xml:lang="de"/>
+        <dtb:span brl:accents="reduced" xml:lang="de"/>
       </x:context>
       <x:expect label="result">sbs.dis,sbs-de-core6.cti,sbs-de-accents.cti,sbs-special.cti,sbs-whitespace.mod,sbs-de-capsign-fake.mod,sbs-numsign.mod,litdigits6Dots.uti,sbs-de-core.mod,sbs-de-g0-core.mod,sbs-de-g1-white.mod,sbs-de-g1-core.mod,sbs-de-accents.mod,sbs-special.mod</x:expect>
    </x:scenario>
    <x:scenario label="getTable for abbr (de) and contraction = 1">
       <x:param name="contraction" select="1"/>
       <x:context>
-        <dtb:abbr xmlns:utfx="http://utfx.org/test-definition" xml:lang="de"/>
+        <dtb:abbr xml:lang="de"/>
       </x:context>
       <x:expect label="result">sbs.dis,sbs-de-core6.cti,sbs-de-accents.cti,sbs-special.cti,sbs-whitespace.mod,sbs-de-capsign-fake.mod,sbs-numsign.mod,litdigits6Dots.uti,sbs-de-core.mod,sbs-de-g0-core.mod,sbs-de-accents-ch.mod,sbs-special.mod</x:expect>
    </x:scenario>
    <x:scenario label="getTable for abbr (de) and contraction = 2">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <dtb:abbr xmlns:utfx="http://utfx.org/test-definition" xml:lang="de"/>
+        <dtb:abbr xml:lang="de"/>
       </x:context>
       <x:expect label="result">sbs.dis,sbs-de-core6.cti,sbs-de-accents.cti,sbs-special.cti,sbs-whitespace.mod,sbs-de-capsign-fake.mod,sbs-numsign.mod,litdigits6Dots.uti,sbs-de-core.mod,sbs-de-g0-core.mod,sbs-de-accents-ch.mod,sbs-special.mod</x:expect>
    </x:scenario>

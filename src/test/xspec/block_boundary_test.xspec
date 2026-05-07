@@ -6,7 +6,7 @@
    <x:scenario label="context across block boundaries Bug #1395 with em before">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+        <stub xml:lang="de">
             <dtb:byline>
                <dtb:em>Tages-­Anzeiger</dtb:em>
             </dtb:byline>
@@ -22,7 +22,7 @@ y P
    <x:scenario label="context across block boundaries Bug #1395 with em after">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+        <stub xml:lang="de">
             <dtb:byline>Tages-­Anzeiger</dtb:byline>
             <dtb:p>
                <dtb:em>Zum Autor</dtb:em>
@@ -38,7 +38,7 @@ y P
    <x:scenario label="context across block boundaries Bug #1395 with em both">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+        <stub xml:lang="de">
             <dtb:byline>
                <dtb:em>Tages-­Anzeiger</dtb:em>
             </dtb:byline>
@@ -56,7 +56,7 @@ y P
    <x:scenario label="context across block boundaries Bug #1395">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+        <stub xml:lang="de">
             <dtb:byline>Tages-­Anzeiger</dtb:byline>
             <dtb:p>Zum Autor</dtb:p>
          </stub>
@@ -70,14 +70,14 @@ y P
    <x:scenario label="Context across text nodes ending with punctuation">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">»<dtb:span>Tages-­Anzeiger.</dtb:span>« Zum Autor</stub>
+        <stub xml:lang="de">»<dtb:span>Tages-­Anzeiger.</dtb:span>« Zum Autor</stub>
       </x:context>
       <x:expect label="result">(TAG%-m+Z3G7.) ZM 1TOR</x:expect>
    </x:scenario>
    <x:scenario label="Context across block boundaries ending with punctuation">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">»Tages-­Anzeiger.<dtb:p>« Zum Autor</dtb:p>
+        <stub xml:lang="de">»Tages-­Anzeiger.<dtb:p>« Zum Autor</dtb:p>
          </stub>
       </x:context>
       <x:expect label="result">(TAG%-m+Z3G7.
@@ -87,7 +87,7 @@ y P
    <x:scenario label="Another weird context problem">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+        <dtb:p xml:lang="de">
             <dtb:em>Mist</dtb:em>, dachte er, <dtb:em>wie komme ich hier raus?</dtb:em>
          </dtb:p>
       </x:context>
@@ -98,7 +98,7 @@ y P
    <x:scenario label="Text matcher inside block, h1">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <dtb:h1 xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+        <dtb:h1 xml:lang="de">
             <dtb:abbr>ABC</dtb:abbr>s</dtb:h1>
       </x:context>
       <x:expect label="result">
@@ -108,7 +108,7 @@ y H1
    <x:scenario label="Text matcher inside block, p">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+        <dtb:p xml:lang="de">
             <dtb:abbr>ABC</dtb:abbr>s</dtb:p>
       </x:context>
       <x:expect label="result">
@@ -118,7 +118,7 @@ y P
    <x:scenario label="Text matcher inside block, bridgehead">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <dtb:bridgehead xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+        <dtb:bridgehead xml:lang="de">
             <dtb:abbr>ABC</dtb:abbr>s</dtb:bridgehead>
       </x:context>
       <x:expect label="result">
@@ -128,7 +128,7 @@ y BRIDGE
    <x:scenario label="Text matcher inside block, hd">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <dtb:hd xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+        <dtb:hd xml:lang="de">
             <dtb:abbr>ABC</dtb:abbr>s</dtb:hd>
       </x:context>
       <x:expect label="result">
@@ -138,9 +138,9 @@ y HD
    <x:scenario label="Text matcher inside block, dd and dt">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <dtb:dd xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+        <dtb:dd xml:lang="de">
             <dtb:abbr>ABC</dtb:abbr>s</dtb:dd>
-        <dtb:dt xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+        <dtb:dt xml:lang="de">
             <dtb:abbr>ABC</dtb:abbr>s</dtb:dt>
       </x:context>
       <x:expect label="result">
@@ -154,7 +154,7 @@ y DTe</x:expect>
    <x:scenario label="Text matcher inside block, caption, th and td">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <dtb:caption xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+        <dtb:caption xml:lang="de">
             <dtb:abbr>ABC</dtb:abbr>s</dtb:caption>
       </x:context>
       <x:expect label="result">
@@ -164,9 +164,9 @@ y CAPTION
    <x:scenario label="Text matcher inside block, th and td">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <dtb:th xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+        <dtb:th xml:lang="de">
             <dtb:abbr>ABC</dtb:abbr>s</dtb:th>
-        <dtb:td xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+        <dtb:td xml:lang="de">
             <dtb:abbr>ABC</dtb:abbr>s</dtb:td>
       </x:context>
       <x:expect label="result">&gt;ABC'S&gt;ABC'S</x:expect>

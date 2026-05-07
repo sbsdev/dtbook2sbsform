@@ -6,7 +6,7 @@
    <x:scenario label="Mixed emphasis word after">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+        <dtb:p xml:lang="de">
             <dtb:em>kursiv</dtb:em>blo</dtb:p>
       </x:context>
       <x:expect label="result">y P
@@ -15,7 +15,7 @@
    <x:scenario label="Mixed emphasis word before">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">bla<dtb:em>kursiv</dtb:em>
+        <dtb:p xml:lang="de">bla<dtb:em>kursiv</dtb:em>
          </dtb:p>
       </x:context>
       <x:expect label="result">y P
@@ -24,7 +24,7 @@
    <x:scenario label="Mixed emphasis word on both sides">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">bla<dtb:em>kursiv</dtb:em>blo</dtb:p>
+        <dtb:p xml:lang="de">bla<dtb:em>kursiv</dtb:em>blo</dtb:p>
       </x:context>
       <x:expect label="result">y P
  BLA'_KURSIV'.BLO</x:expect>
@@ -32,7 +32,7 @@
    <x:scenario label="Mixed emphasis ellipsis after">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+        <dtb:p xml:lang="de">
             <dtb:em>kursiv</dtb:em>...blo</dtb:p>
       </x:context>
       <x:expect label="result">y P
@@ -41,7 +41,7 @@
    <x:scenario label="Mixed emphasis ellipsis before">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">bla...<dtb:em>kursiv</dtb:em>
+        <dtb:p xml:lang="de">bla...<dtb:em>kursiv</dtb:em>
          </dtb:p>
       </x:context>
       <x:expect label="result">y P
@@ -50,7 +50,7 @@
    <x:scenario label="Mixed emphasis ellipsis on both sides">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">bla...<dtb:em>kursiv</dtb:em>...blo</dtb:p>
+        <dtb:p xml:lang="de">bla...<dtb:em>kursiv</dtb:em>...blo</dtb:p>
       </x:context>
       <x:expect label="result">y P
  BLA...'_KURSIV'....BLO</x:expect>

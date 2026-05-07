@@ -5,7 +5,7 @@
                stylesheet="../../../xsl/dtbook2sbsform.xsl">
    <x:scenario label="Definition list">
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+        <stub xml:lang="de">
             <dtb:dl>
                <dtb:dt>Zug:</dtb:dt>
                <dtb:dd>Fortbewegungsmittel, mit viel Eisen drumherum.</dtb:dd>

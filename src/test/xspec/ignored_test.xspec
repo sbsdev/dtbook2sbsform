@@ -6,7 +6,7 @@
    <x:scenario label="bdo">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <dtb:bdo xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+        <dtb:bdo xml:lang="de">
 	  foo
 	</dtb:bdo>
       </x:context>
@@ -15,7 +15,7 @@
    <x:scenario label="kbd">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <dtb:kbd xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+        <dtb:kbd xml:lang="de">
 	  foo
 	</dtb:kbd>
       </x:context>
@@ -24,7 +24,7 @@
    <x:scenario label="q">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <dtb:q xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+        <dtb:q xml:lang="de">
 	  foo
 	</dtb:q>
       </x:context>
@@ -33,7 +33,7 @@
    <x:scenario label="sent">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <dtb:sent xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+        <dtb:sent xml:lang="de">
 	  foo
 	</dtb:sent>
       </x:context>
@@ -42,7 +42,7 @@
    <x:scenario label="w">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <dtb:w xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+        <dtb:w xml:lang="de">
 	  foo
 	</dtb:w>
       </x:context>

@@ -6,28 +6,28 @@
    <x:scenario label="Eszett I">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">ß</stub>
+        <stub xml:lang="de">ß</stub>
       </x:context>
       <x:expect label="result">'^</x:expect>
    </x:scenario>
    <x:scenario label="Eszett II">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">»ß«</stub>
+        <stub xml:lang="de">»ß«</stub>
       </x:context>
       <x:expect label="result">('^)</x:expect>
    </x:scenario>
    <x:scenario label="Eszett III">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">(ß)</stub>
+        <stub xml:lang="de">(ß)</stub>
       </x:context>
       <x:expect label="result">='^=</x:expect>
    </x:scenario>
    <x:scenario label="Eszett IV">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">weßir</stub>
+        <stub xml:lang="de">weßir</stub>
       </x:context>
       <x:expect label="result">WE'^IR</x:expect>
    </x:scenario>

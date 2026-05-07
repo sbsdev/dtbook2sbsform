@@ -7,7 +7,7 @@
       <x:param name="contraction" select="2"/>
       <x:param name="footnote_placement" select="'standard'"/>
       <x:context>
-	        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">Foo<dtb:noteref idref="#footnote1">a</dtb:noteref>	Bar<dtb:noteref idref="#footnote2">b</dtb:noteref> Baz</stub>
+	        <stub xml:lang="de">Foo<dtb:noteref idref="#footnote1">a</dtb:noteref>	Bar<dtb:noteref idref="#footnote2">b</dtb:noteref> Baz</stub>
       </x:context>
       <x:expect label="result">FOO'*#A
 * 
@@ -19,7 +19,7 @@
       <x:param name="contraction" select="2"/>
       <x:param name="footnote_placement" select="'end-vol'"/>
       <x:context>
-	        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">Hi Ha Ho <dtb:noteref idref="#footnote1"/>
+	        <stub xml:lang="de">Hi Ha Ho <dtb:noteref idref="#footnote1"/>
 	           <dtb:noteref idref="#footnote2"/>
 	           <brl:volume brl:grade="2"/>Foo Bar Baz <dtb:noteref idref="#footnote3"/>
 	           <dtb:noteref idref="#footnote4"/>
@@ -70,7 +70,7 @@ y BrlVol
       <x:param name="contraction" select="2"/>
       <x:param name="footnote_placement" select="'standard'"/>
       <x:context>
-	        <dtb:h1 xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">Sein und nicht sein<dtb:noteref idref="#fn1">1</dtb:noteref>
+	        <dtb:h1 xml:lang="de">Sein und nicht sein<dtb:noteref idref="#fn1">1</dtb:noteref>
          </dtb:h1>
       </x:context>
       <x:expect label="result">
@@ -84,7 +84,7 @@ y H1
       <x:param name="contraction" select="2"/>
       <x:param name="footnote_placement" select="'standard'"/>
       <x:context>
-	        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">Hier die Fussnote<dtb:noteref idref="#fn1">1</dtb:noteref>, vor einem Komma</dtb:p>
+	        <dtb:p xml:lang="de">Hier die Fussnote<dtb:noteref idref="#fn1">1</dtb:noteref>, vor einem Komma</dtb:p>
       </x:context>
       <x:expect label="result">
 y P
@@ -96,7 +96,7 @@ y P
       <x:param name="contraction" select="2"/>
       <x:param name="footnote_placement" select="'standard'"/>
       <x:context>
-	        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">Hier die Fussnote<dtb:noteref idref="#fn1">1</dtb:noteref>! vor einem</dtb:p>
+	        <dtb:p xml:lang="de">Hier die Fussnote<dtb:noteref idref="#fn1">1</dtb:noteref>! vor einem</dtb:p>
       </x:context>
       <x:expect label="result">
 y P
@@ -108,7 +108,7 @@ y P
       <x:param name="contraction" select="2"/>
       <x:param name="footnote_placement" select="'standard'"/>
       <x:context>
-	        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">Hier die Fussnote<dtb:noteref idref="#fn1">1</dtb:noteref>? vor einem</dtb:p>
+	        <dtb:p xml:lang="de">Hier die Fussnote<dtb:noteref idref="#fn1">1</dtb:noteref>? vor einem</dtb:p>
       </x:context>
       <x:expect label="result">
 y P
@@ -120,7 +120,7 @@ y P
       <x:param name="contraction" select="2"/>
       <x:param name="footnote_placement" select="'standard'"/>
       <x:context>
-	        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">Hier die Fussnote<dtb:noteref idref="#fn1">1</dtb:noteref>( vor einem</dtb:p>
+	        <dtb:p xml:lang="de">Hier die Fussnote<dtb:noteref idref="#fn1">1</dtb:noteref>( vor einem</dtb:p>
       </x:context>
       <x:expect label="result">
 y P
@@ -131,7 +131,7 @@ y P
    <x:scenario label="Punctuation after noteref I, http://redmine.sbszh.ch/issues/2532">
       <x:param name="contraction" select="2"/>
       <x:context>
-	        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">blo<dtb:noteref idref="#fn">*</dtb:noteref>, ble</dtb:p>
+	        <dtb:p xml:lang="de">blo<dtb:noteref idref="#fn">*</dtb:noteref>, ble</dtb:p>
       </x:context>
       <x:expect label="result">
 y P
@@ -142,7 +142,7 @@ y P
    <x:scenario label="Punctuation after noteref II, http://redmine.sbszh.ch/issues/2532">
       <x:param name="contraction" select="2"/>
       <x:context>
-	        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">blo<dtb:noteref idref="#fn">*</dtb:noteref>. ble</dtb:p>
+	        <dtb:p xml:lang="de">blo<dtb:noteref idref="#fn">*</dtb:noteref>. ble</dtb:p>
       </x:context>
       <x:expect label="result">
 y P
@@ -153,7 +153,7 @@ y P
    <x:scenario label="Punctuation after noteref III, http://redmine.sbszh.ch/issues/2532">
       <x:param name="contraction" select="2"/>
       <x:context>
-	        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">blo<dtb:noteref idref="#fn">*</dtb:noteref>; ble</dtb:p>
+	        <dtb:p xml:lang="de">blo<dtb:noteref idref="#fn">*</dtb:noteref>; ble</dtb:p>
       </x:context>
       <x:expect label="result">
 y P
@@ -164,7 +164,7 @@ y P
    <x:scenario label="Punctuation after noteref IV, http://redmine.sbszh.ch/issues/2532">
       <x:param name="contraction" select="2"/>
       <x:context>
-	        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">blo<dtb:noteref idref="#fn">*</dtb:noteref>! ble</dtb:p>
+	        <dtb:p xml:lang="de">blo<dtb:noteref idref="#fn">*</dtb:noteref>! ble</dtb:p>
       </x:context>
       <x:expect label="result">
 y P
@@ -175,7 +175,7 @@ y P
    <x:scenario label="Punctuation after noteref V, http://redmine.sbszh.ch/issues/2532">
       <x:param name="contraction" select="2"/>
       <x:context>
-	        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">blo<dtb:noteref idref="#fn">*</dtb:noteref>? ble</dtb:p>
+	        <dtb:p xml:lang="de">blo<dtb:noteref idref="#fn">*</dtb:noteref>? ble</dtb:p>
       </x:context>
       <x:expect label="result">
 y P
@@ -186,7 +186,7 @@ y P
    <x:scenario label="Punctuation after noteref VI, http://redmine.sbszh.ch/issues/2532">
       <x:param name="contraction" select="2"/>
       <x:context>
-	        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">blo<dtb:noteref idref="#fn">*</dtb:noteref>) ble</dtb:p>
+	        <dtb:p xml:lang="de">blo<dtb:noteref idref="#fn">*</dtb:noteref>) ble</dtb:p>
       </x:context>
       <x:expect label="result">
 y P
@@ -197,7 +197,7 @@ y P
    <x:scenario label="Punctuation after noteref VII, http://redmine.sbszh.ch/issues/2532">
       <x:param name="contraction" select="2"/>
       <x:context>
-	        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">blo<dtb:noteref idref="#fn">*</dtb:noteref>« ble</dtb:p>
+	        <dtb:p xml:lang="de">blo<dtb:noteref idref="#fn">*</dtb:noteref>« ble</dtb:p>
       </x:context>
       <x:expect label="result">
 y P
@@ -208,7 +208,7 @@ y P
    <x:scenario label="Punctuation after noteref VIII, http://redmine.sbszh.ch/issues/2532">
       <x:param name="contraction" select="2"/>
       <x:context>
-	        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">blo<dtb:noteref idref="#fn">*</dtb:noteref>,</dtb:p>
+	        <dtb:p xml:lang="de">blo<dtb:noteref idref="#fn">*</dtb:noteref>,</dtb:p>
       </x:context>
       <x:expect label="result">
 y P
@@ -218,7 +218,7 @@ y P
    <x:scenario label="Punctuation after noteref IX, http://redmine.sbszh.ch/issues/2532">
       <x:param name="contraction" select="2"/>
       <x:context>
-	        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">blo<dtb:noteref idref="#fn">*</dtb:noteref>.</dtb:p>
+	        <dtb:p xml:lang="de">blo<dtb:noteref idref="#fn">*</dtb:noteref>.</dtb:p>
       </x:context>
       <x:expect label="result">
 y P
@@ -228,7 +228,7 @@ y P
    <x:scenario label="Punctuation after noteref X, http://redmine.sbszh.ch/issues/2532">
       <x:param name="contraction" select="2"/>
       <x:context>
-	        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">blo<dtb:noteref idref="#fn">*</dtb:noteref>;</dtb:p>
+	        <dtb:p xml:lang="de">blo<dtb:noteref idref="#fn">*</dtb:noteref>;</dtb:p>
       </x:context>
       <x:expect label="result">
 y P
@@ -238,7 +238,7 @@ y P
    <x:scenario label="Punctuation after noteref XI, http://redmine.sbszh.ch/issues/2532">
       <x:param name="contraction" select="2"/>
       <x:context>
-	        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">blo<dtb:noteref idref="#fn">*</dtb:noteref>!</dtb:p>
+	        <dtb:p xml:lang="de">blo<dtb:noteref idref="#fn">*</dtb:noteref>!</dtb:p>
       </x:context>
       <x:expect label="result">
 y P
@@ -248,7 +248,7 @@ y P
    <x:scenario label="Punctuation after noteref XII, http://redmine.sbszh.ch/issues/2532">
       <x:param name="contraction" select="2"/>
       <x:context>
-	        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">blo<dtb:noteref idref="#fn">*</dtb:noteref>?</dtb:p>
+	        <dtb:p xml:lang="de">blo<dtb:noteref idref="#fn">*</dtb:noteref>?</dtb:p>
       </x:context>
       <x:expect label="result">
 y P
@@ -258,7 +258,7 @@ y P
    <x:scenario label="Punctuation after noteref XIII, http://redmine.sbszh.ch/issues/2532">
       <x:param name="contraction" select="2"/>
       <x:context>
-	        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">blo<dtb:noteref idref="#fn">*</dtb:noteref>)</dtb:p>
+	        <dtb:p xml:lang="de">blo<dtb:noteref idref="#fn">*</dtb:noteref>)</dtb:p>
       </x:context>
       <x:expect label="result">
 y P
@@ -268,7 +268,7 @@ y P
    <x:scenario label="Punctuation after noteref XIV, http://redmine.sbszh.ch/issues/2532">
       <x:param name="contraction" select="2"/>
       <x:context>
-	        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">blo<dtb:noteref idref="#fn">*</dtb:noteref>«</dtb:p>
+	        <dtb:p xml:lang="de">blo<dtb:noteref idref="#fn">*</dtb:noteref>«</dtb:p>
       </x:context>
       <x:expect label="result">
 y P
@@ -279,7 +279,7 @@ y P
       <x:param name="contraction" select="2"/>
       <x:param name="footnote_placement" select="'standard'"/>
       <x:context>
-        <dtb:dtbook xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+        <dtb:dtbook xml:lang="de">
             <dtb:p>
                <dtb:noteref idref="#fn1">*</dtb:noteref>
             </dtb:p>

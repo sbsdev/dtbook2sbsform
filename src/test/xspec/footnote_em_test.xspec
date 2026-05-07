@@ -7,7 +7,7 @@
       <x:param name="contraction" select="2"/>
       <x:param name="footnote_placement" select="'standard'"/>
       <x:context>
-        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">bla<dtb:noteref idref="#fn1">*1</dtb:noteref> 
+        <dtb:p xml:lang="de">bla<dtb:noteref idref="#fn1">*1</dtb:noteref> 
             <dtb:em>»Ein Mensch«</dtb:em>
          </dtb:p>
       </x:context>
@@ -21,7 +21,7 @@ y P
       <x:param name="contraction" select="2"/>
       <x:param name="footnote_placement" select="'standard'"/>
       <x:context>
-        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">bla<dtb:noteref idref="#fn1">*1</dtb:noteref>, <dtb:em>»Ein Mensch«</dtb:em>
+        <dtb:p xml:lang="de">bla<dtb:noteref idref="#fn1">*1</dtb:noteref>, <dtb:em>»Ein Mensch«</dtb:em>
          </dtb:p>
       </x:context>
       <x:expect label="result">
@@ -34,7 +34,7 @@ y P
       <x:param name="contraction" select="2"/>
       <x:param name="footnote_placement" select="'standard'"/>
       <x:context>
-        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+        <dtb:p xml:lang="de">
             <dtb:em>bla<dtb:noteref idref="#fn1">*1</dtb:noteref>, bla bla</dtb:em>
          </dtb:p>
       </x:context>

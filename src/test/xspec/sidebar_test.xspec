@@ -6,7 +6,7 @@
    <x:scenario label="Sidebar">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <dtb:sidebar xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+        <dtb:sidebar xml:lang="de">
             <dtb:hd>Wichtiger Merksatz:</dtb:hd>
             <dtb:p>Kräht der Hahn auf dem Mist, ändert sich das Wetter oder es bleibt, wie es ist.</dtb:p>
 	        </dtb:sidebar>

@@ -6,42 +6,42 @@
    <x:scenario label="Computer Braille">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <brl:computer xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">www.xyz.ch</brl:computer>
+        <brl:computer xml:lang="de">www.xyz.ch</brl:computer>
       </x:context>
       <x:expect label="result">'$WWW.XYZ.CH</x:expect>
    </x:scenario>
    <x:scenario label="Computer Braille">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <brl:computer xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">www.e-text.ch</brl:computer>
+        <brl:computer xml:lang="de">www.e-text.ch</brl:computer>
       </x:context>
       <x:expect label="result">'$WWW.E-TEXT.CH</x:expect>
    </x:scenario>
    <x:scenario label="URLs email">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <brl:computer xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">meier_alex@ubs.com</brl:computer>
+        <brl:computer xml:lang="de">meier_alex@ubs.com</brl:computer>
       </x:context>
       <x:expect label="result">'$MEIER"_ALEX"@UBS.COM</x:expect>
    </x:scenario>
    <x:scenario label="URLs special">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <brl:computer xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">http://www.google-test.ch/test?=:;+%#$</brl:computer>
+        <brl:computer xml:lang="de">http://www.google-test.ch/test?=:;+%#$</brl:computer>
       </x:context>
       <x:expect label="result">'$HTTP://WWW.GOOGLE-TEST.CH/TEST?=:;+%#$$</x:expect>
    </x:scenario>
    <x:scenario label="URLs numbers">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <brl:computer xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">peter34@gmx.net</brl:computer>
+        <brl:computer xml:lang="de">peter34@gmx.net</brl:computer>
       </x:context>
       <x:expect label="result">'$PETER34"@GMX.NET</x:expect>
    </x:scenario>
    <x:scenario label="Twitter handle">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <brl:computer xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">@peter34</brl:computer>
+        <brl:computer xml:lang="de">@peter34</brl:computer>
       </x:context>
       <x:expect label="result">'$"@PETER34</x:expect>
    </x:scenario>

@@ -6,7 +6,7 @@
    <x:scenario label="brl:continuation attribute on &lt;em&gt;">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+        <stub xml:lang="de">
             <dtb:p>
                <dtb:em brl:continuation="em1 em2 em3">Bla bla bla.</dtb:em>
             </dtb:p>

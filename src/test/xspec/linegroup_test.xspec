@@ -5,7 +5,7 @@
                stylesheet="../../../xsl/dtbook2sbsform.xsl">
    <x:scenario label="Translation of linegroup">
       <x:context>
-	        <dtb:linegroup xmlns:utfx="http://utfx.org/test-definition" xml:lang="de"/>
+	        <dtb:linegroup xml:lang="de"/>
       </x:context>
       <x:expect label="result">
 y LINEGRb
@@ -15,7 +15,7 @@ y LINEGRe
    </x:scenario>
    <x:scenario label="Translation of linegroup with brl:class attr">
       <x:context>
-	        <dtb:linegroup xmlns:utfx="http://utfx.org/test-definition" xml:lang="de" brl:class="foo"/>
+	        <dtb:linegroup xml:lang="de" brl:class="foo"/>
       </x:context>
       <x:expect label="result">
 y LINEGRb_foo
@@ -25,7 +25,7 @@ y LINEGRe_foo
    </x:scenario>
    <x:scenario label="Translation of line">
       <x:context>
-	        <dtb:line xmlns:utfx="http://utfx.org/test-definition" xml:lang="de"/>
+	        <dtb:line xml:lang="de"/>
       </x:context>
       <x:expect label="result">
 y LINEb
@@ -35,7 +35,7 @@ y LINEe
    </x:scenario>
    <x:scenario label="Translation of line with brl:class attr">
       <x:context>
-	        <dtb:line xmlns:utfx="http://utfx.org/test-definition" xml:lang="de" brl:class="foo"/>
+	        <dtb:line xml:lang="de" brl:class="foo"/>
       </x:context>
       <x:expect label="result">
 y LINEb_foo
@@ -45,13 +45,13 @@ y LINEe_foo
    </x:scenario>
    <x:scenario label="linenum">
       <x:context>
-	        <dtb:linenum xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">Foo</dtb:linenum>
+	        <dtb:linenum xml:lang="de">Foo</dtb:linenum>
       </x:context>
       <x:expect label="result">FOO| </x:expect>
    </x:scenario>
    <x:scenario label="Line with linenum">
       <x:context>
-	        <dtb:line xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+	        <dtb:line xml:lang="de">
             <dtb:linenum>6</dtb:linenum>DAS HIER IST EIN KLEINER TEST. ES GEHT DARUM.</dtb:line>
       </x:context>
       <x:expect label="result">
@@ -62,7 +62,7 @@ y LINEe
    </x:scenario>
    <x:scenario label="Line with large linenum">
       <x:context>
-	        <dtb:line xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+	        <dtb:line xml:lang="de">
             <dtb:linenum>36</dtb:linenum>DAS HIER IST EIN KLEINER TEST. ES GEHT DARUM.</dtb:line>
       </x:context>
       <x:expect label="result">
@@ -73,10 +73,10 @@ y LINEe
    </x:scenario>
    <x:scenario label="Line with mixed lines">
       <x:context>
-	        <dtb:line xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+	        <dtb:line xml:lang="de">
             <dtb:linenum>6</dtb:linenum>DAS HIER IST EIN KLEINER TEST. ES GEHT DARUM.</dtb:line>
-	        <dtb:line xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">DAS HIER IST EIN KLEINER TEST. ES GEHT DARUM.</dtb:line>
-	        <dtb:line xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+	        <dtb:line xml:lang="de">DAS HIER IST EIN KLEINER TEST. ES GEHT DARUM.</dtb:line>
+	        <dtb:line xml:lang="de">
             <dtb:linenum>6</dtb:linenum>DAS HIER IST EIN KLEINER TEST. ES GEHT DARUM.</dtb:line>
       </x:context>
       <x:expect label="result">
@@ -95,7 +95,7 @@ y LINEe
    </x:scenario>
    <x:scenario label="Poem with linenum">
       <x:context>
-	        <dtb:poem xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+	        <dtb:poem xml:lang="de">
 	           <dtb:line>
                <dtb:linenum>6</dtb:linenum>DAS HIER IST EIN KLEINER TEST. ES GEHT DARUM.</dtb:line>
 	        </dtb:poem>
@@ -112,7 +112,7 @@ y POEM_LNe
    </x:scenario>
    <x:scenario label="Poem with mixed linenum">
       <x:context>
-	        <dtb:poem xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+	        <dtb:poem xml:lang="de">
 	           <dtb:line>
                <dtb:linenum>6</dtb:linenum>DAS HIER IST EIN KLEINER TEST. ES GEHT DARUM.</dtb:line>
 	           <dtb:line>DAS HIER IST EIN KLEINER TEST. ES GEHT DARUM.</dtb:line>
@@ -134,7 +134,7 @@ y POEM_LNe
    </x:scenario>
    <x:scenario label="Poem with mixed linenum inside linegroup">
       <x:context>
-	        <dtb:poem xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+	        <dtb:poem xml:lang="de">
 	           <dtb:linegroup>
 	              <dtb:line>
                   <dtb:linenum>6</dtb:linenum>DAS HIER IST EIN KLEINER TEST. ES GEHT DARUM.</dtb:line>

@@ -6,7 +6,7 @@
    <x:scenario label="p with linenum span">
       <x:param name="contraction" select="2"/>
       <x:context>
-	        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+	        <dtb:p xml:lang="de">
 	           <dtb:span class="linenum">5</dtb:span>A Man of Many Styles
 	</dtb:p>
       </x:context>
@@ -17,7 +17,7 @@ y P_LN
    <x:scenario label="p with linenum span in the middle">
       <x:param name="contraction" select="2"/>
       <x:context>
-	        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">A Man of <dtb:span class="linenum">5</dtb:span>Many Styles
+	        <dtb:p xml:lang="de">A Man of <dtb:span class="linenum">5</dtb:span>Many Styles
 	</dtb:p>
       </x:context>
       <x:expect label="result">
@@ -29,7 +29,7 @@ y P_LN_noi
    <x:scenario label="p with linenum span in the middle with em">
       <x:param name="contraction" select="2"/>
       <x:context>
-	        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+	        <dtb:p xml:lang="de">
 	           <dtb:em>A Man of </dtb:em>
             <dtb:span class="linenum">5</dtb:span>Many Styles
 	</dtb:p>
@@ -43,7 +43,7 @@ y P_LN_noi
    <x:scenario label="p with multiple linenum span in the middle">
       <x:param name="contraction" select="2"/>
       <x:context>
-	        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+	        <dtb:p xml:lang="de">
           A Man of <dtb:span class="linenum">5</dtb:span>Many <dtb:span class="linenum">10</dtb:span>Styles
 	</dtb:p>
       </x:context>
@@ -58,7 +58,7 @@ y P_LN_noi
    <x:scenario label="p with linenum span with precedingemptyline">
       <x:param name="contraction" select="2"/>
       <x:context>
-	        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de"
+	        <dtb:p xml:lang="de"
                 class="precedingemptyline">
 	           <dtb:span class="linenum">5</dtb:span>A Man of Many Styles
 	</dtb:p>
@@ -71,7 +71,7 @@ y P_LN
    <x:scenario label="Mixed p some some with span class linenum">
       <x:param name="contraction" select="2"/>
       <x:context>
-	        <dtb:level6 xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+	        <dtb:level6 xml:lang="de">
 	           <dtb:p>
                <dtb:span class="linenum">5</dtb:span>foo</dtb:p>
 	           <dtb:p>bar</dtb:p>
@@ -100,7 +100,7 @@ y LEVEL6e
    <x:scenario label="Mixed p some some with span class linenum">
       <x:param name="contraction" select="2"/>
       <x:context>
-	        <dtb:level6 xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+	        <dtb:level6 xml:lang="de">
 	           <dtb:p>
                <dtb:span class="linenum">5</dtb:span>foo</dtb:p>
 	           <dtb:blockquote>haha</dtb:blockquote>

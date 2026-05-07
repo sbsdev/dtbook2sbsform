@@ -6,7 +6,7 @@
    <x:scenario label="sup als Exponent (mit Komma)">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">2<dtb:sup>23</dtb:sup>, x<dtb:sup>2</dtb:sup>, x<dtb:sup>-2</dtb:sup>, </dtb:p>
+        <dtb:p xml:lang="de">2<dtb:sup>23</dtb:sup>, x<dtb:sup>2</dtb:sup>, x<dtb:sup>-2</dtb:sup>, </dtb:p>
       </x:context>
       <x:expect label="result">
 y P
@@ -15,7 +15,7 @@ y P
    <x:scenario label="sup als oberer Index (mit Komma)">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+        <dtb:p xml:lang="de">
             <dtb:abbr>Cu</dtb:abbr>
             <dtb:sup>2+</dtb:sup>, </dtb:p>
       </x:context>
@@ -26,7 +26,7 @@ y P
    <x:scenario label="sub als unterer Index (mit Komma)">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+        <dtb:p xml:lang="de">
             <dtb:abbr>CO</dtb:abbr>
             <dtb:sub>2</dtb:sub>, </dtb:p>
       </x:context>

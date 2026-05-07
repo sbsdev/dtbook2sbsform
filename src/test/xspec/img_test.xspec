@@ -6,7 +6,7 @@
    <x:scenario label="Image">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <dtb:img xmlns:utfx="http://utfx.org/test-definition" alt="foo" xml:lang="de"/>
+        <dtb:img alt="foo" xml:lang="de"/>
       </x:context>
       <x:expect label="result">
 y IMG
@@ -16,7 +16,7 @@ y IMG
    <x:scenario label="Image w/o alt text">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <dtb:img xmlns:utfx="http://utfx.org/test-definition" xml:lang="de"/>
+        <dtb:img xml:lang="de"/>
       </x:context>
       <x:expect label="result">
 y IMG
@@ -26,7 +26,7 @@ y IMG
    <x:scenario label="Image with empty alt text">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <dtb:img xmlns:utfx="http://utfx.org/test-definition" alt="" xml:lang="de"/>
+        <dtb:img alt="" xml:lang="de"/>
       </x:context>
       <x:expect label="result">
 y IMG
@@ -36,7 +36,7 @@ y IMG
    <x:scenario label="Imagegroup">
       <x:param name="contraction" select="2"/>
       <x:context>
-	        <dtb:imggroup xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+	        <dtb:imggroup xml:lang="de">
             <dtb:img alt="foo"/>
 	        </dtb:imggroup>
       </x:context>
@@ -52,7 +52,7 @@ y IMGGRe
    <x:scenario label="Caption">
       <x:param name="contraction" select="2"/>
       <x:context>
-	        <dtb:caption xmlns:utfx="http://utfx.org/test-definition" xml:lang="de" imgref="img1_1">Abb. 23: By the way, Sam, as someday you'll be paying for my, I'd like to thank you in advance.</dtb:caption>
+	        <dtb:caption xml:lang="de" imgref="img1_1">Abb. 23: By the way, Sam, as someday you'll be paying for my, I'd like to thank you in advance.</dtb:caption>
       </x:context>
       <x:expect label="result">
 y CAPTION
@@ -61,7 +61,7 @@ y CAPTION
    <x:scenario label="Big imagegroup">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <dtb:imggroup xmlns:utfx="http://utfx.org/test-definition" id="imggrp_2" xml:lang="de">
+        <dtb:imggroup id="imggrp_2" xml:lang="de">
             <dtb:img id="img1_1" src="fig1_01.png" alt="someday"/>
             <dtb:caption imgref="img1_1">Abb. 23: By the way, Sam, as someday you'll be paying for my, I'd like to thank you in advance.</dtb:caption>
         </dtb:imggroup>

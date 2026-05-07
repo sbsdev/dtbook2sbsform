@@ -6,21 +6,21 @@
    <x:scenario label="Answer">
       <x:param name="contraction" select="2"/>
       <x:context>
-	        <dtb:span xmlns:utfx="http://utfx.org/test-definition" class="answer">foo</dtb:span>
+	        <dtb:span class="answer">foo</dtb:span>
       </x:context>
       <x:expect label="result">---</x:expect>
    </x:scenario>
    <x:scenario label="Box">
       <x:param name="contraction" select="2"/>
       <x:context>
-	        <dtb:span xmlns:utfx="http://utfx.org/test-definition" class="box">foo</dtb:span>
+	        <dtb:span class="box">foo</dtb:span>
       </x:context>
       <x:expect label="result">---</x:expect>
    </x:scenario>
    <x:scenario label="Answer for one character">
       <x:param name="contraction" select="2"/>
       <x:context>
-	        <dtb:span xmlns:utfx="http://utfx.org/test-definition" class="answer_1">foo</dtb:span>
+	        <dtb:span class="answer_1">foo</dtb:span>
       </x:context>
       <x:expect label="result">-</x:expect>
    </x:scenario>

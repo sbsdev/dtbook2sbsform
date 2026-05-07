@@ -6,7 +6,7 @@
    <x:scenario label="Code">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+        <stub xml:lang="de">
 	           <dtb:p>
                <dtb:code>C:/ordner/inhalt_version_1</dtb:code>
             </dtb:p>
@@ -19,7 +19,7 @@ y P
    <x:scenario label="Program listing">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+        <stub xml:lang="de">
 	           <dtb:p>
                <dtb:code>for(i=0;i&lt;=12; i++ { blabla }</dtb:code>
             </dtb:p>

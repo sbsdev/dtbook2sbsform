@@ -7,7 +7,7 @@
       <x:param name="contraction" select="2"/>
       <x:param name="footnote_placement" select="'standard'"/>
       <x:context>
-	        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">Blah <dtb:annoref idref="#annotation1">hihi</dtb:annoref> 
+	        <stub xml:lang="de">Blah <dtb:annoref idref="#annotation1">hihi</dtb:annoref> 
             <dtb:annoref idref="#annotation2">haha</dtb:annoref> blah</stub>
       </x:context>
       <x:expect label="result">BLAH HIHI'*#A
@@ -20,7 +20,7 @@
       <x:param name="contraction" select="2"/>
       <x:param name="footnote_placement" select="'standard'"/>
       <x:context>
-	        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+	        <stub xml:lang="de">
 	           <dtb:annoref idref="#annotation1">Foo</dtb:annoref> Bar
 	  <dtb:annoref idref="#annotation2">Baz</dtb:annoref> Baz
 	</stub>
@@ -35,7 +35,7 @@
       <x:param name="contraction" select="2"/>
       <x:param name="footnote_placement" select="'end-vol'"/>
       <x:context>
-	        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">Hi Ha <dtb:annoref idref="#annotation1">Ho</dtb:annoref>
+	        <stub xml:lang="de">Hi Ha <dtb:annoref idref="#annotation1">Ho</dtb:annoref>
 	           <dtb:annoref idref="#annotation2"/>
 	           <brl:volume brl:grade="2"/>Foo Bar Baz <dtb:annoref idref="#annotation3"/>
 	           <dtb:annoref idref="#annotation4"/>
@@ -86,7 +86,7 @@ y BrlVol
       <x:param name="contraction" select="2"/>
       <x:param name="footnote_placement" select="'end-vol'"/>
       <x:context>
-	        <dtb:bodymatter xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+	        <dtb:bodymatter xml:lang="de">
 	           <dtb:p>Hi <dtb:annoref idref="#annotation1">Ha</dtb:annoref> 
 	              <dtb:annoref idref="#annotation2">Ho</dtb:annoref>
 	              <brl:volume brl:grade="2"/>Foo <dtb:annoref idref="#annotation3">Bar</dtb:annoref>
@@ -150,7 +150,7 @@ y BODYe
       <x:param name="contraction" select="2"/>
       <x:param name="footnote_placement" select="'standard'"/>
       <x:context>
-	        <dtb:h1 xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">Sein und nicht <dtb:annoref idref="#fn1">sein</dtb:annoref>
+	        <dtb:h1 xml:lang="de">Sein und nicht <dtb:annoref idref="#fn1">sein</dtb:annoref>
          </dtb:h1>
       </x:context>
       <x:expect label="result">
@@ -164,7 +164,7 @@ y H1
       <x:param name="contraction" select="2"/>
       <x:param name="footnote_placement" select="'standard'"/>
       <x:context>
-	        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">Hier die <dtb:annoref idref="#fn1">Fussnote</dtb:annoref>, vor einem Komma</dtb:p>
+	        <dtb:p xml:lang="de">Hier die <dtb:annoref idref="#fn1">Fussnote</dtb:annoref>, vor einem Komma</dtb:p>
       </x:context>
       <x:expect label="result">
 y P
@@ -176,7 +176,7 @@ y P
       <x:param name="contraction" select="2"/>
       <x:param name="footnote_placement" select="'standard'"/>
       <x:context>
-	        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">Hier die <dtb:annoref idref="#fn1">Fussnote</dtb:annoref>! vor einem</dtb:p>
+	        <dtb:p xml:lang="de">Hier die <dtb:annoref idref="#fn1">Fussnote</dtb:annoref>! vor einem</dtb:p>
       </x:context>
       <x:expect label="result">
 y P
@@ -188,7 +188,7 @@ y P
       <x:param name="contraction" select="2"/>
       <x:param name="footnote_placement" select="'standard'"/>
       <x:context>
-	        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">Hier die <dtb:annoref idref="#fn1">Fussnote</dtb:annoref>? vor einem</dtb:p>
+	        <dtb:p xml:lang="de">Hier die <dtb:annoref idref="#fn1">Fussnote</dtb:annoref>? vor einem</dtb:p>
       </x:context>
       <x:expect label="result">
 y P
@@ -200,7 +200,7 @@ y P
       <x:param name="contraction" select="2"/>
       <x:param name="footnote_placement" select="'standard'"/>
       <x:context>
-	        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">Hier die <dtb:annoref idref="#fn1">Fussnote</dtb:annoref>( vor einem</dtb:p>
+	        <dtb:p xml:lang="de">Hier die <dtb:annoref idref="#fn1">Fussnote</dtb:annoref>( vor einem</dtb:p>
       </x:context>
       <x:expect label="result">
 y P

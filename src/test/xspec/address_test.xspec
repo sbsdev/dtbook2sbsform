@@ -6,7 +6,7 @@
    <x:scenario label="address">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <dtb:address xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">Foo</dtb:address>
+        <dtb:address xml:lang="de">Foo</dtb:address>
       </x:context>
       <x:expect label="result">
 xxx Was originally a dtb:address
@@ -19,7 +19,7 @@ y LINEGRe
    <x:scenario label="address with lines">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <dtb:address xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+        <dtb:address xml:lang="de">
 	           <dtb:line>Bar</dtb:line>
 	           <dtb:line>Baz</dtb:line>
 	        </dtb:address>

@@ -5,7 +5,7 @@
                stylesheet="../../../xsl/dtbook2sbsform.xsl">
    <x:scenario label="list with brl:class attr">
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+        <stub xml:lang="de">
 	           <dtb:list brl:class="foo" type="pl"/>
 	           <dtb:list brl:class="foo" type="ul"/>
 	           <dtb:list brl:class="foo" type="ol"/>
@@ -27,7 +27,7 @@ y OLISTe_foo
    </x:scenario>
    <x:scenario label="li with brl:class attr">
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+        <stub xml:lang="de">
 	           <dtb:li brl:class="foo"/>
         </stub>
       </x:context>
@@ -38,7 +38,7 @@ y LI_foo
    </x:scenario>
    <x:scenario label="Preformatted lists">
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+        <stub xml:lang="de">
 	           <dtb:list type="pl">
                <dtb:li>1. bla bla</dtb:li>
                <dtb:li>2. bla bla</dtb:li>
@@ -131,7 +131,7 @@ y PLISTe
    </x:scenario>
    <x:scenario label="Unordered lists">
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+        <stub xml:lang="de">
 	           <dtb:list type="ul">
                <dtb:li>bla bla</dtb:li>
                <dtb:li>bla bla</dtb:li>
@@ -224,7 +224,7 @@ y ULISTe
    </x:scenario>
    <x:scenario label="Nested list I, http://redmine.sbszh.ch/issues/2677">
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+        <stub xml:lang="de">
 	           <dtb:list type="ul">
                <dtb:li>item 1</dtb:li>
                <dtb:li>item 2</dtb:li>
@@ -248,7 +248,7 @@ y ULISTe</x:expect>
    </x:scenario>
    <x:scenario label="Nested list II, http://redmine.sbszh.ch/issues/2677">
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+        <stub xml:lang="de">
             <dtb:list type="ul">
                <dtb:li>item 1</dtb:li>
                <dtb:li>item 2</dtb:li>
@@ -310,7 +310,7 @@ y ULISTe</x:expect>
    </x:scenario>
    <x:scenario label="Nested list III, http://redmine.sbszh.ch/issues/2677">
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+        <stub xml:lang="de">
             <dtb:list type="pl">
                <dtb:li>item 1</dtb:li>
                <dtb:li>item 2</dtb:li>
@@ -331,7 +331,7 @@ y PLISTe
    </x:scenario>
    <x:scenario label="Nested list IV, http://redmine.sbszh.ch/issues/2677">
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+        <stub xml:lang="de">
             <dtb:list type="pl">
                <dtb:li>item 1</dtb:li>
                <dtb:li>item 2</dtb:li>
@@ -393,7 +393,7 @@ y PLISTe</x:expect>
    </x:scenario>
    <x:scenario label="Nested list V, http://redmine.sbszh.ch/issues/2677">
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+        <stub xml:lang="de">
             <dtb:list type="ul">
                <dtb:li>item 1</dtb:li>
                <dtb:li>item 2</dtb:li>

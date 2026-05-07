@@ -6,7 +6,7 @@
    <x:scenario label="bridgehead">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <dtb:bridgehead xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">A Man of Many Styles</dtb:bridgehead>
+        <dtb:bridgehead xml:lang="de">A Man of Many Styles</dtb:bridgehead>
       </x:context>
       <x:expect label="result">
 y BRIDGE

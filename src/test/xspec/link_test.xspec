@@ -6,14 +6,14 @@
    <x:scenario label="Plain link">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <dtb:a xmlns:utfx="http://utfx.org/test-definition" xml:lang="de" href="www.foo.ch">foo</dtb:a>
+        <dtb:a xml:lang="de" href="www.foo.ch">foo</dtb:a>
       </x:context>
       <x:expect label="result">FOO</x:expect>
    </x:scenario>
    <x:scenario label="External link">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <dtb:a xmlns:utfx="http://utfx.org/test-definition" xml:lang="de" href="www.foo.ch"
+        <dtb:a xml:lang="de" href="www.foo.ch"
                 external="true">foo</dtb:a>
       </x:context>
       <x:expect label="result">FOO</x:expect>
@@ -21,7 +21,7 @@
    <x:scenario label="External email link">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <dtb:a xmlns:utfx="http://utfx.org/test-definition" xml:lang="de"
+        <dtb:a xml:lang="de"
                 href="mailto:info@sbs.ch"
                 external="true">Kontakt</dtb:a>
       </x:context>
@@ -30,7 +30,7 @@
    <x:scenario label="External email link mixed">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <dtb:a xmlns:utfx="http://utfx.org/test-definition" xml:lang="de"
+        <dtb:a xml:lang="de"
                 href="mailto:info@sbs.ch"
                 external="true">Kontakt <brl:computer>peter34@gmx.net</brl:computer>
          </dtb:a>
@@ -40,7 +40,7 @@
    <x:scenario label="Internal link">
       <x:param name="contraction" select="2"/>
       <x:context>
-	        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+	        <stub xml:lang="de">
             <dtb:a id="foo"/>
             <dtb:a href="#foo">foo</dtb:a>
 	        </stub>
@@ -50,7 +50,7 @@
    <x:scenario label="Internal pageref link">
       <x:param name="contraction" select="2"/>
       <x:context>
-	        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+	        <stub xml:lang="de">
             <dtb:a id="foo"/>
             <dtb:a href="#foo" class="pageref">foo</dtb:a>
 	        </stub>
@@ -60,7 +60,7 @@
    <x:scenario label="External link using computer braille">
       <x:param name="contraction" select="2"/>
       <x:context>
-	        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+	        <stub xml:lang="de">
             <dtb:a href="http://www.sbs.ch">
                <brl:computer>www.sbs.ch</brl:computer>
             </dtb:a>
@@ -71,7 +71,7 @@
    <x:scenario label="External link using computer braille">
       <x:param name="contraction" select="2"/>
       <x:context>
-	        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+	        <stub xml:lang="de">
             <dtb:a href="http://www.e-text.ch">
                <brl:computer>www.e-text.ch</brl:computer>
             </dtb:a>
@@ -82,7 +82,7 @@
    <x:scenario label="External link with params using computer braille">
       <x:param name="contraction" select="2"/>
       <x:context>
-	        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+	        <stub xml:lang="de">
             <dtb:a href="http://www.google-test.ch/test?=:;+%#$">
                <brl:computer>http://www.google-test.ch/test?=:;+%#$</brl:computer>
             </dtb:a>
@@ -93,7 +93,7 @@
    <x:scenario label="External link with numbers using computer braille">
       <x:param name="contraction" select="2"/>
       <x:context>
-	        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+	        <stub xml:lang="de">
             <dtb:a href="mailto:peter34@gmx.net">
                <brl:computer>peter34@gmx.net</brl:computer>
             </dtb:a>
@@ -104,7 +104,7 @@
    <x:scenario label="External email link using computer braille">
       <x:param name="contraction" select="2"/>
       <x:context>
-	        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+	        <stub xml:lang="de">
             <dtb:a href="mailto:info@sbs.ch">
                <brl:computer>mailto:info@sbs.ch</brl:computer>
             </dtb:a>
@@ -115,7 +115,7 @@
    <x:scenario label="External email link using computer braille">
       <x:param name="contraction" select="2"/>
       <x:context>
-	        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+	        <stub xml:lang="de">
             <dtb:a href="mailto:meier_alex@ubs.com">
                <brl:computer>meier_alex@ubs.com</brl:computer>
             </dtb:a>

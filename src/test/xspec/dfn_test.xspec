@@ -6,7 +6,7 @@
    <x:scenario label="dfn">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <dtb:dfn xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">Foo</dtb:dfn>
+        <dtb:dfn xml:lang="de">Foo</dtb:dfn>
       </x:context>
       <x:expect label="result">
 xxx Was originally a dtb:dfn
@@ -15,7 +15,7 @@ xxx Was originally a dtb:dfn
    <x:scenario label="Multiword dfn">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <dtb:dfn xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">Foo Bar</dtb:dfn>
+        <dtb:dfn xml:lang="de">Foo Bar</dtb:dfn>
       </x:context>
       <x:expect label="result">
 xxx Was originally a dtb:dfn
@@ -24,7 +24,7 @@ xxx Was originally a dtb:dfn
    <x:scenario label="Multiword dfn">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <dtb:dfn xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">Foo Bar Baz</dtb:dfn>
+        <dtb:dfn xml:lang="de">Foo Bar Baz</dtb:dfn>
       </x:context>
       <x:expect label="result">
 xxx Was originally a dtb:dfn
@@ -33,7 +33,7 @@ xxx Was originally a dtb:dfn
    <x:scenario label="dfn with context">
       <x:param name="contraction" select="2"/>
       <x:context>
-	        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">Haha <dtb:dfn xml:lang="de">Foo Bar Baz</dtb:dfn>
+	        <dtb:p xml:lang="de">Haha <dtb:dfn xml:lang="de">Foo Bar Baz</dtb:dfn>
          </dtb:p>
       </x:context>
       <x:expect label="result">

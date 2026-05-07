@@ -6,7 +6,7 @@
    <x:scenario label="Falsches Resultat bei brl:date bei &#34;seltsamem&#34; Kontext 1">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">(<brl:date value="2007-07-06">6.7.2007</brl:date>) ab«.</dtb:p>
+        <dtb:p xml:lang="de">(<brl:date value="2007-07-06">6.7.2007</brl:date>) ab«.</dtb:p>
       </x:context>
       <x:expect label="result">
 y P
@@ -15,7 +15,7 @@ y P
    <x:scenario label="Falsches Resultat bei brl:date bei &#34;seltsamem&#34; Kontext 2">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">(<brl:date value="2007-07-06">6.7.2007</brl:date>) ab.</dtb:p>
+        <dtb:p xml:lang="de">(<brl:date value="2007-07-06">6.7.2007</brl:date>) ab.</dtb:p>
       </x:context>
       <x:expect label="result">
 y P
@@ -24,7 +24,7 @@ y P
    <x:scenario label="Falsches Resultat bei brl:date bei &#34;seltsamem&#34; Kontext 3">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">(<brl:date value="2007-07-06">6.7.2007</brl:date>) ab«</dtb:p>
+        <dtb:p xml:lang="de">(<brl:date value="2007-07-06">6.7.2007</brl:date>) ab«</dtb:p>
       </x:context>
       <x:expect label="result">
 y P
@@ -33,7 +33,7 @@ y P
    <x:scenario label="Falsches Resultat bei brl:date bei &#34;seltsamem&#34; Kontext 4">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">(<brl:date value="2007-07-06">6.7.2007</brl:date>) ab</dtb:p>
+        <dtb:p xml:lang="de">(<brl:date value="2007-07-06">6.7.2007</brl:date>) ab</dtb:p>
       </x:context>
       <x:expect label="result">
 y P

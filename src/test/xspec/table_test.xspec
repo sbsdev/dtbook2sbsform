@@ -5,7 +5,7 @@
                stylesheet="../../../xsl/dtbook2sbsform.xsl">
    <x:scenario label="Tables">
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+        <stub xml:lang="de">
 	           <dtb:table>
                <dtb:caption>Alle Angaben ohne Gewähr</dtb:caption>
                <dtb:thead>
@@ -252,7 +252,7 @@ y TABLEe
    </x:scenario>
    <x:scenario label="Table w/o tbody">
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+        <stub xml:lang="de">
 	           <dtb:table>
                <dtb:tr>
 	                 <dtb:td>1</dtb:td>
@@ -314,7 +314,7 @@ y TABLEe
    </x:scenario>
    <x:scenario label="Table with irregular structure">
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+        <stub xml:lang="de">
 	           <dtb:table>
                <dtb:tr>
 	                 <dtb:td>1</dtb:td>
@@ -372,7 +372,7 @@ y TABLEe
    </x:scenario>
    <x:scenario label="Another table with irregular structure">
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+        <stub xml:lang="de">
 	           <dtb:table>
                <dtb:tr>
 	                 <dtb:th>Foo</dtb:th>
@@ -422,7 +422,7 @@ y TABLEe
    </x:scenario>
    <x:scenario label="A table with colspan">
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+        <stub xml:lang="de">
 	           <dtb:table>
                <dtb:tr>
 	                 <dtb:th colspan="2">Foo</dtb:th>

@@ -6,7 +6,7 @@
    <x:scenario label="no comment">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">bla <dtb:em brl:render="quote">ble ble 8</dtb:em>: blo</dtb:p>
+        <dtb:p xml:lang="de">bla <dtb:em brl:render="quote">ble ble 8</dtb:em>: blo</dtb:p>
       </x:context>
       <x:expect label="result">
 y P
@@ -15,7 +15,7 @@ y P
    <x:scenario label="no comment">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">bla <dtb:em brl:render="quote">ble ble 8</dtb:em>! blo</dtb:p>
+        <dtb:p xml:lang="de">bla <dtb:em brl:render="quote">ble ble 8</dtb:em>! blo</dtb:p>
       </x:context>
       <x:expect label="result">
 y P
@@ -24,7 +24,7 @@ y P
    <x:scenario label="no comment">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">bla <dtb:em brl:render="quote">ble ble 8</dtb:em>? blo</dtb:p>
+        <dtb:p xml:lang="de">bla <dtb:em brl:render="quote">ble ble 8</dtb:em>? blo</dtb:p>
       </x:context>
       <x:expect label="result">
 y P
@@ -33,7 +33,7 @@ y P
    <x:scenario label="no comment">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">bla <dtb:em brl:render="quote">ble ble 8</dtb:em>; blo</dtb:p>
+        <dtb:p xml:lang="de">bla <dtb:em brl:render="quote">ble ble 8</dtb:em>; blo</dtb:p>
       </x:context>
       <x:expect label="result">
 y P
@@ -42,7 +42,7 @@ y P
    <x:scenario label="no comment">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">bla <dtb:em brl:render="quote">ble ble 8</dtb:em>) blo</dtb:p>
+        <dtb:p xml:lang="de">bla <dtb:em brl:render="quote">ble ble 8</dtb:em>) blo</dtb:p>
       </x:context>
       <x:expect label="result">
 y P
@@ -51,7 +51,7 @@ y P
    <x:scenario label="no comment">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">bla <dtb:em brl:render="quote">ble ble 8</dtb:em>. blo</dtb:p>
+        <dtb:p xml:lang="de">bla <dtb:em brl:render="quote">ble ble 8</dtb:em>. blo</dtb:p>
       </x:context>
       <x:expect label="result">
 y P
@@ -60,7 +60,7 @@ y P
    <x:scenario label="no comment">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">bla <dtb:em brl:render="quote">ble ble 8</dtb:em>, blo</dtb:p>
+        <dtb:p xml:lang="de">bla <dtb:em brl:render="quote">ble ble 8</dtb:em>, blo</dtb:p>
       </x:context>
       <x:expect label="result">
 y P
@@ -69,7 +69,7 @@ y P
    <x:scenario label="no comment">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">bla <dtb:em brl:render="singlequote">ble ble 8</dtb:em>: blo</dtb:p>
+        <dtb:p xml:lang="de">bla <dtb:em brl:render="singlequote">ble ble 8</dtb:em>: blo</dtb:p>
       </x:context>
       <x:expect label="result">
 y P
@@ -78,7 +78,7 @@ y P
    <x:scenario label="no comment">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">bla <dtb:em brl:render="singlequote">ble ble 8</dtb:em>! blo</dtb:p>
+        <dtb:p xml:lang="de">bla <dtb:em brl:render="singlequote">ble ble 8</dtb:em>! blo</dtb:p>
       </x:context>
       <x:expect label="result">
 y P
@@ -87,7 +87,7 @@ y P
    <x:scenario label="no comment">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">bla <dtb:em brl:render="singlequote">ble ble 8</dtb:em>? blo</dtb:p>
+        <dtb:p xml:lang="de">bla <dtb:em brl:render="singlequote">ble ble 8</dtb:em>? blo</dtb:p>
       </x:context>
       <x:expect label="result">
 y P
@@ -96,7 +96,7 @@ y P
    <x:scenario label="no comment">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">bla <dtb:em brl:render="singlequote">ble ble 8</dtb:em>; blo</dtb:p>
+        <dtb:p xml:lang="de">bla <dtb:em brl:render="singlequote">ble ble 8</dtb:em>; blo</dtb:p>
       </x:context>
       <x:expect label="result">
 y P
@@ -105,7 +105,7 @@ y P
    <x:scenario label="no comment">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">bla <dtb:em brl:render="singlequote">ble ble 8</dtb:em>) blo</dtb:p>
+        <dtb:p xml:lang="de">bla <dtb:em brl:render="singlequote">ble ble 8</dtb:em>) blo</dtb:p>
       </x:context>
       <x:expect label="result">
 y P
@@ -114,7 +114,7 @@ y P
    <x:scenario label="no comment">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">bla <dtb:em brl:render="singlequote">ble ble 8</dtb:em>. blo</dtb:p>
+        <dtb:p xml:lang="de">bla <dtb:em brl:render="singlequote">ble ble 8</dtb:em>. blo</dtb:p>
       </x:context>
       <x:expect label="result">
 y P
@@ -123,7 +123,7 @@ y P
    <x:scenario label="no comment">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">bla <dtb:em brl:render="singlequote">ble ble 8</dtb:em>, blo</dtb:p>
+        <dtb:p xml:lang="de">bla <dtb:em brl:render="singlequote">ble ble 8</dtb:em>, blo</dtb:p>
       </x:context>
       <x:expect label="result">
 y P

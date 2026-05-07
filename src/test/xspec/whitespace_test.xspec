@@ -7,7 +7,7 @@
       <x:param name="contraction" select="0"/>
       <x:context>
 	<!-- nbsb inside whitespace is dropped -->
-	<dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">Hallo             Huhu</dtb:p>
+	<dtb:p xml:lang="de">Hallo             Huhu</dtb:p>
       </x:context>
       <x:expect label="result">
 y P
@@ -16,7 +16,7 @@ y P
    <x:scenario label="Only NBSP">
       <x:param name="contraction" select="0"/>
       <x:context>
-	        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">Hallo Huhu</dtb:p>
+	        <dtb:p xml:lang="de">Hallo Huhu</dtb:p>
       </x:context>
       <x:expect label="result">
 y P
@@ -25,7 +25,7 @@ y P
    <x:scenario label="NBSP and normal whitespace">
       <x:param name="contraction" select="0"/>
       <x:context>
-	        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">Foo Bar Baz</dtb:p>
+	        <dtb:p xml:lang="de">Foo Bar Baz</dtb:p>
       </x:context>
       <x:expect label="result">
 y P
@@ -34,7 +34,7 @@ y P
    <x:scenario label="Multiple NBSP">
       <x:param name="contraction" select="0"/>
       <x:context>
-	        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">Foo Bar Baz</dtb:p>
+	        <dtb:p xml:lang="de">Foo Bar Baz</dtb:p>
       </x:context>
       <x:expect label="result">
 y P

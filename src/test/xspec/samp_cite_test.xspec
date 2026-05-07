@@ -6,7 +6,7 @@
    <x:scenario label="Samp block">
       <x:param name="contraction" select="2"/>
       <x:context>
-	        <dtb:level1 xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+	        <dtb:level1 xml:lang="de">
             <dtb:samp>Foo</dtb:samp>
 	        </dtb:level1>
       </x:context>
@@ -23,7 +23,7 @@ y LEVEL1e
    <x:scenario label="Samp block">
       <x:param name="contraction" select="2"/>
       <x:context>
-	        <dtb:div xmlns:utfx="http://utfx.org/test-definition" brl:class="foo" xml:lang="de">
+	        <dtb:div brl:class="foo" xml:lang="de">
             <dtb:samp>Foo</dtb:samp>
 	        </dtb:div>
       </x:context>
@@ -39,7 +39,7 @@ y DIVe_foo
    <x:scenario label="Samp inline (inside p)">
       <x:param name="contraction" select="2"/>
       <x:context>
-	        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">Foo <dtb:samp>Bar</dtb:samp> Baz</dtb:p>
+	        <dtb:p xml:lang="de">Foo <dtb:samp>Bar</dtb:samp> Baz</dtb:p>
       </x:context>
       <x:expect label="result">
 y P
@@ -48,21 +48,21 @@ y P
    <x:scenario label="Samp inline (inside th)">
       <x:param name="contraction" select="2"/>
       <x:context>
-	        <dtb:th xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">Foo <dtb:samp>Bar</dtb:samp> Baz</dtb:th>
+	        <dtb:th xml:lang="de">Foo <dtb:samp>Bar</dtb:samp> Baz</dtb:th>
       </x:context>
       <x:expect label="result">FOO BAR BAZ</x:expect>
    </x:scenario>
    <x:scenario label="Samp inline (inside td)">
       <x:param name="contraction" select="2"/>
       <x:context>
-	        <dtb:td xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">Foo <dtb:samp>Bar</dtb:samp> Baz</dtb:td>
+	        <dtb:td xml:lang="de">Foo <dtb:samp>Bar</dtb:samp> Baz</dtb:td>
       </x:context>
       <x:expect label="result">FOO BAR BAZ</x:expect>
    </x:scenario>
    <x:scenario label="Samp inline (inside li)">
       <x:param name="contraction" select="2"/>
       <x:context>
-	        <dtb:li xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">Foo <dtb:samp>Bar</dtb:samp> Baz</dtb:li>
+	        <dtb:li xml:lang="de">Foo <dtb:samp>Bar</dtb:samp> Baz</dtb:li>
       </x:context>
       <x:expect label="result">
 y LI

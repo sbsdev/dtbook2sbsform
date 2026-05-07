@@ -5,33 +5,33 @@
                stylesheet="../../../xsl/dtbook2sbsform.xsl">
    <x:scenario label="test for !«">
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">»Ich bin Bergfahrer!«</stub>
+        <stub xml:lang="de">»Ich bin Bergfahrer!«</stub>
       </x:context>
       <x:expect label="result">(# B* B7G,R7+)</x:expect>
    </x:scenario>
    <x:scenario label="test for !">
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">And we look farther on!</stub>
+        <stub xml:lang="de">And we look farther on!</stub>
       </x:context>
       <x:expect label="result">+D WE LOOK F)TH7 ON+</x:expect>
    </x:scenario>
    <x:scenario label="test for Italy">
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+        <stub xml:lang="de">
             <dtb:em>Italy</dtb:em> stands the other side!</stub>
       </x:context>
       <x:expect label="result">_IT:'Y ,]S THE OTH7 SIDE+</x:expect>
    </x:scenario>
    <x:scenario label="test for Italy">
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">Forever intervene!</stub>
+        <stub xml:lang="de">Forever intervene!</stub>
       </x:context>
       <x:expect label="result">F?EV7 *T7VCE+</x:expect>
    </x:scenario>
    <x:scenario label="&lt;em&gt; with previous text node ending in word">
       <x:param name="contraction" select="0"/>
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+        <stub xml:lang="de">
 	           <dtb:line>foo</dtb:line>
 	           <dtb:line>
                <dtb:em>bar</dtb:em>
@@ -50,13 +50,13 @@ y LINEe
    </x:scenario>
    <x:scenario label="test for stick!!!«">
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">»Sun-­block on a stick!!!«</stub>
+        <stub xml:lang="de">»Sun-­block on a stick!!!«</stub>
       </x:context>
       <x:expect label="result">(S/-mBLO$ ON 'A ]I$+++)</x:expect>
    </x:scenario>
    <x:scenario label="test for AM">
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+        <stub xml:lang="de">
             <dtb:abbr>AM</dtb:abbr>- und der <dtb:abbr>FM</dtb:abbr>-Skala,</stub>
       </x:context>
       <x:expect label="result">&gt;AM- U R &gt;FM-SK:A,</x:expect>
@@ -64,7 +64,7 @@ y LINEe
    <x:scenario label="test for em with subelements (http://redmine.sbszh.ch/issues/show/816)">
       <x:param name="contraction" select="0"/>
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+        <stub xml:lang="de">
             <dtb:em>
                <dtb:abbr>US</dtb:abbr>-Justizministerium</dtb:em>
         </stub>
@@ -74,21 +74,21 @@ y LINEe
    <x:scenario label="test for whitespace swallowed with adjacing inlines (http://redmine.sbszh.ch/issues/show/818)">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:space="preserve" xml:lang="de"><dtb:em>Mein Mann.</dtb:em> <brl:v-form>Ihr</brl:v-form></stub>
+        <stub xml:space="preserve" xml:lang="de"><dtb:em>Mein Mann.</dtb:em> <brl:v-form>Ihr</brl:v-form></stub>
       </x:context>
       <x:expect label="result">__M6 M+N.'. $I</x:expect>
    </x:scenario>
    <x:scenario label="Swallow white space whith embed new lines 1">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:space="preserve" xml:lang="de">Gedanken – Strich      —</stub>
+        <stub xml:space="preserve" xml:lang="de">Gedanken – Strich      —</stub>
       </x:context>
       <x:expect label="result">&amp;DKC'- ]R#'-</x:expect>
    </x:scenario>
    <x:scenario label="Swallow white space whith embed new lines 2">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:space="preserve" xml:lang="de">Gedanken
+        <stub xml:space="preserve" xml:lang="de">Gedanken
 — Strich</stub>
       </x:context>
       <x:expect label="result">&amp;DKC'- ]R#</x:expect>
@@ -96,7 +96,7 @@ y LINEe
    <x:scenario label="Swallow white space whith embed new lines 3">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:space="preserve" xml:lang="de">Gedanken
+        <stub xml:space="preserve" xml:lang="de">Gedanken
   — Strich</stub>
       </x:context>
       <x:expect label="result">&amp;DKC'- ]R#</x:expect>
@@ -104,7 +104,7 @@ y LINEe
    <x:scenario label="Swallow white space whith embed new lines 4">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:space="preserve" xml:lang="de">Gedanken
+        <stub xml:space="preserve" xml:lang="de">Gedanken
                          —         Strich</stub>
       </x:context>
       <x:expect label="result">&amp;DKC'- ]R#</x:expect>
@@ -112,7 +112,7 @@ y LINEe
    <x:scenario label="test 1 for brl:homograph (http://redmine.sbszh.ch/issues/show/925)">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">Iron <brl:homograph>M<brl:separator/>an</brl:homograph>
+        <stub xml:lang="de">Iron <brl:homograph>M<brl:separator/>an</brl:homograph>
          </stub>
       </x:context>
       <x:expect label="result">IRON MAN</x:expect>
@@ -120,7 +120,7 @@ y LINEe
    <x:scenario label="test 2 for brl:homograph (http://redmine.sbszh.ch/issues/show/925)">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">Iron <brl:homograph>Ma<brl:separator/>n</brl:homograph>
+        <stub xml:lang="de">Iron <brl:homograph>Ma<brl:separator/>n</brl:homograph>
         </stub>
       </x:context>
       <x:expect label="result">IRON MAN</x:expect>
@@ -128,7 +128,7 @@ y LINEe
    <x:scenario label="test 2 for Apostroph (pt. 6) vor Einzelbuchstaben mit Punkt innerhalb abbr (http://redmine.sbszh.ch/issues/show/927)">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+        <stub xml:lang="de">
             <dtb:abbr>A. B. D. E. F. G. H. I. J.</dtb:abbr>
         </stub>
       </x:context>
@@ -137,21 +137,21 @@ y LINEe
    <x:scenario label="&lt;em&gt; innerhalb Anführungszeichen liefern falsches Resultat (http://redmine.sbszh.ch/issues/show/1004)">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">»<dtb:em>Test</dtb:em>«</stub>
+        <stub xml:lang="de">»<dtb:em>Test</dtb:em>«</stub>
       </x:context>
       <x:expect label="result">(_TE])</x:expect>
    </x:scenario>
    <x:scenario label="Kursive/Fette Anführungszeichen bei brl:render=&#34;ignore&#34; I (http://redmine.sbszh.ch/issues/show/1006)">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">»<dtb:em brl:render="ignore">Test</dtb:em>«-Beispiel</stub>
+        <stub xml:lang="de">»<dtb:em brl:render="ignore">Test</dtb:em>«-Beispiel</stub>
       </x:context>
       <x:expect label="result">(TE])-,B,0</x:expect>
    </x:scenario>
    <x:scenario label="Kursive/Fette Anführungszeichen bei brl:render=&#34;ignore&#34; II (http://redmine.sbszh.ch/issues/show/1006)">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+        <stub xml:lang="de">
             <dtb:em brl:render="ignore">»Test«</dtb:em>-Beispiel</stub>
       </x:context>
       <x:expect label="result">(TE])-,B,0</x:expect>
@@ -159,14 +159,14 @@ y LINEe
    <x:scenario label="Kursive/Fette Anführungszeichen bei brl:render=&#34;ignore&#34; III (http://redmine.sbszh.ch/issues/show/1006)">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">›<dtb:em brl:render="ignore">Test</dtb:em>‹-Beispiel</stub>
+        <stub xml:lang="de">›<dtb:em brl:render="ignore">Test</dtb:em>‹-Beispiel</stub>
       </x:context>
       <x:expect label="result">'(TE]')-,B,0</x:expect>
    </x:scenario>
    <x:scenario label="Kursive/Fette Anführungszeichen bei brl:render=&#34;ignore&#34; IV (http://redmine.sbszh.ch/issues/show/1006)">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+        <stub xml:lang="de">
             <dtb:em brl:render="ignore">›Test‹</dtb:em>-Beispiel</stub>
       </x:context>
       <x:expect label="result">'(TE]')-,B,0</x:expect>
@@ -174,7 +174,7 @@ y LINEe
    <x:scenario label="Single word mixed emphasis em before (http://redmine.sbszh.ch/issues/show/1007)">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+        <dtb:p xml:lang="de">
             <dtb:em>Menschen</dtb:em>versuch</dtb:p>
       </x:context>
       <x:expect label="result">
@@ -184,7 +184,7 @@ y P
    <x:scenario label="Single word mixed emphasis em after">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">Liebe<dtb:em>gang</dtb:em>
+        <dtb:p xml:lang="de">Liebe<dtb:em>gang</dtb:em>
          </dtb:p>
       </x:context>
       <x:expect label="result">
@@ -194,7 +194,7 @@ y P
    <x:scenario label="Single word mixed emphasis em inside">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">Liebe<dtb:em>Menschen</dtb:em>versuch</dtb:p>
+        <dtb:p xml:lang="de">Liebe<dtb:em>Menschen</dtb:em>versuch</dtb:p>
       </x:context>
       <x:expect label="result">
 y P
@@ -203,7 +203,7 @@ y P
    <x:scenario label="Falsches Resultat bei gemischtem Bruch, wenn Zeilenumbruch vorkommt (http://redmine.sbszh.ch/issues/show/1065)">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:space="preserve" xml:lang="de"><brl:num role="mixed">4
+        <stub xml:space="preserve" xml:lang="de"><brl:num role="mixed">4
                 1/2</brl:num></stub>
       </x:context>
       <x:expect label="result">#D#A;</x:expect>
@@ -211,14 +211,14 @@ y P
    <x:scenario label="Quotes w/o context 1">
       <x:param name="contraction" select="2"/>
       <x:context>
-	        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de"> (»<dtb:abbr>Bsp.</dtb:abbr>!«</stub>
+	        <stub xml:lang="de"> (»<dtb:abbr>Bsp.</dtb:abbr>!«</stub>
       </x:context>
       <x:expect label="result"> =(BSP.+)</x:expect>
    </x:scenario>
    <x:scenario label="Quotes with phone number">
       <x:param name="contraction" select="2"/>
       <x:context>
-	        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+	        <dtb:p xml:lang="de">
             <brl:num role="phone">079 160 22 22</brl:num>«</dtb:p>
       </x:context>
       <x:expect label="result">
@@ -228,7 +228,7 @@ y P
    <x:scenario label="Leading zeros in time indication Bug #1172, Bug #969, Bug ##1292">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+        <stub xml:lang="de">
             <brl:time value="11:05">11:05</brl:time>
          </stub>
       </x:context>
@@ -237,7 +237,7 @@ y P
    <x:scenario label="Many quoted paras 3">
       <x:param name="contraction" select="2"/>
       <x:context>
-	        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+	        <stub xml:lang="de">
 	           <dtb:p>»Okay. Aber ich würde es auch gar nicht wissen; bin erst ein paar Jahre in den <dtb:abbr>USA</dtb:abbr>.«</dtb:p>
 	           <dtb:p>Sie hatte von Anfang an den Akzent bemerkt, der den Ausländer verriet, und fragte: »Na, und woher kommst du?«</dtb:p>
 	        </stub>

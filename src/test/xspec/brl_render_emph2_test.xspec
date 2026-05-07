@@ -6,21 +6,21 @@
    <x:scenario label="Single word emphasis">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <dtb:em xmlns:utfx="http://utfx.org/test-definition" brl:render="emph2">foo</dtb:em>
+        <dtb:em brl:render="emph2">foo</dtb:em>
       </x:context>
       <x:expect label="result">!_FOO</x:expect>
    </x:scenario>
    <x:scenario label="Multi word emphasis">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <dtb:em xmlns:utfx="http://utfx.org/test-definition" brl:render="emph2">foo bar</dtb:em>
+        <dtb:em brl:render="emph2">foo bar</dtb:em>
       </x:context>
       <x:expect label="result">!!_FOO BAR!.</x:expect>
    </x:scenario>
    <x:scenario label="Single word mixed emphasis">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+        <stub xml:lang="de">
             <dtb:em brl:render="emph2">Foo</dtb:em>bar</stub>
       </x:context>
       <x:expect label="result">!_FOO!.BAR</x:expect>
@@ -28,7 +28,7 @@
    <x:scenario label="Single word mixed emphasis">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">Foo<dtb:em brl:render="emph2">bar</dtb:em>
+        <stub xml:lang="de">Foo<dtb:em brl:render="emph2">bar</dtb:em>
          </stub>
       </x:context>
       <x:expect label="result">FOO!_BAR</x:expect>
@@ -36,7 +36,7 @@
    <x:scenario label="Single word mixed emphasis">
       <x:param name="contraction" select="1"/>
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">Foo<dtb:em brl:render="emph2">bar</dtb:em>baz</stub>
+        <stub xml:lang="de">Foo<dtb:em brl:render="emph2">bar</dtb:em>baz</stub>
       </x:context>
       <x:expect label="result">FOO!_BAR!.BAZ</x:expect>
    </x:scenario>

@@ -6,7 +6,7 @@
    <x:scenario label="Whitespace between brl:date und brl:time inside bridgehead is removed, http://redmine.sbszh.ch/issues/2625">
       <x:param name="contraction" select="2"/>
       <x:context>
-	        <dtb:bridgehead xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+	        <dtb:bridgehead xml:lang="de">
             <brl:date value="1945-01-26">26.01.1945</brl:date> 
             <brl:time value="23:30">23:30</brl:time>
          </dtb:bridgehead>
@@ -18,7 +18,7 @@ y BRIDGE
    <x:scenario label="Whitespace between brl:date und brl:time inside hd is removed, http://redmine.sbszh.ch/issues/2625">
       <x:param name="contraction" select="2"/>
       <x:context>
-	        <dtb:hd xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+	        <dtb:hd xml:lang="de">
             <brl:date value="1945-01-26">26.01.1945</brl:date> 
             <brl:time value="23:30">23:30</brl:time>
          </dtb:hd>

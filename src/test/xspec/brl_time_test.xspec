@@ -6,49 +6,49 @@
    <x:scenario label="time">
       <x:param name="contraction" select="2"/>
       <x:context>
-	        <brl:time xmlns:utfx="http://utfx.org/test-definition" xml:lang="de" value="09:30">09:30</brl:time>
+	        <brl:time xml:lang="de" value="09:30">09:30</brl:time>
       </x:context>
       <x:expect label="result">#JI':#CJ</x:expect>
    </x:scenario>
    <x:scenario label="time using period">
       <x:param name="contraction" select="2"/>
       <x:context>
-	        <brl:time xmlns:utfx="http://utfx.org/test-definition" xml:lang="de" value="09:30">09.30</brl:time>
+	        <brl:time xml:lang="de" value="09:30">09.30</brl:time>
       </x:context>
       <x:expect label="result">#JI.CJ</x:expect>
    </x:scenario>
    <x:scenario label="time using period without leading zero">
       <x:param name="contraction" select="2"/>
       <x:context>
-	        <brl:time xmlns:utfx="http://utfx.org/test-definition" xml:lang="de" value="09:30">9.30</brl:time>
+	        <brl:time xml:lang="de" value="09:30">9.30</brl:time>
       </x:context>
       <x:expect label="result">#I.CJ</x:expect>
    </x:scenario>
    <x:scenario label="brl:time I">
       <x:param name="contraction" select="2"/>
       <x:context>
-	        <brl:time xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">2:55:18.4</brl:time>
+	        <brl:time xml:lang="de">2:55:18.4</brl:time>
       </x:context>
       <x:expect label="result">#B':#EE':#AH.D</x:expect>
    </x:scenario>
    <x:scenario label="brl:time II">
       <x:param name="contraction" select="2"/>
       <x:context>
-	        <brl:time xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">2:55:18,4</brl:time>
+	        <brl:time xml:lang="de">2:55:18,4</brl:time>
       </x:context>
       <x:expect label="result">#B':#EE':#AH,D</x:expect>
    </x:scenario>
    <x:scenario label="brl:time III">
       <x:param name="contraction" select="2"/>
       <x:context>
-	        <brl:time xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">2:55.18,4</brl:time>
+	        <brl:time xml:lang="de">2:55.18,4</brl:time>
       </x:context>
       <x:expect label="result">#B':#EE.AH,D</x:expect>
    </x:scenario>
    <x:scenario label="brl:time IV">
       <x:param name="contraction" select="2"/>
       <x:context>
-	        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+	        <stub xml:lang="de">
 	           <brl:time>4:20</brl:time> Uhr
 	  <brl:time>04:20</brl:time> Uhr
 	</stub>
@@ -58,7 +58,7 @@
    <x:scenario label="brl:time V">
       <x:param name="contraction" select="2"/>
       <x:context>
-	        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+	        <stub xml:lang="de">
 	           <brl:time>4.20</brl:time> Uhr
 	  <brl:time>04.20</brl:time> Uhr
 	</stub>

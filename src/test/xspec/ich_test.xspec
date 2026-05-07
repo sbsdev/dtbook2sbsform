@@ -6,7 +6,7 @@
    <x:scenario label="&#34;ich&#34; innerhalb em vor Komma (http://redmine.sbszh.ch/issues/show/944)">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+        <stub xml:lang="de">
             <dtb:em>ich</dtb:em>, </stub>
       </x:context>
       <x:expect label="result">_I4, </x:expect>
@@ -14,7 +14,7 @@
    <x:scenario label="&#34;ich&#34; innerhalb em vor Klammer (http://redmine.sbszh.ch/issues/show/944)">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+        <stub xml:lang="de">
             <dtb:em>ich</dtb:em>) </stub>
       </x:context>
       <x:expect label="result">_I4= </x:expect>
@@ -22,7 +22,7 @@
    <x:scenario label="&#34;ich&#34; innerhalb em vor Klammer (http://redmine.sbszh.ch/issues/show/944)">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+        <stub xml:lang="de">
             <dtb:em>(ich</dtb:em>) </stub>
       </x:context>
       <x:expect label="result">_=I4= </x:expect>
@@ -30,7 +30,7 @@
    <x:scenario label="&#34;mich&#34; innerhalb em vor Klammer (http://redmine.sbszh.ch/issues/show/944)">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+        <stub xml:lang="de">
             <dtb:em>mich</dtb:em>) </stub>
       </x:context>
       <x:expect label="result">_M#= </x:expect>
@@ -38,56 +38,56 @@
    <x:scenario label="ich I">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">ich</stub>
+        <stub xml:lang="de">ich</stub>
       </x:context>
       <x:expect label="result">#</x:expect>
    </x:scenario>
    <x:scenario label="ich II">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">ich.</stub>
+        <stub xml:lang="de">ich.</stub>
       </x:context>
       <x:expect label="result">#.</x:expect>
    </x:scenario>
    <x:scenario label="ich III">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">ich,</stub>
+        <stub xml:lang="de">ich,</stub>
       </x:context>
       <x:expect label="result">I4,</x:expect>
    </x:scenario>
    <x:scenario label="ich IV">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">ich;</stub>
+        <stub xml:lang="de">ich;</stub>
       </x:context>
       <x:expect label="result">I4;</x:expect>
    </x:scenario>
    <x:scenario label="ich V">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">ich:</stub>
+        <stub xml:lang="de">ich:</stub>
       </x:context>
       <x:expect label="result">I4:</x:expect>
    </x:scenario>
    <x:scenario label="ich VI">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">ich!</stub>
+        <stub xml:lang="de">ich!</stub>
       </x:context>
       <x:expect label="result">I4+</x:expect>
    </x:scenario>
    <x:scenario label="ich VII">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">ich?</stub>
+        <stub xml:lang="de">ich?</stub>
       </x:context>
       <x:expect label="result">I4?</x:expect>
    </x:scenario>
    <x:scenario label="ich inside em I">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+        <stub xml:lang="de">
             <dtb:em>ich</dtb:em>
          </stub>
       </x:context>
@@ -96,7 +96,7 @@
    <x:scenario label="ich inside em II">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+        <stub xml:lang="de">
             <dtb:em>ich.</dtb:em>
          </stub>
       </x:context>
@@ -105,7 +105,7 @@
    <x:scenario label="ich inside em III">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+        <stub xml:lang="de">
             <dtb:em>ich,</dtb:em>
          </stub>
       </x:context>
@@ -114,7 +114,7 @@
    <x:scenario label="ich inside em IV">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+        <stub xml:lang="de">
             <dtb:em>ich;</dtb:em>
          </stub>
       </x:context>
@@ -123,7 +123,7 @@
    <x:scenario label="ich inside em V">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+        <stub xml:lang="de">
             <dtb:em>ich:</dtb:em>
          </stub>
       </x:context>
@@ -132,7 +132,7 @@
    <x:scenario label="ich inside em VI">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+        <stub xml:lang="de">
             <dtb:em>ich!</dtb:em>
          </stub>
       </x:context>
@@ -141,7 +141,7 @@
    <x:scenario label="ich inside em VII">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+        <stub xml:lang="de">
             <dtb:em>ich?</dtb:em>
          </stub>
       </x:context>
@@ -150,56 +150,56 @@
    <x:scenario label="All-Caps ich I">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">ICH</stub>
+        <stub xml:lang="de">ICH</stub>
       </x:context>
       <x:expect label="result">#</x:expect>
    </x:scenario>
    <x:scenario label="All-Caps ich II">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">ICH.</stub>
+        <stub xml:lang="de">ICH.</stub>
       </x:context>
       <x:expect label="result">#.</x:expect>
    </x:scenario>
    <x:scenario label="All-Caps ich III">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">ICH,</stub>
+        <stub xml:lang="de">ICH,</stub>
       </x:context>
       <x:expect label="result">I4,</x:expect>
    </x:scenario>
    <x:scenario label="All-Caps ich IV">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">ICH;</stub>
+        <stub xml:lang="de">ICH;</stub>
       </x:context>
       <x:expect label="result">I4;</x:expect>
    </x:scenario>
    <x:scenario label="All-Caps ich V">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">ICH:</stub>
+        <stub xml:lang="de">ICH:</stub>
       </x:context>
       <x:expect label="result">I4:</x:expect>
    </x:scenario>
    <x:scenario label="All-Caps ich VI">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">ICH!</stub>
+        <stub xml:lang="de">ICH!</stub>
       </x:context>
       <x:expect label="result">I4+</x:expect>
    </x:scenario>
    <x:scenario label="All-Caps ich VII">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">ICH?</stub>
+        <stub xml:lang="de">ICH?</stub>
       </x:context>
       <x:expect label="result">I4?</x:expect>
    </x:scenario>
    <x:scenario label="All-Caps ich inside em I">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+        <stub xml:lang="de">
             <dtb:em>ICH</dtb:em>
          </stub>
       </x:context>
@@ -208,7 +208,7 @@
    <x:scenario label="All-Caps ich inside em II">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+        <stub xml:lang="de">
             <dtb:em>ICH</dtb:em>.</stub>
       </x:context>
       <x:expect label="result">_#.</x:expect>
@@ -216,7 +216,7 @@
    <x:scenario label="All-Caps ich inside em III">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+        <stub xml:lang="de">
             <dtb:em>ICH</dtb:em>,</stub>
       </x:context>
       <x:expect label="result">_I4,</x:expect>
@@ -224,7 +224,7 @@
    <x:scenario label="All-Caps ich inside em IV">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+        <stub xml:lang="de">
             <dtb:em>ICH</dtb:em>;</stub>
       </x:context>
       <x:expect label="result">_I4;</x:expect>
@@ -232,7 +232,7 @@
    <x:scenario label="All-Caps ich inside em V">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+        <stub xml:lang="de">
             <dtb:em>ICH</dtb:em>:</stub>
       </x:context>
       <x:expect label="result">_I4:</x:expect>
@@ -240,7 +240,7 @@
    <x:scenario label="All-Caps ich inside em VI">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+        <stub xml:lang="de">
             <dtb:em>ICH</dtb:em>!</stub>
       </x:context>
       <x:expect label="result">_I4+</x:expect>
@@ -248,7 +248,7 @@
    <x:scenario label="All-Caps ich inside em VII">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+        <stub xml:lang="de">
             <dtb:em>ICH</dtb:em>?</stub>
       </x:context>
       <x:expect label="result">_I4?</x:expect>
@@ -256,56 +256,56 @@
    <x:scenario label="Capitalized ich I">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">Ich</stub>
+        <stub xml:lang="de">Ich</stub>
       </x:context>
       <x:expect label="result">#</x:expect>
    </x:scenario>
    <x:scenario label="Capitalized ich II">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">Ich.</stub>
+        <stub xml:lang="de">Ich.</stub>
       </x:context>
       <x:expect label="result">#.</x:expect>
    </x:scenario>
    <x:scenario label="Capitalized ich III">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">Ich,</stub>
+        <stub xml:lang="de">Ich,</stub>
       </x:context>
       <x:expect label="result">I4,</x:expect>
    </x:scenario>
    <x:scenario label="Capitalized ich IV">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">Ich;</stub>
+        <stub xml:lang="de">Ich;</stub>
       </x:context>
       <x:expect label="result">I4;</x:expect>
    </x:scenario>
    <x:scenario label="Capitalized ich V">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">Ich:</stub>
+        <stub xml:lang="de">Ich:</stub>
       </x:context>
       <x:expect label="result">I4:</x:expect>
    </x:scenario>
    <x:scenario label="Capitalized ich VI">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">Ich!</stub>
+        <stub xml:lang="de">Ich!</stub>
       </x:context>
       <x:expect label="result">I4+</x:expect>
    </x:scenario>
    <x:scenario label="Capitalized ich VII">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">Ich?</stub>
+        <stub xml:lang="de">Ich?</stub>
       </x:context>
       <x:expect label="result">I4?</x:expect>
    </x:scenario>
    <x:scenario label="Capitalized ich inside em I">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+        <stub xml:lang="de">
             <dtb:em>Ich</dtb:em>
          </stub>
       </x:context>
@@ -314,7 +314,7 @@
    <x:scenario label="Capitalized ich inside em II">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+        <stub xml:lang="de">
             <dtb:em>Ich.</dtb:em>
          </stub>
       </x:context>
@@ -323,7 +323,7 @@
    <x:scenario label="Capitalized ich inside em III">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+        <stub xml:lang="de">
             <dtb:em>Ich,</dtb:em>
          </stub>
       </x:context>
@@ -332,7 +332,7 @@
    <x:scenario label="Capitalized ich inside em IV">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+        <stub xml:lang="de">
             <dtb:em>Ich;</dtb:em>
          </stub>
       </x:context>
@@ -341,7 +341,7 @@
    <x:scenario label="Capitalized ich inside em V">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+        <stub xml:lang="de">
             <dtb:em>Ich:</dtb:em>
          </stub>
       </x:context>
@@ -350,7 +350,7 @@
    <x:scenario label="Capitalized ich inside em VI">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+        <stub xml:lang="de">
             <dtb:em>Ich!</dtb:em>
          </stub>
       </x:context>
@@ -359,7 +359,7 @@
    <x:scenario label="Capitalized ich inside em VII">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+        <stub xml:lang="de">
             <dtb:em>Ich?</dtb:em>
          </stub>
       </x:context>
