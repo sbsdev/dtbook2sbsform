@@ -122,6 +122,8 @@ public class XSpecTest {
             failures.add("Scenario [" + label + "]: no x:expect found");
             return;
         }
+        // Strip indent="yes" whitespace-only text nodes from expect just as we do for context.
+        stripWhitespaceOnlyTextNodes(expectEl);
         String expected = normalizeLineEndings(expectEl.getTextContent());
 
         // Import all context elements into a single fresh document so:
