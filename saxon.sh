@@ -18,8 +18,8 @@
 # License along with this program. If not, see
 # <http://www.gnu.org/licenses/>.
 
-# Set classpath
+# Set classpath — all runtime JARs land in lib/ via Maven dependency plugin
 DIR=`dirname $0`
-CP=$DIR/lib/saxon9he.jar:$DIR/lib/louis-1.0.jar:$DIR/lib/jna.jar:$DIR/lib/liblouissaxonx.jar
+CP=$(find "$DIR/lib" -name '*.jar' | tr '\n' ':')$DIR/linebreaker.jar
 
-java -cp $CP org.liblouis.LouisTransform "$@"
+java -cp $CP ch.sbs.dtbook2sbsform.SbsTransform "$@"

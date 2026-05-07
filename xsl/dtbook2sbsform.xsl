@@ -81,13 +81,13 @@
   <!-- Queries for block vs inline -->
   <!-- =========================== -->
 
-  <!-- Wrapper around louis:translate that normalises U+2011 (non-breaking hyphen) back to a
-       regular hyphen. The official liblouis-java bindings pass U+2011 through unchanged; the
-       old SBS bindings stripped it. Braille output has no use for the non-breaking property. -->
+  <!-- Thin wrapper around louis:translate.  Soft-hyphen pre-processing (U+00AD → 't'/'m'
+       markers) and U+2011 normalisation are handled by LouisTranslateFunction.java, which
+       replaces the standard LouisExtensionFunctionDefinition for both tests and production. -->
   <xsl:function name="my:translate" as="xs:string">
     <xsl:param name="table" as="xs:string"/>
     <xsl:param name="text" as="xs:string"/>
-    <xsl:value-of select="translate(louis:translate($table, $text), '&#x2011;', '-')"/>
+    <xsl:value-of select="louis:translate($table, $text)"/>
   </xsl:function>
 
   <!-- =========================== -->

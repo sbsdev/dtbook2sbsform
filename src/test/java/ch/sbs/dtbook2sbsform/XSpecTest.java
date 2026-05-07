@@ -4,7 +4,7 @@ import net.sf.saxon.s9api.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import org.liblouis.LouisExtensionFunctionDefinition;
+import ch.sbs.dtbook2sbsform.LouisTranslateFunction;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -32,7 +32,7 @@ public class XSpecTest {
 
     static {
         PROCESSOR = new Processor(false);
-        PROCESSOR.registerExtensionFunction(new LouisExtensionFunctionDefinition());
+        PROCESSOR.registerExtensionFunction(new LouisTranslateFunction());
     }
 
     private final File xspecFile;
