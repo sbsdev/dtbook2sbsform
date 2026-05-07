@@ -1,0 +1,72 @@
+* TODO Investigate replacing XSpecTest.java with a proper xspec-maven-plugin
+
+We wrote a custom JUnit runner (~200 lines, =src/test/java/ch/sbs/dtbook2sbsform/XSpecTest.java=)
+instead of using the standard =io.xspec.maven:xspec-maven-plugin= because no published version of
+that plugin is compatible with Saxon 12.
+
+** Why the plugin fails
+
+1. *Saxon 12 changed its XML resolver API.* The plugin uses a helper library
+   (=top.marchand.xml.maven:saxon.options.mvn.utils=) to set up a catalog resolver before running
+   any XSpec. That helper calls =XMLResolverConfiguration=, a class that only exists in
+   =org.xmlresolver= 5.x. The plugin's own POM pins =xmlresolver:1.0.6=, which doesn't have it.
+
+2. *The error is swallowed.* When the catalog setup throws an =IllegalArgumentException=, the
+   plugin's =execute()= method catches it with a broad =catch (Exception e)= block and tries to
+   carry on to generate a report. But at that point =processedFiles= was never initialised, so a
+   secondary =NullPointerException= fires instead — and /that's/ what Maven reports. The real cause
+   is never shown. The misleading error message is:
+   #+begin_example
+   no execution has been done. processedFiles is null
+   #+end_example
+
+3. *No compatible version exists (yet).* The DAISY fork (=org.daisy.maven:xspec-maven-plugin=) has
+   the same problem — it also targets Saxon 9.8. There is no published xspec-maven-plugin that
+   works with Saxon 12.
+
+4. *Downgrading Saxon is not an option* because =liblouis-saxon-extension= requires Saxon 12 (it
+   implements =net.sf.saxon.lib.ExtensionFunctionDefinition= from the Saxon 12 API).
+
+** What to investigate
+
+- Check whether =org.daisy.maven:xspec-maven-plugin= has been updated or has an open issue/PR for
+  Saxon 12 support.
+- If a fixed version becomes available, replace =XSpecTest.java= and the surefire configuration
+  in =pom.xml= with the plugin.
+
+* TODO Fix whitespace corruption in the converted XSpec files
+
+The UTFX test sources had carefully crafted whitespace inside =<utfx:source>= elements (e.g. a
+single space between two inline elements). The converter (=tools/utfx2xspec.xsl=) ran with
+=<xsl:output indent="yes"/>= which caused Saxon to reformat the output and inject extra indentation
+whitespace text nodes inside =<x:context>= elements.
+
+The current workaround in =XSpecTest.java= strips text nodes that start with =\n= (indentation
+artifacts) and trims the expected/actual strings before comparing. This is fragile and may hide real
+whitespace bugs.
+
+The proper fix is to regenerate the XSpec files with =indent="no"= in the converter (or use
+=indent="yes"= but with =saxon:suppress-indentation= on elements with mixed content), so the
+context elements faithfully reflect the original UTFX sources. The workarounds in the runner could
+then be removed.
+
+* TODO Investigate the 18 pre-existing XSpec test failures
+
+=mvn test= reports 15 of 54 XSpec files as failing (with the generated liblouis tables in place).
+These failures existed before the Maven migration (they were also present under the UTFX framework).
+Categories:
+
+- *Braille contraction differences*: expected output uses contractions (e.g. =m+Z3G7=) that the
+  current liblouis version no longer produces. The liblouis tables or contraction rules may have
+  changed since the tests were written.
+- *Hyphen vs non-breaking hyphen*: expected uses a regular hyphen (U+002D) but the XSLT outputs a
+  non-breaking hyphen (U+2011) in certain contexts (=minus_test=, =wortersatzstrich_test=).
+- *Missing liblouis tables*: some tables under =/usr/local/share/liblouis/tables/= (e.g.
+  =sbs-de-g1-white.mod=) are not shipped by the =sbs-braille-tables= package but are generated
+  by a production cron job. They must be created manually in development environments before
+  tests that reference them will pass.
+- *=getTable= tests return empty*: =getTable_test.xspec= uses a plain =<p>= element (no namespace)
+  as context; the XSLT has no matching template for it so output is empty. The original UTFX test
+  may have called the =getTable= named template differently.
+- *Trailing whitespace differences*: the XSLT generates different trailing whitespace on some
+  braille output lines than the expected strings specify.
