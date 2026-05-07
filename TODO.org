@@ -43,6 +43,11 @@ and requires manual setup on every new development machine.
 The extension should be published to Maven Central (or at minimum to a public Maven repository)
 so that the dependency can be resolved automatically like any other.
 
+* TODO Add a GitHub Actions workflow to build and publish the deb on release tags
+
+Once =liblouis-saxon-extension= is on Maven Central, add a workflow that triggers on =v*= tags,
+runs =mvn package=, and uploads the =.deb= as a GitHub release asset.
+
 * TODO Fix whitespace corruption in the converted XSpec files
 
 The UTFX test sources had carefully crafted whitespace inside =<utfx:source>= elements (e.g. a
