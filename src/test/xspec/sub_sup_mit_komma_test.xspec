@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
+               xmlns:dtb="http://www.daisy.org/z3986/2005/dtbook/"
+               xmlns:brl="http://www.daisy.org/z3986/2009/braille/"
+               stylesheet="../../../xsl/dtbook2sbsform.xsl">
+   <x:scenario label="sup als Exponent (mit Komma)">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">2<dtb:sup>23</dtb:sup>, x<dtb:sup>2</dtb:sup>, x<dtb:sup>-2</dtb:sup>, </dtb:p>
+      </x:context>
+      <x:expect label="result">
+y P
+ #B\;:', 'X\;', 'X\-;', </x:expect>
+   </x:scenario>
+   <x:scenario label="sup als oberer Index (mit Komma)">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+            <dtb:abbr>Cu</dtb:abbr>
+            <dtb:sup>2+</dtb:sup>, </dtb:p>
+      </x:context>
+      <x:expect label="result">
+y P
+ $CU\#B"+', </x:expect>
+   </x:scenario>
+   <x:scenario label="sub als unterer Index (mit Komma)">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+            <dtb:abbr>CO</dtb:abbr>
+            <dtb:sub>2</dtb:sub>, </dtb:p>
+      </x:context>
+      <x:expect label="result">
+y P
+ &gt;CO1;', </x:expect>
+   </x:scenario>
+</x:description>

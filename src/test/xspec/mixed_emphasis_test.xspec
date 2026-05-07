@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
+               xmlns:dtb="http://www.daisy.org/z3986/2005/dtbook/"
+               xmlns:brl="http://www.daisy.org/z3986/2009/braille/"
+               stylesheet="../../../xsl/dtbook2sbsform.xsl">
+   <x:scenario label="Mixed emphasis word after">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+            <dtb:em>kursiv</dtb:em>blo</dtb:p>
+      </x:context>
+      <x:expect label="result">y P
+ _KURSIV'.BLO</x:expect>
+   </x:scenario>
+   <x:scenario label="Mixed emphasis word before">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">bla<dtb:em>kursiv</dtb:em>
+         </dtb:p>
+      </x:context>
+      <x:expect label="result">y P
+ BLA'_KURSIV</x:expect>
+   </x:scenario>
+   <x:scenario label="Mixed emphasis word on both sides">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">bla<dtb:em>kursiv</dtb:em>blo</dtb:p>
+      </x:context>
+      <x:expect label="result">y P
+ BLA'_KURSIV'.BLO</x:expect>
+   </x:scenario>
+   <x:scenario label="Mixed emphasis ellipsis after">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+            <dtb:em>kursiv</dtb:em>...blo</dtb:p>
+      </x:context>
+      <x:expect label="result">y P
+ _KURSIV'....BLO</x:expect>
+   </x:scenario>
+   <x:scenario label="Mixed emphasis ellipsis before">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">bla...<dtb:em>kursiv</dtb:em>
+         </dtb:p>
+      </x:context>
+      <x:expect label="result">y P
+ BLA...'_KURSIV</x:expect>
+   </x:scenario>
+   <x:scenario label="Mixed emphasis ellipsis on both sides">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">bla...<dtb:em>kursiv</dtb:em>...blo</dtb:p>
+      </x:context>
+      <x:expect label="result">y P
+ BLA...'_KURSIV'....BLO</x:expect>
+   </x:scenario>
+</x:description>

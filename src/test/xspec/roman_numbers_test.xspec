@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
+               xmlns:dtb="http://www.daisy.org/z3986/2005/dtbook/"
+               xmlns:brl="http://www.daisy.org/z3986/2009/braille/"
+               stylesheet="../../../xsl/dtbook2sbsform.xsl">
+   <x:scenario label="Römische Zahlen">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">Henry <brl:num role="roman">IV</brl:num>.
+          Auf Seite <brl:num role="roman">iii</brl:num> beginnt das Vorwort.</dtb:p>
+      </x:context>
+      <x:expect label="result">
+y P
+ HCR'Y &gt;IV. 1 S3( 'III ;G*NT D ,?W?T.</x:expect>
+   </x:scenario>
+   <x:scenario label="Roman number, http://redmine.sbszh.ch/issues/2634">
+      <x:param name="contraction" select="0"/>
+      <x:context>
+        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">Seite <brl:num role="roman">VI</brl:num>
+         </dtb:p>
+      </x:context>
+      <x:expect label="result">
+y P
+ SEITE &gt;VI</x:expect>
+   </x:scenario>
+   <x:scenario label="Roman number with characters following, http://redmine.sbszh.ch/issues/2634">
+      <x:param name="contraction" select="0"/>
+      <x:context>
+        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">Seite <brl:num role="roman">VI</brl:num>)  </dtb:p>
+      </x:context>
+      <x:expect label="result">
+y P
+ SEITE &gt;VI=</x:expect>
+   </x:scenario>
+   <x:scenario label="Roman number with characters following, http://redmine.sbszh.ch/issues/2634">
+      <x:param name="contraction" select="0"/>
+      <x:context>
+        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">Seite <brl:num role="roman">VI</brl:num>,  </dtb:p>
+      </x:context>
+      <x:expect label="result">
+y P
+ SEITE &gt;VI,</x:expect>
+   </x:scenario>
+   <x:scenario label="Roman number with characters following, http://redmine.sbszh.ch/issues/2634">
+      <x:param name="contraction" select="0"/>
+      <x:context>
+        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">Seite <brl:num role="roman">VI</brl:num>.  </dtb:p>
+      </x:context>
+      <x:expect label="result">
+y P
+ SEITE &gt;VI.</x:expect>
+   </x:scenario>
+   <x:scenario label="Roman number with characters following, http://redmine.sbszh.ch/issues/2634">
+      <x:param name="contraction" select="0"/>
+      <x:context>
+        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">Seite <brl:num role="roman">VI</brl:num>  
+         </dtb:p>
+      </x:context>
+      <x:expect label="result">
+y P
+ SEITE &gt;VI</x:expect>
+   </x:scenario>
+   <x:scenario label="Roman number with characters following, http://redmine.sbszh.ch/issues/2634">
+      <x:param name="contraction" select="0"/>
+      <x:context>
+        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">Seite <brl:num role="roman">VI</brl:num>ff. </dtb:p>
+      </x:context>
+      <x:expect label="result">
+y P
+ SEITE &gt;VI'FF.</x:expect>
+   </x:scenario>
+   <x:scenario label="Roman number with characters following, http://redmine.sbszh.ch/issues/2634">
+      <x:param name="contraction" select="0"/>
+      <x:context>
+        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">Seite <brl:num role="roman">VI</brl:num>UIUIUI </dtb:p>
+      </x:context>
+      <x:expect label="result">
+y P
+ SEITE &gt;VI'UIUIUI</x:expect>
+   </x:scenario>
+</x:description>

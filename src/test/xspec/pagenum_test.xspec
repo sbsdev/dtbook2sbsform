@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
+               xmlns:dtb="http://www.daisy.org/z3986/2005/dtbook/"
+               xmlns:brl="http://www.daisy.org/z3986/2009/braille/"
+               stylesheet="../../../xsl/dtbook2sbsform.xsl">
+   <x:scenario label="brl:volume und pagenum Bug #1290">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+            <dtb:level1>
+               <dtb:h1>Titel1</dtb:h1>
+               <dtb:p>bla</dtb:p>
+            </dtb:level1>
+            <brl:volume brl:grade="2"/>
+            <dtb:level1>
+               <dtb:pagenum id="page-165" page="normal">165</dtb:pagenum>
+               <dtb:h1>Titel2</dtb:h1>
+               <dtb:p>blo</dtb:p>
+            </dtb:level1>
+        </stub>
+      </x:context>
+      <x:expect label="result">
+y LEVEL1b
+.xNOPAGENUM
+
+y H1
+ TITY'#A
+
+y P
+ BLA
+y LEVEL1e
+
+y EndVol
+p
+
+j 165
+y BrlVol
+
+y LEVEL1b
+
+y H1
+ TITY'#B
+
+y P
+ BLO
+y LEVEL1e
+</x:expect>
+   </x:scenario>
+   <x:scenario label="brl:volume und pagnum">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">        
+	           <dtb:p>... bla bla.</dtb:p>
+	           <brl:volume brl:grade="2"/>
+	           <dtb:pagenum>75</dtb:pagenum>
+	           <dtb:p>Bla bla ...</dtb:p>
+        </stub>
+      </x:context>
+      <x:expect label="result">
+y P
+ ... BLA BLA.
+y EndVol
+p
+
+j 75
+y BrlVol
+
+y P
+ BLA BLA ...</x:expect>
+   </x:scenario>
+   <x:scenario label="brl:volume und pagnum with other contraction">
+      <x:param name="contraction" select="1"/>
+      <x:context>
+        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">        
+	           <dtb:p>... bla bla.</dtb:p>
+	           <brl:volume brl:grade="2"/>
+	           <dtb:pagenum>75</dtb:pagenum>
+	           <dtb:p>Bla bla ...</dtb:p>
+        </stub>
+      </x:context>
+      <x:expect label="result">
+y P
+ ... BLA BLA.
+j 75
+ 
+y P
+ BLA BLA ...</x:expect>
+   </x:scenario>
+   <x:scenario label="brl:volume und levelN/pagnum">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+	           <dtb:level1>
+	              <dtb:p>... bla bla.</dtb:p>
+	           </dtb:level1>
+	           <brl:volume brl:grade="2"/>
+	           <dtb:level1>
+	              <dtb:pagenum>75</dtb:pagenum>
+	              <dtb:h1>Titel</dtb:h1>
+	              <dtb:p>Bla bla ...</dtb:p>
+	           </dtb:level1>
+        </stub>
+      </x:context>
+      <x:expect label="result">
+y LEVEL1b
+.xNOPAGENUM
+
+y P
+ ... BLA BLA.
+y LEVEL1e
+
+y EndVol
+p
+
+j 75
+y BrlVol
+
+y LEVEL1b
+
+y H1
+ TITY
+
+y P
+ BLA BLA ...
+y LEVEL1e
+</x:expect>
+   </x:scenario>
+   <x:scenario label="brl:volume und levelN/pagnum with other contraction">
+      <x:param name="contraction" select="1"/>
+      <x:context>
+        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+	           <dtb:level1>
+	              <dtb:p>... bla bla.</dtb:p>
+	           </dtb:level1>
+	           <brl:volume brl:grade="2"/>
+	           <dtb:level1>
+	              <dtb:pagenum>75</dtb:pagenum>
+	              <dtb:h1>Titel</dtb:h1>
+	              <dtb:p>Bla bla ...</dtb:p>
+	           </dtb:level1>
+        </stub>
+      </x:context>
+      <x:expect label="result">
+y LEVEL1b
+.xNOPAGENUM
+
+y P
+ ... BLA BLA.
+y LEVEL1e
+
+y LEVEL1b
+
+j 75
+ 
+y H1
+ TITEL
+
+y P
+ BLA BLA ...
+y LEVEL1e
+</x:expect>
+   </x:scenario>
+   <x:scenario label="Missing page numbers I, https://github.com/sbsdev/dtbook2sbsform/issues/18">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+	           <dtb:level1>
+	              <dtb:p>foo</dtb:p>
+	              <dtb:pagenum id="page-76" page="normal">76</dtb:pagenum>
+	              <dtb:p>bar</dtb:p>
+	              <brl:volume brl:grade="2"/>
+	              <dtb:level2>
+	                 <dtb:pagenum id="page-77" page="normal">77</dtb:pagenum>
+	                 <dtb:p>baz</dtb:p>
+	              </dtb:level2>
+	           </dtb:level1>
+        </stub>
+      </x:context>
+      <x:expect label="result">
+y LEVEL1b
+.xNOPAGENUM
+
+y P
+ FOO
+j 76
+ 
+y P
+ BAR
+y EndVol
+p
+
+j 77
+y BrlVol
+
+y LEVEL2b
+
+y P
+ BAZ
+y LEVEL2e
+
+y LEVEL1e
+</x:expect>
+   </x:scenario>
+   <x:scenario label="Missing page numbers II, https://github.com/sbsdev/dtbook2sbsform/issues/18">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+	           <dtb:level1>
+	              <dtb:p>foo</dtb:p>
+	              <dtb:pagenum id="page-76" page="normal">76</dtb:pagenum>
+	              <dtb:p>bar</dtb:p>
+	              <brl:volume brl:grade="2"/>
+	              <dtb:level2>
+	                 <dtb:p>bla</dtb:p>
+	                 <dtb:pagenum id="page-77" page="normal">77</dtb:pagenum>
+	                 <dtb:p>baz</dtb:p>
+	              </dtb:level2>
+	           </dtb:level1>
+        </stub>
+      </x:context>
+      <x:expect label="result">
+y LEVEL1b
+.xNOPAGENUM
+
+y P
+ FOO
+j 76
+ 
+y P
+ BAR
+y EndVol
+y BrlVol
+
+y LEVEL2b
+.xNOPAGENUM
+
+y P
+ BLA
+j 77
+ 
+y P
+ BAZ
+y LEVEL2e
+
+y LEVEL1e
+</x:expect>
+   </x:scenario>
+</x:description>

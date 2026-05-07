@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
+               xmlns:dtb="http://www.daisy.org/z3986/2005/dtbook/"
+               xmlns:brl="http://www.daisy.org/z3986/2009/braille/"
+               stylesheet="../../../xsl/dtbook2sbsform.xsl">
+   <x:scenario label="covertitle">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <dtb:covertitle xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">foo</dtb:covertitle>
+      </x:context>
+      <x:expect label="result">
+xxx Was originally a dtb:covertitle
+y P
+ FOO</x:expect>
+   </x:scenario>
+   <x:scenario label="dateline">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <dtb:dateline xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">foo</dtb:dateline>
+      </x:context>
+      <x:expect label="result">
+xxx Was originally a dtb:dateline
+y P
+ FOO</x:expect>
+   </x:scenario>
+</x:description>

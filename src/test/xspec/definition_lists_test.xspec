@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
+               xmlns:dtb="http://www.daisy.org/z3986/2005/dtbook/"
+               xmlns:brl="http://www.daisy.org/z3986/2009/braille/"
+               stylesheet="../../../xsl/dtbook2sbsform.xsl">
+   <x:scenario label="Definition list">
+      <x:context>
+        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+            <dtb:dl>
+               <dtb:dt>Zug:</dtb:dt>
+               <dtb:dd>Fortbewegungsmittel, mit viel Eisen drumherum.</dtb:dd>
+               <dtb:dt>Banane:</dtb:dt>
+               <dtb:dd>Ist eine Frucht, die gelb ist und grün war.</dtb:dd>
+               <dtb:dt>Stuhl:</dtb:dt>
+               <dtb:dd>Was zum Draufsitzen. Hat 4 Beine wie ein Hundeli oder ne Geiss.</dtb:dd>
+               <dtb:dt>Pilz:</dtb:dt>
+               <dtb:dd>Wächst am Fuss. Kann man aber auch essen und pflücken.</dtb:dd>
+            </dtb:dl>
+        </stub>
+      </x:context>
+      <x:expect label="result">
+y DLb
+
+y DTb
+ ZUG:
+y DTe
+y DDb
+ F?T;WGUSMT, T VL 3SC DRUMH7UM.
+y DDe
+y DTb
+ B++E:
+y DTe
+y DDb
+ ] 6E FRU4T, 0 GYB ] U GR8N ).
+y DDe
+y DTb
+ ]UHL:
+y DTe
+y DDb
+ W ZM DR,1,IC. HT #D B6E 2 6 H/DELI O NE G3^.
+y DDe
+y DTb
+ PILZ:
+y DTe
+y DDb
+ W@4] AM FU^. K M A \ E^C U PFL8$C.
+y DDe
+y DLe
+</x:expect>
+   </x:scenario>
+</x:description>

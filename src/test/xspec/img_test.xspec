@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
+               xmlns:dtb="http://www.daisy.org/z3986/2005/dtbook/"
+               xmlns:brl="http://www.daisy.org/z3986/2009/braille/"
+               stylesheet="../../../xsl/dtbook2sbsform.xsl">
+   <x:scenario label="Image">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <dtb:img xmlns:utfx="http://utfx.org/test-definition" alt="foo" xml:lang="de"/>
+      </x:context>
+      <x:expect label="result">
+y IMG
+ FOO
+</x:expect>
+   </x:scenario>
+   <x:scenario label="Image w/o alt text">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <dtb:img xmlns:utfx="http://utfx.org/test-definition" xml:lang="de"/>
+      </x:context>
+      <x:expect label="result">
+y IMG
+ 
+</x:expect>
+   </x:scenario>
+   <x:scenario label="Image with empty alt text">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <dtb:img xmlns:utfx="http://utfx.org/test-definition" alt="" xml:lang="de"/>
+      </x:context>
+      <x:expect label="result">
+y IMG
+ 
+</x:expect>
+   </x:scenario>
+   <x:scenario label="Imagegroup">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+	        <dtb:imggroup xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+            <dtb:img alt="foo"/>
+	        </dtb:imggroup>
+      </x:context>
+      <x:expect label="result">
+y IMGGRb
+
+y IMG
+ FOO
+
+y IMGGRe
+</x:expect>
+   </x:scenario>
+   <x:scenario label="Caption">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+	        <dtb:caption xmlns:utfx="http://utfx.org/test-definition" xml:lang="de" imgref="img1_1">Abb. 23: By the way, Sam, as someday you'll be paying for my, I'd like to thank you in advance.</dtb:caption>
+      </x:context>
+      <x:expect label="result">
+y CAPTION
+ ABB. #BC': B'Y THE WA'Y, SAM, AS SOMEDA'Y 'YOU'LL BE PA'Y*G FOR M'Y, I'D LIKE TO TH+K 'YOU * ADV+'CE.</x:expect>
+   </x:scenario>
+   <x:scenario label="Big imagegroup">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <dtb:imggroup xmlns:utfx="http://utfx.org/test-definition" id="imggrp_2" xml:lang="de">
+            <dtb:img id="img1_1" src="fig1_01.png" alt="someday"/>
+            <dtb:caption imgref="img1_1">Abb. 23: By the way, Sam, as someday you'll be paying for my, I'd like to thank you in advance.</dtb:caption>
+        </dtb:imggroup>
+      </x:context>
+      <x:expect label="result">
+y IMGGRb
+
+y IMG
+ SOMEDA'Y
+
+y CAPTION
+ ABB. #BC': B'Y THE WA'Y, SAM, AS SOMEDA'Y 'YOU'LL BE PA'Y*G FOR M'Y, I'D LIKE TO TH+K 'YOU * ADV+'CE.
+y IMGGRe
+</x:expect>
+   </x:scenario>
+</x:description>

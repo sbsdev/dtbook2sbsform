@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
+               xmlns:dtb="http://www.daisy.org/z3986/2005/dtbook/"
+               xmlns:brl="http://www.daisy.org/z3986/2009/braille/"
+               stylesheet="../../../xsl/handle-prodnote.xsl">
+   <x:scenario label="Empty Prodnote">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+        </stub>
+      </x:context>
+      <x:expect label="result">
+        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+        </stub>
+      </x:expect>
+   </x:scenario>
+   <x:scenario label="Inline Prodnote">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <dtb:prodnote xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">In der Blindenschriftausgabe wurden sämtliche Abbildungen weggelassen.</dtb:prodnote>
+      </x:context>
+      <x:expect label="result">
+	        <brl:literal xmlns:utfx="http://utfx.org/test-definition">'&lt;=</brl:literal>In der Blindenschriftausgabe wurden sämtliche Abbildungen weggelassen.<brl:literal xmlns:utfx="http://utfx.org/test-definition">'&lt;=</brl:literal>
+      </x:expect>
+   </x:scenario>
+   <x:scenario label="Block Prodnote">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+	        <dtb:prodnote xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+	           <dtb:p brl:class="ind">Anmerkung für die Blindenschriftausgabe:</dtb:p>
+	           <dtb:p brl:class="ind">Eine Zeichenerklärung befindet sich am Ende des Buches.</dtb:p>
+         </dtb:prodnote>
+      </x:context>
+      <x:expect label="result">
+	        <dtb:p xmlns:utfx="http://utfx.org/test-definition" brl:class="ind">
+            <brl:literal>'&lt;=</brl:literal>Anmerkung für die Blindenschriftausgabe:</dtb:p>
+         <dtb:p xmlns:utfx="http://utfx.org/test-definition" brl:class="ind">Eine Zeichenerklärung befindet sich am Ende des Buches.<brl:literal>'&lt;=</brl:literal>
+         </dtb:p>
+      </x:expect>
+   </x:scenario>
+</x:description>

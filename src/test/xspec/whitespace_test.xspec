@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
+               xmlns:dtb="http://www.daisy.org/z3986/2005/dtbook/"
+               xmlns:brl="http://www.daisy.org/z3986/2009/braille/"
+               stylesheet="../../../xsl/dtbook2sbsform.xsl">
+   <x:scenario label="NBSP inside whitespace">
+      <x:param name="contraction" select="0"/>
+      <x:context>
+	<!-- nbsb inside whitespace is dropped -->
+	<dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">Hallo             Huhu</dtb:p>
+      </x:context>
+      <x:expect label="result">
+y P
+ HALLO HUHU</x:expect>
+   </x:scenario>
+   <x:scenario label="Only NBSP">
+      <x:param name="contraction" select="0"/>
+      <x:context>
+	        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">Hallo Huhu</dtb:p>
+      </x:context>
+      <x:expect label="result">
+y P
+ HALLObHUHU</x:expect>
+   </x:scenario>
+   <x:scenario label="NBSP and normal whitespace">
+      <x:param name="contraction" select="0"/>
+      <x:context>
+	        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">Foo Bar Baz</dtb:p>
+      </x:context>
+      <x:expect label="result">
+y P
+ FOObBAR BAZ</x:expect>
+   </x:scenario>
+   <x:scenario label="Multiple NBSP">
+      <x:param name="contraction" select="0"/>
+      <x:context>
+	        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">Foo Bar Baz</dtb:p>
+      </x:context>
+      <x:expect label="result">
+y P
+ FOObBARbBAZ</x:expect>
+   </x:scenario>
+</x:description>

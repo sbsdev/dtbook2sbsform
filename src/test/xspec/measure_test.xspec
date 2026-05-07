@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
+               xmlns:dtb="http://www.daisy.org/z3986/2005/dtbook/"
+               xmlns:brl="http://www.daisy.org/z3986/2009/braille/"
+               stylesheet="../../../xsl/dtbook2sbsform.xsl">
+   <x:scenario label="measure m mit Dezimalkomma">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+	        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+            <brl:num role="measure">1,8 m</brl:num>
+         </stub>
+      </x:context>
+      <x:expect label="result">#A,H'M</x:expect>
+   </x:scenario>
+   <x:scenario label="measure m mit Dezimalpunkt">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+	        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+            <brl:num role="measure">1.8 m</brl:num>
+         </stub>
+      </x:context>
+      <x:expect label="result">#A.H'M</x:expect>
+   </x:scenario>
+   <x:scenario label="measure mm mit Dezimalpunkt">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+	        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+            <brl:num role="measure">1.8 mm</brl:num>
+         </stub>
+      </x:context>
+      <x:expect label="result">#A.H'MM</x:expect>
+   </x:scenario>
+   <x:scenario label="measure Hz mit Dezimalpunkt">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+	        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+            <brl:num role="measure">1.8 Hz</brl:num>
+         </stub>
+      </x:context>
+      <x:expect label="result">#A.H$HZ</x:expect>
+   </x:scenario>
+   <x:scenario label="measure MW mit Dezimalpunkt">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+	        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+            <brl:num role="measure">1.8 MW</brl:num>
+         </stub>
+      </x:context>
+      <x:expect label="result">#A.H&gt;MW</x:expect>
+   </x:scenario>
+   <x:scenario label="measure kW mit Dezimalpunkt">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+	        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+            <brl:num role="measure">1.8 kW</brl:num>
+         </stub>
+      </x:context>
+      <x:expect label="result">#A.H'K&gt;W</x:expect>
+   </x:scenario>
+   <x:scenario label="measure V mit Dezimalpunkt">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+	        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+            <brl:num role="measure">1.8 V</brl:num>
+         </stub>
+      </x:context>
+      <x:expect label="result">#A.H&gt;V</x:expect>
+   </x:scenario>
+   <x:scenario label="num role=measure &#34;14 km/h&#34; Bug #1523">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+            <brl:num role="measure">14 km/h</brl:num>
+         </dtb:p>
+      </x:context>
+      <x:expect label="result">
+y P
+ #AD'KM!,'H</x:expect>
+   </x:scenario>
+   <x:scenario label="24 mm Falsches Resultat bei brl:num role=&#34;measure&#34;, wenn Zeilenumbruch zwischen Zahl und Einheit steht Bug #1263">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+            <brl:num role="measure">24
+          mm</brl:num>
+         </dtb:p>
+      </x:context>
+      <x:expect label="result">
+y P
+ #BD'MM</x:expect>
+   </x:scenario>
+   <x:scenario label="test 1 for brl:num role=&#34;measure&#34;, wenn Zeilenumbruch zwischen Zahl und Einheit steht (http://redmine.sbszh.ch/issues/show/898)">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+            <brl:num role="measure">24 mm</brl:num>
+        </stub>
+      </x:context>
+      <x:expect label="result">#BD'MM</x:expect>
+   </x:scenario>
+   <x:scenario label="test 2 for brl:num role=&#34;measure&#34;, wenn Zeilenumbruch zwischen Zahl und Einheit steht (http://redmine.sbszh.ch/issues/show/898)">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+            <brl:num role="measure">24 
+mm</brl:num>
+        </stub>
+      </x:context>
+      <x:expect label="result">#BD'MM</x:expect>
+   </x:scenario>
+   <x:scenario label="test 3 for wenn Zeilenumbruch zwischen Zahl und Einheit steht sollte Leerzeichen getilgt werden (http://redmine.sbszh.ch/issues/show/898)">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+            <dtb:abbr>Nr.
+25</dtb:abbr>
+        </stub>
+      </x:context>
+      <x:expect label="result">NR.#BE</x:expect>
+   </x:scenario>
+   <x:scenario label="Whitespace after operator before measure">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">10 + <brl:num role="measure">5 m</brl:num> Umfang</dtb:p>
+      </x:context>
+      <x:expect label="result">
+y P
+ #AJ "+#E'M UMF+G</x:expect>
+   </x:scenario>
+   <x:scenario label="Whitespace after operator before measure">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">10 − <brl:num role="measure">5 m</brl:num> Umfang</dtb:p>
+      </x:context>
+      <x:expect label="result">
+y P
+ #AJ "-#E'M UMF+G</x:expect>
+   </x:scenario>
+   <x:scenario label="Whitespace after operator before measure">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">10 × <brl:num role="measure">5 m</brl:num> Umfang</dtb:p>
+      </x:context>
+      <x:expect label="result">
+y P
+ #AJ "(#E'M UMF+G</x:expect>
+   </x:scenario>
+   <x:scenario label="Whitespace after operator before measure">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">10 ÷ <brl:num role="measure">5 m</brl:num> Umfang</dtb:p>
+      </x:context>
+      <x:expect label="result">
+y P
+ #AJ ":#E'M UMF+G</x:expect>
+   </x:scenario>
+   <x:scenario label="Whitespace after operator before measure">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">10 = <brl:num role="measure">5 m</brl:num> Umfang</dtb:p>
+      </x:context>
+      <x:expect label="result">
+y P
+ #AJ "=#E'M UMF+G</x:expect>
+   </x:scenario>
+   <x:scenario label="Measure with number that cointains a decimal point, http://redmine.sbszh.ch/issues/2574">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+            <brl:num role="measure">300.000 sec</brl:num>
+         </stub>
+      </x:context>
+      <x:expect label="result">#CJJ.JJJ'SEC</x:expect>
+   </x:scenario>
+   <x:scenario label="Dot (separator) in number with measure unit, http://redmine.sbszh.ch/issues/2574">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">bla <brl:num role="measure">300.000 sec</brl:num> blo</stub>
+      </x:context>
+      <x:expect label="result">BLA #CJJ.JJJ'SEC BLO</x:expect>
+   </x:scenario>
+   <x:scenario label="Dot (separator) in number with measure unit, http://redmine.sbszh.ch/issues/2574">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">bla <brl:num role="measure">300.000 km/sec</brl:num> blo</stub>
+      </x:context>
+      <x:expect label="result">BLA #CJJ.JJJ'KM!,'SEC BLO</x:expect>
+   </x:scenario>
+   <x:scenario label="Square kilometers followed by period">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">bla <brl:num role="measure">30 km²</brl:num>. bla</dtb:p>
+      </x:context>
+      <x:expect label="result">y P
+ BLA #CJ'KM\;. BLA</x:expect>
+   </x:scenario>
+   <x:scenario label="Square kilometers followed by comma">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">bla <brl:num role="measure">30 km²</brl:num>, bla</dtb:p>
+      </x:context>
+      <x:expect label="result">y P
+ BLA #CJ'KM\;', BLA</x:expect>
+   </x:scenario>
+   <x:scenario label="Square kilometers followed by semicolon">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">bla <brl:num role="measure">30 km²</brl:num>; bla</dtb:p>
+      </x:context>
+      <x:expect label="result">y P
+ BLA #CJ'KM\;'; BLA</x:expect>
+   </x:scenario>
+   <x:scenario label="Square kilometers followed by colon">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">bla <brl:num role="measure">30 km²</brl:num>: bla</dtb:p>
+      </x:context>
+      <x:expect label="result">y P
+ BLA #CJ'KM\;': BLA</x:expect>
+   </x:scenario>
+   <x:scenario label="Square kilometers followed by question mark">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">bla <brl:num role="measure">30 km²</brl:num>? bla</dtb:p>
+      </x:context>
+      <x:expect label="result">y P
+ BLA #CJ'KM\;'? BLA</x:expect>
+   </x:scenario>
+   <x:scenario label="Square kilometers followed by exclamation mark">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">bla <brl:num role="measure">30 km²</brl:num>! bla</dtb:p>
+      </x:context>
+      <x:expect label="result">y P
+ BLA #CJ'KM\;'+ BLA</x:expect>
+   </x:scenario>
+   <x:scenario label="Square kilometers followed by right parenthesis">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">bla <brl:num role="measure">30 km²</brl:num>) bla</dtb:p>
+      </x:context>
+      <x:expect label="result">y P
+ BLA #CJ'KM\;'= BLA</x:expect>
+   </x:scenario>
+   <x:scenario label="Square kilometers followed by left-pointing double angle quotation mark">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">bla <brl:num role="measure">30 km²</brl:num>« bla</dtb:p>
+      </x:context>
+      <x:expect label="result">y P
+ BLA #CJ'KM\;') BLA</x:expect>
+   </x:scenario>
+</x:description>

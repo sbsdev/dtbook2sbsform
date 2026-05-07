@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
+               xmlns:dtb="http://www.daisy.org/z3986/2005/dtbook/"
+               xmlns:brl="http://www.daisy.org/z3986/2009/braille/"
+               stylesheet="../../../xsl/dtbook2sbsform.xsl">
+   <x:scenario label="Test handling of pre-hyphenated text">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">Ba­de­ho­sen­bun­des</dtb:p>
+      </x:context>
+      <x:expect label="result">
+y P
+ BAtDEtHOtSCtB/tD%</x:expect>
+   </x:scenario>
+   <x:scenario label="Test handling of pre-hyphenated text in doctitle">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <dtb:doctitle xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">Ba­de­ho­sen­bun­des</dtb:doctitle>
+      </x:context>
+      <x:expect label="result">BAtDEtHOtSCtB/tD%</x:expect>
+   </x:scenario>
+   <x:scenario label="Make sure bridgehead is not hyphenated">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <dtb:bridgehead xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">Ba­de­ho­sen­bun­des</dtb:bridgehead>
+      </x:context>
+      <x:expect label="result">
+y BRIDGE
+ BADEHOSCB/D%</x:expect>
+   </x:scenario>
+</x:description>

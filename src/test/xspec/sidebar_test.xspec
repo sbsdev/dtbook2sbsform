@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
+               xmlns:dtb="http://www.daisy.org/z3986/2005/dtbook/"
+               xmlns:brl="http://www.daisy.org/z3986/2009/braille/"
+               stylesheet="../../../xsl/dtbook2sbsform.xsl">
+   <x:scenario label="Sidebar">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <dtb:sidebar xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+            <dtb:hd>Wichtiger Merksatz:</dtb:hd>
+            <dtb:p>Kräht der Hahn auf dem Mist, ändert sich das Wetter oder es bleibt, wie es ist.</dtb:p>
+	        </dtb:sidebar>
+      </x:context>
+      <x:expect label="result">
+y SIDEBARb
+
+y HD
+ W#T&gt;7 M7KSZ:
+y P
+ KR@HT R HAHN 1 [ MI], !7T C D WETT7 O % BBT, 2 % ].
+y SIDEBARe
+</x:expect>
+   </x:scenario>
+</x:description>

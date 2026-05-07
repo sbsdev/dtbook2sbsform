@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
+               xmlns:dtb="http://www.daisy.org/z3986/2005/dtbook/"
+               xmlns:brl="http://www.daisy.org/z3986/2009/braille/"
+               stylesheet="../../../xsl/dtbook2sbsform.xsl">
+   <x:scenario label="title">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <dtb:title xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+	  foo
+	</dtb:title>
+      </x:context>
+      <x:expect label="result"> FOO </x:expect>
+   </x:scenario>
+   <x:scenario label="title inside poem">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+	        <dtb:poem xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+            <dtb:title>foo</dtb:title>
+	        </dtb:poem>
+      </x:context>
+      <x:expect label="result">
+y POEMb
+
+xxx Was originally a dtb:title
+
+y HD
+ FOO
+y POEMe
+</x:expect>
+   </x:scenario>
+</x:description>

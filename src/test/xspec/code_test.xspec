@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
+               xmlns:dtb="http://www.daisy.org/z3986/2005/dtbook/"
+               xmlns:brl="http://www.daisy.org/z3986/2009/braille/"
+               stylesheet="../../../xsl/dtbook2sbsform.xsl">
+   <x:scenario label="Code">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+	           <dtb:p>
+               <dtb:code>C:/ordner/inhalt_version_1</dtb:code>
+            </dtb:p>
+	        </stub>
+      </x:context>
+      <x:expect label="result">
+y P
+ '$"C:/ORDNER/INHALT"_VERSION"_1</x:expect>
+   </x:scenario>
+   <x:scenario label="Program listing">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+	           <dtb:p>
+               <dtb:code>for(i=0;i&lt;=12; i++ { blabla }</dtb:code>
+            </dtb:p>
+	        </stub>
+      </x:context>
+      <x:expect label="result">
+y P
+ $$FOR(I=0;I&lt;=12; I++ [ BLABLA ]'.</x:expect>
+   </x:scenario>
+</x:description>

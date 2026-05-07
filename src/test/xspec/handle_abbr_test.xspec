@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
+               xmlns:dtb="http://www.daisy.org/z3986/2005/dtbook/"
+               xmlns:brl="http://www.daisy.org/z3986/2009/braille/"
+               stylesheet="../../../xsl/dtbook2sbsform.xsl">
+   <x:scenario label="abbr GmbH">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+	        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+            <dtb:abbr>GmbH</dtb:abbr>
+         </stub>
+      </x:context>
+      <x:expect label="result">$GMB&gt;H</x:expect>
+   </x:scenario>
+   <x:scenario label="abbr USA">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+	        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+            <dtb:abbr>USA</dtb:abbr>
+         </stub>
+      </x:context>
+      <x:expect label="result">&gt;USA</x:expect>
+   </x:scenario>
+   <x:scenario label="abbr cd">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+	        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+            <dtb:abbr>cd</dtb:abbr>
+         </stub>
+      </x:context>
+      <x:expect label="result">'CD</x:expect>
+   </x:scenario>
+   <x:scenario label="abbr 3a">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+	        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">3<dtb:abbr>a</dtb:abbr>
+         </stub>
+      </x:context>
+      <x:expect label="result">#C'A</x:expect>
+   </x:scenario>
+   <x:scenario label="abbr Nr. 2">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+	        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+            <dtb:abbr>Nr. </dtb:abbr>2</stub>
+      </x:context>
+      <x:expect label="result">NR.#B</x:expect>
+   </x:scenario>
+   <x:scenario label="abbr z. B.">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+	        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+            <dtb:abbr>z. B.</dtb:abbr>
+         </stub>
+      </x:context>
+      <x:expect label="result">Z.B.</x:expect>
+   </x:scenario>
+   <x:scenario label="abbr w. z. b. w.">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+	        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+            <dtb:abbr>w. z. b. w.</dtb:abbr>
+         </stub>
+      </x:context>
+      <x:expect label="result">W.Z.B.W.</x:expect>
+   </x:scenario>
+   <x:scenario label="abbr etc.">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+	        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+            <dtb:abbr>etc.</dtb:abbr>
+         </stub>
+      </x:context>
+      <x:expect label="result">ET'C.</x:expect>
+   </x:scenario>
+   <x:scenario label="abbr a.">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+	        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+            <dtb:abbr>a.</dtb:abbr>
+         </stub>
+      </x:context>
+      <x:expect label="result">A.</x:expect>
+   </x:scenario>
+   <x:scenario label="notag wrt.">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+	        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">wrt.</stub>
+      </x:context>
+      <x:expect label="result">WRT.</x:expect>
+   </x:scenario>
+   <x:scenario label="notag h.">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+	        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">h.</stub>
+      </x:context>
+      <x:expect label="result">H.</x:expect>
+   </x:scenario>
+   <x:scenario label="notag p.">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+	        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">p.</stub>
+      </x:context>
+      <x:expect label="result">P.</x:expect>
+   </x:scenario>
+</x:description>

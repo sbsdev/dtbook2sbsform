@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
+               xmlns:dtb="http://www.daisy.org/z3986/2005/dtbook/"
+               xmlns:brl="http://www.daisy.org/z3986/2009/braille/"
+               stylesheet="../../../xsl/dtbook2sbsform.xsl">
+   <x:scenario label="Date normal">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+            <brl:date value="1911-11-11">11.11.1911</brl:date>
+         </dtb:p>
+      </x:context>
+      <x:expect label="result">
+y P
+ #,,AA#AIAA</x:expect>
+   </x:scenario>
+   <x:scenario label="Date in Klammern">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">(<brl:date value="1911-11-11">11.11.1911</brl:date>)</dtb:p>
+      </x:context>
+      <x:expect label="result">
+y P
+ =#,,AA#AIAA'=</x:expect>
+   </x:scenario>
+   <x:scenario label="Date und danach Semikolon">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+            <brl:date value="1911-11-11">11.11.1911</brl:date>;</dtb:p>
+      </x:context>
+      <x:expect label="result">
+y P
+ #,,AA#AIAA';</x:expect>
+   </x:scenario>
+   <x:scenario label="Date partiell normal">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+            <brl:date value="--11-11">11.11.</brl:date>
+         </dtb:p>
+      </x:context>
+      <x:expect label="result">
+y P
+ #,,AA</x:expect>
+   </x:scenario>
+   <x:scenario label="Date partiell in Klammern">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">(<brl:date value="--11-11">11.11.</brl:date>)</dtb:p>
+      </x:context>
+      <x:expect label="result">
+y P
+ =#,,AA'=</x:expect>
+   </x:scenario>
+   <x:scenario label="Date partiell und danach Semikolon">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+            <brl:date value="--11-11">11.11.</brl:date>;</dtb:p>
+      </x:context>
+      <x:expect label="result">
+y P
+ #,,AA';</x:expect>
+   </x:scenario>
+   <x:scenario label="brl:date I">
+      <x:param name="contraction" select="2"/>
+      <x:param name="downshift_ordinals" select="true()"/>
+      <x:context>
+        <brl:date xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">11.12.98</brl:date>
+      </x:context>
+      <x:expect label="result">#,,AB#IH</x:expect>
+   </x:scenario>
+   <x:scenario label="brl:date II">
+      <x:param name="contraction" select="2"/>
+      <x:param name="downshift_ordinals" select="false()"/>
+      <x:context>
+        <brl:date xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">11.12.98</brl:date>
+      </x:context>
+      <x:expect label="result">#AA.AB.IH</x:expect>
+   </x:scenario>
+   <x:scenario label="brl:date III">
+      <x:param name="contraction" select="2"/>
+      <x:param name="downshift_ordinals" select="true()"/>
+      <x:context>
+        <brl:date xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">31.4.2091</brl:date>
+      </x:context>
+      <x:expect label="result">#:,D#BJIA</x:expect>
+   </x:scenario>
+   <x:scenario label="brl:date IV">
+      <x:param name="contraction" select="2"/>
+      <x:param name="downshift_ordinals" select="false()"/>
+      <x:context>
+        <brl:date xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">31.4.2091</brl:date>
+      </x:context>
+      <x:expect label="result">#CA.D.BJIA</x:expect>
+   </x:scenario>
+   <x:scenario label="brl:date V">
+      <x:param name="contraction" select="2"/>
+      <x:param name="downshift_ordinals" select="true()"/>
+      <x:context>
+        <brl:date xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">01.01.2019</brl:date>
+        <brl:date xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">1.1.2019</brl:date>
+      </x:context>
+      <x:expect label="result"> #),JA#BJAI#,A#BJAI</x:expect>
+   </x:scenario>
+   <x:scenario label="brl:date VI">
+      <x:param name="contraction" select="2"/>
+      <x:param name="downshift_ordinals" select="false()"/>
+      <x:context>
+        <brl:date xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">01.01.2019</brl:date>
+        <brl:date xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">1.1.2019</brl:date>
+      </x:context>
+      <x:expect label="result">#JA.JA.BJAI#A.A.BJAI</x:expect>
+   </x:scenario>
+</x:description>

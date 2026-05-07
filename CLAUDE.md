@@ -1,0 +1,72 @@
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
+## Project Overview
+
+`dtbook2sbsform` is a Java/XSLT tool that converts DTBook XML (digital talking books standard) into the SBS (Swiss Library for the Blind) braille format. It uses Saxon XSLT 2.0 with liblouis Java bindings for braille character translation.
+
+## Build & Test Commands
+
+```bash
+mvn compile          # Compile Java source
+mvn test             # Run all tests (JUnit + XSpec); pre-existing failures don't block the build
+mvn package          # Build linebreaker.jar + Debian package (runs tests)
+mvn package -DskipTests  # Skip tests entirely
+
+# Run tests strictly (fail on any test failure):
+mvn test -Dmaven.test.failure.ignore=false
+```
+
+Using the `just` task runner:
+```bash
+just deb             # Build Debian package (mvn package)
+just install         # Install latest .deb
+```
+
+## Architecture
+
+The tool is a multi-stage pipeline invoked via `dtbook2sbsform.sh`:
+
+1. **handle-downgrading.xsl** — normalizes DTBook version differences
+2. **handle-prodnote.xsl** — processes production notes
+3. **dtbook2sbsform.xsl** (main, ~87KB) — core XSLT 2.0 transformation using liblouis Saxon extension functions for braille translation; imports `macro-definitions.xsl`, `table-utils.xsl`, `linenum-span.xsl`, `nordic-spec.xsl`
+4. **linebreak.sh / LineBreaker.java** — wraps output at 80 characters
+
+Key source locations:
+- `xsl/` — all XSLT stylesheets
+- `src/main/java/ch/sbs/liblouis/utils/LineBreaker.java` — Java line-breaking utility
+- `src/test/java/ch/sbs/liblouis/utils/LineBreakerTest.java` — JUnit tests for LineBreaker
+- `src/test/java/ch/sbs/dtbook2sbsform/XSpecTest.java` — JUnit-based XSpec test runner (uses Saxon 12 + liblouis directly)
+- `src/test/xspec/` — 54 XSpec test files converted from UTFX (cover tables, acronyms, punctuation, footnotes, dates, braille rendering)
+- `tools/utfx2xspec.xsl` — converter used to migrate UTFX tests to XSpec format
+
+## Test Framework Notes
+
+The XSpec tests are run by a custom JUnit 4 runner (`XSpecTest.java`) rather than the `io.xspec.maven:xspec-maven-plugin`, which is incompatible with Saxon 12. The runner:
+- Parses each `.xspec` file as DOM
+- Registers the `LouisExtensionFunctionDefinition` with Saxon
+- Isolates each scenario in a fresh document (prevents cross-scenario footnote counter contamination)
+- Strips indentation-only whitespace text nodes (`\n`-prefixed, injected by the utfx2xspec converter's `indent="yes"`)
+- Normalizes CR → LF and trims leading/trailing whitespace before comparing
+
+About 18 of the 54 XSpec test files have pre-existing failures (braille contraction differences vs. current liblouis, missing liblouis tables in the test environment, known XSLT bugs). These are pre-existing issues from before the Maven migration and don't block the build (`testFailureIgnore=true` in surefire config).
+
+## Dependencies
+
+`liblouis-saxon-extension` is not on Maven Central. Install it locally from https://github.com/sbsdev/LiblouisSaxonExtension before building:
+```bash
+cd LiblouisSaxonExtension && mvn install
+```
+
+## Runtime Scripts
+
+- `dtbook2sbsform.sh` — main entry point; pipes stages together
+- `saxon.sh` — Saxon wrapper; accepts `-xsl:`, `-s:`, and parameter args
+- `linebreak.sh` — reads stdin, emits 80-char-wrapped output
+
+## Prerequisites
+
+- Java 11+
+- liblouis system library installed
+- `liblouis-saxon-extension` installed in local Maven repository

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
+               xmlns:dtb="http://www.daisy.org/z3986/2005/dtbook/"
+               xmlns:brl="http://www.daisy.org/z3986/2009/braille/"
+               stylesheet="../../../xsl/dtbook2sbsform.xsl">
+   <x:scenario label="FN ohne Satzzeichen (adjazentes EM)">
+      <x:param name="contraction" select="2"/>
+      <x:param name="footnote_placement" select="'standard'"/>
+      <x:context>
+        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">bla<dtb:noteref idref="#fn1">*1</dtb:noteref> 
+            <dtb:em>»Ein Mensch«</dtb:em>
+         </dtb:p>
+      </x:context>
+      <x:expect label="result">
+y P
+ BLA'*#A
+* 
+  __(6 MC5)'.</x:expect>
+   </x:scenario>
+   <x:scenario label="FN mit Satzzeichen (adjazentes EM)">
+      <x:param name="contraction" select="2"/>
+      <x:param name="footnote_placement" select="'standard'"/>
+      <x:context>
+        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">bla<dtb:noteref idref="#fn1">*1</dtb:noteref>, <dtb:em>»Ein Mensch«</dtb:em>
+         </dtb:p>
+      </x:context>
+      <x:expect label="result">
+y P
+ BLA'*#A,
+* 
+ __(6 MC5)'.</x:expect>
+   </x:scenario>
+   <x:scenario label="FN mit Satzzeichen (EM als Ancestor)">
+      <x:param name="contraction" select="2"/>
+      <x:param name="footnote_placement" select="'standard'"/>
+      <x:context>
+        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+            <dtb:em>bla<dtb:noteref idref="#fn1">*1</dtb:noteref>, bla bla</dtb:em>
+         </dtb:p>
+      </x:context>
+      <x:expect label="result">
+y P
+ __BLA'*#A,
+* 
+ BLA BLA'.</x:expect>
+   </x:scenario>
+</x:description>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
+               xmlns:dtb="http://www.daisy.org/z3986/2005/dtbook/"
+               xmlns:brl="http://www.daisy.org/z3986/2009/braille/"
+               stylesheet="../../../xsl/dtbook2sbsform.xsl">
+   <x:scenario label="Minus I(http://redmine.sbszh.ch/issues/1554)">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">−10 Grad</dtb:p>
+      </x:context>
+      <x:expect label="result">
+y P
+ "-#AJ GRAD</x:expect>
+   </x:scenario>
+   <x:scenario label="Minus II(http://redmine.sbszh.ch/issues/1554)">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de"> -10 Grad</dtb:p>
+      </x:context>
+      <x:expect label="result">
+y P
+  "-#AJ GRAD</x:expect>
+   </x:scenario>
+   <x:scenario label="Minus III(http://redmine.sbszh.ch/issues/1554)">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">(-10 Grad)</dtb:p>
+      </x:context>
+      <x:expect label="result">
+y P
+ ="-#AJ GRAD=</x:expect>
+   </x:scenario>
+   <x:scenario label="Minus IV(http://redmine.sbszh.ch/issues/1554)">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de"> 
+            <dtb:strong>−10 Grad</dtb:strong>
+         </dtb:p>
+      </x:context>
+      <x:expect label="result">
+y P
+  __"-#AJ GRAD'.</x:expect>
+   </x:scenario>
+   <x:scenario label="Minus V using a unicode minus">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">−10 Grad</dtb:p>
+      </x:context>
+      <x:expect label="result">
+y P
+ "-#AJ GRAD</x:expect>
+   </x:scenario>
+   <x:scenario label="Minus VI">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">5-10 Grad</dtb:p>
+      </x:context>
+      <x:expect label="result">
+y P
+ #E-#AJ GRAD</x:expect>
+   </x:scenario>
+</x:description>

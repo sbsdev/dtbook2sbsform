@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
+               xmlns:dtb="http://www.daisy.org/z3986/2005/dtbook/"
+               xmlns:brl="http://www.daisy.org/z3986/2009/braille/"
+               stylesheet="../../../xsl/dtbook2sbsform.xsl">
+   <x:scenario label="Answer">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+	        <dtb:span xmlns:utfx="http://utfx.org/test-definition" class="answer">foo</dtb:span>
+      </x:context>
+      <x:expect label="result">---</x:expect>
+   </x:scenario>
+   <x:scenario label="Box">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+	        <dtb:span xmlns:utfx="http://utfx.org/test-definition" class="box">foo</dtb:span>
+      </x:context>
+      <x:expect label="result">---</x:expect>
+   </x:scenario>
+   <x:scenario label="Answer for one character">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+	        <dtb:span xmlns:utfx="http://utfx.org/test-definition" class="answer_1">foo</dtb:span>
+      </x:context>
+      <x:expect label="result">-</x:expect>
+   </x:scenario>
+</x:description>

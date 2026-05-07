@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
+               xmlns:dtb="http://www.daisy.org/z3986/2005/dtbook/"
+               xmlns:brl="http://www.daisy.org/z3986/2009/braille/"
+               stylesheet="../../../xsl/dtbook2sbsform.xsl">
+   <x:scenario label="Falsche Kursiv-Ankündigung beim Gebrauch von nbsp statt gewöhnlichem Leerzeichen, http://redmine.sbszh.ch/issues/2625">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+	        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+            <dtb:em>bla blo</dtb:em>
+         </dtb:p>
+      </x:context>
+      <x:expect label="result">
+y P
+ __BLAbBLO'.</x:expect>
+   </x:scenario>
+   <x:scenario label="Fälschlicherweise Leerzeile in SBSForm-Code bei aufeinanderfolgenden PAGENUM mit A, http://redmine.sbszh.ch/issues/2470">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+	        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de"> bla <dtb:pagenum id="page-10" page="normal">10</dtb:pagenum>
+            <dtb:a id="p-10"/>
+	           <dtb:pagenum id="page-11" page="normal">11</dtb:pagenum>
+            <dtb:a id="p-11"/> blo </dtb:p>
+      </x:context>
+      <x:expect label="result">
+y P
+  BLA 
+j 10 
+j 11
+  BLO
+      </x:expect>
+   </x:scenario>
+   <x:scenario label="aufeinanderfolgende PAGENUMs">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+	        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+	           <dtb:pagenum id="page-10" page="normal">10</dtb:pagenum>
+	  
+	           <dtb:pagenum id="page-11" page="normal">11</dtb:pagenum>
+	        </dtb:p>
+      </x:context>
+      <x:expect label="result">
+y P
+  
+j 10 
+j 11
+
+      </x:expect>
+   </x:scenario>
+   <x:scenario label="aufeinanderfolgende PAGENUMs">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+	        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+	           <dtb:pagenum id="page-10" page="normal">10</dtb:pagenum>
+
+	  Foo
+
+	  <dtb:pagenum id="page-11" page="normal">11</dtb:pagenum>
+	        </dtb:p>
+      </x:context>
+      <x:expect label="result">
+y P
+  
+j 10
+  FOO 
+j 11
+
+      </x:expect>
+   </x:scenario>
+   <x:scenario label="Falsche Übersetzungen bei mixed emphasis, http://redmine.sbszh.ch/issues/2464">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+	        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+	           <dtb:p>
+               <dtb:em>experimental</dtb:em>protektorverhalten</dtb:p>
+	           <dtb:p>experimental<dtb:em>protektor</dtb:em>verhalten</dtb:p>
+	           <dtb:p>experimentalprotektor<dtb:em>verhalten</dtb:em>
+            </dtb:p>
+	        </stub>
+      </x:context>
+      <x:expect label="result">
+y P
+ _XP7IMCT:'.PRO(KT?V7H:TC
+y P
+ XP7IMCT:'_PRO(KT?'.V7H:TC
+y P
+ XP7IMCT:PRO(KT?'_V7H:TC
+      </x:expect>
+   </x:scenario>
+   <x:scenario label="falsches Resultat bei Wortersatzstrich -xxx, wenn direkt nach Tag, http://redmine.sbszh.ch/issues/1505">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+	        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+	           <dtb:p>-losenheim</dtb:p>
+	        </stub>
+      </x:context>
+      <x:expect label="result">
+y P
+ '-LOSCH3M
+      </x:expect>
+   </x:scenario>
+</x:description>

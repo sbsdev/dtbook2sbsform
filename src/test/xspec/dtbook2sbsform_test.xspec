@@ -1,0 +1,855 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
+               xmlns:dtb="http://www.daisy.org/z3986/2005/dtbook/"
+               xmlns:brl="http://www.daisy.org/z3986/2009/braille/"
+               stylesheet="../../../xsl/dtbook2sbsform.xsl">
+   <x:scenario label="Translation of h1">
+      <x:context>
+	        <dtb:h1 xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">foo</dtb:h1>
+      </x:context>
+      <x:expect label="result">
+y H1
+ FOO
+</x:expect>
+   </x:scenario>
+   <x:scenario label="Translation of h1 with brl:class attr">
+      <x:context>
+	        <dtb:h1 xmlns:utfx="http://utfx.org/test-definition" xml:lang="de" brl:class="foo">foo</dtb:h1>
+      </x:context>
+      <x:expect label="result">
+y H1_foo
+ FOO
+</x:expect>
+   </x:scenario>
+   <x:scenario label="Translation of h1 with leading and trailing spaces">
+      <x:context>
+	        <dtb:h1 xmlns:utfx="http://utfx.org/test-definition" xml:lang="de"> foo <brl:v-form>Bar</brl:v-form> 
+         </dtb:h1>
+      </x:context>
+      <x:expect label="result">
+y H1
+  FOO $BAR 
+</x:expect>
+   </x:scenario>
+   <x:scenario label="Translation of h2">
+      <x:context>
+	        <dtb:h2 xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">foo</dtb:h2>
+      </x:context>
+      <x:expect label="result">
+y H2
+ FOO
+</x:expect>
+   </x:scenario>
+   <x:scenario label="Translation of h2 with with brl:class attr">
+      <x:context>
+	        <dtb:h2 xmlns:utfx="http://utfx.org/test-definition" xml:lang="de" brl:class="foo">foo</dtb:h2>
+      </x:context>
+      <x:expect label="result">
+y H2_foo
+ FOO
+</x:expect>
+   </x:scenario>
+   <x:scenario label="Translation of p">
+      <x:context>
+	        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">foo</dtb:p>
+      </x:context>
+      <x:expect label="result">
+y P
+ FOO</x:expect>
+   </x:scenario>
+   <x:scenario label="Translation of h2 with with brl:class attr">
+      <x:context>
+	        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de" brl:class="foo">foo</dtb:p>
+      </x:context>
+      <x:expect label="result">
+y P_foo
+ FOO</x:expect>
+   </x:scenario>
+   <x:scenario label="Translation of Blockquote">
+      <x:context>
+	        <dtb:blockquote xmlns:utfx="http://utfx.org/test-definition" xml:lang="de"/>
+      </x:context>
+      <x:expect label="result">
+y BLQUOb
+
+y BLQUOe
+</x:expect>
+   </x:scenario>
+   <x:scenario label="Translation of Blockquote with brl:class attr">
+      <x:context>
+	        <dtb:blockquote xmlns:utfx="http://utfx.org/test-definition" xml:lang="de" brl:class="foo"/>
+      </x:context>
+      <x:expect label="result">
+y BLQUOb_foo
+
+y BLQUOe_foo
+</x:expect>
+   </x:scenario>
+   <x:scenario label="Translation of epigraph">
+      <x:context>
+	        <dtb:epigraph xmlns:utfx="http://utfx.org/test-definition" xml:lang="de"/>
+      </x:context>
+      <x:expect label="result">
+y EPIGRb
+
+y EPIGRe
+</x:expect>
+   </x:scenario>
+   <x:scenario label="Translation of epigraph with brl:class attr">
+      <x:context>
+	        <dtb:epigraph xmlns:utfx="http://utfx.org/test-definition" xml:lang="de" brl:class="foo"/>
+      </x:context>
+      <x:expect label="result">
+y EPIGRb_foo
+
+y EPIGRe_foo
+</x:expect>
+   </x:scenario>
+   <x:scenario label="Translation of author">
+      <x:context>
+	        <dtb:author xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">Hans</dtb:author>
+      </x:context>
+      <x:expect label="result">
+y AUTHOR
+ H+S</x:expect>
+   </x:scenario>
+   <x:scenario label="Translation of author with brl:class attr">
+      <x:context>
+	        <dtb:author xmlns:utfx="http://utfx.org/test-definition" xml:lang="de" brl:class="foo">Hans</dtb:author>
+      </x:context>
+      <x:expect label="result">
+y AUTHOR_foo
+ H+S</x:expect>
+   </x:scenario>
+   <x:scenario label="Translation of byline">
+      <x:context>
+	        <dtb:byline xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">Hans</dtb:byline>
+      </x:context>
+      <x:expect label="result">
+y BYLINE
+ H+S</x:expect>
+   </x:scenario>
+   <x:scenario label="Translation of byline with brl:class attr">
+      <x:context>
+	        <dtb:byline xmlns:utfx="http://utfx.org/test-definition" xml:lang="de" brl:class="foo">Hans</dtb:byline>
+      </x:context>
+      <x:expect label="result">
+y BYLINE_foo
+ H+S</x:expect>
+   </x:scenario>
+   <x:scenario label="Translation of poem">
+      <x:context>
+	        <dtb:poem xmlns:utfx="http://utfx.org/test-definition" xml:lang="de"/>
+      </x:context>
+      <x:expect label="result">
+y POEMb
+
+y POEMe
+</x:expect>
+   </x:scenario>
+   <x:scenario label="Translation of poem with brl:class attr">
+      <x:context>
+	        <dtb:poem xmlns:utfx="http://utfx.org/test-definition" xml:lang="de" brl:class="foo"/>
+      </x:context>
+      <x:expect label="result">
+y POEMb_foo
+
+y POEMe_foo
+</x:expect>
+   </x:scenario>
+   <x:scenario label="Selection feature">
+      <x:context>
+	        <brl:select xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+	           <brl:when-braille>
+	              <brl:literal>Foo</brl:literal>
+	           </brl:when-braille>
+	           <brl:otherwise>Bar</brl:otherwise>
+	        </brl:select>
+      </x:context>
+      <x:expect label="result">Foo</x:expect>
+   </x:scenario>
+   <x:scenario label="Selection feature with literals with grade attrs">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+	        <brl:select xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+	           <brl:when-braille>
+	              <brl:literal brl:grade="1">Foo</brl:literal>
+	              <brl:literal brl:grade="2">Bar</brl:literal>
+	           </brl:when-braille>
+	           <brl:otherwise>Baz</brl:otherwise>
+	        </brl:select>
+      </x:context>
+      <x:expect label="result">Bar</x:expect>
+   </x:scenario>
+   <x:scenario label="Selection feature with mixed literals and text nodes">
+      <x:context>
+	        <brl:select xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+	           <brl:when-braille>Foo <brl:literal>Bar</brl:literal>
+            </brl:when-braille>
+	           <brl:otherwise>Baz</brl:otherwise>
+	        </brl:select>
+      </x:context>
+      <x:expect label="result">FOO Bar</x:expect>
+   </x:scenario>
+   <x:scenario label="Selection feature inside &lt;em&gt;">
+      <x:context>
+	        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+            <dtb:p>
+               <dtb:em brl:render="quote">
+                  <brl:select>
+                     <brl:when-braille>
+                        <brl:literal>'.DD'.</brl:literal>
+                     </brl:when-braille>
+                     <brl:otherwise>♫</brl:otherwise>
+                  </brl:select> Hörst du das Pfeifen vom Murmeltier droben ...</dtb:em>
+            </dtb:p>
+	        </stub>
+      </x:context>
+      <x:expect label="result">
+y P
+ ('.DD'. H9R] DU D PF3FC VM MURMYT0R DROBC ...)</x:expect>
+   </x:scenario>
+   <x:scenario label="div element">
+      <x:context>
+	        <dtb:div xmlns:utfx="http://utfx.org/test-definition" brl:class="foo" xml:lang="de">
+	</dtb:div>
+      </x:context>
+      <x:expect label="result">
+y DIVb_foo
+
+y DIVe_foo
+</x:expect>
+   </x:scenario>
+   <x:scenario label="Datum: Tag Monat Jahr">
+      <x:context>
+        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+            <brl:date value="2011-01-01">1.1.2011</brl:date>
+         </stub>
+      </x:context>
+      <x:expect label="result">#,A#BJAA</x:expect>
+   </x:scenario>
+   <x:scenario label="Datum: Tag Monat">
+      <x:context>
+        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+            <brl:date value="--01-01">1.1.</brl:date>
+         </stub>
+      </x:context>
+      <x:expect label="result">#,A</x:expect>
+   </x:scenario>
+   <x:scenario label="Time">
+      <x:context>
+        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+            <brl:time value="10:30">10:30</brl:time>
+         </stub>
+      </x:context>
+      <x:expect label="result">#AJ':#CJ</x:expect>
+   </x:scenario>
+   <x:scenario label="Time with leading zeros">
+      <x:context>
+        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+            <brl:time value="10:05">10:05</brl:time>
+         </stub>
+      </x:context>
+      <x:expect label="result">#AJ':#JE</x:expect>
+   </x:scenario>
+   <x:scenario label="vform in em Bug#1413">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+            <dtb:p>
+               <dtb:em>und <brl:v-form>Sie</brl:v-form> 
+                  <brl:v-form>Ihren</brl:v-form>
+               </dtb:em>
+            </dtb:p>
+         </stub>
+      </x:context>
+      <x:expect label="result">
+y P
+ __U $S $IC'.</x:expect>
+   </x:scenario>
+   <x:scenario label="inline after inline">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+            <dtb:p>
+               <dtb:span grade="2">Quark</dtb:span> 
+               <dtb:span grade="2">Quark</dtb:span>
+            </dtb:p>
+         </stub>
+      </x:context>
+      <x:expect label="result">
+y P
+ 'QU)K 'QU)K</x:expect>
+   </x:scenario>
+   <x:scenario label="brl:emph at beginning of block">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+            <dtb:p>
+               <brl:emph>Quark</brl:emph>
+            </dtb:p>
+         </stub>
+      </x:context>
+      <x:expect label="result">
+y P
+ _'QU)K</x:expect>
+   </x:scenario>
+   <x:scenario label="Wrong SBSForm-Macroname Bug #1539">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+            <dtb:p>
+               <dtb:list brl:class="name" type="pl">
+                  <dtb:li>bla</dtb:li>
+               </dtb:list>
+            </dtb:p>
+         </stub>
+      </x:context>
+      <x:expect label="result">
+y P
+ 
+y PLISTb_name
+
+y LI
+ BLA
+
+y PLISTe_name
+</x:expect>
+   </x:scenario>
+   <x:scenario label="Span inside span 2">
+      <x:context>
+        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+            <dtb:p>
+               <dtb:span brl:accents="reduced">René</dtb:span>
+            </dtb:p>
+            <dtb:p>
+               <dtb:span brl:accents="reduced">René René</dtb:span>
+            </dtb:p>
+            <dtb:p>Kurz <dtb:span>╚</dtb:span>
+               <dtb:span brl:grade="1" brl:accents="reduced">René René</dtb:span>
+               <dtb:span>╝</dtb:span> René</dtb:p>
+            <dtb:p>
+               <dtb:span>╚</dtb:span>
+               <dtb:span brl:grade="1">René <dtb:span brl:accents="reduced">René</dtb:span> René</dtb:span>
+               <dtb:span>╝</dtb:span>
+            </dtb:p>
+        </stub>
+      </x:context>
+      <x:expect label="result">
+y P
+ RC"E
+y P
+ RC"E RC"E
+y P
+ KZ -.REN"E REN"E'. RC"%
+y P
+ -.REN"% REN"E REN"%'.</x:expect>
+   </x:scenario>
+   <x:scenario label="Span inside em">
+      <x:context>
+	        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+            <dtb:em>Hallo <dtb:span brl:accents="reduced">René</dtb:span>
+            </dtb:em>
+         </stub>
+      </x:context>
+      <x:expect label="result">__HAQO RC"E'.</x:expect>
+   </x:scenario>
+   <x:scenario label="Downgrading">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+            <dtb:p>Kurzschrift schrift schrift <dtb:span>╙</dtb:span>
+               <dtb:span brl:grade="1">Vollschrift</dtb:span> kurz kurz kurz</dtb:p>
+            <dtb:p>Kurzschrift schrift schrift <dtb:span>╙</dtb:span>
+               <dtb:span brl:grade="0">Basisschrift</dtb:span> kurz kurz kurz</dtb:p>
+            <dtb:p>Kurzschrift schrift schrift <dtb:span>╚</dtb:span>
+               <dtb:span brl:grade="1">Vollschrift schrift schrift</dtb:span>
+               <dtb:span>╝</dtb:span> kurz kurz kurz</dtb:p>
+            <dtb:p>Kurzschrift schrift schrift <dtb:span>╚</dtb:span>
+               <dtb:span brl:grade="0">Basisschrift schrift schrift</dtb:span>
+               <dtb:span>╝</dtb:span> kurz kurz kurz</dtb:p>
+            <dtb:p>Kurzschrift schrift schrift <dtb:span>╚</dtb:span>
+               <dtb:span brl:grade="1">Vollschrift/Vollschrift</dtb:span>
+               <dtb:span>╝</dtb:span> kurz kurz kurz</dtb:p>
+            <dtb:p>Kurzschrift schrift schrift <dtb:span>╚</dtb:span>
+               <dtb:span brl:grade="0">Basisschrift/Basisschrift</dtb:span>
+               <dtb:span>╝</dtb:span> kurz kurz kurz</dtb:p>
+            <dtb:p>Kurzschrift schrift schrift <dtb:span>╚</dtb:span>
+               <dtb:span brl:grade="1">Vollschrift-­Vollschrift</dtb:span>
+               <dtb:span>╝</dtb:span> kurz kurz kurz</dtb:p>
+            <dtb:p>Kurzschrift schrift schrift <dtb:span>╚</dtb:span>
+               <dtb:span brl:grade="0">Basisschrift-­Basisschrift</dtb:span>
+               <dtb:span>╝</dtb:span> kurz kurz kurz</dtb:p>
+        </stub>
+      </x:context>
+      <x:expect label="result">
+y P
+ KZ5T 5T 5T '.VOLL5RIFT KZ KZ KZ
+y P
+ KZ5T 5T 5T '.BASISSCHRIFT KZ KZ KZ
+y P
+ KZ5T 5T 5T -.VOLL5RIFT 5RIFT 5RIFT'. KZ KZ KZ
+y P
+ KZ5T 5T 5T -.BASISSCHRIFT SCHRIFT SCHRIFT'. KZ KZ KZ
+y P
+ KZ5T 5T 5T -.VOLL5RIFT!,VOLL5RIFT'. KZ KZ KZ
+y P
+ KZ5T 5T 5T -.BASISSCHRIFT!,BASISSCHRIFT'. KZ KZ KZ
+y P
+ KZ5T 5T 5T -.VOLL5RIFT-mVOLL5RIFT'. KZ KZ KZ
+y P
+ KZ5T 5T 5T -.BASISSCHRIFT-mBASISSCHRIFT'. KZ KZ KZ</x:expect>
+   </x:scenario>
+   <x:scenario label="Language change (feature #1604)">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+            <dtb:p>Jetzt folgt ein Gedicht:</dtb:p>
+            <dtb:poem xml:lang="en">
+               <dtb:linegroup>
+                  <dtb:line>
+                     <dtb:span>╚</dtb:span>If you want to get a favour done</dtb:line>
+                  <dtb:line>By some obliging friend,</dtb:line>
+                  <dtb:line>And want a promise, safe and sure,</dtb:line>
+                  <dtb:line>On which you may depend,</dtb:line>
+                  <dtb:line>Don't go to him who always has</dtb:line>
+                  <dtb:line>Much leisure time to plan,</dtb:line>
+                  <dtb:line>If you want your favour done,</dtb:line>
+                  <dtb:line>Just ask the busy man.<dtb:span>╝</dtb:span>
+                  </dtb:line>
+               </dtb:linegroup>
+            </dtb:poem>
+        </stub>
+      </x:context>
+      <x:expect label="result">
+y P
+ J FGT 6 &amp;D#T:
+y POEMb
+
+y LINEGRb
+ 
+y LINEb
+ -.IF YOU WANT TO GET A FAVOUR DONE
+y LINEe
+
+y LINEb
+ BY SOME OBLIGING FRIEND,
+y LINEe
+
+y LINEb
+ AND WANT A PROMISE, SAFE AND SURE,
+y LINEe
+
+y LINEb
+ ON WHICH YOU MAY DEPEND,
+y LINEe
+
+y LINEb
+ DON'T GO TO HIM WHO ALWAYS HAS
+y LINEe
+
+y LINEb
+ MUCH LEISURE TIME TO PLAN,
+y LINEe
+
+y LINEb
+ IF YOU WANT YOUR FAVOUR DONE,
+y LINEe
+
+y LINEb
+ JUST ASK THE BUSY MAN.'.
+y LINEe
+
+y LINEGRe
+
+y POEMe
+</x:expect>
+   </x:scenario>
+   <x:scenario label="Wort &#34;ich&#34; am Ende von Inlines mit nachfolgendem Satzzeichen">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+            <dtb:em>Ich</dtb:em>, <dtb:strong>ich</dtb:strong>; <brl:emph>ich</brl:emph>: <dtb:em>ich</dtb:em>? <dtb:strong>ich</dtb:strong>! (<brl:emph>ich</brl:emph>) »<brl:emph>ich</brl:emph>«.</stub>
+      </x:context>
+      <x:expect label="result">_I4, _I4; _I4: _I4? _I4+ =_I4= (_I4).</x:expect>
+   </x:scenario>
+   <x:scenario label="Emphasis: Wortgrenzenerkennung bei &#34;-&#34; und &#34;/&#34;">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+            <dtb:em>Wort</dtb:em>, <dtb:strong>Wort</dtb:strong>, <brl:emph>Wort</brl:emph>. <dtb:em>Zwei Wörter</dtb:em>, <dtb:strong>eins/zwei</dtb:strong>, <brl:emph>eins-­zwei</brl:emph>.</stub>
+      </x:context>
+      <x:expect label="result">_W?T, _W?T, _W?T. __ZW3 W9RT7'., __6S!,ZW3'., __6S-mZW3'..</x:expect>
+   </x:scenario>
+   <x:scenario label="Separator ist keine Wortgrenze">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+            <brl:homograph>testor<brl:separator/>test</brl:homograph>
+         </stub>
+      </x:context>
+      <x:expect label="result">TE]?(]</x:expect>
+   </x:scenario>
+   <x:scenario label="Braille-Literal">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">Musik <brl:select>
+               <brl:when-braille>
+                  <brl:literal>@#Lv._@&gt;&amp;2K</brl:literal>
+               </brl:when-braille> 
+               <brl:otherwise>[Note E im Bassschlüssel]</brl:otherwise>
+            </brl:select> ist doch ganz einfach.</stub>
+      </x:context>
+      <x:expect label="result">MK @#Lv._@&gt;&amp;2K ] D4 GZ 6F&lt;.</x:expect>
+   </x:scenario>
+   <x:scenario label="Ordnungszahlen">
+      <x:param name="contraction" select="2"/>
+      <x:param name="downshift_ordinals" select="true()"/>
+      <x:context>
+        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">Am <brl:num role="ordinal">5.</brl:num> Tag geschah es zum <brl:num role="ordinal">1004.</brl:num>
+          (oder <brl:num role="ordinal">1005.</brl:num>) Mal.</dtb:p>
+      </x:context>
+      <x:expect label="result">
+y P
+ AM #? TAG &amp;5AH % ZM #,))/ =O #,))?'= MAL.</x:expect>
+   </x:scenario>
+   <x:scenario label="line break before ndash Bug#1212">
+      <x:param name="contraction" select="2"/>
+      <x:param name="downshift_ordinals" select="true()"/>
+      <x:context>
+        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">word
+– word</stub>
+      </x:context>
+      <x:expect label="result">W?D'- W?D</x:expect>
+   </x:scenario>
+   <x:scenario label="Telefonnummern">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">Telefon <brl:num role="phone">041 / 123 45 67</brl:num>? Telefon <brl:num role="phone">041/123'45'67</brl:num>!</dtb:p>
+      </x:context>
+      <x:expect label="result">
+y P
+ TYEFON #JDA.ABC.DE.FG'? TYEFON #JDA.ABC.DE.FG'+</x:expect>
+   </x:scenario>
+   <x:scenario label="Brüche">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+            <brl:num role="fraction">1/3</brl:num>? <brl:num role="fraction">2/5</brl:num>, (<brl:num role="fraction">13/15</brl:num>) <brl:num role="mixed">3 2/5</brl:num>? <brl:num role="mixed">1 12/19</brl:num>, (<brl:num role="mixed">3 24/25</brl:num>)</dtb:p>
+      </x:context>
+      <x:expect label="result">
+y P
+ #A:'? #B?', =#AC,?'= #C#B?'? #A#AB,*', =#C#BD;?'=</x:expect>
+   </x:scenario>
+   <x:scenario label="ISBN">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+            <dtb:abbr>ISBN</dtb:abbr> 
+            <brl:num role="isbn">978-3-86971-001-3</brl:num> 
+            <dtb:abbr>ISBN</dtb:abbr> 
+            <brl:num role="isbn">978-3-86971-001-X</brl:num> 
+            <dtb:abbr>ISBN</dtb:abbr> 
+            <brl:num role="isbn">978 3 86971 001 3</brl:num>
+         </dtb:p>
+      </x:context>
+      <x:expect label="result">
+y P
+ &gt;ISBN #IGH.C.HFIGA.JJA.C &gt;ISBN #IGH.C.HFIGA.JJA-&gt;X &gt;ISBN #IGH.C.HFIGA.JJA.C</x:expect>
+   </x:scenario>
+   <x:scenario label="abbr 1">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+            <dtb:abbr>A4</dtb:abbr>
+         </dtb:p>
+      </x:context>
+      <x:expect label="result">
+y P
+ &gt;A#D</x:expect>
+   </x:scenario>
+   <x:scenario label="abbr 2 Bug #1523">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+            <dtb:abbr>RTÉ</dtb:abbr>
+         </dtb:p>
+      </x:context>
+      <x:expect label="result">
+y P
+ &gt;RT"%</x:expect>
+   </x:scenario>
+   <x:scenario label="abbr 3 &#34;C2D&#34; Bug #1523">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+            <dtb:abbr>C2D</dtb:abbr>
+         </dtb:p>
+      </x:context>
+      <x:expect label="result">
+y P
+ &gt;C#B&gt;D</x:expect>
+   </x:scenario>
+   <x:scenario label="abbr 4 Single Uppercase Letter &#34;C&#34; Bug #1523">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+            <dtb:abbr>C</dtb:abbr>
+         </dtb:p>
+      </x:context>
+      <x:expect label="result">
+y P
+ &gt;C</x:expect>
+   </x:scenario>
+   <x:scenario label="abbr 5 &#34;c2d&#34; Bug #1523">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+            <dtb:abbr>c2d</dtb:abbr>
+         </dtb:p>
+      </x:context>
+      <x:expect label="result">
+y P
+ 'C#B'D</x:expect>
+   </x:scenario>
+   <x:scenario label="abbr 6 &#34;GmbH&#34; Bug #1523">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+            <dtb:abbr>GmbH</dtb:abbr>
+         </dtb:p>
+      </x:context>
+      <x:expect label="result">
+y P
+ $GMB&gt;H</x:expect>
+   </x:scenario>
+   <x:scenario label="abbr 8 &#34;kHz&#34; Bug #1523">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+            <dtb:abbr>kHz</dtb:abbr>
+         </dtb:p>
+      </x:context>
+      <x:expect label="result">
+y P
+ 'K$HZ</x:expect>
+   </x:scenario>
+   <x:scenario label="abbr 9 &#34;DM 50&#34; (white space) Bug #1523">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+            <dtb:abbr>DM </dtb:abbr>50</dtb:p>
+      </x:context>
+      <x:expect label="result">
+y P
+ &gt;DM#EJ</x:expect>
+   </x:scenario>
+   <x:scenario label="abbr 10 abbr inside em Bug dtbook2sbsform#14 (#2243)">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+	        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+            <dtb:em>es lebe das Format <dtb:abbr>A</dtb:abbr>4</dtb:em>
+         </dtb:p>
+      </x:context>
+      <x:expect label="result">
+y P
+ __% LBE D F?MAT &gt;A#D'.
+      </x:expect>
+   </x:scenario>
+   <x:scenario label="abbr 10 abbr inside em Bug dtbook2sbsform#14 (#2243)">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+	        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">es lebe das Format <dtb:abbr>A</dtb:abbr>4</dtb:p>
+      </x:context>
+      <x:expect label="result">
+y P
+ % LBE D F?MAT &gt;A#D
+      </x:expect>
+   </x:scenario>
+   <x:scenario label="Namen mit Upshifts (McDonalds) werden von brl:name nicht behandelt Bug #1343">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+            <brl:name>McCartney</brl:name>
+         </dtb:p>
+      </x:context>
+      <x:expect label="result">
+y P
+ $MC$CARTNEY</x:expect>
+   </x:scenario>
+   <x:scenario label="Ausdrücke wie XBox mit abbr nicht handlebar Bug #1477">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+            <dtb:abbr>X</dtb:abbr>
+            <dtb:abbr>Box</dtb:abbr>
+         </dtb:p>
+      </x:context>
+      <x:expect label="result">
+y P
+ &gt;X$BOX</x:expect>
+   </x:scenario>
+   <x:scenario label="Fehlender Pt. 6 (Apo) vor durch BRL:RENDER=&#34;QUOTE&#34; erzeugten Schlusszeichen (bei Zahlen) Bug #1520">
+      <x:param name="contraction" select="1"/>
+      <x:context>
+        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de"> Rakete <dtb:em brl:render="quote">Ariane 2</dtb:em> und </dtb:p>
+      </x:context>
+      <x:expect label="result">
+y P
+  RAKETE (ARIANE #B') UND </x:expect>
+   </x:scenario>
+   <x:scenario label="Fehlender Pt. 6 (Apo) vor durch BRL:RENDER=&#34;QUOTE&#34; erzeugten Schlusszeichen (bei Zahlen) Bug #1520">
+      <x:param name="contraction" select="1"/>
+      <x:context>
+        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de"> Rakete <dtb:em brl:render="quote">Ariane ¾</dtb:em> und </dtb:p>
+      </x:context>
+      <x:expect label="result">
+y P
+  RAKETE (ARIANE #C/') UND </x:expect>
+   </x:scenario>
+   <x:scenario label="deep last text node">
+      <x:param name="contraction" select="1"/>
+      <x:context>
+        <dtb:p xmlns:utfx="http://utfx.org/test-definition" xml:lang="de"> Rakete <dtb:em brl:render="quote">Ariane <brl:num>2</brl:num>
+            </dtb:em> und </dtb:p>
+      </x:context>
+      <x:expect label="result">
+y P
+  RAKETE (ARIANE #B') UND </x:expect>
+   </x:scenario>
+   <x:scenario label="text nodes ending with punctuation">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+            <dtb:p>wort</dtb:p>
+            <dtb:p>»aber</dtb:p>
+        </stub>
+      </x:context>
+      <x:expect label="result">
+y P
+ W?T
+y P
+ (A</x:expect>
+   </x:scenario>
+   <x:scenario label="text nodes ending with punctuation with first word inline">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+            <dtb:p>
+               <dtb:em>wort</dtb:em>
+            </dtb:p>
+            <dtb:p>»aber</dtb:p>
+        </stub>
+      </x:context>
+      <x:expect label="result">
+y P
+ _W?T
+y P
+ (A</x:expect>
+   </x:scenario>
+   <x:scenario label="Running Line Kurzschrift">
+      <x:param name="contraction" select="2"/>
+      <x:param name="footer_level" select="2"/>
+      <x:context>
+        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+            <dtb:level2>
+               <dtb:h2>Running <brl:running-line brl:grade="1">Index</brl:running-line>
+                  <brl:running-line brl:grade="2">Laufindex</brl:running-line>line</dtb:h2>
+               <dtb:p>Geklappert?</dtb:p> 
+            </dtb:level2>
+        </stub>
+      </x:context>
+      <x:expect label="result">
+y LEVEL2b
+.xNOPAGENUM
+
+y H2
+ R/N*G L*E
+~L1F*DE'X
+
+y P
+ &amp;KLAPP7T?
+y LEVEL2e
+</x:expect>
+   </x:scenario>
+   <x:scenario label="Running Line Vollschrift">
+      <x:param name="contraction" select="1"/>
+      <x:param name="footer_level" select="2"/>
+      <x:context>
+        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+            <dtb:level2>
+               <dtb:h2>Running <brl:running-line brl:grade="1">Index</brl:running-line>
+                  <brl:running-line brl:grade="2">Laufindex</brl:running-line>line</dtb:h2>
+	              <dtb:p>Geklappert?</dtb:p> 
+            </dtb:level2>
+        </stub>
+      </x:context>
+      <x:expect label="result">
+y LEVEL2b
+.xNOPAGENUM
+
+y H2
+ RUNNING LINE
+~INDEX
+
+y P
+ GEKLAPPERT?
+y LEVEL2e
+</x:expect>
+   </x:scenario>
+   <x:scenario label="Inhaltsverzeichnis">
+      <x:param name="contraction" select="2"/>
+      <x:param name="toc_level" select="2"/>
+      <x:context>
+        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">        
+            <dtb:level2>
+               <dtb:h2>Inhaltsverzeichnis<brl:toc-line>Etwas ganz anderes</brl:toc-line>
+               </dtb:h2>
+               <dtb:p>Geklappert?</dtb:p> 
+            </dtb:level2>
+        </stub>
+      </x:context>
+      <x:expect label="result">
+y LEVEL2b
+.xNOPAGENUM
+
+y H2
+ *H:TSV7Z34X
+HTW GZ ,7%
+
+y P
+ &amp;KLAPP7T?
+y LEVEL2e
+</x:expect>
+   </x:scenario>
+   <x:scenario label="Nodes starting and ending with punctuation">
+      <x:param name="contraction" select="2"/>
+      <x:param name="toc_level" select="2"/>
+      <x:context>
+        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">        
+            <dtb:p>Was?</dtb:p> 
+            <dtb:p>Als ich ...</dtb:p> 
+            <dtb:p>Nun ...</dtb:p> 
+        </stub>
+      </x:context>
+      <x:expect label="result">
+y P
+ W?
+y P
+ 3 # ...
+y P
+ N/ ...</x:expect>
+   </x:scenario>
+   <x:scenario label="br">
+      <x:param name="contraction" select="1"/>
+      <x:context>
+        <stub xmlns:utfx="http://utfx.org/test-definition" xml:lang="de">
+	           <dtb:p>... bla <dtb:br/>bla.</dtb:p>
+        </stub>
+      </x:context>
+      <x:expect label="result">
+y P
+ ... BLA uBLA.
+</x:expect>
+   </x:scenario>
+</x:description>
