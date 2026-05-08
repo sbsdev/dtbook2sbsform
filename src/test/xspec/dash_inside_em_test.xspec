@@ -2,4 +2,28 @@
 <x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
                xmlns:dtb="http://www.daisy.org/z3986/2005/dtbook/"
                xmlns:brl="http://www.daisy.org/z3986/2009/braille/"
-               stylesheet="../../../xsl/dtbook2sbsform.xsl"/>
+               stylesheet="../../../xsl/dtbook2sbsform.xsl">
+
+  <!-- Known bug: a dash at the start or end of <em> causes a spurious hyphen mark.
+       The problem is in the liblouis tables, not the XSL. -->
+  <x:pending label="bug: dash inside em adds spurious hyphen mark (liblouis tables issue)">
+
+    <x:scenario label="test for em starting with dash">
+      <x:param name="contraction" select="0"/>
+      <x:context>
+        <stub xml:lang="de">auf<dtb:em>fallen</dtb:em> und <dtb:em>-steigen</dtb:em> </stub>
+      </x:context>
+      <x:expect label="result">AUF'_FALLEN UND '-_STEIGEN </x:expect>
+    </x:scenario>
+
+    <x:scenario label="test for em ending with dash">
+      <x:param name="contraction" select="0"/>
+      <x:context>
+        <stub xml:lang="de"><dtb:em>hin-</dtb:em> und <dtb:em>her</dtb:em>gehen </stub>
+      </x:context>
+      <x:expect label="result">_HIN- UND _HER'.GEHEN</x:expect>
+    </x:scenario>
+
+  </x:pending>
+
+</x:description>
