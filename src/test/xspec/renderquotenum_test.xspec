@@ -3,7 +3,7 @@
                xmlns:dtb="http://www.daisy.org/z3986/2005/dtbook/"
                xmlns:brl="http://www.daisy.org/z3986/2009/braille/"
                stylesheet="../../../xsl/dtbook2sbsform.xsl">
-   <x:scenario label="no comment">
+   <x:scenario label="brl:render=quote followed by colon">
       <x:param name="contraction" select="2"/>
       <x:context>
         <dtb:p xml:lang="de">bla <dtb:em brl:render="quote">ble ble 8</dtb:em>: blo</dtb:p>
@@ -12,7 +12,7 @@
 y P
  BLA (BLE BLE #H'): BLO</x:expect>
    </x:scenario>
-   <x:scenario label="no comment">
+   <x:scenario label="brl:render=quote followed by exclamation mark">
       <x:param name="contraction" select="2"/>
       <x:context>
         <dtb:p xml:lang="de">bla <dtb:em brl:render="quote">ble ble 8</dtb:em>! blo</dtb:p>
@@ -21,7 +21,7 @@ y P
 y P
  BLA (BLE BLE #H')+ BLO</x:expect>
    </x:scenario>
-   <x:scenario label="no comment">
+   <x:scenario label="brl:render=quote followed by question mark">
       <x:param name="contraction" select="2"/>
       <x:context>
         <dtb:p xml:lang="de">bla <dtb:em brl:render="quote">ble ble 8</dtb:em>? blo</dtb:p>
@@ -30,7 +30,7 @@ y P
 y P
  BLA (BLE BLE #H')? BLO</x:expect>
    </x:scenario>
-   <x:scenario label="no comment">
+   <x:scenario label="brl:render=quote followed by semicolon">
       <x:param name="contraction" select="2"/>
       <x:context>
         <dtb:p xml:lang="de">bla <dtb:em brl:render="quote">ble ble 8</dtb:em>; blo</dtb:p>
@@ -39,7 +39,7 @@ y P
 y P
  BLA (BLE BLE #H'); BLO</x:expect>
    </x:scenario>
-   <x:scenario label="no comment">
+   <x:scenario label="brl:render=quote followed by closing parenthesis">
       <x:param name="contraction" select="2"/>
       <x:context>
         <dtb:p xml:lang="de">bla <dtb:em brl:render="quote">ble ble 8</dtb:em>) blo</dtb:p>
@@ -48,7 +48,7 @@ y P
 y P
  BLA (BLE BLE #H')= BLO</x:expect>
    </x:scenario>
-   <x:scenario label="no comment">
+   <x:scenario label="brl:render=quote followed by period">
       <x:param name="contraction" select="2"/>
       <x:context>
         <dtb:p xml:lang="de">bla <dtb:em brl:render="quote">ble ble 8</dtb:em>. blo</dtb:p>
@@ -57,7 +57,7 @@ y P
 y P
  BLA (BLE BLE #H'). BLO</x:expect>
    </x:scenario>
-   <x:scenario label="no comment">
+   <x:scenario label="brl:render=quote followed by comma">
       <x:param name="contraction" select="2"/>
       <x:context>
         <dtb:p xml:lang="de">bla <dtb:em brl:render="quote">ble ble 8</dtb:em>, blo</dtb:p>
@@ -66,7 +66,7 @@ y P
 y P
  BLA (BLE BLE #H'), BLO</x:expect>
    </x:scenario>
-   <x:scenario label="no comment">
+   <x:scenario label="brl:render=singlequote followed by colon">
       <x:param name="contraction" select="2"/>
       <x:context>
         <dtb:p xml:lang="de">bla <dtb:em brl:render="singlequote">ble ble 8</dtb:em>: blo</dtb:p>
@@ -75,7 +75,7 @@ y P
 y P
  BLA '(BLE BLE #H'): BLO</x:expect>
    </x:scenario>
-   <x:scenario label="no comment">
+   <x:scenario label="brl:render=singlequote followed by exclamation mark">
       <x:param name="contraction" select="2"/>
       <x:context>
         <dtb:p xml:lang="de">bla <dtb:em brl:render="singlequote">ble ble 8</dtb:em>! blo</dtb:p>
@@ -84,7 +84,7 @@ y P
 y P
  BLA '(BLE BLE #H')+ BLO</x:expect>
    </x:scenario>
-   <x:scenario label="no comment">
+   <x:scenario label="brl:render=singlequote followed by question mark">
       <x:param name="contraction" select="2"/>
       <x:context>
         <dtb:p xml:lang="de">bla <dtb:em brl:render="singlequote">ble ble 8</dtb:em>? blo</dtb:p>
@@ -93,7 +93,7 @@ y P
 y P
  BLA '(BLE BLE #H')? BLO</x:expect>
    </x:scenario>
-   <x:scenario label="no comment">
+   <x:scenario label="brl:render=singlequote followed by semicolon">
       <x:param name="contraction" select="2"/>
       <x:context>
         <dtb:p xml:lang="de">bla <dtb:em brl:render="singlequote">ble ble 8</dtb:em>; blo</dtb:p>
@@ -102,7 +102,7 @@ y P
 y P
  BLA '(BLE BLE #H'); BLO</x:expect>
    </x:scenario>
-   <x:scenario label="no comment">
+   <x:scenario label="brl:render=singlequote followed by closing parenthesis">
       <x:param name="contraction" select="2"/>
       <x:context>
         <dtb:p xml:lang="de">bla <dtb:em brl:render="singlequote">ble ble 8</dtb:em>) blo</dtb:p>
@@ -111,7 +111,7 @@ y P
 y P
  BLA '(BLE BLE #H')= BLO</x:expect>
    </x:scenario>
-   <x:scenario label="no comment">
+   <x:scenario label="brl:render=singlequote followed by period">
       <x:param name="contraction" select="2"/>
       <x:context>
         <dtb:p xml:lang="de">bla <dtb:em brl:render="singlequote">ble ble 8</dtb:em>. blo</dtb:p>
@@ -120,7 +120,7 @@ y P
 y P
  BLA '(BLE BLE #H'). BLO</x:expect>
    </x:scenario>
-   <x:scenario label="no comment">
+   <x:scenario label="brl:render=singlequote followed by comma">
       <x:param name="contraction" select="2"/>
       <x:context>
         <dtb:p xml:lang="de">bla <dtb:em brl:render="singlequote">ble ble 8</dtb:em>, blo</dtb:p>
