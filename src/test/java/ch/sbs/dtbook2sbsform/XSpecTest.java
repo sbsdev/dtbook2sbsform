@@ -1,6 +1,7 @@
 package ch.sbs.dtbook2sbsform;
 
 import net.sf.saxon.s9api.*;
+import net.sf.saxon.s9api.XdmNodeKind;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -104,6 +105,11 @@ public class XSpecTest {
             params.put(new QName(name), evaluateParam(select));
         }
 
+        // Detect <x:call template="..."/> — named-template invocation mode
+        Element callEl = firstChildElement(scenario, XSPEC_NS, "call");
+        String templateName = (callEl != null) ? callEl.getAttribute("template").trim() : null;
+        if (templateName != null && templateName.isEmpty()) templateName = null;
+
         // Get context element
         Element contextEl = firstChildElement(scenario, XSPEC_NS, "context");
         if (contextEl == null) {
@@ -148,16 +154,35 @@ public class XSpecTest {
         // Strip whitespace-only text nodes injected by the indent="yes" XSLT serializer
         // during utfx2xspec conversion, so they don't pollute the transform input.
         stripWhitespaceOnlyTextNodes(root);
+
         StringWriter sw = new StringWriter();
-        XsltTransformer transformer = exec.load();
-        for (Map.Entry<QName, XdmValue> entry : params.entrySet()) {
-            transformer.setParameter(entry.getKey(), entry.getValue());
-        }
-        transformer.setSource(new DOMSource(freshDoc));
         Serializer serializer = PROCESSOR.newSerializer(sw);
         serializer.setOutputProperty(Serializer.Property.METHOD, "text");
-        transformer.setDestination(serializer);
-        transformer.transform();
+
+        if (templateName != null) {
+            // Named-template call: use Xslt30Transformer so we can set the document element
+            // as the global context item (lang(), ancestor-or-self:: etc. need the element,
+            // not the document root).
+            Xslt30Transformer t30 = exec.load30();
+            t30.setStylesheetParameters(params);
+            XdmNode xdmDoc = PROCESSOR.newDocumentBuilder().build(new DOMSource(freshDoc));
+            for (XdmNode child : xdmDoc.children()) {
+                if (child.getNodeKind() == XdmNodeKind.ELEMENT) {
+                    t30.setGlobalContextItem(child);
+                    break;
+                }
+            }
+            t30.callTemplate(new QName(templateName), serializer);
+        } else {
+            // Normal template dispatch
+            XsltTransformer transformer = exec.load();
+            for (Map.Entry<QName, XdmValue> entry : params.entrySet()) {
+                transformer.setParameter(entry.getKey(), entry.getValue());
+            }
+            transformer.setSource(new DOMSource(freshDoc));
+            transformer.setDestination(serializer);
+            transformer.transform();
+        }
 
         // Trim leading/trailing whitespace: XSpec indentation leaks into <x:expect> text content.
         String actual = normalizeLineEndings(sw.toString()).trim();

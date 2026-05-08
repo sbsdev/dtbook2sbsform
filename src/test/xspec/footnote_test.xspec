@@ -276,6 +276,7 @@ y P
 * </x:expect>
    </x:scenario>
    <x:scenario label="order of note elems should be the same as the corresponding noteref elements http://redmine.sbszh.ch/issues/1264">
+      <x:call template="insert_footnotes"/>
       <x:param name="contraction" select="2"/>
       <x:param name="footnote_placement" select="'standard'"/>
       <x:context>
