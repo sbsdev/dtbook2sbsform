@@ -185,8 +185,10 @@ public class XSpecTest {
         }
 
         // Trim leading/trailing whitespace: XSpec indentation leaks into <x:expect> text content.
-        String actual = normalizeLineEndings(sw.toString()).trim();
-        expected = expected.trim();
+        // Strip trailing whitespace per line: UTFX framework ignored trailing spaces; the XSpec
+        // converter faithfully copied them, but our runner did not previously strip them.
+        String actual = stripTrailingWhitespacePerLine(normalizeLineEndings(sw.toString())).trim();
+        expected = stripTrailingWhitespacePerLine(expected).trim();
         if (!expected.equals(actual)) {
             failures.add("Scenario [" + label + "]:\n  expected: " + repr(expected)
                     + "\n  actual:   " + repr(actual));
@@ -206,6 +208,10 @@ public class XSpecTest {
 
     private static String normalizeLineEndings(String s) {
         return s.replace("\r\n", "\n").replace("\r", "\n");
+    }
+
+    private static String stripTrailingWhitespacePerLine(String s) {
+        return s.replaceAll("[ \t]+(\\n|$)", "$1");
     }
 
     private static Document parseXml(File file) throws Exception {

@@ -90,6 +90,10 @@ public class LouisTranslateFunction extends ExtensionFunctionDefinition {
     /** Translates text, restoring soft-hyphen markers and normalising U+2011. */
     static String translate(Translator translator, String text)
             throws TranslationException, DisplayException {
+        // Collapse ASCII whitespace runs (including newlines) to a single space.
+        // This matches the intent of the old ch.sbs.liblouis/louis squeeze() but preserves
+        // U+00A0 NBSP (not matched by \s), which liblouis translates to a braille NBSP indicator.
+        text = text.replaceAll("\\s+", " ");
         if (text.indexOf(SOFT_HYPHEN) < 0) {
             return normalize(translator.translate(text, null, null, null).getBraille());
         }

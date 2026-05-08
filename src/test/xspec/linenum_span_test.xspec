@@ -12,7 +12,7 @@
       </x:context>
       <x:expect label="result">
 y P_LN
-  bE| 'A M OF M+'Y ]'YL% </x:expect>
+ bE| 'A M OF M+'Y ]'YL% </x:expect>
    </x:scenario>
    <x:scenario label="p with linenum span in the middle">
       <x:param name="contraction" select="2"/>
@@ -36,7 +36,7 @@ y P_LN_noi
       </x:context>
       <x:expect label="result">
 y P_LN
- |  __'A M OF '.
+ | __'A M OF '.
 y P_LN_noi
  bE| M+'Y ]'YL% </x:expect>
    </x:scenario>
@@ -66,7 +66,7 @@ y P_LN_noi
       <x:expect label="result">
 y BLANK
 y P_LN
-  bE| 'A M OF M+'Y ]'YL% </x:expect>
+ bE| 'A M OF M+'Y ]'YL% </x:expect>
    </x:scenario>
    <x:scenario label="Mixed p some some with span class linenum">
       <x:param name="contraction" select="2"/>
