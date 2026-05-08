@@ -120,50 +120,50 @@
   
   <xsl:function name="my:isLower" as="xs:boolean">
     <xsl:param name="char"/>
-    <xsl:value-of select="$char=lower-case($char)"/>
+    <xsl:sequence select="$char=lower-case($char)"/>
   </xsl:function>
   
   <xsl:function name="my:isLetter" as="xs:boolean">
     <xsl:param name="char"/>
-    <xsl:value-of select=" matches($char, '\p{L}')"/>
+    <xsl:sequence select=" matches($char, '\p{L}')"/>
   </xsl:function>
   
   <!-- This function is only properly defined for alphabetic characters 
        For all others the function returns always true. -->
   <xsl:function name="my:isUpper" as="xs:boolean">
     <xsl:param name="char"/>
-    <xsl:value-of select="$char=upper-case($char)"/>
+    <xsl:sequence select="$char=upper-case($char)"/>
   </xsl:function>
   
   <xsl:function name="my:isNumber" as="xs:boolean">
     <xsl:param name="number"/>
-    <xsl:value-of select="number($number)=number($number)"/>
+    <xsl:sequence select="number($number)=number($number)"/>
   </xsl:function>
   
   <xsl:function name="my:isPercent" as="xs:boolean">
     <xsl:param name="number"/>
-    <xsl:value-of select="matches($number, '([%‰°])')"/>
+    <xsl:sequence select="matches($number, '([%‰°])')"/>
   </xsl:function>
   
   <xsl:function name="my:isExponent" as="xs:boolean">
     <xsl:param name="number"/>
-    <xsl:value-of select="matches($number, '([²³])')"/>
+    <xsl:sequence select="matches($number, '([²³])')"/>
   </xsl:function>
   
   <xsl:function name="my:isFraction" as="xs:boolean">
     <xsl:param name="number"/>
-    <xsl:value-of select="matches($number, '([¼½¾⅓⅔⅕⅖⅗⅘⅙⅚⅛⅜⅝⅞])')"/>
+    <xsl:sequence select="matches($number, '([¼½¾⅓⅔⅕⅖⅗⅘⅙⅚⅛⅜⅝⅞])')"/>
   </xsl:function>
   
   <xsl:function name="my:isNumberLike" as="xs:boolean">
     <xsl:param name="number"/>
-    <xsl:value-of select="my:isNumber($number) or my:isPercent($number) or my:isFraction($number) or my:isExponent($number)"/>
+    <xsl:sequence select="my:isNumber($number) or my:isPercent($number) or my:isFraction($number) or my:isExponent($number)"/>
   </xsl:function>
   
   <xsl:function name="my:hasSameCase" as="xs:boolean">
     <xsl:param name="a"/>
     <xsl:param name="b"/>
-    <xsl:value-of
+    <xsl:sequence
       select="(my:isLower($a) and my:isLower($b)) or (my:isUpper($a) and my:isUpper($b))"/>
   </xsl:function>
   
@@ -180,88 +180,88 @@
   
   <xsl:function name="my:containsDot" as="xs:boolean">
     <xsl:param name="string"/>
-    <xsl:value-of select="contains($string,'.')"/>
+    <xsl:sequence select="contains($string,'.')"/>
   </xsl:function>
   
   <xsl:function name="my:containsDotNotAfterDigit" as="xs:boolean">
     <xsl:param name="string"/>
-    <xsl:value-of select="matches($string,'\D\.')"/>
+    <xsl:sequence select="matches($string,'\D\.')"/>
   </xsl:function>
 
   <xsl:function name="my:starts-with-number" as="xs:boolean">
     <xsl:param name="string"/>
-    <xsl:value-of select="matches($string, '^\d')"/>
+    <xsl:sequence select="matches($string, '^\d')"/>
   </xsl:function>
   
   <xsl:function name="my:ends-with-number" as="xs:boolean">
     <xsl:param name="string"/>
-    <xsl:value-of select="matches($string, '(\d|²|³)$')"/>
+    <xsl:sequence select="matches($string, '(\d|²|³)$')"/>
   </xsl:function>
 
   <xsl:function name="my:ends-with-non-word" as="xs:boolean">
     <xsl:param name="string"/>
     <!-- for the purpose of emphasis handling elipsis is treated just like a word -->
-    <xsl:value-of select="(empty($string) or matches($string, '\W$')) and not(matches($string, '\.\.\.$'))"/>
+    <xsl:sequence select="(empty($string) or matches($string, '\W$')) and not(matches($string, '\.\.\.$'))"/>
   </xsl:function>
 
   <xsl:function name="my:ends-with-word" as="xs:boolean">
     <xsl:param name="string"/>
     <!-- for the purpose of emphasis handling elipsis is treated just like a word -->
-    <xsl:value-of select="not(empty($string)) and
+    <xsl:sequence select="not(empty($string)) and
 			  matches($string, '(\w|\.\.\.)$')"/>
   </xsl:function>
 
   <xsl:function name="my:starts-with-non-word" as="xs:boolean">
     <xsl:param name="string"/>
     <!-- for the purpose of emphasis handling elipsis is treated just like a word -->
-    <xsl:value-of select="(empty($string) or matches($string, '^\W')) and not(matches($string, '^\.\.\.'))"/>
+    <xsl:sequence select="(empty($string) or matches($string, '^\W')) and not(matches($string, '^\.\.\.'))"/>
   </xsl:function>
 
   <xsl:function name="my:starts-with-word" as="xs:boolean">
     <xsl:param name="string"/>
     <!-- for the purpose of emphasis handling elipsis is treated just like a word -->
-    <xsl:value-of select="not(empty($string)) and
+    <xsl:sequence select="not(empty($string)) and
 			  matches($string, '^(\w|\.\.\.)')"/>
   </xsl:function>
 
   <xsl:function name="my:starts-with-non-whitespace" as="xs:boolean">
     <xsl:param name="string"/>
-    <xsl:value-of select="not(empty($string)) and matches($string, '^\S')"/>
+    <xsl:sequence select="not(empty($string)) and matches($string, '^\S')"/>
   </xsl:function>
 
   <xsl:function name="my:ends-with-non-whitespace" as="xs:boolean">
     <xsl:param name="string"/>
-    <xsl:value-of select="not(empty($string)) and matches($string, '\S$')"/>
+    <xsl:sequence select="not(empty($string)) and matches($string, '\S$')"/>
   </xsl:function>
 
   <xsl:function name="my:ends-with-whitespace" as="xs:boolean">
     <xsl:param name="string"/>
-    <xsl:value-of select="not(empty($string)) and matches($string, '\s$')"/>
+    <xsl:sequence select="not(empty($string)) and matches($string, '\s$')"/>
   </xsl:function>
 
   <xsl:function name="my:starts-with-punctuation" as="xs:boolean">
     <xsl:param name="string"/>
-    <xsl:value-of select="matches($string, '^\p{P}')"/>
+    <xsl:sequence select="matches($string, '^\p{P}')"/>
   </xsl:function>
 
   <xsl:function name="my:starts-with-punctuation-word" as="xs:boolean">
     <xsl:param name="string"/>
-    <xsl:value-of select="matches($string, '^(\p{P}|[-/])+\W')"/>
+    <xsl:sequence select="matches($string, '^(\p{P}|[-/])+\W')"/>
   </xsl:function>
 
   <xsl:function name="my:ends-with-punctuation-word" as="xs:boolean">
     <xsl:param name="string"/>
-    <xsl:value-of select="matches($string, '\W([-/]|\p{P})+$')"/>
+    <xsl:sequence select="matches($string, '\W([-/]|\p{P})+$')"/>
   </xsl:function>
 
   <xsl:function name="my:starts-with-wortersatzstrich" as="xs:boolean">
     <xsl:param name="string"/>
-    <xsl:value-of select="matches($string, '^-\w')"/>
+    <xsl:sequence select="matches($string, '^-\w')"/>
   </xsl:function>
 
   <xsl:function name="my:filter-hyphenation" as="xs:string">
     <xsl:param name="string"/>
-    <xsl:value-of select="if ($hyphenation) then $string else translate($string, '­', '')"/>
+    <xsl:sequence select="if ($hyphenation) then $string else translate($string, '­', '')"/>
   </xsl:function>
 
   <xsl:function name="my:has-brl-class" as="xs:boolean">
@@ -280,7 +280,7 @@
 
   <xsl:function name="my:insert-element-changed-comment" as="xs:string">
     <xsl:param name="element" as="xs:string"/>
-    <xsl:value-of select="concat('&#10;', 'xxx Was originally a ', $element, '&#10;')"/>
+    <xsl:sequence select="concat('&#10;', 'xxx Was originally a ', $element, '&#10;')"/>
   </xsl:function>
 
   <xsl:template name="getTable">
