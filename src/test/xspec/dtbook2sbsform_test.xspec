@@ -852,4 +852,19 @@ y P
  ... BLA uBLA.
 </x:expect>
    </x:scenario>
+
+  <!-- Known bug #1263: brl:num role="measure" gives wrong result when a line break appears
+       between the number and the unit inside the element. -->
+  <x:pending label="bug #1263: brl:num role=measure with internal whitespace/line break">
+    <x:scenario label="CHF 24 Falsches Resultat bei brl:num role=measure, wenn Zeilenumbruch zwischen Zahl und Einheit steht (Bug #1263)">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <dtb:p xml:lang="de"><brl:num role="measure">CHF 24</brl:num></dtb:p>
+      </x:context>
+      <x:expect label="result">
+y P
+ &gt;CHF#BD</x:expect>
+    </x:scenario>
+  </x:pending>
+
 </x:description>

@@ -171,4 +171,17 @@ y CAPTION
       </x:context>
       <x:expect label="result">&gt;ABC'S&gt;ABC'S</x:expect>
    </x:scenario>
+
+  <!-- Known bug: *-sibling axis cannot see across a <dtb:span> wrapper, so em-at-word-boundary
+       detection fails when the em is nested inside a span. -->
+  <x:pending label="bug #1395: em inside span not detected as word-boundary em (*-sibling limitation)">
+    <x:scenario label="context Bug #1395 with em after, inside span">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <stub xml:lang="de">Tages<dtb:span><dtb:em>Autor</dtb:em></dtb:span></stub>
+      </x:context>
+      <x:expect label="result">TAG%'_1TOR</x:expect>
+    </x:scenario>
+  </x:pending>
+
 </x:description>

@@ -248,4 +248,65 @@ y P
 y P
  S HE V +F+G + E AKZCT ;M7KT, R E 1SL@ND7 -R0T, U FRAG(: (NA, U WOH7 KX] DU?)</x:expect>
    </x:scenario>
+
+  <!-- Known bug: *-sibling axis cannot see across a <dtb:span> wrapper, so em-at-word-boundary
+       detection fails when the em is the first child of a span (issue #1007). -->
+  <x:pending label="bug #1007: em inside span at word start not detected as prefix em">
+    <x:scenario label="Single word mixed emphasis em before and inside span (http://redmine.sbszh.ch/issues/show/1007)">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <dtb:p xml:lang="de"><dtb:span><dtb:em>Menschen</dtb:em></dtb:span>versuch</dtb:p>
+      </x:context>
+      <x:expect label="result">
+y P
+ _MC5C'.V7SU4</x:expect>
+    </x:scenario>
+  </x:pending>
+
+  <!-- The following three scenarios were commented out in the original UTFX source without an
+       explicit failure note; they cover «...» opening-quote variants that the »...« passing
+       tests do not exercise. -->
+  <x:pending label="unresolved: «...» opening-quote variants">
+    <x:scenario label="Quotes w/o context 2">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <stub xml:lang="de"> («<dtb:abbr>Bsp.</dtb:abbr>!»</stub>
+      </x:context>
+      <x:expect label="result">=(BSP.+)</x:expect>
+    </x:scenario>
+
+    <x:scenario label="Many quoted paras">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <stub xml:lang="de">
+          <dtb:p>«Sag mal, bist du Kommunist?»</dtb:p>
+          <dtb:p>«Nein, und schon gar nicht in sowjetischem Sinn.»</dtb:p>
+          <dtb:p>«Du <dtb:em>bist</dtb:em></dtb:p>
+        </stub>
+      </x:context>
+      <x:expect label="result">
+y P
+ (SG MAL, B] DU KX/I]?(
+y P
+ (N6, U 5 GAR N * SOWJETI5[ S*N.)
+y P
+ (DU _B] </x:expect>
+    </x:scenario>
+
+    <x:scenario label="Many quoted paras 2">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <stub xml:lang="de">
+          <dtb:p>«Okay. Aber ich würde es auch gar nicht wissen; bin erst ein paar Jahre in den <dtb:abbr>USA</dtb:abbr>.»</dtb:p>
+          <dtb:p>Sie hatte von Anfang an den Akzent bemerkt, der den Ausländer verriet, und fragte: «Na, und woher kommst du?»</dtb:p>
+        </stub>
+      </x:context>
+      <x:expect label="result">
+y P
+ (OKA'Y. A # 8E % \ GAR N W^C; B* 7] 6 PAAR JRE * E &gt;USA.)
+y P
+ S HE V +F+G + E AKZCT ;M7KT, R E \L@ND7 -R0T, U FR(: (NA, U WOH7 KX] DU?)</x:expect>
+    </x:scenario>
+  </x:pending>
+
 </x:description>
