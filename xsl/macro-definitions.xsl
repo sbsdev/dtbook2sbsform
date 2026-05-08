@@ -889,13 +889,13 @@ y e THe
       <xsl:choose>
         <xsl:when test="$volumes &lt; 13">
           <xsl:text>"H`t%B</xsl:text>
-          <xsl:value-of select="my:translate(string($braille_tables),'er')"/>
+          <xsl:value-of select="louis:translate(string($braille_tables),'er')"/>
         </xsl:when>
         <xsl:otherwise>
           <xsl:text>"H`t%B</xsl:text>
         </xsl:otherwise>
       </xsl:choose>
-      <xsl:value-of select="my:translate(string($braille_tables),' Band')"/>
+      <xsl:value-of select="louis:translate(string($braille_tables),' Band')"/>
       <xsl:text>&#10;H`lm1&#10;</xsl:text>
     </xsl:if>
     <xsl:text>&#10;y e BrlVol&#10;</xsl:text>
@@ -907,7 +907,7 @@ L
 t::::::::::::
 t
  </xsl:text>
-      <xsl:value-of select="my:translate(string($braille_tables),'Ende des')"/>
+      <xsl:value-of select="louis:translate(string($braille_tables),'Ende des')"/>
       <xsl:choose>
         <xsl:when test="$volumes &gt; 12">
           <xsl:text>&#10;" %B&#10; </xsl:text>
@@ -923,7 +923,7 @@ t
           </xsl:choose>
         </xsl:otherwise>
       </xsl:choose>
-      <xsl:value-of select="my:translate(string($braille_tables),'Bandes')"/>
+      <xsl:value-of select="louis:translate(string($braille_tables),'Bandes')"/>
       <xsl:text>
 y e EndVol
 </xsl:text>
@@ -941,7 +941,7 @@ i k=0
 L
 t~
  </xsl:text>
-      <xsl:value-of select="my:translate(string($braille_tables),'Inhaltsverzeichnis')"/>
+      <xsl:value-of select="louis:translate(string($braille_tables),'Inhaltsverzeichnis')"/>
       <xsl:text>
 u-
 lm1
@@ -956,7 +956,7 @@ L
 t::::::::::::
 t
  </xsl:text>
-    <xsl:value-of select="my:translate(string($braille_tables),'Ende des Buches')"/>
+    <xsl:value-of select="louis:translate(string($braille_tables),'Ende des Buches')"/>
     <xsl:text>
 t======
 y e EndBook
@@ -974,7 +974,7 @@ I ~=j
 i k=0
 H`L
 H`t~~</xsl:text>
-      <xsl:value-of select="my:translate(string($braille_tables),'Inhaltsverzeichnis')"/>
+      <xsl:value-of select="louis:translate(string($braille_tables),'Inhaltsverzeichnis')"/>
       <xsl:text>
 H`u-
 H`lm1
@@ -1013,7 +1013,7 @@ y e Ziff
 
     <xsl:if test="$volumes &gt; 1">
       <xsl:text>y b Volumes&#10;t&#10; </xsl:text>
-      <xsl:value-of select="my:translate(string($braille_tables),'In ')"/>
+      <xsl:value-of select="louis:translate(string($braille_tables),'In ')"/>
       <xsl:choose>
         <xsl:when test="$volumes &lt; 13">
           <xsl:variable name="number">
@@ -1031,60 +1031,60 @@ y e Ziff
               <xsl:when test="$volumes = '12'">zwölf</xsl:when>
             </xsl:choose>
           </xsl:variable>
-          <xsl:value-of select="my:translate(string($braille_tables),string($number))"/>
+          <xsl:value-of select="louis:translate(string($braille_tables),string($number))"/>
         </xsl:when>
         <xsl:otherwise>
-          <xsl:value-of select="my:translate(string($braille_tables),string($volumes))"/>
+          <xsl:value-of select="louis:translate(string($braille_tables),string($volumes))"/>
         </xsl:otherwise>
       </xsl:choose>
-      <xsl:value-of select="my:translate(string($braille_tables),' Braillebänden')"/>
+      <xsl:value-of select="louis:translate(string($braille_tables),' Braillebänden')"/>
       <xsl:text>&#10;t&#10;</xsl:text>
       <xsl:choose>
         <xsl:when test="$volumes &lt; 13">
           <!-- bis zu zwölf Bänden in Worten -->
           <xsl:text>?vol=1&#10;+R=B</xsl:text>
-          <xsl:value-of select="my:translate(string($braille_tables),'erst')"/>
+          <xsl:value-of select="louis:translate(string($braille_tables),'erst')"/>
           <xsl:text>&#10;?vol=2&#10;+R=B</xsl:text>
-          <xsl:value-of select="my:translate(string($braille_tables),'zweit')"/>
+          <xsl:value-of select="louis:translate(string($braille_tables),'zweit')"/>
           <xsl:if test="$volumes &gt; 2">
             <xsl:text>&#10;?vol=3&#10;+R=B</xsl:text>
-            <xsl:value-of select="my:translate(string($braille_tables),'dritt')"/>
+            <xsl:value-of select="louis:translate(string($braille_tables),'dritt')"/>
           </xsl:if>
           <xsl:if test="$volumes &gt; 3">
             <xsl:text>&#10;?vol=4&#10;+R=B</xsl:text>
-            <xsl:value-of select="my:translate(string($braille_tables),'viert')"/>
+            <xsl:value-of select="louis:translate(string($braille_tables),'viert')"/>
           </xsl:if>
           <xsl:if test="$volumes &gt; 4">
             <xsl:text>&#10;?vol=5&#10;+R=B</xsl:text>
-            <xsl:value-of select="my:translate(string($braille_tables), 'fünft')"/>
+            <xsl:value-of select="louis:translate(string($braille_tables), 'fünft')"/>
           </xsl:if>
           <xsl:if test="$volumes &gt; 5">
             <xsl:text>&#10;?vol=6&#10;+R=B</xsl:text>
-            <xsl:value-of select="my:translate(string($braille_tables), 'sechst')"/>
+            <xsl:value-of select="louis:translate(string($braille_tables), 'sechst')"/>
           </xsl:if>
           <xsl:if test="$volumes &gt; 6">
             <xsl:text>&#10;?vol=7&#10;+R=B</xsl:text>
-            <xsl:value-of select="my:translate(string($braille_tables), 'siebt')"/>
+            <xsl:value-of select="louis:translate(string($braille_tables), 'siebt')"/>
           </xsl:if>
           <xsl:if test="$volumes &gt; 7">
             <xsl:text>&#10;?vol=8&#10;+R=B</xsl:text>
-            <xsl:value-of select="my:translate(string($braille_tables), 'acht')"/>
+            <xsl:value-of select="louis:translate(string($braille_tables), 'acht')"/>
           </xsl:if>
           <xsl:if test="$volumes &gt; 8">
             <xsl:text>&#10;?vol=9&#10;+R=B</xsl:text>
-            <xsl:value-of select="my:translate(string($braille_tables), 'neunt')"/>
+            <xsl:value-of select="louis:translate(string($braille_tables), 'neunt')"/>
           </xsl:if>
           <xsl:if test="$volumes &gt; 9">
             <xsl:text>&#10;?vol=10&#10;+R=B</xsl:text>
-            <xsl:value-of select="my:translate(string($braille_tables), 'zehnt')"/>
+            <xsl:value-of select="louis:translate(string($braille_tables), 'zehnt')"/>
           </xsl:if>
           <xsl:if test="$volumes &gt; 10">
             <xsl:text>&#10;?vol=11&#10;+R=B</xsl:text>
-            <xsl:value-of select="my:translate(string($braille_tables), 'elft')"/>
+            <xsl:value-of select="louis:translate(string($braille_tables), 'elft')"/>
           </xsl:if>
           <xsl:if test="$volumes &gt; 11">
             <xsl:text>&#10;?vol=12&#10;+R=B</xsl:text>
-            <xsl:value-of select="my:translate(string($braille_tables), 'zwölft')"/>
+            <xsl:value-of select="louis:translate(string($braille_tables), 'zwölft')"/>
           </xsl:if>
           <xsl:choose>
             <xsl:when test="$contraction = 2">
@@ -1109,7 +1109,7 @@ y Ziff
         </xsl:otherwise>
       </xsl:choose>
       <xsl:text> </xsl:text>
-      <xsl:value-of select="my:translate(string($braille_tables), 'Band')"/>
+      <xsl:value-of select="louis:translate(string($braille_tables), 'Band')"/>
       <xsl:text>&#10;y e Volumes&#10;  </xsl:text>
     </xsl:if>
     <xsl:sequence select="my:padded-comment('Titelblatt')"/>
@@ -1137,9 +1137,9 @@ t
       </xsl:call-template>
       <xsl:text>-</xsl:text>
       <xsl:value-of
-        select="my:translate(string($braille_tables), 'Heft Nr.')"/>
+        select="louis:translate(string($braille_tables), 'Heft Nr.')"/>
       <xsl:value-of
-        select="my:translate(string($braille_tables), string(//dtb:meta[@name='prod:seriesNumber']/@content))"/>
+        select="louis:translate(string($braille_tables), string(//dtb:meta[@name='prod:seriesNumber']/@content))"/>
       <xsl:text>&#10;</xsl:text>
     </xsl:if>
     <xsl:if test="$volumes &gt; 1">
@@ -1173,9 +1173,9 @@ t
       </xsl:choose>
       <xsl:text>t&#10; </xsl:text>
       <xsl:value-of
-        select="my:translate(string($braille_tables), 'Rucksackbuch Nr.')"/>
+        select="louis:translate(string($braille_tables), 'Rucksackbuch Nr.')"/>
       <xsl:value-of
-        select="my:translate(string($braille_tables), string(//dtb:meta[@name='prod:seriesNumber']/@content))"/>
+        select="louis:translate(string($braille_tables), string(//dtb:meta[@name='prod:seriesNumber']/@content))"/>
       <xsl:text>&#10;t&#10; </xsl:text>
       <xsl:text>&#10;</xsl:text>
     </xsl:if>
@@ -1196,15 +1196,15 @@ t
     </xsl:call-template>
     <xsl:text> </xsl:text>
     <xsl:value-of
-      select="my:translate(string($braille_tables), 'Schweizerische Bibliothek')"/>
+      select="louis:translate(string($braille_tables), 'Schweizerische Bibliothek')"/>
     <xsl:text>&#10;t&#10; </xsl:text>
     <xsl:value-of
-      select="my:translate(string($braille_tables), 'für Blinde, Seh- und ')"/>
+      select="louis:translate(string($braille_tables), 'für Blinde, Seh- und ')"/>
     <xsl:if test="not($contraction = 2)">
       <xsl:text>&#10;t&#10; </xsl:text>
     </xsl:if>
     <xsl:value-of
-      select="my:translate(string($braille_tables), 'Lesebehinderte')"/>
+      select="louis:translate(string($braille_tables), 'Lesebehinderte')"/>
     <xsl:text>
 p
 L
@@ -1212,40 +1212,40 @@ i f=1 l=1
  </xsl:text>
 
     <xsl:value-of
-      select="my:translate(string($braille_tables), my:filter-hyphenation('Dieses Braille­buch ist die aus­schließ­lich '))"/>
+      select="louis:translate(string($braille_tables), my:filter-hyphenation('Dieses Braille­buch ist die aus­schließ­lich '))"/>
     <xsl:value-of
-      select="my:translate(string($braille_tables), my:filter-hyphenation('für die Nut­zung durch Seh- und Le­se­be­hin­der­te Men­schen '))"/>
+      select="louis:translate(string($braille_tables), my:filter-hyphenation('für die Nut­zung durch Seh- und Le­se­be­hin­der­te Men­schen '))"/>
     <xsl:value-of
-      select="my:translate(string($braille_tables), my:filter-hyphenation('be­stimm­te zu­gäng­li­che Ver­sion eines ur­he­ber­recht­lich '))"/>
+      select="louis:translate(string($braille_tables), my:filter-hyphenation('be­stimm­te zu­gäng­li­che Ver­sion eines ur­he­ber­recht­lich '))"/>
     <xsl:value-of
-      select="my:translate(string($braille_tables), my:filter-hyphenation('ge­schütz­ten Werks. '))"/>
+      select="louis:translate(string($braille_tables), my:filter-hyphenation('ge­schütz­ten Werks. '))"/>
     <xsl:value-of
-      select="my:translate(string($vform_braille_tables), 'Sie ')"/>
-    <xsl:value-of select="my:translate(string($braille_tables), my:filter-hyphenation('kön­nen '))"/>
+      select="louis:translate(string($vform_braille_tables), 'Sie ')"/>
+    <xsl:value-of select="louis:translate(string($braille_tables), my:filter-hyphenation('kön­nen '))"/>
     <xsl:value-of
-      select="my:translate(string($braille_tables), my:filter-hyphenation('es im Rah­men des Ur­he­ber­rechts per­sön­lich nut­zen, '))"/>
+      select="louis:translate(string($braille_tables), my:filter-hyphenation('es im Rah­men des Ur­he­ber­rechts per­sön­lich nut­zen, '))"/>
     <xsl:value-of
-      select="my:translate(string($braille_tables), my:filter-hyphenation('dür­fen es aber nicht wei­ter ver­brei­ten oder öf­fent­lich '))"/>
+      select="louis:translate(string($braille_tables), my:filter-hyphenation('dür­fen es aber nicht wei­ter ver­brei­ten oder öf­fent­lich '))"/>
     <xsl:value-of
-      select="my:translate(string($braille_tables), my:filter-hyphenation('zu­gäng­lich ma­chen.'))"/>
+      select="louis:translate(string($braille_tables), my:filter-hyphenation('zu­gäng­lich ma­chen.'))"/>
     <xsl:if test="//dtb:meta[lower-case(@name)='prod:source']/@content = 'electronicData'">
       <xsl:text>&#10;l&#10; </xsl:text>
-      <xsl:value-of select="my:translate(string($braille_tables), my:filter-hyphenation('Wir dan­ken dem Ver­lag für die freund­liche Be­reit­stel­lung der elek­troni­schen Text­da­ten. '))"/>
+      <xsl:value-of select="louis:translate(string($braille_tables), my:filter-hyphenation('Wir dan­ken dem Ver­lag für die freund­liche Be­reit­stel­lung der elek­troni­schen Text­da­ten. '))"/>
     </xsl:if>
     <xsl:text>&#10;lm1&#10;x</xsl:text>
     <xsl:value-of
-        select="my:translate(string($braille_tables), my:filter-hyphenation('Dieses Braille­buch ist nicht Kor­rek­tur gelesen.'))"/>
+        select="louis:translate(string($braille_tables), my:filter-hyphenation('Dieses Braille­buch ist nicht Kor­rek­tur gelesen.'))"/>
     <xsl:if test="$book_type = 'rucksack'">
       <xsl:text>&#10;lv18&#10; </xsl:text>
       <xsl:text>&#10;a&#10; </xsl:text>
       <xsl:value-of
-        select="my:translate(string($braille_tables), 'Rucksackbuch Nr.')"/>
+        select="louis:translate(string($braille_tables), 'Rucksackbuch Nr.')"/>
       <xsl:value-of
-        select="my:translate(string($braille_tables), string(//dtb:meta[@name='prod:seriesNumber']/@content))"/>
+        select="louis:translate(string($braille_tables), string(//dtb:meta[@name='prod:seriesNumber']/@content))"/>
     </xsl:if>
     <xsl:text>&#10;lv20&#10; </xsl:text>
     <xsl:value-of
-      select="my:translate(string($braille_tables), 'Braillebearbeitung und Druck')"/>
+      select="louis:translate(string($braille_tables), 'Braillebearbeitung und Druck')"/>
     <xsl:text>&#10;a&#10; </xsl:text>
     <xsl:call-template name="handle_abbr">
       <xsl:with-param name="context" select="'abbr'"/>
@@ -1255,15 +1255,15 @@ i f=1 l=1
     </xsl:call-template>
     <xsl:text> </xsl:text>
     <xsl:value-of
-      select="my:translate(string($braille_tables), 'Schweizerische Bibliothek')"/>
+      select="louis:translate(string($braille_tables), 'Schweizerische Bibliothek')"/>
     <xsl:text>&#10;a&#10; </xsl:text>
     <xsl:value-of
-      select="my:translate(string($braille_tables), 'für Blinde, Seh- und ')"/>
+      select="louis:translate(string($braille_tables), 'für Blinde, Seh- und ')"/>
     <xsl:if test="not($contraction = 2)">
       <xsl:text>&#10;a&#10; </xsl:text>
     </xsl:if>
     <xsl:value-of
-      select="my:translate(string($braille_tables), 'Lesebehinderte, Zürich')"/>
+      select="louis:translate(string($braille_tables), 'Lesebehinderte, Zürich')"/>
     <xsl:text>&#10;a&#10; </xsl:text>
     <xsl:variable name="boilerplate">
       <dtb:a xml:lang="de"><brl:computer>www.sbs.ch</brl:computer></dtb:a>
@@ -1278,7 +1278,7 @@ i f=1 l=1
     </xsl:call-template>
     <xsl:text> </xsl:text>
     <xsl:value-of
-      select="my:translate(string($braille_tables), string(substring-before(//dtb:meta[@name='dc:Date']/@content,'-')))"/>
+      select="louis:translate(string($braille_tables), string(substring-before(//dtb:meta[@name='dc:Date']/@content,'-')))"/>
     <xsl:text>&#10;p&#10;xxx Titelblatt der Originalausgabe (Gestaltung der Vorlage nachempfinden)</xsl:text>
     <xsl:text>&#10;L5&#10; </xsl:text>
     <xsl:apply-templates select="//dtb:docauthor"/>
