@@ -46,7 +46,7 @@ will be broken. Line width is 80 chars.
 * Prerequisite installs
 - [[http://java.sun.com][java]] 11+
 - [[https://liblouis.io][liblouis]]
-- =sbs-braille-tables= Debian package
+- [[https://github.com/sbsdev/sbs-braille-tables][sbs-braille-tables]] Debian package
 
 * Testing
 
