@@ -29,28 +29,19 @@ jobs:
         run: |
           gh release download --repo sbsdev/sbs-braille-tables --pattern '*.deb' --dir /tmp
           sudo apt-get install -y /tmp/sbs-braille-tables_*.deb
+          # Workaround: sbs-braille-tables installs to /usr/local (matching a
+          # source-built liblouis), but the apt liblouis looks in /usr. Copy
+          # the tables across so the apt library can find them.
+          sudo cp -r /usr/local/share/liblouis/tables/. /usr/share/liblouis/tables/
 
       - name: Create generated table stubs
         run: |
-          sudo touch /usr/local/share/liblouis/tables/sbs-de-g1-white.mod
-          sudo touch /usr/local/share/liblouis/tables/sbs-de-g2-name-white.mod
-          sudo touch /usr/local/share/liblouis/tables/sbs-de-g2-place-white.mod
-          sudo touch /usr/local/share/liblouis/tables/sbs-de-g2-white.mod
-
-      - name: Verify table installation
-        run: |
-          echo "=== liblouis version ==="
-          dpkg -l liblouis-dev | tail -1
-          echo "=== sbs tables dir ==="
-          ls /usr/local/share/liblouis/tables/ | head -10
-          echo "=== sbs.dis present? ==="
-          ls -la /usr/local/share/liblouis/tables/sbs.dis || echo "MISSING"
-          echo "=== system tables dir ==="
-          ls /usr/share/liblouis/tables/ | head -10
+          sudo touch /usr/share/liblouis/tables/sbs-de-g1-white.mod
+          sudo touch /usr/share/liblouis/tables/sbs-de-g2-name-white.mod
+          sudo touch /usr/share/liblouis/tables/sbs-de-g2-place-white.mod
+          sudo touch /usr/share/liblouis/tables/sbs-de-g2-white.mod
 
       - name: Build
-        env:
-          LOUIS_TABLEPATH: /usr/local/share/liblouis/tables:/usr/share/liblouis/tables
         run: mvn --batch-mode package
 
       - name: Create GitHub release
