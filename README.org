@@ -48,6 +48,19 @@ will be broken. Line width is 80 chars.
 - [[https://liblouis.io][liblouis]]
 - [[https://github.com/sbsdev/sbs-braille-tables][sbs-braille-tables]] Debian package
 
+* Release
+
+1. Bump the version in =pom.xml= (remove =-SNAPSHOT=, e.g. =0.36-SNAPSHOT= → =0.36=)
+2. Commit: =git commit -m "Release 0.36"=
+3. Tag: =git tag v0.36=
+4. Push the tag: =git push origin v0.36=
+
+GitHub Actions will build the package, run the full test suite, and
+publish the =.deb= as a release asset automatically.
+
+Afterwards bump =pom.xml= to the next snapshot version (e.g. =0.37-SNAPSHOT=)
+and commit to continue development.
+
 * Testing
 
 #+BEGIN_SRC shell
