@@ -2,12 +2,12 @@
 
 A command line tool to transform [[http://en.wikipedia.org/wiki/DTBook][dtbook xml source files]] into a
 braille format proprietary to [[http://www.sbs.ch][Swiss Library for the Blind, Visually
-Impaired and Print Disabled]] using [[http://saxon.sourceforge.net][Saxon]] with a [[https://github.com/sbsdev/LiblouisSaxonExtension][java extension]] that
-offers translating text into braille using [[http://www.liblouis.org][liblouis]].
+Impaired and Print Disabled]] using [[http://saxon.sourceforge.net][Saxon]] with [[https://github.com/liblouis/liblouis-java][liblouis-java]] bindings
+for translating text into braille using [[https://liblouis.io][liblouis]].
 
 * Build
 
-The build works with Java11. You need the ~ant-contrib~ package.
+Requires Java 11+.
 
 #+BEGIN_SRC shell
 just deb
@@ -37,67 +37,28 @@ extension function (see =resources/xsl/dtbook2sbsform.xsl=).
 breaks lines according to sbs rules: only lines beginning with a blank
 will be broken. Line width is 80 chars.
 
-#+BEGIN_SRC shell
-./utfx.sh
-#+END_SRC
-
-Performs [[http://utf-x.sourceforge.net/][utfx]] (svn version) tests.
-
-* Dependencies
-- [[https://github.com/java-native-access/jna][jna]]
-- junit
-- [[https://github.com/sbsdev/LiblouisSaxonExtension][liblouissaxonx]]
-- [[https://github.com/sbsdev/liblouis-javabindings][louis-1.0.jar]]
-- [[https://central.sonatype.com/artifact/net.sf.saxon/Saxon-HE/12.1/overview][saxon9he.jar]]
-- [[https://utf-x.sourceforge.net/manual/manual.html][utfxFat.jar]]
-
-
 * Prerequisite installs
-- [[http://java.sun.com][java]]
-  - Unfortunately this project is not compatible with Java 8. Please use
-    Java 7 or lower.
-- [[http://code.google.com/p/liblouis/][liblouis]]
+- [[http://java.sun.com][java]] 11+
+- [[https://liblouis.io][liblouis]]
+- =sbs-braille-tables= Debian package
 
 * Testing
 
-This project has been ported to support testing via xprocspec tests.
-For legacy reasons however testing with =utfx= is still supported via
-a Docker image.
-
 #+BEGIN_SRC shell
-docker build -t dtbook2sbsform -f Dockerfile.test_with_utfx .
+mvn test
 #+END_SRC
 
-If you really want you can also build an image to test against old
-versions of liblouis and the braille tables:
+To run a single XSpec file:
 
 #+BEGIN_SRC shell
-  docker build --build-arg LIBLOUIS_VERSION=3.10.2 --build-arg BRAILLE_TABLES_VERSION=1.12.5 -t dtbook2sbsform -f Dockerfile.test_with_utfx .
+mvn test -Dtest="XSpecTest#run[src/test/xspec/FILENAME.xspec]"
 #+END_SRC
 
-To run the tests using above image simply run
-
-#+BEGIN_SRC shell
-docker run --rm --volume=$(pwd):/usr/src/dtbook2sbsform -t dtbook2sbsform
-#+END_SRC
-
-To run a single test file use the following command:
-
-#+BEGIN_SRC shell
-docker run --rm --volume=$(pwd):/usr/src/dtbook2sbsform -t dtbook2sbsform -Dutfx.test.file=test_xsl/11_most_frequent_bugs_test.xml
-#+END_SRC
-
-* Authors
-*** Christian Egli
--  https://github.com/egli
-
-*** Bernhard Wagner
--  http://xmlizer.net
--  http://github.com/bwagner
+All dependencies are on Maven Central — no local jar installs required.
 
 * License
 
-Copyright 2011-2018 Swiss Library for the Blind, Visually Impaired and Print Disabled.
+Copyright 2011-2026 Swiss Library for the Blind, Visually Impaired and Print Disabled.
 
 Licensed under GNU Lesser General Public License as published by the
 Free Software Foundation, either [[http://www.gnu.org/licenses/gpl-3.0.html][version 3]] of the License, or (at your

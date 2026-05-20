@@ -10,7 +10,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ```bash
 mvn compile          # Compile Java source
-mvn test             # Run all tests (JUnit + XSpec); pre-existing failures don't block the build
+mvn test             # Run all tests (JUnit + XSpec)
 mvn package          # Build linebreaker.jar + Debian package (runs tests)
 mvn package -DskipTests  # Skip tests entirely
 
@@ -48,9 +48,9 @@ The XSpec tests are run by a custom JUnit 4 runner (`XSpecTest.java`) rather tha
 - Registers `LouisTranslateFunction` with Saxon (our own replacement for the standard extension)
 - Isolates each scenario in a fresh document (prevents cross-scenario footnote counter contamination)
 - Strips indentation-only whitespace text nodes (`\n`-prefixed, injected by the utfx2xspec converter's `indent="yes"`)
-- Normalizes CR → LF and trims leading/trailing whitespace before comparing
+- Normalizes CR → LF, strips per-line trailing whitespace, and trims before comparing
 
-About 8 of the 54 XSpec test files have pre-existing failures (braille contraction differences vs. current liblouis, missing liblouis tables in the test environment, known XSLT bugs). These don't block the build (`testFailureIgnore=true` in surefire config).
+All 60 tests pass with `mvn test -Dmaven.test.failure.ignore=false`.
 
 ## Dependencies
 
@@ -64,8 +64,14 @@ All Maven dependencies are on Maven Central — no local installs required.
 
 ## Known issues and future work
 
-See `TODO.org` for a list of open issues, including pre-existing test failures and the
-xspec-maven-plugin incompatibility.
+See `TODO.org` for open issues (xspec-maven-plugin incompatibility, CI workflow, XSpec whitespace regeneration).
+
+## XSLT/Java extension pitfall
+
+When calling Java extension functions (e.g. `louis:translate`) directly from XSLT, any argument
+that is an RTF variable (`$braille_tables`) or an XPath node expression (`$map/entry[@key='...']`)
+must be wrapped in `string()`. Saxon passes these as a `LazySequence` which can only be read once;
+without `string()`, the coercion check consumes the sequence and Saxon throws an internal error at runtime.
 
 ## Prerequisites
 
