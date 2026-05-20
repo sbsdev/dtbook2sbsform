@@ -34,7 +34,10 @@ The tool is a multi-stage pipeline invoked via `dtbook2sbsform.sh`:
 4. **linebreak.sh / LineBreaker.java** — wraps output at 80 characters
 
 Key source locations:
-- `xsl/` — all XSLT stylesheets
+- `xsl/` — all XSLT stylesheets (kept at the project root rather than
+  `src/main/resources/` because `dtbook2sbsform.sh` references them via
+  `$DIR/xsl/...` relative to the installed script location; they are runtime
+  files deployed alongside the scripts, not jar resources)
 - `src/main/java/ch/sbs/liblouis/utils/LineBreaker.java` — Java line-breaking utility
 - `src/test/java/ch/sbs/liblouis/utils/LineBreakerTest.java` — JUnit tests for LineBreaker
 - `src/test/java/ch/sbs/dtbook2sbsform/XSpecTest.java` — JUnit-based XSpec test runner (uses Saxon 12 + liblouis directly)
