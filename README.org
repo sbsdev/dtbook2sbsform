@@ -10,7 +10,13 @@ for translating text into braille using [[https://liblouis.io][liblouis]].
 Requires Java 11+.
 
 #+BEGIN_SRC shell
-just deb
+mvn package
+#+END_SRC
+
+To install the resulting Debian package:
+
+#+BEGIN_SRC shell
+sudo apt reinstall ./target/dtbook2sbsform_*.deb
 #+END_SRC
 
 * Usage of command line tools

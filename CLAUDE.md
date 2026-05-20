@@ -15,11 +15,6 @@ mvn package          # Build linebreaker.jar + Debian package (runs tests)
 mvn package -DskipTests  # Skip tests entirely
 ```
 
-Using the `just` task runner:
-```bash
-just deb             # Build Debian package (mvn package)
-just install         # Install latest .deb
-```
 
 ## Architecture
 
