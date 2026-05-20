@@ -56,6 +56,8 @@
   </dependencies>
 
   <build>
+    <!-- Shell scripts reference the jar as linebreaker.jar -->
+    <finalName>linebreaker</finalName>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -73,9 +75,6 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
         <version>3.4.2</version>
-        <configuration>
-          <finalName>linebreaker</finalName>
-        </configuration>
       </plugin>
 
       <!-- Copy runtime deps to target/dependency/ so jdeb can bundle them -->
