@@ -112,7 +112,7 @@
               <src>${project.build.directory}/linebreaker.jar</src>
               <mapper>
                 <type>perm</type>
-                <prefix>/opt/dtbook2sbsform</prefix>
+                <prefix>/opt/dtbook2sbsform/lib</prefix>
               </mapper>
             </data>
             <data>

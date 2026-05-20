@@ -20,6 +20,6 @@
 
 # Set classpath
 DIR=`dirname $0`
-CP=$DIR/linebreaker.jar
+CP=$DIR/lib/linebreaker.jar
 
 java -cp $CP ch.sbs.liblouis.utils.LineBreaker "$@"

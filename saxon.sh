@@ -18,8 +18,8 @@
 # License along with this program. If not, see
 # <http://www.gnu.org/licenses/>.
 
-# Set classpath — all runtime JARs land in lib/ via Maven dependency plugin
+# Set classpath — all JARs (including linebreaker.jar) land in lib/
 DIR=`dirname $0`
-CP=$(find "$DIR/lib" -name '*.jar' | tr '\n' ':')$DIR/linebreaker.jar
+CP=$(find "$DIR/lib" -name '*.jar' | tr '\n' ':')
 
 java -cp $CP ch.sbs.dtbook2sbsform.SbsTransform "$@"
