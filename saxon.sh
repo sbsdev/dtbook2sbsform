@@ -22,4 +22,4 @@
 DIR=`dirname $0`
 CP=$(find "$DIR/lib" -name '*.jar' | tr '\n' ':')
 
-java -cp $CP ch.sbs.dtbook2sbsform.SbsTransform "$@"
+java -Djdk.xml.entityExpansionLimit=0 -cp $CP ch.sbs.dtbook2sbsform.SbsTransform "$@"
