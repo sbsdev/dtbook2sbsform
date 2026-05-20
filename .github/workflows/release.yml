@@ -32,6 +32,8 @@ jobs:
       - name: Create generated table stubs
         run: |
           sudo touch /usr/local/share/liblouis/tables/sbs-de-g1-white.mod
+          sudo touch /usr/local/share/liblouis/tables/sbs-de-g2-name-white.mod
+          sudo touch /usr/local/share/liblouis/tables/sbs-de-g2-place-white.mod
           sudo touch /usr/local/share/liblouis/tables/sbs-de-g2-white.mod
 
       - name: Build
