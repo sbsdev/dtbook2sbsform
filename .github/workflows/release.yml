@@ -37,6 +37,17 @@ jobs:
           sudo touch /usr/local/share/liblouis/tables/sbs-de-g2-place-white.mod
           sudo touch /usr/local/share/liblouis/tables/sbs-de-g2-white.mod
 
+      - name: Verify table installation
+        run: |
+          echo "=== liblouis version ==="
+          dpkg -l liblouis-dev | tail -1
+          echo "=== sbs tables dir ==="
+          ls /usr/local/share/liblouis/tables/ | head -10
+          echo "=== sbs.dis present? ==="
+          ls -la /usr/local/share/liblouis/tables/sbs.dis || echo "MISSING"
+          echo "=== system tables dir ==="
+          ls /usr/share/liblouis/tables/ | head -10
+
       - name: Build
         env:
           LOUIS_TABLEPATH: /usr/local/share/liblouis/tables:/usr/share/liblouis/tables
