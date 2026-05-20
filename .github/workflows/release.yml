@@ -37,6 +37,8 @@ jobs:
           sudo touch /usr/local/share/liblouis/tables/sbs-de-g2-white.mod
 
       - name: Build
+        env:
+          LOUIS_TABLEPATH: /usr/local/share/liblouis/tables:/usr/share/liblouis/tables
         run: mvn --batch-mode package
 
       - name: Create GitHub release
