@@ -63,15 +63,10 @@
         <version>3.13.0</version>
       </plugin>
 
-      <!-- Tests run but pre-existing failures do not block the package phase.
-           Run `mvn test -Dmaven.test.failure.ignore=false` to enforce strict passing. -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
         <version>3.5.2</version>
-        <configuration>
-          <testFailureIgnore>true</testFailureIgnore>
-        </configuration>
       </plugin>
 
       <plugin>

@@ -13,9 +13,6 @@ mvn compile          # Compile Java source
 mvn test             # Run all tests (JUnit + XSpec)
 mvn package          # Build linebreaker.jar + Debian package (runs tests)
 mvn package -DskipTests  # Skip tests entirely
-
-# Run tests strictly (fail on any test failure):
-mvn test -Dmaven.test.failure.ignore=false
 ```
 
 Using the `just` task runner:
@@ -53,7 +50,7 @@ The XSpec tests are run by a custom JUnit 4 runner (`XSpecTest.java`) rather tha
 - Strips indentation-only whitespace text nodes (`\n`-prefixed, injected by the utfx2xspec converter's `indent="yes"`)
 - Normalizes CR → LF, strips per-line trailing whitespace, and trims before comparing
 
-All 60 tests pass with `mvn test -Dmaven.test.failure.ignore=false`.
+All 60 tests pass.
 
 ## Dependencies
 
