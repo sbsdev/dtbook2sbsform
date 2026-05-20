@@ -1,0 +1,47 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          java-version: '11'
+          distribution: 'temurin'
+          cache: maven
+
+      - name: Install liblouis
+        run: sudo apt-get install -y liblouis-dev
+
+      - name: Install sbs-braille-tables
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release download --repo sbsdev/sbs-braille-tables --pattern '*.deb' --dir /tmp
+          sudo apt-get install -y /tmp/sbs-braille-tables_*.deb
+
+      - name: Create generated table stubs
+        run: |
+          sudo touch /usr/local/share/liblouis/tables/sbs-de-g1-white.mod
+          sudo touch /usr/local/share/liblouis/tables/sbs-de-g2-white.mod
+
+      - name: Build
+        run: mvn --batch-mode package
+
+      - name: Create GitHub release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release create "${{ github.ref_name }}" \
+            --title "${{ github.ref_name }}" \
+            --generate-notes \
+            target/dtbook2sbsform_*.deb

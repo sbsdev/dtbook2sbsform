@@ -34,12 +34,6 @@ that plugin is compatible with Saxon 12.
 - If a fixed version becomes available, replace =XSpecTest.java= and the surefire configuration
   in =pom.xml= with the plugin.
 
-* TODO Add a GitHub Actions workflow to build and publish the deb on release tags
-
-All dependencies are now on Maven Central, so a CI workflow is feasible.
-Add a workflow that triggers on =v*= tags, runs =mvn package=, and uploads the =.deb= as a
-GitHub release asset.
-
 * TODO Fix whitespace corruption in the converted XSpec files
 
 The UTFX test sources had carefully crafted whitespace inside =<utfx:source>= elements (e.g. a
