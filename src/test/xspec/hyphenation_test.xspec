@@ -28,4 +28,22 @@ y P
 y BRIDGE
  BADEHOSCB/D%</x:expect>
    </x:scenario>
+   <x:scenario label="The Vorsilbe 'Ver' should not be interpreted as a hyphen">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <dtb:p xml:lang="de">Ver­lag ver­steckt</dtb:p>
+      </x:context>
+      <x:expect label="result">
+y P
+ -tLAG -t]E$T</x:expect>
+   </x:scenario>
+   <x:scenario label="Hard hyphen">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <dtb:p xml:lang="de">Vor-­name</dtb:p>
+      </x:context>
+      <x:expect label="result">
+y P
+ ?-mNAME</x:expect>
+   </x:scenario>
 </x:description>

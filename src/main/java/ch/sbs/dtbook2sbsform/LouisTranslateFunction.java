@@ -117,10 +117,12 @@ public class LouisTranslateFunction extends ExtensionFunctionDefinition {
         int[] interCharAttrs = slen > 1 ? Arrays.copyOf(markedPos, slen - 1) : null;
         TranslationResult result =
             translator.translate(stripped.toString(), null, null, interCharAttrs);
-        String braille = normalize(result.getBraille());
+        // Do NOT normalize yet: the 'ver' contraction produces U+2011 (dots 36a) while a real
+        // ASCII hyphen produces U+002D (dots 36). We must distinguish them before normalizing.
+        String braille = result.getBraille();
         int[] outInterChar = result.getInterCharacterAttributes();
 
-        if (outInterChar == null || outInterChar.length == 0) return braille;
+        if (outInterChar == null || outInterChar.length == 0) return normalize(braille);
 
         // Insert braille soft-hyphen 't' wherever a soft hyphen mapped to an output inter-position.
         StringBuilder sb = new StringBuilder(braille.length() * 2);
@@ -128,8 +130,10 @@ public class LouisTranslateFunction extends ExtensionFunctionDefinition {
             sb.append(braille.charAt(i));
             if (i < outInterChar.length && outInterChar[i] != 0) sb.append('t');
         }
-        // hard-hyphen immediately followed by soft-hyphen marker → braille hard-hyphen indicator.
-        return sb.toString().replace("-t", "-m");
+        // U+002D (real hyphen, dots 36) followed by soft-hyphen marker → hard-hyphen indicator.
+        // U+2011 ('ver' contraction, dots 36a) followed by soft-hyphen marker stays as-is.
+        // Normalize only after this replacement so U+2011 and U+002D are still distinguishable.
+        return normalize(sb.toString().replace("-t", "-m"));
     }
 
     private static String normalize(String s) {
