@@ -100,40 +100,40 @@ public class LouisTranslateFunction extends ExtensionFunctionDefinition {
 
         // Strip soft hyphens and record which inter-character positions in the stripped text had one.
         StringBuilder stripped = new StringBuilder(text.length());
-        int[] markedPos = new int[text.length()]; // over-allocated
-        int slen = 0;
+        int[] hyphenPoints = new int[text.length()]; // over-allocated
+        int strippedLength = 0;
         for (int i = 0; i < text.length(); i++) {
             char c = text.charAt(i);
             if (c == SOFT_HYPHEN) {
-                if (slen > 0) markedPos[slen - 1] = 1; // soft hyphen after stripped char slen-1
+                if (strippedLength > 0) hyphenPoints[strippedLength - 1] = 1; // soft hyphen after stripped char strippedLength-1
             } else {
                 stripped.append(c);
-                slen++;
+                strippedLength++;
             }
         }
-        if (slen == 0) return "";
+        if (strippedLength == 0) return "";
 
         // Pass the markers as interCharacterAttributes so liblouis maps them to output positions.
-        int[] interCharAttrs = slen > 1 ? Arrays.copyOf(markedPos, slen - 1) : null;
+        int[] inputHyphenPoints = strippedLength > 1 ? Arrays.copyOf(hyphenPoints, strippedLength - 1) : null;
         TranslationResult result =
-            translator.translate(stripped.toString(), null, null, interCharAttrs);
+            translator.translate(stripped.toString(), null, null, inputHyphenPoints);
         // Do NOT normalize yet: the 'ver' contraction produces U+2011 (dots 36a) while a real
         // ASCII hyphen produces U+002D (dots 36). We must distinguish them before normalizing.
         String braille = result.getBraille();
-        int[] outInterChar = result.getInterCharacterAttributes();
+        int[] outputHyphenPoints = result.getInterCharacterAttributes();
 
-        if (outInterChar == null || outInterChar.length == 0) return normalize(braille);
+        if (outputHyphenPoints == null || outputHyphenPoints.length == 0) return normalize(braille);
 
         // Insert braille soft-hyphen 't' wherever a soft hyphen mapped to an output inter-position.
-        StringBuilder sb = new StringBuilder(braille.length() * 2);
+        StringBuilder withHyphenationMarkers = new StringBuilder(braille.length() * 2);
         for (int i = 0; i < braille.length(); i++) {
-            sb.append(braille.charAt(i));
-            if (i < outInterChar.length && outInterChar[i] != 0) sb.append('t');
+            withHyphenationMarkers.append(braille.charAt(i));
+            if (i < outputHyphenPoints.length && outputHyphenPoints[i] != 0) withHyphenationMarkers.append('t');
         }
         // U+002D (real hyphen, dots 36) followed by soft-hyphen marker → hard-hyphen indicator.
         // U+2011 ('ver' contraction, dots 36a) followed by soft-hyphen marker stays as-is.
         // Normalize only after this replacement so U+2011 and U+002D are still distinguishable.
-        return normalize(sb.toString().replace("-t", "-m"));
+        return normalize(withHyphenationMarkers.toString().replace("-t", "-m"));
     }
 
     private static String normalize(String s) {
