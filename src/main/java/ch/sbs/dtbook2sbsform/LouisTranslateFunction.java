@@ -79,9 +79,7 @@ public class LouisTranslateFunction extends ExtensionFunctionDefinition {
                     catch (CompilationException e) { throw new RuntimeException(e.getMessage(), e); }
                 });
                 return new StringValue(translate(translator, text));
-            } catch (RuntimeException e) {
-                throw new XPathException("louis:translate: " + e.getMessage());
-            } catch (TranslationException | DisplayException e) {
+            } catch (RuntimeException | TranslationException | DisplayException e) {
                 throw new XPathException("louis:translate: " + e.getMessage());
             }
         }
@@ -131,7 +129,7 @@ public class LouisTranslateFunction extends ExtensionFunctionDefinition {
             withHyphenationMarkers.append(braille.charAt(i));
             if (i < outputHyphenPoints.length && outputHyphenPoints[i] != 0) withHyphenationMarkers.append('t');
         }
-	// 't' following a '-' need to be replaced with '-m'. This seems easy, however 'ver'
+        // 't' following a '-' need to be replaced with '-m'. This seems easy, however 'ver'
         // translates into '-', so we have to make sure we do not replace those. Luckily 'ver' is
         // translated using dots 36a, which maps into U+2011 by the sbs braille tables. This is then
         // normalized into a plain '-'. So just make sure to do the '-t' -> '-m' replacement *before*
