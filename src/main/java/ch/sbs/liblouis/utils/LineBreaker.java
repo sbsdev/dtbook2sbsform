@@ -99,9 +99,8 @@ public class LineBreaker {
 	 * @return
 	 */
 	public static String formatSbs(final String input, int width) {
-		final int idxOfNewline;
-		if ((idxOfNewline = input.lastIndexOf("\n")) != input.length() - 1
-				&& idxOfNewline != -1) {
+		final int idxOfNewline = input.lastIndexOf("\n");
+		if (idxOfNewline != -1 && idxOfNewline != input.length() - 1) {
 			throw new RuntimeException("newline within input not "
 					+ "supported. Occurs at idx:" + idxOfNewline + " in "
 					+ input + " length " + input.length());
@@ -120,10 +119,7 @@ public class LineBreaker {
 				}
 			}
 			else {
-				int width = STD_WIDTH;
-				if (args.length > 0) {
-					width = Integer.parseInt(args[0]);
-				}
+				int width = Integer.parseInt(args[0]);
 				while ((line = in.readLine()) != null) {
 					System.out.println(formatSbs(line, width));
 				}

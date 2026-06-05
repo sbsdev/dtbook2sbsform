@@ -1,7 +1,6 @@
 package ch.sbs.dtbook2sbsform;
 
 import net.sf.saxon.s9api.*;
-import net.sf.saxon.s9api.XdmNodeKind;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
