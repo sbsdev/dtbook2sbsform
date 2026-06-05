@@ -95,7 +95,8 @@ public class LouisTranslateFunction extends ExtensionFunctionDefinition {
         // U+00A0 NBSP (not matched by \s), which liblouis translates to a braille NBSP indicator.
         text = text.replaceAll("\\s+", " ");
         if (text.indexOf(SOFT_HYPHEN) < 0) {
-            return normalize(translator.translate(text, null, null, null).getBraille());
+            return translator.translate(text, null, null, null).getBraille()
+                    .transform(LouisTranslateFunction::normalize);
         }
 
         // Strip soft hyphens and record which inter-character positions in the stripped text had one.
@@ -135,7 +136,9 @@ public class LouisTranslateFunction extends ExtensionFunctionDefinition {
         // translated using dots 36a, which maps into U+2011 by the sbs braille tables. This is then
         // normalized into a plain '-'. So just make sure to do the '-t' -> '-m' replacement *before*
         // you normalize U+2011 into '-'
-        return normalize(withHyphenationMarkers.toString().replace("-t", "-m"));
+        return withHyphenationMarkers.toString()
+                .replace("-t", "-m")
+                .transform(LouisTranslateFunction::normalize);
     }
 
     private static String normalize(String s) {
