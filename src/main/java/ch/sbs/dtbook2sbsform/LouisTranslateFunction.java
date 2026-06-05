@@ -130,9 +130,11 @@ public class LouisTranslateFunction extends ExtensionFunctionDefinition {
             withHyphenationMarkers.append(braille.charAt(i));
             if (i < outputHyphenPoints.length && outputHyphenPoints[i] != 0) withHyphenationMarkers.append('t');
         }
-        // U+002D (real hyphen, dots 36) followed by soft-hyphen marker → hard-hyphen indicator.
-        // U+2011 ('ver' contraction, dots 36a) followed by soft-hyphen marker stays as-is.
-        // Normalize only after this replacement so U+2011 and U+002D are still distinguishable.
+	// 't' following a '-' need to be replaced with '-m'. This seems easy, however 'ver'
+        // translates into '-', so we have to make sure we do not replace those. Luckily 'ver' is
+        // translated using dots 36a, which maps into U+2011 by the sbs braille tables. This is then
+        // normalized into a plain '-'. So just make sure to do the '-t' -> '-m' replacement *before*
+        // you normalize U+2011 into '-'
         return normalize(withHyphenationMarkers.toString().replace("-t", "-m"));
     }
 
