@@ -7,7 +7,7 @@ for translating text into braille using [[https://liblouis.io][liblouis]].
 
 * Build
 
-Requires Java 11+.
+Requires Java 21+.
 
 #+BEGIN_SRC shell
 mvn package
