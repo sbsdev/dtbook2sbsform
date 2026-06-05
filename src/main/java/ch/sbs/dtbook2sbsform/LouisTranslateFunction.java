@@ -17,8 +17,8 @@ import org.liblouis.TranslationResult;
 import org.liblouis.Translator;
 
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * Saxon extension function louis:translate(table, text) that restores two behaviours of the old
@@ -65,7 +65,7 @@ public class LouisTranslateFunction extends ExtensionFunctionDefinition {
     }
 
     private static final class Call extends ExtensionFunctionCall {
-        private final Map<String, Translator> cache = new HashMap<>();
+        private final Map<String, Translator> cache = new ConcurrentHashMap<>();
 
         @Override
         public Sequence call(XPathContext context, Sequence[] arguments) throws XPathException {
