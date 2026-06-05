@@ -9,6 +9,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import org.w3c.dom.Text;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -226,10 +227,10 @@ public class XSpecTest {
         NodeList children = parent.getChildNodes();
         for (int i = 0; i < children.getLength(); i++) {
             Node child = children.item(i);
-            if (child.getNodeType() == Node.ELEMENT_NODE
-                    && localName.equals(child.getLocalName())
-                    && ns.equals(child.getNamespaceURI())) {
-                return (Element) child;
+            if (child instanceof Element e
+                    && localName.equals(e.getLocalName())
+                    && ns.equals(e.getNamespaceURI())) {
+                return e;
             }
         }
         return null;
@@ -240,15 +241,15 @@ public class XSpecTest {
         List<Node> toRemove = new ArrayList<>();
         for (int i = 0; i < children.getLength(); i++) {
             Node child = children.item(i);
-            if (child.getNodeType() == Node.TEXT_NODE) {
-                String val = child.getNodeValue();
+            if (child instanceof Text t) {
+                String val = t.getNodeValue();
                 // Saxon indent="yes" always starts indentation with \n.
                 // Original significant whitespace (e.g. a space between inline elements)
                 // starts with a space character. Only strip nodes that start with \n.
                 if (val.startsWith("\n") && val.trim().isEmpty()) {
                     toRemove.add(child);
                 }
-            } else if (child.getNodeType() == Node.ELEMENT_NODE) {
+            } else if (child instanceof Element) {
                 stripWhitespaceOnlyTextNodes(child);
             }
         }
@@ -261,10 +262,7 @@ public class XSpecTest {
         List<Node> result = new ArrayList<>();
         NodeList children = parent.getChildNodes();
         for (int i = 0; i < children.getLength(); i++) {
-            Node child = children.item(i);
-            if (child.getNodeType() == Node.ELEMENT_NODE) {
-                result.add(child);
-            }
+            if (children.item(i) instanceof Element e) result.add(e);
         }
         return result;
     }

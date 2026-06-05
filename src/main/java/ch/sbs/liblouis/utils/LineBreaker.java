@@ -109,9 +109,7 @@ public class LineBreaker {
 	}
 
 	public static void main(final String[] args) {
-		try {
-			final BufferedReader in = new BufferedReader(new InputStreamReader(
-					System.in));
+		try (BufferedReader in = new BufferedReader(new InputStreamReader(System.in))) {
 			String line;
 			if (args.length == 0) {
 				while ((line = in.readLine()) != null) {
