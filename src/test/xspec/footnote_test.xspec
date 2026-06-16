@@ -275,6 +275,22 @@ y P
  BLO'*#A')
 * </x:expect>
    </x:scenario>
+   <x:scenario label="noteref followed by pagenum should not produce a blank line http://redmine.sbszh.ch/issues/3015">
+      <x:param name="contraction" select="0"/>
+      <x:param name="footnote_placement" select="'standard'"/>
+      <x:context>
+         <dtb:p>Neuere Forschungen zu den Auswirkungen der Menopause lassen vermuten, dass
+          Hitzewallungen, verschwommenes Sehen und eine Intensivierung von Migräneattacken zu den
+          häufigeren Symptomen gehören.<dtb:noteref idref="#fn1">*</dtb:noteref> <dtb:pagenum id="page-17" page="normal">17</dtb:pagenum> Das ist
+          leider so. Der Absatz ist jetzt erst fertig.</dtb:p>
+      </x:context>
+      <x:expect label="result">
+y P
+ NEUERE FORSCHUNGEN ZU DEN AUSWIRKUNGEN DER MENOPAUSE LASSEN VERMUTEN, DASS HITZEWALLUNGEN, VERSCHWOMMENES SEHEN UND EINE INTENSIVIERUNG VON MIGR@NEATTACKEN ZU DEN H@UFIGEREN SYMPTOMEN GEH9REN.'*#A
+*
+j 17
+  DAS IST LEIDER SO. DER ABSATZ IST JETZT ERST FERTIG.</x:expect>
+   </x:scenario>
    <x:scenario label="order of note elems should be the same as the corresponding noteref elements http://redmine.sbszh.ch/issues/1264">
       <x:call template="insert_footnotes"/>
       <x:param name="contraction" select="2"/>
