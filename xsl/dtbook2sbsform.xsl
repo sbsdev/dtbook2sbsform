@@ -1718,9 +1718,10 @@
     <xsl:variable name="braille_tables">
       <xsl:call-template name="getTable"/>
     </xsl:variable>
-    <!-- Replace ' ' and '/' with '.' -->
+    <!-- Strip spaces around '/' then replace remaining spaces with '.' so liblouis
+         sees the slash and renders it as the braille character (http://redmine.sbszh.ch/issues/3021). -->
     <xsl:variable name="clean_number">
-      <xsl:for-each select="tokenize(string(.), '(\s|/)+')">
+      <xsl:for-each select="tokenize(replace(string(.),'\s*/\s*','/'), '\s+')">
         <xsl:value-of select="."/>
         <xsl:if test="not(position() = last())">.</xsl:if>
       </xsl:for-each>

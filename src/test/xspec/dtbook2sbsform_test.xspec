@@ -529,7 +529,16 @@ y P
       </x:context>
       <x:expect label="result">
 y P
- TYEFON #JDA.ABC.DE.FG'? TYEFON #JDA.ABC.DE.FG'+</x:expect>
+ TYEFON #JDA!,#ABC.DE.FG'? TYEFON #JDA!,#ABC.DE.FG'+</x:expect>
+   </x:scenario>
+   <x:scenario label="Slash in Telefonnummern soll dargestellt werden http://redmine.sbszh.ch/issues/3021">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <dtb:p xml:lang="de"><brl:num role="phone">043 / 333 32 32</brl:num></dtb:p>
+      </x:context>
+      <x:expect label="slash rendered as !,">
+y P
+ #JDC!,#CCC.CB.CB</x:expect>
    </x:scenario>
    <x:scenario label="Brüche">
       <x:param name="contraction" select="2"/>

@@ -12,6 +12,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   ([#3015](https://redmine.sbszh.ch/issues/3015),
   [#22](https://github.com/sbsdev/dtbook2sbsform/issues/22))
   — close [#3015](https://redmine.sbszh.ch/issues/3015) when deployed
+- Slash in `brl:num role="phone"` was silently discarded (treated the same as
+  a space); it is now passed to liblouis and rendered as `!,`; surrounding
+  spaces are stripped before the slash
+  ([#3021](https://redmine.sbszh.ch/issues/3021),
+  [#24](https://github.com/sbsdev/dtbook2sbsform/issues/24))
+  — close [#3021](https://redmine.sbszh.ch/issues/3021) when deployed
 - Grade-1 announcement (`-.`) dropped when `pagenum` is the first child of a
   grade-changed level element (`xml:lang="gsw"`); `handle-downgrading.xsl` now
   passes `pagenum` through without recursing into it and excludes its text from
