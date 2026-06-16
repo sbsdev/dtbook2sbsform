@@ -111,6 +111,25 @@
         </stub>
       </x:expect>
    </x:scenario>
+   <x:scenario label="pagenum as first child of level should not swallow grade-change announcement http://redmine.sbszh.ch/issues/3048">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <stub xml:lang="de">
+          <dtb:level2 xml:lang="gsw">
+            <dtb:pagenum>106</dtb:pagenum>
+            <dtb:h2>Ds Vrinelis Gärtli</dtb:h2>
+          </dtb:level2>
+        </stub>
+      </x:context>
+      <x:expect label="╚ placed before heading text, not inside pagenum">
+        <stub xml:lang="de">
+          <dtb:level2 xml:lang="gsw">
+            <dtb:pagenum>106</dtb:pagenum>
+            <dtb:h2><dtb:span>╚</dtb:span>Ds Vrinelis Gärtli<dtb:span>╝</dtb:span></dtb:h2>
+          </dtb:level2>
+        </stub>
+      </x:expect>
+   </x:scenario>
    <x:scenario label="Language change">
       <x:param name="contraction" select="2"/>
       <x:context>

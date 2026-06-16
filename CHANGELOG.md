@@ -12,6 +12,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   ([#3015](https://redmine.sbszh.ch/issues/3015),
   [#22](https://github.com/sbsdev/dtbook2sbsform/issues/22))
   — close [#3015](https://redmine.sbszh.ch/issues/3015) when deployed
+- Grade-1 announcement (`-.`) dropped when `pagenum` is the first child of a
+  grade-changed level element (`xml:lang="gsw"`); `handle-downgrading.xsl` now
+  passes `pagenum` through without recursing into it and excludes its text from
+  the first/last-content checks
+  ([#3048](https://redmine.sbszh.ch/issues/3048),
+  [#23](https://github.com/sbsdev/dtbook2sbsform/issues/23))
+  — close [#3048](https://redmine.sbszh.ch/issues/3048) when deployed
 
 ## [0.38] — 2026-06-05
 

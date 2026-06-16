@@ -64,17 +64,24 @@
         <xsl:choose>
             <xsl:when test="(my:is-inline-element(.) or self::text()) and (normalize-space(string(.))!='')">
                 <xsl:if test="not(preceding::text()[ancestor::*[generate-id()=$top-element-id]
-                    and normalize-space(string())!=''])">
+                    and normalize-space(string())!=''
+                    and not(ancestor::dtb:pagenum)])">
                     <!-- If it's a single word, insert an announcement for a single word grade change -->
                     <!-- If there are multiple words, insert an announcement for a multiple word grade change -->
                     <dtb:span><xsl:value-of select="if ($single-word) then '&#x2559;' else '&#x255A;'"/></dtb:span>
                 </xsl:if>
                 <xsl:sequence select="."/>
                 <xsl:if test="not($single-word) and not(following::text()[ancestor::*[generate-id()=$top-element-id]
-                    and normalize-space(string())!=''])">
+                    and normalize-space(string())!=''
+                    and not(ancestor::dtb:pagenum)])">
                     <!-- There are multiple words. Insert an announcement for the end of grade change -->
                     <dtb:span><xsl:text>&#x255D;</xsl:text></dtb:span>
                 </xsl:if>
+            </xsl:when>
+            <!-- Pass pagenum through unchanged — its text must not count as the first/last content
+                 node within a grade-changed block (http://redmine.sbszh.ch/issues/3048). -->
+            <xsl:when test="self::dtb:pagenum">
+                <xsl:sequence select="."/>
             </xsl:when>
             <xsl:otherwise>
                 <xsl:copy>
