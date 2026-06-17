@@ -49,7 +49,13 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           VERSION="${{ github.ref_name }}"
-          gh release create "${{ github.ref_name }}" \
-            --title "Release ${VERSION#v}" \
-            --generate-notes \
+          VERSION_NUMBER="${VERSION#v}"
+          PREV_TAG=$(git describe --tags --abbrev=0 HEAD^)
+          NOTES=$(awk "/^## \[$VERSION_NUMBER\]/{p=1;next} /^## \[/{p=0} p" CHANGELOG.md)
+          NOTES="$NOTES
+
+**Full Changelog**: https://github.com/${{ github.repository }}/compare/$PREV_TAG...$VERSION"
+          gh release create "$VERSION" \
+            --title "Release $VERSION_NUMBER" \
+            --notes "$NOTES" \
             target/dtbook2sbsform_*.deb
