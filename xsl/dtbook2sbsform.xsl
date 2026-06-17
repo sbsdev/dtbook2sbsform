@@ -990,7 +990,7 @@
           </xsl:when>
           <xsl:otherwise>
             <xsl:apply-templates
-              select="*[local-name() != 'toc-line' and local-name() != 'running-line']|text()"/>
+              select="*[local-name() != 'toc-line' and local-name() != 'running-line' and local-name() != 'noteref' and local-name() != 'annoref']|text()"/>
           </xsl:otherwise>
         </xsl:choose>
       </xsl:variable>
@@ -1007,7 +1007,7 @@
           </xsl:when>
           <xsl:otherwise>
             <xsl:apply-templates
-              select="*[local-name() != 'toc-line' and local-name() != 'running-line']|text()"/>
+              select="*[local-name() != 'toc-line' and local-name() != 'running-line' and local-name() != 'noteref' and local-name() != 'annoref']|text()"/>
           </xsl:otherwise>
         </xsl:choose>
       </xsl:variable>

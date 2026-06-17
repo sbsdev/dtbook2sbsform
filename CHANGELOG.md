@@ -11,6 +11,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   is the last element in a grade-changed container (`poem`, `blockquote`, `div`,
   `epigraph`)
   ([#2877](https://redmine.sbszh.ch/issues/2877))
+- Footnote reference marker (`*#A`) incorrectly included in the table-of-contents
+  and running-header lines when a `noteref` or `annoref` appeared in a heading
+  ([#2421](https://redmine.sbszh.ch/issues/2421))
 
 ## [0.39] — 2026-06-17
 

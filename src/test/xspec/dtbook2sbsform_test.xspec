@@ -895,6 +895,26 @@ y P
     </x:scenario>
   </x:pending>
 
+  <x:scenario label="Noteref in h1 does not appear in toc and running header http://redmine.sbszh.ch/issues/2421">
+    <x:param name="contraction" select="2"/>
+    <x:param name="toc_level" select="1"/>
+    <x:param name="footer_level" select="1"/>
+    <x:param name="footnote_placement" select="'standard'"/>
+    <x:context>
+      <stub xml:lang="de">
+        <dtb:h1>Überschrift mit Fussnote<dtb:noteref idref="#fn"></dtb:noteref></dtb:h1>
+      </stub>
+    </x:context>
+    <x:expect label="result">
+y H1
+ ,85T T FU^NO('*#A
+*
+
+H,85T T FU^NO(
+~,85TsTsFU^NO(
+</x:expect>
+  </x:scenario>
+
   <x:scenario label="Closing grade-change marker not suppressed when noteref is last element in poem http://redmine.sbszh.ch/issues/2877">
     <x:param name="contraction" select="2"/>
     <x:param name="footnote_placement" select="'standard'"/>
