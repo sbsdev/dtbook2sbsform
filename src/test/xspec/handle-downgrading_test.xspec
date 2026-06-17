@@ -248,4 +248,24 @@
         </stub>
       </x:expect>
    </x:scenario>
+
+   <x:scenario label="╝ should not be suppressed when noteref is last element in grade-changed container http://redmine.sbszh.ch/issues/2877">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <stub xml:lang="de">
+          <dtb:poem xml:lang="en">
+            <dtb:line>bla bla</dtb:line>
+            <dtb:line>bla bla<dtb:noteref idref="#xxx">*</dtb:noteref></dtb:line>
+          </dtb:poem>
+        </stub>
+      </x:context>
+      <x:expect label="╚ before first line, ╝ after last noteref">
+        <stub xml:lang="de">
+          <dtb:poem xml:lang="en">
+            <dtb:line><dtb:span>╚</dtb:span>bla bla</dtb:line>
+            <dtb:line>bla bla<dtb:noteref idref="#xxx">*</dtb:noteref><dtb:span>╝</dtb:span></dtb:line>
+          </dtb:poem>
+        </stub>
+      </x:expect>
+   </x:scenario>
 </x:description>

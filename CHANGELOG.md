@@ -6,6 +6,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Fixed
+- Grade-change closing announcement (`'.`) missing when `noteref` or `annoref`
+  is the last element in a grade-changed container (`poem`, `blockquote`, `div`,
+  `epigraph`)
+  ([#2877](https://redmine.sbszh.ch/issues/2877))
+
 ## [0.39] — 2026-06-17
 
 ### Fixed

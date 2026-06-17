@@ -1218,6 +1218,32 @@
     <xsl:text>&#10;* &#10; </xsl:text>
   </xsl:template>
   
+  <!-- If a noteref/annoref is immediately followed by a closing grade-change
+       marker (╝), the marker must come before the separator line
+       (http://redmine.sbszh.ch/issues/2877). -->
+  <xsl:template priority="5"
+      match="dtb:noteref[following-sibling::node()[not(self::text() and normalize-space()='')][1][self::dtb:span and string()='&#x255D;']]
+            |dtb:annoref[following-sibling::node()[not(self::text() and normalize-space()='')][1][self::dtb:span and string()='&#x255D;']]">
+    <xsl:variable name="braille_tables">
+      <xsl:call-template name="getTable"/>
+    </xsl:variable>
+    <xsl:if test="self::dtb:annoref">
+      <!-- we want the content of an annoref -->
+      <xsl:apply-templates/>
+    </xsl:if>
+    <xsl:variable name="note_number" select="count(preceding::dtb:noteref|preceding::dtb:annoref)+1"/>
+    <xsl:value-of select="louis:translate(string($braille_tables), concat('*',string($note_number)))"/>
+    <xsl:value-of select="louis:translate(string($braille_tables), '&#x255D;')"/>
+    <xsl:text>&#10;* </xsl:text>
+    <xsl:if test="not(following-sibling::node()[normalize-space()][1][self::dtb:pagenum])">
+      <xsl:text>&#10; </xsl:text>
+    </xsl:if>
+  </xsl:template>
+
+  <!-- Suppress the ╝ span when already consumed by the noteref/annoref template above -->
+  <xsl:template priority="10"
+      match="dtb:span[string()='&#x255D;'][preceding-sibling::node()[not(self::text() and normalize-space()='')][1][self::dtb:noteref or self::dtb:annoref]]"/>
+
   <!-- Remove the punctuation in a text node if it follows a noteref/annoref, since the punctuation was handled by the noteref/annoref matcher -->
   <xsl:template match="text()[my:starts-with-punctuation(.) and my:preceding-textnode-within-block(.)[ancestor::dtb:noteref|ancestor::dtb:annoref]]" priority="100">
     <xsl:variable name="braille_tables">

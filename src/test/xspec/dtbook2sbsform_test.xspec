@@ -895,4 +895,32 @@ y P
     </x:scenario>
   </x:pending>
 
+  <x:scenario label="Closing grade-change marker not suppressed when noteref is last element in poem http://redmine.sbszh.ch/issues/2877">
+    <x:param name="contraction" select="2"/>
+    <x:param name="footnote_placement" select="'standard'"/>
+    <x:context>
+      <stub xml:lang="de">
+        <dtb:poem xml:lang="en">
+          <dtb:line><dtb:span>╚</dtb:span>bla bla</dtb:line>
+          <dtb:line>bla bla<dtb:noteref idref="#fn1">*</dtb:noteref><dtb:span>╝</dtb:span></dtb:line>
+        </dtb:poem>
+        <dtb:note id="fn1"><dtb:p>A footnote.</dtb:p></dtb:note>
+      </stub>
+    </x:context>
+    <x:expect label="result">
+y POEMb
+
+y LINEb
+ -.BLA BLA
+y LINEe
+
+y LINEb
+ BLA BLA'*#A'.
+*
+
+y LINEe
+
+y POEMe</x:expect>
+  </x:scenario>
+
 </x:description>

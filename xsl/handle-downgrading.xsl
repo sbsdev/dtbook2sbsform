@@ -135,12 +135,14 @@
     <xsl:function name="my:is-inline-element">
         <xsl:param name="element"/>
         <xsl:sequence select="boolean($element[
-            self::dtb:span or 
-            self::dtb:abbr or 
-            self::brl:num or 
-            self::brl:emph or 
-            self::dtb:em or 
-            self::dtb:strong])"/>
+            self::dtb:span or
+            self::dtb:abbr or
+            self::brl:num or
+            self::brl:emph or
+            self::dtb:em or
+            self::dtb:strong or
+            self::dtb:noteref or
+            self::dtb:annoref])"/>
     </xsl:function>
     
 </xsl:stylesheet>
