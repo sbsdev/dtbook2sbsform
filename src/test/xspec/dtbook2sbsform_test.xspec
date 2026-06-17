@@ -468,10 +468,11 @@ y POEMe
    <x:scenario label="Wort &#34;ich&#34; am Ende von Inlines mit nachfolgendem Satzzeichen">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <stub xml:lang="de">
-            <dtb:em>Ich</dtb:em>, <dtb:strong>ich</dtb:strong>; <brl:emph>ich</brl:emph>: <dtb:em>ich</dtb:em>? <dtb:strong>ich</dtb:strong>! (<brl:emph>ich</brl:emph>) »<brl:emph>ich</brl:emph>«.</stub>
+        <dtb:p xml:lang="de"><dtb:em>Ich</dtb:em>, <dtb:strong>ich</dtb:strong>; <brl:emph>ich</brl:emph>: <dtb:em>ich</dtb:em>? <dtb:strong>ich</dtb:strong>! (<brl:emph>ich</brl:emph>) »<brl:emph>ich</brl:emph>«.</dtb:p>
       </x:context>
-      <x:expect label="result">_I4, _I4; _I4: _I4? _I4+ =_I4= (_I4).</x:expect>
+      <x:expect label="result">
+y P
+ _I4, _I4; _I4: _I4? _I4+ =_I4= (_I4).</x:expect>
    </x:scenario>
    <x:scenario label="Emphasis: Wortgrenzenerkennung bei &#34;-&#34; und &#34;/&#34;">
       <x:param name="contraction" select="2"/>

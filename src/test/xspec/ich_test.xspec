@@ -6,26 +6,29 @@
    <x:scenario label="&#34;ich&#34; innerhalb em vor Komma (http://redmine.sbszh.ch/issues/show/944)">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <stub xml:lang="de">
-            <dtb:em>ich</dtb:em>, </stub>
+        <dtb:p xml:lang="de"><dtb:em>ich</dtb:em>, </dtb:p>
       </x:context>
-      <x:expect label="result">_I4, </x:expect>
+      <x:expect label="result">
+y P
+ _I4, </x:expect>
    </x:scenario>
    <x:scenario label="&#34;ich&#34; innerhalb em vor Klammer (http://redmine.sbszh.ch/issues/show/944)">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <stub xml:lang="de">
-            <dtb:em>ich</dtb:em>) </stub>
+        <dtb:p xml:lang="de"><dtb:em>ich</dtb:em>) </dtb:p>
       </x:context>
-      <x:expect label="result">_I4= </x:expect>
+      <x:expect label="result">
+y P
+ _I4= </x:expect>
    </x:scenario>
    <x:scenario label="&#34;ich&#34; innerhalb em vor Klammer (http://redmine.sbszh.ch/issues/show/944)">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <stub xml:lang="de">
-            <dtb:em>(ich</dtb:em>) </stub>
+        <dtb:p xml:lang="de"><dtb:em>(ich</dtb:em>) </dtb:p>
       </x:context>
-      <x:expect label="result">_=I4= </x:expect>
+      <x:expect label="result">
+y P
+ _=I4= </x:expect>
    </x:scenario>
    <x:scenario label="&#34;mich&#34; innerhalb em vor Klammer (http://redmine.sbszh.ch/issues/show/944)">
       <x:param name="contraction" select="2"/>
@@ -216,42 +219,47 @@
    <x:scenario label="All-Caps ich inside em III">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <stub xml:lang="de">
-            <dtb:em>ICH</dtb:em>,</stub>
+        <dtb:p xml:lang="de"><dtb:em>ICH</dtb:em>,</dtb:p>
       </x:context>
-      <x:expect label="result">_I4,</x:expect>
+      <x:expect label="result">
+y P
+ _I4,</x:expect>
    </x:scenario>
    <x:scenario label="All-Caps ich inside em IV">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <stub xml:lang="de">
-            <dtb:em>ICH</dtb:em>;</stub>
+        <dtb:p xml:lang="de"><dtb:em>ICH</dtb:em>;</dtb:p>
       </x:context>
-      <x:expect label="result">_I4;</x:expect>
+      <x:expect label="result">
+y P
+ _I4;</x:expect>
    </x:scenario>
    <x:scenario label="All-Caps ich inside em V">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <stub xml:lang="de">
-            <dtb:em>ICH</dtb:em>:</stub>
+        <dtb:p xml:lang="de"><dtb:em>ICH</dtb:em>:</dtb:p>
       </x:context>
-      <x:expect label="result">_I4:</x:expect>
+      <x:expect label="result">
+y P
+ _I4:</x:expect>
    </x:scenario>
    <x:scenario label="All-Caps ich inside em VI">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <stub xml:lang="de">
-            <dtb:em>ICH</dtb:em>!</stub>
+        <dtb:p xml:lang="de"><dtb:em>ICH</dtb:em>!</dtb:p>
       </x:context>
-      <x:expect label="result">_I4+</x:expect>
+      <x:expect label="result">
+y P
+ _I4+</x:expect>
    </x:scenario>
    <x:scenario label="All-Caps ich inside em VII">
       <x:param name="contraction" select="2"/>
       <x:context>
-        <stub xml:lang="de">
-            <dtb:em>ICH</dtb:em>?</stub>
+        <dtb:p xml:lang="de"><dtb:em>ICH</dtb:em>?</dtb:p>
       </x:context>
-      <x:expect label="result">_I4?</x:expect>
+      <x:expect label="result">
+y P
+ _I4?</x:expect>
    </x:scenario>
    <x:scenario label="Capitalized ich I">
       <x:param name="contraction" select="2"/>
@@ -364,5 +372,24 @@
          </stub>
       </x:context>
       <x:expect label="result">_I4?</x:expect>
+   </x:scenario>
+   <x:scenario label="ich as last word in h1 followed by opening quote in next paragraph should not trigger special ich handling http://redmine.sbszh.ch/issues/2932">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <dtb:level1 xml:lang="de">
+          <dtb:h1>du und ich</dtb:h1>
+          <dtb:p>»bla</dtb:p>
+        </dtb:level1>
+      </x:context>
+      <x:expect label="h1 renders ich as # not I4">
+y LEVEL1b
+.xNOPAGENUM
+
+y H1
+ DU U #
+
+y P
+ (BLA
+y LEVEL1e</x:expect>
    </x:scenario>
 </x:description>

@@ -7,6 +7,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ## [Unreleased]
 
 ### Fixed
+- "ich" at end of a heading was incorrectly given the separator treatment when
+  the next paragraph started with a guillemet (`»`); grade-2 contraction now
+  respects block boundaries when looking ahead for punctuation
+  ([#2932](https://redmine.sbszh.ch/issues/2932), [#26](https://github.com/sbsdev/dtbook2sbsform/issues/26))
 - Spurious blank line before a page marker following a footnote reference
   ([#3015](https://redmine.sbszh.ch/issues/3015), [#22](https://github.com/sbsdev/dtbook2sbsform/issues/22))
 - Slash in phone numbers (`brl:num role="phone"`) was dropped; it is now
