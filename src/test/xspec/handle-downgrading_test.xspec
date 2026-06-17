@@ -130,6 +130,29 @@
         </stub>
       </x:expect>
    </x:scenario>
+   <x:scenario label="pagenum as first and last child of poem should not suppress grade-change announcements http://redmine.sbszh.ch/issues/2744">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <stub xml:lang="de">
+          <dtb:poem xml:lang="en">
+            <dtb:pagenum id="page-101" page="normal">101</dtb:pagenum>
+            <dtb:line>bla bla</dtb:line>
+            <dtb:line>bla bla</dtb:line>
+            <dtb:pagenum id="page-102" page="normal">102</dtb:pagenum>
+          </dtb:poem>
+        </stub>
+      </x:context>
+      <x:expect label="╚ before first line, ╝ after last line, pagenums untouched">
+        <stub xml:lang="de">
+          <dtb:poem xml:lang="en">
+            <dtb:pagenum id="page-101" page="normal">101</dtb:pagenum>
+            <dtb:line><dtb:span>╚</dtb:span>bla bla</dtb:line>
+            <dtb:line>bla bla<dtb:span>╝</dtb:span></dtb:line>
+            <dtb:pagenum id="page-102" page="normal">102</dtb:pagenum>
+          </dtb:poem>
+        </stub>
+      </x:expect>
+   </x:scenario>
    <x:scenario label="Language change">
       <x:param name="contraction" select="2"/>
       <x:context>

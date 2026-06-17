@@ -12,9 +12,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Slash in phone numbers (`brl:num role="phone"`) was dropped; it is now
   rendered as `!,` in braille, with surrounding spaces stripped
   ([#3021](https://redmine.sbszh.ch/issues/3021), [#24](https://github.com/sbsdev/dtbook2sbsform/issues/24))
-- Grade-1 announcement (`-.`) missing when a page break appears before the
-  first heading in a Swiss German (`xml:lang="gsw"`) section
-  ([#3048](https://redmine.sbszh.ch/issues/3048), [#23](https://github.com/sbsdev/dtbook2sbsform/issues/23))
+- Grade-change announcements (`-.` / `'.`) missing when a page break appears
+  as the first or last element in a grade-changed container (`poem`, `div`,
+  `blockquote`, `epigraph`, level elements with `xml:lang="gsw"`)
+  ([#2744](https://redmine.sbszh.ch/issues/2744),
+  [#3048](https://redmine.sbszh.ch/issues/3048),
+  [#23](https://github.com/sbsdev/dtbook2sbsform/issues/23))
 
 ## [0.38] — 2026-06-05
 
