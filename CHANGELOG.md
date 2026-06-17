@@ -7,6 +7,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ## [Unreleased]
 
 ### Fixed
+- `brl:name` elements with a digit between a lowercase and uppercase letter
+  (e.g. `Bride2BKate`, `Music4U`) were not recognised as CamelCase names and
+  rendered incorrectly; the regex now allows optional digits before the
+  uppercase letter
+  ([#2690](https://redmine.sbszh.ch/issues/2690), [#28](https://github.com/sbsdev/dtbook2sbsform/issues/28))
 - Stray space between grade-change announcement (`-.` / `'.`) and content when
   the first or last text node in a grade-changed container had leading or
   trailing whitespace

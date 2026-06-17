@@ -687,6 +687,24 @@ y P
 y P
  $MC$CARTNEY</x:expect>
    </x:scenario>
+   <x:scenario label="brl:name with digit before uppercase triggers name_capitalized table http://redmine.sbszh.ch/issues/2690">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <dtb:p xml:lang="de"><brl:name>Bride2BKate</brl:name></dtb:p>
+      </x:context>
+      <x:expect label="Bride2BKate: digit between lower and upper triggers name_capitalized">
+y P
+ $BRIDE#B$B$KATE</x:expect>
+   </x:scenario>
+   <x:scenario label="brl:name with single digit before uppercase http://redmine.sbszh.ch/issues/2690">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <dtb:p xml:lang="de"><brl:name>Music4U</brl:name></dtb:p>
+      </x:context>
+      <x:expect label="Music4U: digit before uppercase triggers name_capitalized">
+y P
+ $MUSIC#D$U</x:expect>
+   </x:scenario>
    <x:scenario label="Ausdrücke wie XBox mit abbr nicht handlebar Bug #1477">
       <x:param name="contraction" select="2"/>
       <x:context>
