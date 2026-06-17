@@ -5,17 +5,24 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import ch.sbs.dtbook2sbsform.LouisTranslateFunction;
+import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.w3c.dom.Text;
+import org.xml.sax.InputSource;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 import java.io.File;
 import java.io.IOException;
+import java.io.StringReader;
 import java.io.StringWriter;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -122,7 +129,7 @@ public class XSpecTest {
             return;
         }
 
-        // Get expected text (normalize line endings: CR→LF)
+        // Get expected element
         Element expectEl = firstChildElement(scenario, XSPEC_NS, "expect");
         if (expectEl == null) {
             failures.add("Scenario [" + label + "]: no x:expect found");
@@ -130,7 +137,18 @@ public class XSpecTest {
         }
         // Strip indent="yes" whitespace-only text nodes from expect just as we do for context.
         stripWhitespaceOnlyTextNodes(expectEl);
-        String expected = normalizeLineEndings(expectEl.getTextContent());
+
+        // Determine comparison mode from x:expect content:
+        //   XML mode  — x:expect has element children  → structural DOM comparison.
+        //               This matches upstream XSpec behaviour (the real xspec-maven-plugin also
+        //               does structural comparison for XML results), so tests written this way
+        //               would work unmodified if we ever migrate to the upstream runner.
+        //   Text mode — x:expect has only text content → plain-string comparison.
+        //               Our braille tests embed multi-line braille output directly as text inside
+        //               x:expect (e.g. "y P\n BLA BLA\ny Pe"). This is a custom convention with
+        //               no upstream equivalent; those tests would need rewriting to use
+        //               @select='...' or @test with XPath string comparisons on migration.
+        boolean xmlMode = hasElementChildren(expectEl);
 
         // Import all context elements into a single fresh document so:
         // (a) the preceding:: axis cannot see nodes from other scenarios, and
@@ -157,7 +175,13 @@ public class XSpecTest {
 
         StringWriter sw = new StringWriter();
         Serializer serializer = PROCESSOR.newSerializer(sw);
-        serializer.setOutputProperty(Serializer.Property.METHOD, "text");
+        if (xmlMode) {
+            serializer.setOutputProperty(Serializer.Property.METHOD, "xml");
+            serializer.setOutputProperty(Serializer.Property.OMIT_XML_DECLARATION, "yes");
+            serializer.setOutputProperty(Serializer.Property.INDENT, "no");
+        } else {
+            serializer.setOutputProperty(Serializer.Property.METHOD, "text");
+        }
 
         if (templateName != null) {
             // Named-template call: use Xslt30Transformer so we can set the document element
@@ -184,14 +208,27 @@ public class XSpecTest {
             transformer.transform();
         }
 
-        // Trim leading/trailing whitespace: XSpec indentation leaks into <x:expect> text content.
-        // Strip trailing whitespace per line: UTFX framework ignored trailing spaces; the XSpec
-        // converter faithfully copied them, but our runner did not previously strip them.
-        String actual = stripTrailingWhitespacePerLine(normalizeLineEndings(sw.toString())).trim();
-        expected = stripTrailingWhitespacePerLine(expected).trim();
-        if (!expected.equals(actual)) {
-            failures.add("Scenario [" + label + "]:\n  expected: " + repr(expected)
-                    + "\n  actual:   " + repr(actual));
+        if (xmlMode) {
+            // Parse actual XML output back to DOM and compare structurally.
+            // Wrap in a root element that carries the xspec file's namespace declarations
+            // so that namespace-prefixed elements in the output are parsed correctly.
+            Element xspecRoot = scenario.getOwnerDocument().getDocumentElement();
+            Document actualDoc = parseXmlFragment(sw.toString(), xspecRoot);
+            stripWhitespaceOnlyTextNodes(actualDoc.getDocumentElement());
+            if (!nodeListEqual(allChildren(actualDoc.getDocumentElement()), allChildren(expectEl))) {
+                failures.add("Scenario [" + label + "]:\n  expected: " + serializeNode(expectEl)
+                        + "\n  actual:   " + sw);
+            }
+        } else {
+            // Trim leading/trailing whitespace: XSpec indentation leaks into <x:expect> text content.
+            // Strip trailing whitespace per line: UTFX framework ignored trailing spaces; the XSpec
+            // converter faithfully copied them, but our runner did not previously strip them.
+            String actual = stripTrailingWhitespacePerLine(normalizeLineEndings(sw.toString())).trim();
+            String expected = stripTrailingWhitespacePerLine(normalizeLineEndings(expectEl.getTextContent())).trim();
+            if (!expected.equals(actual)) {
+                failures.add("Scenario [" + label + "]:\n  expected: " + repr(expected)
+                        + "\n  actual:   " + repr(actual));
+            }
         }
     }
 
@@ -205,6 +242,107 @@ public class XSpecTest {
         XPathCompiler xpc = PROCESSOR.newXPathCompiler();
         return xpc.evaluate(select, null);
     }
+
+    // --- XML structural comparison helpers ---
+
+    private static boolean hasElementChildren(Element el) {
+        NodeList children = el.getChildNodes();
+        for (int i = 0; i < children.getLength(); i++) {
+            if (children.item(i) instanceof Element) return true;
+        }
+        return false;
+    }
+
+    /** Parse an XML fragment, wrapping it in a root element that inherits namespace
+     *  declarations from {@code nsSource} so that namespace-prefixed elements resolve correctly. */
+    private static Document parseXmlFragment(String xml, Element nsSource) throws Exception {
+        StringBuilder wrapper = new StringBuilder("<_");
+        NamedNodeMap attrs = nsSource.getAttributes();
+        for (int i = 0; i < attrs.getLength(); i++) {
+            Attr attr = (Attr) attrs.item(i);
+            if (attr.getName().startsWith("xmlns")) {
+                wrapper.append(' ').append(attr.getName())
+                       .append("=\"").append(attr.getValue()).append('"');
+            }
+        }
+        wrapper.append('>').append(xml).append("</_>");
+
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        factory.setNamespaceAware(true);
+        factory.setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd", false);
+        factory.setFeature("http://xml.org/sax/features/validation", false);
+        return factory.newDocumentBuilder()
+                      .parse(new InputSource(new StringReader(wrapper.toString())));
+    }
+
+    private static List<Node> allChildren(Node node) {
+        List<Node> result = new ArrayList<>();
+        NodeList children = node.getChildNodes();
+        for (int i = 0; i < children.getLength(); i++) result.add(children.item(i));
+        return result;
+    }
+
+    private static boolean nodeListEqual(List<Node> a, List<Node> b) {
+        if (a.size() != b.size()) return false;
+        for (int i = 0; i < a.size(); i++) {
+            if (!nodeEqual(a.get(i), b.get(i))) return false;
+        }
+        return true;
+    }
+
+    private static boolean nodeEqual(Node a, Node b) {
+        if (a.getNodeType() != b.getNodeType()) return false;
+        if (a instanceof Text ta && b instanceof Text tb) {
+            return ta.getNodeValue().equals(tb.getNodeValue());
+        }
+        if (a instanceof Element ea && b instanceof Element eb) {
+            if (!Objects.equals(ea.getLocalName(), eb.getLocalName())) return false;
+            if (!Objects.equals(ea.getNamespaceURI(), eb.getNamespaceURI())) return false;
+            if (!attrsEqual(ea, eb)) return false;
+            return nodeListEqual(allChildren(ea), allChildren(eb));
+        }
+        return Objects.equals(a.getNodeValue(), b.getNodeValue());
+    }
+
+    private static boolean attrsEqual(Element a, Element b) {
+        List<Attr> aAttrs = nonNsAttrs(a.getAttributes());
+        List<Attr> bAttrs = nonNsAttrs(b.getAttributes());
+        if (aAttrs.size() != bAttrs.size()) return false;
+        for (Attr attr : aAttrs) {
+            String ns = attr.getNamespaceURI();
+            Node bAttr = (ns != null && !ns.isEmpty())
+                    ? b.getAttributes().getNamedItemNS(ns, attr.getLocalName())
+                    : b.getAttributes().getNamedItem(attr.getName());
+            if (bAttr == null || !attr.getValue().equals(bAttr.getNodeValue())) return false;
+        }
+        return true;
+    }
+
+    private static List<Attr> nonNsAttrs(NamedNodeMap attrs) {
+        List<Attr> result = new ArrayList<>();
+        for (int i = 0; i < attrs.getLength(); i++) {
+            Attr attr = (Attr) attrs.item(i);
+            String name = attr.getName();
+            if (!name.equals("xmlns") && !name.startsWith("xmlns:")) result.add(attr);
+        }
+        return result;
+    }
+
+    private static String serializeNode(Node node) {
+        try {
+            javax.xml.transform.Transformer t =
+                    TransformerFactory.newInstance().newTransformer();
+            t.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
+            t.setOutputProperty(OutputKeys.INDENT, "yes");
+            StringWriter sw = new StringWriter();
+            t.transform(new DOMSource(node), new StreamResult(sw));
+            return sw.toString().trim();
+        } catch (Exception e) {
+            return node.toString();
+        }
+    }
+
+    // --- Shared helpers ---
 
     private static String normalizeLineEndings(String s) {
         return s.replace("\r\n", "\n").replace("\r", "\n");

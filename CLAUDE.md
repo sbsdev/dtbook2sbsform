@@ -45,7 +45,16 @@ The XSpec tests are run by a custom JUnit 4 runner (`XSpecTest.java`) rather tha
 - Strips indentation-only whitespace text nodes (`\n`-prefixed, injected by the utfx2xspec converter's `indent="yes"`)
 - Normalizes CR → LF, strips per-line trailing whitespace, and trims before comparing
 
-All 60 tests pass.
+**Comparison mode** is detected automatically from `x:expect`: if it contains element children the
+runner uses structural DOM comparison (local-name + namespace URI + attributes + children); if it
+contains only text the runner uses plain-string comparison. This heuristic matches upstream XSpec
+behaviour — the real XSpec runner also does structural comparison for XML results — so
+`handle-downgrading.xsl` tests would work unmodified if we ever migrate. The text-based braille
+tests (`dtbook2sbsform.xsl` and others) embed multi-line braille output directly as text content
+inside `x:expect`, which is a custom convention with no upstream equivalent; those tests would need
+rewriting to use `@select='...'` or `@test` with XPath string comparisons if we migrate.
+
+All 54 tests pass.
 
 ## Dependencies
 
