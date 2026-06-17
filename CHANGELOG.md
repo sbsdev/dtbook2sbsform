@@ -6,6 +6,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Added
+- Closing announcement (`'.`) after `brl:computer` elements when followed by a
+  character that is ambiguous between 6-dot computer braille and regular braille:
+  `!`, `)`, `]`, `«`, `‹`
+  ([#2769](https://redmine.sbszh.ch/issues/2769))
+
 ### Fixed
 - Grade-change closing announcement (`'.`) missing when `noteref` or `annoref`
   is the last element in a grade-changed container (`poem`, `blockquote`, `div`,

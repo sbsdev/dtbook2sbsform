@@ -45,4 +45,25 @@
       </x:context>
       <x:expect label="result">'$"@PETER34</x:expect>
    </x:scenario>
+   <x:scenario label="Computer braille followed by ! gets closing announcement http://redmine.sbszh.ch/issues/2769">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <stub xml:lang="de"><brl:computer>www.sbs.ch</brl:computer>!</stub>
+      </x:context>
+      <x:expect label="result">'$WWW.SBS.CH'.+</x:expect>
+   </x:scenario>
+   <x:scenario label="Computer braille followed by ) gets closing announcement http://redmine.sbszh.ch/issues/2769">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <stub xml:lang="de">(<brl:computer>www.sbs.ch</brl:computer>)</stub>
+      </x:context>
+      <x:expect label="result">='$WWW.SBS.CH'.=</x:expect>
+   </x:scenario>
+   <x:scenario label="Computer braille followed by . does not get closing announcement http://redmine.sbszh.ch/issues/2769">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <stub xml:lang="de"><brl:computer>www.sbs.ch</brl:computer>.</stub>
+      </x:context>
+      <x:expect label="result">'$WWW.SBS.CH.</x:expect>
+   </x:scenario>
 </x:description>

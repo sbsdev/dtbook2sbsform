@@ -1668,6 +1668,11 @@
   <xsl:template match="brl:computer">
     <xsl:value-of select="louis:translate(string($computer_braille_tables), '&#x257C;')"/>
     <xsl:apply-templates/>
+    <!-- Emit closing announcement (U+2589 → '.) when the following character is ambiguous
+         between 6-dot computer braille and regular braille: ! ) ] « ‹ -->
+    <xsl:if test="substring(following-sibling::node()[1][self::text()], 1, 1) = ('!', ')', ']', '«', '‹')">
+      <xsl:value-of select="louis:translate(string($computer_braille_tables), '&#x2589;')"/>
+    </xsl:if>
   </xsl:template>
 
   <xsl:template match="brl:computer/text()">
