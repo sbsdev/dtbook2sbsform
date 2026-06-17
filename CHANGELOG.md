@@ -7,6 +7,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ## [Unreleased]
 
 ### Fixed
+- Stray space between grade-change announcement (`-.` / `'.`) and content when
+  the first or last text node in a grade-changed container had leading or
+  trailing whitespace
+  ([#2743](https://redmine.sbszh.ch/issues/2743), [#27](https://github.com/sbsdev/dtbook2sbsform/issues/27))
 - "ich" at end of a heading was incorrectly given the separator treatment when
   the next paragraph started with a guillemet (`»`); grade-2 contraction now
   respects block boundaries when looking ahead for punctuation

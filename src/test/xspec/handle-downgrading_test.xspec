@@ -153,6 +153,25 @@
         </stub>
       </x:expect>
    </x:scenario>
+   <x:scenario label="Leading whitespace after ╚ and trailing whitespace before ╝ are stripped http://redmine.sbszh.ch/issues/2743">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <stub xml:lang="de">
+          <dtb:poem xml:lang="en">
+            <dtb:line> first line </dtb:line>
+            <dtb:line> last line </dtb:line>
+          </dtb:poem>
+        </stub>
+      </x:context>
+      <x:expect label="╚ directly before first word, ╝ directly after last word">
+        <stub xml:lang="de">
+          <dtb:poem xml:lang="en">
+            <dtb:line><dtb:span>╚</dtb:span>first line </dtb:line>
+            <dtb:line> last line<dtb:span>╝</dtb:span></dtb:line>
+          </dtb:poem>
+        </stub>
+      </x:expect>
+   </x:scenario>
    <x:scenario label="Language change">
       <x:param name="contraction" select="2"/>
       <x:context>

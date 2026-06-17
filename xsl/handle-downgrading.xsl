@@ -63,17 +63,22 @@
         <xsl:param name="single-word"/>
         <xsl:choose>
             <xsl:when test="(my:is-inline-element(.) or self::text()) and (normalize-space(string(.))!='')">
-                <xsl:if test="not(preceding::text()[ancestor::*[generate-id()=$top-element-id]
-                    and normalize-space(string())!=''
-                    and not(ancestor::dtb:pagenum)])">
+                <xsl:variable name="is-first" select="my:is-first-text-in-container(., $top-element-id)"/>
+                <xsl:variable name="is-last"  select="my:is-last-text-in-container(., $top-element-id)"/>
+                <xsl:if test="$is-first">
                     <!-- If it's a single word, insert an announcement for a single word grade change -->
                     <!-- If there are multiple words, insert an announcement for a multiple word grade change -->
                     <dtb:span><xsl:value-of select="if ($single-word) then '&#x2559;' else '&#x255A;'"/></dtb:span>
                 </xsl:if>
-                <xsl:sequence select="."/>
-                <xsl:if test="not($single-word) and not(following::text()[ancestor::*[generate-id()=$top-element-id]
-                    and normalize-space(string())!=''
-                    and not(ancestor::dtb:pagenum)])">
+                <xsl:choose>
+                    <!-- Strip whitespace adjacent to ╚/╝ so no stray space appears between
+                         the announcement marker and the content. -->
+                    <xsl:when test="self::text() and $is-first and $is-last"><xsl:sequence select="normalize-space(.)"/></xsl:when>
+                    <xsl:when test="self::text() and $is-first"><xsl:sequence select="replace(., '^\s+', '')"/></xsl:when>
+                    <xsl:when test="self::text() and $is-last"><xsl:sequence select="replace(., '\s+$', '')"/></xsl:when>
+                    <xsl:otherwise><xsl:sequence select="."/></xsl:otherwise>
+                </xsl:choose>
+                <xsl:if test="not($single-word) and $is-last">
                     <!-- There are multiple words. Insert an announcement for the end of grade change -->
                     <dtb:span><xsl:text>&#x255D;</xsl:text></dtb:span>
                 </xsl:if>
@@ -93,6 +98,22 @@
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
+
+    <xsl:function name="my:is-first-text-in-container" as="xs:boolean">
+        <xsl:param name="node" as="node()"/>
+        <xsl:param name="container-id" as="xs:string"/>
+        <xsl:sequence select="not($node/preceding::text()[ancestor::*[generate-id()=$container-id]
+            and normalize-space(string())!=''
+            and not(ancestor::dtb:pagenum)])"/>
+    </xsl:function>
+
+    <xsl:function name="my:is-last-text-in-container" as="xs:boolean">
+        <xsl:param name="node" as="node()"/>
+        <xsl:param name="container-id" as="xs:string"/>
+        <xsl:sequence select="not($node/following::text()[ancestor::*[generate-id()=$container-id]
+            and normalize-space(string())!=''
+            and not(ancestor::dtb:pagenum)])"/>
+    </xsl:function>
     
     <xsl:function name="my:get-system">
         <xsl:param name="element"/>
