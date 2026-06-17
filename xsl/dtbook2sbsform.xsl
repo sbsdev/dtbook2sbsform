@@ -310,7 +310,7 @@
     <xsl:text>sbs-whitespace.mod,</xsl:text>
     <xsl:choose >
       <xsl:when
-	  test="$context = 'v-form' or $context = 'name_capitalized' or ($actual_contraction != '2' and $enable_capitalization = true())">
+	  test="$context = 'v-form' or $context = 'name_capitalized' or ($actual_contraction != '2' and $enable_capitalization = true() and not($context = ('abbr', 'num_roman')))">
 	<xsl:text>sbs-de-capsign.mod,</xsl:text>
       </xsl:when>
       <xsl:otherwise>

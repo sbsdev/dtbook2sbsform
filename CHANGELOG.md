@@ -14,6 +14,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Footnote reference marker (`*#A`) incorrectly included in the table-of-contents
   and running-header lines when a `noteref` or `annoref` appeared in a heading
   ([#2421](https://redmine.sbszh.ch/issues/2421))
+- Capitalization markers doubled in `abbr`, `acronym`, `brl:num[@role='roman']`,
+  and measure units when the "enable capitalization" option was active with grade 1;
+  `abbr` and `num_roman` contexts now always use `sbs-de-capsign-fake.mod` since
+  they manage their own capitalization markers
+  ([#2685](https://redmine.sbszh.ch/issues/2685))
 
 ## [0.39] — 2026-06-17
 

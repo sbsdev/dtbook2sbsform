@@ -895,6 +895,54 @@ y P
     </x:scenario>
   </x:pending>
 
+  <x:scenario label="abbr capitalization not doubled when enable_capitalization is true http://redmine.sbszh.ch/issues/2685">
+    <x:param name="contraction" select="1"/>
+    <x:param name="enable_capitalization" select="true()"/>
+    <x:context>
+      <stub xml:lang="de">
+        <dtb:abbr>USA</dtb:abbr>
+      </stub>
+    </x:context>
+    <x:expect label="word caps sign once, no per-letter caps signs">
+ >USA</x:expect>
+  </x:scenario>
+
+  <x:scenario label="abbr mixed case capitalization not doubled when enable_capitalization is true http://redmine.sbszh.ch/issues/2685">
+    <x:param name="contraction" select="1"/>
+    <x:param name="enable_capitalization" select="true()"/>
+    <x:context>
+      <stub xml:lang="de">
+        <dtb:abbr>GmbH</dtb:abbr>
+      </stub>
+    </x:context>
+    <x:expect label="single per-letter and word caps signs, no doubling">
+ $GMB>H</x:expect>
+  </x:scenario>
+
+  <x:scenario label="roman numeral capitalization not doubled when enable_capitalization is true http://redmine.sbszh.ch/issues/2685">
+    <x:param name="contraction" select="1"/>
+    <x:param name="enable_capitalization" select="true()"/>
+    <x:context>
+      <stub xml:lang="de">
+        <brl:num role="roman">I.</brl:num>
+      </stub>
+    </x:context>
+    <x:expect label="word caps sign once, no per-letter caps signs">
+ >I.</x:expect>
+  </x:scenario>
+
+  <x:scenario label="measure unit capitalization not doubled when enable_capitalization is true http://redmine.sbszh.ch/issues/2685">
+    <x:param name="contraction" select="1"/>
+    <x:param name="enable_capitalization" select="true()"/>
+    <x:context>
+      <stub xml:lang="de">
+        <brl:num role="measure">3 kHz</brl:num>
+      </stub>
+    </x:context>
+    <x:expect label="single per-letter caps sign for H, no doubling">
+ #C'K$HZ</x:expect>
+  </x:scenario>
+
   <x:scenario label="Noteref in h1 does not appear in toc and running header http://redmine.sbszh.ch/issues/2421">
     <x:param name="contraction" select="2"/>
     <x:param name="toc_level" select="1"/>
