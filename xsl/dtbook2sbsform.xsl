@@ -1193,26 +1193,13 @@
     </xsl:if>
     <xsl:variable name="note_number" select="count(preceding::dtb:noteref|preceding::dtb:annoref)+1"/>
     <xsl:value-of select="louis:translate(string($braille_tables), concat('*',string($note_number)))"/>
-    <xsl:text>&#10;* &#10; </xsl:text>
-  </xsl:template>
-
-  <!-- If a noteref is immediately followed by a pagenum, don't close the
-       separator line — the pagenum's own leading newline closes it,
-       avoiding a blank line before the page marker
-       (http://redmine.sbszh.ch/issues/3015). -->
-  <xsl:template
-    match="dtb:noteref[following-sibling::node()[normalize-space()][1][self::dtb:pagenum]]
-          |dtb:annoref[following-sibling::node()[normalize-space()][1][self::dtb:pagenum]]"
-    priority="5">
-    <xsl:variable name="braille_tables">
-      <xsl:call-template name="getTable"/>
-    </xsl:variable>
-    <xsl:if test="self::dtb:annoref">
-      <xsl:apply-templates/>
-    </xsl:if>
-    <xsl:variable name="note_number" select="count(preceding::dtb:noteref|preceding::dtb:annoref)+1"/>
-    <xsl:value-of select="louis:translate(string($braille_tables), concat('*',string($note_number)))"/>
+    <!-- If a pagenum immediately follows, omit the closing separator line — the
+         pagenum's own leading newline closes it, avoiding a blank line before
+         the page marker (http://redmine.sbszh.ch/issues/3015). -->
     <xsl:text>&#10;* </xsl:text>
+    <xsl:if test="not(following-sibling::node()[normalize-space()][1][self::dtb:pagenum])">
+      <xsl:text>&#10; </xsl:text>
+    </xsl:if>
   </xsl:template>
 
   <!-- If a noteref is followed by punctuation, the punctuation needs
