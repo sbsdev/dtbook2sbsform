@@ -7,7 +7,7 @@
 
   <groupId>ch.sbs</groupId>
   <artifactId>dtbook2sbsform</artifactId>
-  <version>0.39-SNAPSHOT</version>
+  <version>0.39</version>
   <packaging>jar</packaging>
 
   <name>dtbook2sbsform</name>

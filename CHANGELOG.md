@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [0.39] — 2026-06-17
+
 ### Fixed
 - `brl:name` elements with a digit between a lowercase and uppercase letter
   (e.g. `Bride2BKate`, `Music4U`) were not recognised as CamelCase names and
