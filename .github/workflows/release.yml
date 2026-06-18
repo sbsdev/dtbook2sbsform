@@ -53,7 +53,8 @@ jobs:
           PREV_TAG=$(git describe --tags --abbrev=0 HEAD^)
           awk "/^## \[$VERSION_NUMBER\]/{p=1;next} /^## \[/{p=0} p" CHANGELOG.md > notes.md
           echo "" >> notes.md
-          echo "**Full Changelog**: https://github.com/${{ github.repository }}/compare/$PREV_TAG...$VERSION" >> notes.md
+          echo "### Full Changelog" >> notes.md
+          echo "https://github.com/${{ github.repository }}/compare/$PREV_TAG...$VERSION" >> notes.md
           gh release create "$VERSION" \
             --title "Release $VERSION_NUMBER" \
             --notes-file notes.md \
