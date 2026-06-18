@@ -676,6 +676,16 @@ y P
  % LBE D F?MAT &gt;A#D
       </x:expect>
    </x:scenario>
+   <x:scenario label="brl:name followed by apostrophe-s does not double the apostrophe http://redmine.sbszh.ch/issues/2775">
+      <x:param name="contraction" select="2"/>
+      <x:context>
+        <dtb:p xml:lang="de"><brl:name>McDonald</brl:name>'s</dtb:p>
+      </x:context>
+      <x:expect label="single apostrophe before S">
+y P
+ $MC$DONALD'S</x:expect>
+   </x:scenario>
+
    <x:scenario label="Namen mit Upshifts (McDonalds) werden von brl:name nicht behandelt Bug #1343">
       <x:param name="contraction" select="2"/>
       <x:context>

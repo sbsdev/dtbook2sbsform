@@ -2041,9 +2041,9 @@
     <xsl:value-of select="louis:translate(string($braille_tables), concat('&#x256C;',string()))"/>
   </xsl:template>
 
-  <!-- Handle apostrophe after v-form or after homograph -->
+  <!-- Handle apostrophe after v-form, homograph, or name -->
   <xsl:template
-    match="text()[(preceding::* intersect my:preceding-textnode-within-block(.)/(ancestor::brl:v-form|ancestor::brl:homograph)) and matches(string(), '^''')]" priority="100">
+    match="text()[(preceding::* intersect my:preceding-textnode-within-block(.)/(ancestor::brl:v-form|ancestor::brl:homograph|ancestor::brl:name)) and matches(string(), '^''')]" priority="100">
     <xsl:variable name="braille_tables">
       <xsl:call-template name="getTable"/>
     </xsl:variable>

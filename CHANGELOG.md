@@ -17,6 +17,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   SBSForm heading macros support up to 255 characters per line so wrapping
   at 80 was silently truncating long headings
   ([#1483](https://redmine.sbszh.ch/issues/1483))
+- `brl:name` followed by `'s` (e.g. `<brl:name>McDonald</brl:name>'s`)
+  produced a doubled apostrophe in the braille output; fixed by extending
+  the existing apostrophe text-matcher to also cover `brl:name`
+  ([#2775](https://redmine.sbszh.ch/issues/2775))
 - Grade-change closing announcement (`'.`) missing when `noteref` or `annoref`
   is the last element in a grade-changed container (`poem`, `blockquote`, `div`,
   `epigraph`)
