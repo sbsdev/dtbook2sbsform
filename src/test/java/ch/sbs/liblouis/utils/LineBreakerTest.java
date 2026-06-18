@@ -1,6 +1,8 @@
 package ch.sbs.liblouis.utils;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import java.util.Collections;
 
 import org.junit.Test;
 
@@ -76,5 +78,28 @@ public class LineBreakerTest {
 		final String expected = "" + " 123 567\n" + " 901234\n" + " 678\n";
 
 		assertEquals(expected, LineBreaker.formatSbs(input, 10));
+	}
+
+	@Test
+	public void testHeadingUsesHeadWidth() {
+		// A space-prefixed line after "y H1" should wrap at HEAD_WIDTH (120), not STD_WIDTH (80).
+		final String word = "ABCDEFGHIJ"; // 10 chars
+		// Build a line of 13 words = 130 chars + 12 spaces = 142 chars total — exceeds 120 but not short enough to fit in 80
+		final String input = " " + String.join(" ", java.util.Collections.nCopies(13, word));
+		final String result = LineBreaker.formatSbs(input, 80, "y H1");
+		// With HEAD_WIDTH=120: first line fits 11 words (11*10 + 10 spaces + 1 indent = 121 → wraps after 11)
+		// Key assertion: result contains more than one line, but the first line is longer than 80 chars
+		final String firstLine = result.split("\n")[0];
+		assertTrue("heading line should exceed STD_WIDTH of 80", firstLine.length() > 80);
+	}
+
+	@Test
+	public void testNonHeadingUsesStdWidth() {
+		// A space-prefixed line NOT after a heading marker should still wrap at the given width.
+		final String word = "ABCDEFGHIJ"; // 10 chars
+		final String input = " " + String.join(" ", java.util.Collections.nCopies(13, word));
+		final String result = LineBreaker.formatSbs(input, 80, "y P");
+		final String firstLine = result.split("\n")[0];
+		assertTrue("non-heading line should not exceed STD_WIDTH of 80", firstLine.length() <= 80);
 	}
 }

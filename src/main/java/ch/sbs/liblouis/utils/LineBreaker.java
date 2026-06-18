@@ -28,6 +28,9 @@ import java.io.InputStreamReader;
 public class LineBreaker {
 
 	private static final int STD_WIDTH = 80;
+	private static final int HEAD_WIDTH = 120;
+	private static final java.util.regex.Pattern HEADING_LINE =
+		java.util.regex.Pattern.compile("y H[1-6].*");
 
 	/**
 	 * Simplistic left-alignment formatting of text. Lines are wrapped at
@@ -82,44 +85,45 @@ public class LineBreaker {
 		result.deleteCharAt(result.length() - 1);
 	}
 
-	/**
-	 * @param input
-	 * @return
-	 */
 	public static String formatSbs(final String input) {
-		return formatSbs(input, STD_WIDTH);
+		return formatSbs(input, STD_WIDTH, "");
+	}
+
+	public static String formatSbs(final String input, int width) {
+		return formatSbs(input, width, "");
 	}
 
 	/**
-	 * We're calling this routine from a loop that reads from stdin (see main
-	 * method) line by line, thus we never have a newline in our string, except
-	 * at the very end.
-	 * 
-	 * @param input
-	 * @return
+	 * Format one SBSForm line, using HEAD_WIDTH for space-prefixed lines that
+	 * immediately follow a heading marker (y H[1-6]).
 	 */
-	public static String formatSbs(final String input, int width) {
+	public static String formatSbs(final String input, int width, String prevLine) {
 		final int idxOfNewline = input.lastIndexOf("\n");
 		if (idxOfNewline != -1 && idxOfNewline != input.length() - 1) {
 			throw new RuntimeException("newline within input not "
 					+ "supported. Occurs at idx:" + idxOfNewline + " in "
 					+ input + " length " + input.length());
 		}
-		return input.startsWith(" ") ? format(input, " ", width) : input;
+		if (!input.startsWith(" ")) return input;
+		int effectiveWidth = HEADING_LINE.matcher(prevLine).matches() ? HEAD_WIDTH : width;
+		return format(input, " ", effectiveWidth);
 	}
 
 	public static void main(final String[] args) {
 		try (BufferedReader in = new BufferedReader(new InputStreamReader(System.in))) {
 			String line;
+			String prevLine = "";
 			if (args.length == 0) {
 				while ((line = in.readLine()) != null) {
-					System.out.println(formatSbs(line));
+					System.out.println(formatSbs(line, STD_WIDTH, prevLine));
+					prevLine = line;
 				}
 			}
 			else {
 				int width = Integer.parseInt(args[0]);
 				while ((line = in.readLine()) != null) {
-					System.out.println(formatSbs(line, width));
+					System.out.println(formatSbs(line, width, prevLine));
+					prevLine = line;
 				}
 			}
 		} catch (final IOException e) {

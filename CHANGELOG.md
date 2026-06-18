@@ -13,6 +13,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   ([#2769](https://redmine.sbszh.ch/issues/2769))
 
 ### Fixed
+- Heading body lines are now wrapped at 120 characters instead of 80; the
+  SBSForm heading macros support up to 255 characters per line so wrapping
+  at 80 was silently truncating long headings
+  ([#1483](https://redmine.sbszh.ch/issues/1483))
 - Grade-change closing announcement (`'.`) missing when `noteref` or `annoref`
   is the last element in a grade-changed container (`poem`, `blockquote`, `div`,
   `epigraph`)
