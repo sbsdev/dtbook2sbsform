@@ -6,6 +6,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [0.41] — 2026-06-18
+
+### Fixed
+- Release workflow now fetches full git history so the previous-tag comparison
+  link in release notes resolves correctly
+
 ## [0.40] — 2026-06-18
 
 ### Added
